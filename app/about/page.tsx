@@ -3,103 +3,314 @@
 import { motion } from "framer-motion";
 import { Terminal } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { StarsBackground } from "@/components/ui/stars-background";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { Github } from "lucide-react";
+import { Footer } from "@/components/Footer";
+
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-background p-8 md:p-12">
+    <main className="min-h-screen bg-background text-white p-8 md:p-12">
       <div className="max-w-7xl mx-auto">
+      <StarsBackground />
+      <ShootingStars />
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold mb-8"
+          className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
         >
           About Me
         </motion.h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-8">
+          {/* Personal Info Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative"
           >
-            <Card className="p-6 bg-primary/5">
-              <h2 className="text-2xl font-semibold mb-4">Background</h2>
-              <p className="text-muted-foreground">
-                [Your detailed background information]
-              </p>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-000/20 to-cyan-500/20 rounded-lg blur opacity-75"></div>
+            <Card className="relative border border-white/10 bg-white/5 backdrop-blur-xl p-8 space-y-6 shadow-2xl">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-white">Who I Am</h3>
+                  <div className="flex flex-col items-center mb-6">
+                    <div className="relative w-32 h-32 mb-6">
+                      <div className="absolute -inset-0.5 bg-white/20 rounded-full blur opacity-75"></div>
+                      <div className="relative rounded-full w-full h-full overflow-hidden border border-white/10">
+                        <img
+                          src="/media/selfie.jpeg"
+                          alt="Profile Avatar"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <p className="text-lg text-gray-300">
+                      My name is Joel Hägvall, 24 years old (born 2000). I'm a software developer with a big interest in technology and
+                      how it can be used to make a difference.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-white">Where I Live</h3>
+                  <motion.div 
+                    className="relative p-4 rounded-lg bg-white/5 border border-white/10"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="text-4xl">🇸🇪</div>
+                      <div>
+                        <h4 className="text-xl font-medium text-white mb-1">Stockholm, Sweden</h4>
+                        <p className="text-gray-400">Born and raised.</p>
+                        <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+                          <span>59.3293° N</span>
+                          <span>•</span>
+                          <span>18.0686° E</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2 text-white">
+                    <Terminal size={24} />
+                    Skills
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"].map((skill) => (
+                      <span key={skill} className="px-3 py-1 bg-white/10 rounded-full text-sm">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-white">My Interests</h3>
+                  <ul className="text-lg text-gray-300 space-y-4">
+                    <li className="flex items-start gap-3">
+                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                      <div>
+                        <p>For as long as I can remember, I've always been interested in technology. Today i'm also drawn to tech that makes a difference:</p>
+                        <ul className="ml-6 mt-2 space-y-2">
+                          <li className="flex items-start gap-3">
+                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                            <span>Blockchain technology fascinates me, the use of a distributed ledger together with cryptography that enables transparency, immutability and security - which I believe will solve some of the major issues today in the digital world.</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                            <span>The use of artificial intelligence, especially for health and optimizing mundane human tasks. AI agents is a good example of this.</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                            <span>Blockchain together with smart contracts, to perform more error proof, immutable and public transactions.</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                            <span>Blind computing with multiple PETs (Privacy Enhancing Technologies) on private and sensitive data, especially while using AI.</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                          <span>
+                            Thinking of new software ideas, iterating on them and actually building them. Open sourced on my{" "}
+                            <a
+                              href="https://github.com/joelhagvall"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 font-medium text-gray-300 hover:text-white transition-colors underline decoration-white/50 hover:decoration-cyan-500"
+                            >
+                              GitHub
+                              <Github className="w-4 h-4" />
+                            </a>
+                          </span>
+                        </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                      <span>I'm also interested in other things, like:</span>
+                    </li>
+                    <ul className="ml-6 space-y-2">
+                      <li className="flex items-start gap-3">
+                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                        <span>Physical fitness and working out.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                        <span>Reading and learning new things through books and podcasts.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                        <span>Investing in different markets and learning about the human psychology connected to it.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                        <span>Optimizing my time - this by being clear in my communication, having short meetings with focus on quality and respect.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
+                        <span>Music and movies with a deeper meaning or story.</span>
+                      </li>
+                    </ul>
+                  </ul>
+                </div>
+              </div>
             </Card>
           </motion.div>
 
+          {/* Media Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="relative"
           >
-            <Card className="p-6 bg-primary/5">
-              <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                <Terminal size={24} />
-                Skills
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"].map((skill) => (
-                  <span key={skill} className="px-3 py-1 bg-primary/10 rounded-full text-sm">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Card className="p-6 bg-primary/5">
-              <h2 className="text-2xl font-semibold mb-4">Favorite Movies</h2>
-              <div className="grid grid-cols-2 gap-4">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-000/20 to-cyan-500/20 rounded-lg blur opacity-75"></div>
+            <Card className="relative border border-white/10 bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Movies Section */}
                 <div>
-                  <img
-                    src="/interstellar.jpg"
-                    alt="Interstellar"
-                    className="rounded-lg w-full h-40 object-cover mb-2"
-                  />
-                  <p className="text-sm text-muted-foreground">Interstellar (2014)</p>
+                  <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Movies</h3>
+                  <div className="relative h-[500px] flex justify-center">
+                    {[
+                      { title: "Interstellar (2014)", img: "/media/interstellar-poster.jpg" },
+                      { title: "Harry Potter and the Prisoner of Azkaban (2004)", img: "/media/hp3-poster.jpg" }
+                    ].map((media, index) => (
+                      <motion.div
+                        key={media.title}
+                        className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                        initial={{ 
+                          x: -index * 40, 
+                          y: index * 20,
+                          zIndex: 5 - index,
+                          rotateZ: -5 + (index * 2)
+                        }}
+                        whileHover={{ 
+                          x: 0,
+                          y: -20,
+                          zIndex: 10,
+                          rotateZ: 0,
+                          scale: 1.05,
+                          transition: { duration: 0.3 }
+                        }}
+                      >
+                        <div className="relative group">
+                          <img 
+                            src={media.img}
+                            alt={media.title}
+                            className="w-full shadow-xl"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <p className="text-sm font-medium">{media.title}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <img
-                    src="/harry-potter.jpg"
-                    alt="Harry Potter"
-                    className="rounded-lg w-full h-40 object-cover mb-2"
-                  />
-                  <p className="text-sm text-muted-foreground">Harry Potter Series</p>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            <Card className="p-6 bg-primary/5">
-              <h2 className="text-2xl font-semibold mb-4">Favorite Music</h2>
-              <div className="space-y-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <h3 className="font-medium">Hans Zimmer</h3>
-                  <p className="text-sm text-muted-foreground">Time - Inception</p>
+                {/* Music Section */}
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Music</h3>
+                  <div className="relative h-[500px] flex justify-center">
+                    {[
+                      { title: "Parachutes - Coldplay (2000)", img: "/media/parachutes.png" },
+                      { title: "Waking Up - OneRepublic (2013)", img: "/media/onerepublic.jpg" },
+                      { title: "Paradise - Lana Del Rey (2012)", img: "/media/lana.png" }
+                    ].map((media, index) => (
+                      <motion.div
+                        key={media.title}
+                        className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                        initial={{ 
+                          x: -index * 40, 
+                          y: index * 20,
+                          zIndex: 5 - index,
+                          rotateZ: -5 + (index * 2)
+                        }}
+                        whileHover={{ 
+                          x: 0,
+                          y: -20,
+                          zIndex: 10,
+                          rotateZ: 0,
+                          scale: 1.05,
+                          transition: { duration: 0.3 }
+                        }}
+                      >
+                        <div className="relative group">
+                          <img 
+                            src={media.img}
+                            alt={media.title}
+                            className="w-full shadow-xl"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <p className="text-sm font-medium">{media.title}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <h3 className="font-medium">John Williams</h3>
-                  <p className="text-sm text-muted-foreground">Hedwig's Theme - Harry Potter</p>
+
+                {/* Books Section */}
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Books</h3>
+                  <div className="relative h-[500px] flex justify-center">
+                    {[
+                      { title: "1984 - George Orwell", img: "/media/1984.jpg" },
+                      { title: "Sapiens - Yuval Noah Harari", img: "/media/sapiens.jpg" },
+                      { title: "The Alchemist - Paulo Coelho", img: "/media/alchemist.jpg" }
+                    ].map((media, index) => (
+                      <motion.div
+                        key={media.title}
+                        className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                        initial={{ 
+                          x: -index * 40, 
+                          y: index * 20,
+                          zIndex: 5 - index,
+                          rotateZ: -5 + (index * 2)
+                        }}
+                        whileHover={{ 
+                          x: 0,
+                          y: -20,
+                          zIndex: 10,
+                          rotateZ: 0,
+                          scale: 1.05,
+                          transition: { duration: 0.3 }
+                        }}
+                      >
+                        <div className="relative group">
+                          <img 
+                            src={media.img}
+                            alt={media.title}
+                            className="w-full shadow-xl"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <p className="text-sm font-medium">{media.title}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </Card>
           </motion.div>
         </div>
       </div>
+      <Footer/>
     </main>
   );
-} 
+}
