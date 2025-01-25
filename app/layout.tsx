@@ -4,11 +4,32 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/Navbar";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+});
 
 export const metadata: Metadata = {
-  title: 'Joel Hägvall',
+  title: "Joel Hägvall's Website",
   description: 'Personal website of Joel Hägvall',
+
+  keywords: [
+    'Joel Hägvall',
+    'Hägvall',
+    'Software Developer',
+    'Blockchain',
+    'Web Development',
+    'React',
+    'Next.js',
+    'AI',
+    'Sweden',
+    'Stockholm',
+    'Java',
+    'Python',
+    'PHP',
+  ],
 };
 
 export default function RootLayout({
