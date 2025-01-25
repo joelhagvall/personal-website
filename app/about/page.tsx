@@ -38,7 +38,7 @@ export default function About() {
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">Who I Am</h3>
                   <div className="flex flex-col items-center mb-6">
-                    <div className="relative w-32 h-32 mb-6">
+                    <div className="relative w-40 h-40 mb-6">
                       <div className="absolute -inset-0.5 bg-white/20 rounded-full blur opacity-75"></div>
                       <div className="relative rounded-full w-full h-full overflow-hidden border border-white/10">
                         <img
@@ -77,47 +77,28 @@ export default function About() {
                   </motion.div>
                 </div>
 
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2 text-white">
-                    <Terminal size={24} />
-                    Skills
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"].map((skill) => (
-                      <span key={skill} className="px-3 py-1 bg-white/10 rounded-full text-sm">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
 
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">My Interests</h3>
                   <ul className="text-lg text-gray-300 space-y-4">
                     <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                      <div>
+                    <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                      <div>
                         <p>For as long as I can remember, I've always been interested in technology. Today i'm also drawn to tech that makes a difference:</p>
                         <ul className="ml-6 mt-2 space-y-2">
                           <li className="flex items-start gap-3">
-                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                            <span>Blockchain technology fascinates me, the use of a distributed ledger together with cryptography that enables transparency, immutability and security - which I believe will solve some of the major issues today in the digital world.</span>
+                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>Blockchain technology fascinates me, the use of a distributed ledger together with cryptography that enables transparency, immutability and security - which I believe will solve some of the major issues today in the digital world.</span>
                           </li>
                           <li className="flex items-start gap-3">
-                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                            <span>The use of artificial intelligence, especially for health and optimizing mundane human tasks. AI agents is a good example of this.</span>
+                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>The use of artificial intelligence, especially for health and optimizing mundane human tasks. AI agents is a good example of this.</span>
                           </li>
                           <li className="flex items-start gap-3">
-                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                            <span>Blockchain together with smart contracts, to perform more error proof, immutable and public transactions.</span>
+                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>Blockchain together with smart contracts, to perform more error proof, immutable and public transactions.</span>
                           </li>
                           <li className="flex items-start gap-3">
-                            <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                            <span>Blind computing with multiple PETs (Privacy Enhancing Technologies) on private and sensitive data, especially while using AI.</span>
+                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>Blind computing with multiple PETs (Privacy Enhancing Technologies) on private and sensitive data, especially while using AI.</span>
                           </li>
                           <li className="flex items-start gap-3">
-                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                          <span>
+                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                          <span>
                             Thinking of new software ideas, iterating on them and actually building them. Open sourced on my{" "}
                             <a
                               href="https://github.com/joelhagvall"
@@ -134,29 +115,23 @@ export default function About() {
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                      <span>I'm also interested in other things, like:</span>
+                    <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                      <span>I'm also interested in other things, like:</span>
                     </li>
                     <ul className="ml-6 space-y-2">
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                        <span>Physical fitness and working out.</span>
+                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                        <span>Physical fitness and working out.</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                        <span>Reading and learning new things through books and podcasts.</span>
+                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                        <span>Reading and learning new things through books and podcasts.</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                        <span>Investing in different markets and learning about the human psychology connected to it.</span>
+                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                        <span>Investing in different markets and learning about the human psychology connected to it.</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                        <span>Optimizing my time - this by being clear in my communication, having short meetings with focus on quality and respect.</span>
+                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                        <span>Optimizing my time - this by being clear in my communication, having short meetings with focus on quality and respect.</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
-                        <span>Music and movies with a deeper meaning or story.</span>
+                      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                        <span>Music and movies with a deeper meaning or story.</span>
                       </li>
                     </ul>
                   </ul>

@@ -103,7 +103,6 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Skills - Spans 2 columns */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -112,27 +111,59 @@ export default function Home() {
             >
               <Card className="p-6 h-full bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
                 <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                  <Terminal className="text-primary" size={24} />
-                  Skills
+                  <h2 className="text-primary" />
+                  Tech Stack
                 </h2>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "React",
-                    "Next.js",
-                    "TypeScript",
-                    "Node.js",
-                    "Tailwind CSS",
-                    "PostgreSQL",
-                    "Git",
-                    "AWS"
-                  ].map((skill) => (
-                    <span 
-                      key={skill} 
-                      className="px-3 py-1.5 bg-primary/10 hover:bg-primary/20 transition-colors rounded-full text-sm font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                <div className="flex justify-center">
+                  <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
+                    <div className="w-16 h-16 p-3 flex items-center justify-center">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                        alt="Java"
+                        className="w-full h-full"
+                      />
+                    </div>
+                    
+                    <div className="w-16 h-16 p-3 flex items-center justify-center">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        alt="Python"
+                        className="w-full h-full"
+                      />
+                    </div>
+                    
+                    <div className="w-16 h-16 p-3 flex items-center justify-center">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                        alt="React"
+                        className="w-full h-full"
+                      />
+                    </div>
+                    
+                    <div className="w-16 h-16 p-3 flex items-center justify-center">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg"
+                        alt="Next.js"
+                        className="w-full h-full dark:invert"
+                      />
+                    </div>
+                    
+                    <div className="w-16 h-16 p-3 flex items-center justify-center">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                        alt="PHP"
+                        className="w-full h-full"
+                      />
+                    </div>
+                    
+                    <div className="w-16 h-16 p-3 flex items-center justify-center">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+                        alt="Swift"
+                        className="w-full h-full"
+                      />
+                    </div>
+                  </div>
                 </div>
               </Card>
             </motion.div>
@@ -146,7 +177,7 @@ export default function Home() {
             >
               <Card className="p-6 h-full bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
                 <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                  <Code2 className="text-primary" size={24} />
+                  <h2 className="text-primary"/>
                   Featured Project
                 </h2>
                 <div className="space-y-4">
@@ -186,8 +217,8 @@ export default function Home() {
             >
               <Card className="p-6 h-full bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
                 <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                  <Briefcase className="text-primary" size={24} />
-                  Experience
+                  <h2 className="text-primary" />
+                Experience
                 </h2>
                 <div className="space-y-6">
                   <div>
