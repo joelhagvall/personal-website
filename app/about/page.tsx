@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Terminal } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { ShootingStars } from "@/components/ui/shooting-stars";
@@ -154,42 +153,67 @@ export default function About() {
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Movies</h3>
                   <div className="relative h-[500px] flex justify-center">
-                    {[
-                      { title: "Interstellar (2014)", img: "/media/interstellar-poster.jpg" },
-                      { title: "Harry Potter and the Prisoner of Azkaban (2004)", img: "/media/hp3-poster.jpg" }
-                    ].map((media, index) => (
-                      <motion.div
-                        key={media.title}
-                        className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
-                        initial={{ 
-                          x: -index * 40, 
-                          y: index * 20,
-                          zIndex: 5 - index,
-                          rotateZ: -5 + (index * 2)
-                        }}
-                        whileHover={{ 
-                          x: 0,
-                          y: -20,
-                          zIndex: 10,
-                          rotateZ: 0,
-                          scale: 1.05,
-                          transition: { duration: 0.3 }
-                        }}
-                      >
-                        <div className="relative group">
-                          <img 
-                            src={media.img}
-                            alt={media.title}
-                            className="w-full shadow-xl"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
-                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                            <p className="text-sm font-medium">{media.title}</p>
-                          </div>
+                    <motion.div
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                      initial={{ 
+                        x: 0, 
+                        y: 0,
+                        zIndex: 5,
+                        rotateZ: -5
+                      }}
+                      whileHover={{ 
+                        x: 0,
+                        y: -20,
+                        zIndex: 10,
+                        rotateZ: 0,
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <div className="relative group">
+                        <img 
+                          src="/media/interstellar-poster.jpg"
+                          alt="Interstellar (2014)"
+                          className="w-full shadow-xl"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="text-sm font-medium">Interstellar (2014)</p>
                         </div>
-                      </motion.div>
-                    ))}
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                      initial={{ 
+                        x: -40, 
+                        y: 20,
+                        zIndex: 4,
+                        rotateZ: -3
+                      }}
+                      whileHover={{ 
+                        x: 0,
+                        y: -20,
+                        zIndex: 10,
+                        rotateZ: 0,
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <div className="relative group">
+                        <img 
+                          src="/media/hp3-poster.jpg"
+                          alt="Harry Potter and the Prisoner of Azkaban (2004)"
+                          className="w-full shadow-xl"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="text-sm font-medium">Harry Potter and the Prisoner of Azkaban (2004)</p>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
 
@@ -197,43 +221,98 @@ export default function About() {
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Music</h3>
                   <div className="relative h-[500px] flex justify-center">
-                    {[
-                      { title: "Parachutes - Coldplay (2000)", img: "/media/parachutes.png" },
-                      { title: "Waking Up - OneRepublic (2013)", img: "/media/onerepublic.jpg" },
-                      { title: "Paradise - Lana Del Rey (2012)", img: "/media/lana.png" }
-                    ].map((media, index) => (
-                      <motion.div
-                        key={media.title}
-                        className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
-                        initial={{ 
-                          x: -index * 40, 
-                          y: index * 20,
-                          zIndex: 5 - index,
-                          rotateZ: -5 + (index * 2)
-                        }}
-                        whileHover={{ 
-                          x: 0,
-                          y: -20,
-                          zIndex: 10,
-                          rotateZ: 0,
-                          scale: 1.05,
-                          transition: { duration: 0.3 }
-                        }}
-                      >
-                        <div className="relative group">
-                          <img 
-                            src={media.img}
-                            alt={media.title}
-                            className="w-full shadow-xl"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
-                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                            <p className="text-sm font-medium">{media.title}</p>
-                          </div>
+                    <motion.div
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                      initial={{ 
+                        x: 0, 
+                        y: 0,
+                        zIndex: 5,
+                        rotateZ: -5
+                      }}
+                      whileHover={{ 
+                        x: 0,
+                        y: -20,
+                        zIndex: 10,
+                        rotateZ: 0,
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <div className="relative group">
+                        <img 
+                          src="/media/parachutes.png"
+                          alt="Parachutes - Coldplay (2000)"
+                          className="w-full shadow-xl"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="text-sm font-medium">Parachutes - Coldplay (2000)</p>
                         </div>
-                      </motion.div>
-                    ))}
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                      initial={{ 
+                        x: -40, 
+                        y: 20,
+                        zIndex: 4,
+                        rotateZ: -3
+                      }}
+                      whileHover={{ 
+                        x: 0,
+                        y: -20,
+                        zIndex: 10,
+                        rotateZ: 0,
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <div className="relative group">
+                        <img 
+                          src="/media/onerepublic.jpg"
+                          alt="Waking Up - OneRepublic (2013)"
+                          className="w-full shadow-xl"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="text-sm font-medium">Waking Up - OneRepublic (2013)</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                
+                    <motion.div
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                      initial={{ 
+                        x: -80, 
+                        y: 40,
+                        zIndex: 3,
+                        rotateZ: -1
+                      }}
+                      whileHover={{ 
+                        x: 0,
+                        y: -20,
+                        zIndex: 10,
+                        rotateZ: 0,
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <div className="relative group">
+                        <img 
+                          src="/media/lana.png"
+                          alt="Paradise - Lana Del Rey (2012)"
+                          className="w-full shadow-xl"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="text-sm font-medium">Paradise - Lana Del Rey (2012)</p>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
 
@@ -241,43 +320,7 @@ export default function About() {
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Books</h3>
                   <div className="relative h-[500px] flex justify-center">
-                    {[
-                      { title: "1984 - George Orwell", img: "/media/1984.jpg" },
-                      { title: "Sapiens - Yuval Noah Harari", img: "/media/sapiens.jpg" },
-                      { title: "The Alchemist - Paulo Coelho", img: "/media/alchemist.jpg" }
-                    ].map((media, index) => (
-                      <motion.div
-                        key={media.title}
-                        className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
-                        initial={{ 
-                          x: -index * 40, 
-                          y: index * 20,
-                          zIndex: 5 - index,
-                          rotateZ: -5 + (index * 2)
-                        }}
-                        whileHover={{ 
-                          x: 0,
-                          y: -20,
-                          zIndex: 10,
-                          rotateZ: 0,
-                          scale: 1.05,
-                          transition: { duration: 0.3 }
-                        }}
-                      >
-                        <div className="relative group">
-                          <img 
-                            src={media.img}
-                            alt={media.title}
-                            className="w-full shadow-xl"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
-                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                            <p className="text-sm font-medium">{media.title}</p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
+
                   </div>
                 </div>
               </div>
