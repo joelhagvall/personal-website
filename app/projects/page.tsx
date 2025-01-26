@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GithubIcon, Terminal, Briefcase, Code, ExternalLink, Code2, Headphones, Smartphone } from "lucide-react";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { StarsBackground } from "@/components/ui/stars-background";
@@ -22,10 +23,27 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
+              className="text-4xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
             >
               Projects
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-xl text-gray-400 text-center mb-8"
+            >
+              Some of my personal and academic projects, more found on my{" "}
+              <Link
+                href="https://github.com/joelhagvall"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-gray-300 hover:text-white transition-colors underline decoration-white/30 hover:decoration-white/70"
+              >
+                GitHub
+                <GitHubLogoIcon className="w-4 h-4" />
+              </Link>
+            </motion.p>
     
             <div className="space-y-6">
               <motion.div
@@ -60,7 +78,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
                       >
-                        <GithubIcon size={16} />
+                        <GitHubLogoIcon />
                         Source Code
                       </Link>
                     </div>
@@ -102,7 +120,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
                       >
-                        <GithubIcon size={16} />
+                        <GitHubLogoIcon/>
                         Source Code
                       </Link>
                     </div>
@@ -141,7 +159,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
                       >
-                        <GithubIcon size={16} />
+                        <GitHubLogoIcon />
                         Source Code
                       </Link>
                     </div>

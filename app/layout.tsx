@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     'Hägvall',
     'Software Developer',
     'Blockchain',
+    'tor onion site scraper',
     'Web Development',
     'React',
     'Next.js',

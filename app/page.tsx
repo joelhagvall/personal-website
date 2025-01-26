@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GithubIcon, LinkedinIcon, MailIcon, MoveRight } from "lucide-react";
+import { LinkedinIcon, MailIcon, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Footer } from "@/components/Footer";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export default function Home() {
   return (
@@ -50,7 +51,7 @@ export default function Home() {
               aria-label="GitHub profile"
               className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50"
             >
-              <GithubIcon className="w-6 h-6" />
+              <GitHubLogoIcon className="w-6 h-6" />
             </a>
             <a
               href="https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/"
@@ -94,7 +95,7 @@ export default function Home() {
                   <div className="flex-1">
                     <h2 className="text-2xl font-semibold mb-3">Introduction</h2>
                     <p className="text-muted-foreground text-lg">
-                      Hi, I'm Joel Hägvall. I'm a software developer and tech enthusiast. Welcome to my portfolio!
+                      Hi, I'm Joel Hägvall. I'm a software developer and tech enthusiast. Welcome to my website!
                       Explore my <Link href="/about" className="font-medium text-primary hover:text-primary/80 underline underline-offset-4">About Me</Link> section to learn more.
                     </p>
                   </div>
@@ -146,7 +147,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <h3 className="text-xl font-medium">Tor Onion Site Scraper</h3>
                   <p className="text-muted-foreground text-lg">
-                    Python-based crawler for Tor network analysis (educational purposes)
+                    Python-based web crawler and analysis tool for Tor websites (educational purposes).
                   </p>
                   <div className="flex items-center gap-4 flex-wrap">
                     <a
@@ -155,16 +156,47 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
                     >
-                      <GithubIcon size={16} />
+                      <GitHubLogoIcon />
                       Source Code
                     </a>
                     <Link
                       href="/projects"
                       className="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 transition-colors text-primary font-medium"
                     >
-                      More Projects
+                      All Projects
                       <MoveRight size={16} />
                     </Link>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Publications Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="col-span-full"
+            >
+              <Card className="p-6 h-full bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
+                <h2 className="text-2xl font-semibold mb-4">Publications</h2>
+                <div className="space-y-4">
+                  <h3 className="text-xl font-medium">Analyzing Cybercrime Services and Trust Dynamics on the Dark Web: A Case Study of DarkDock Marketplace</h3>
+                  <p className="text-muted-foreground text-lg">
+                    Bachelor thesis written by me and co author covering different aspects of cybercrimes present on the Tor network, published in 2024.
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    URN: <a href="https://urn.kb.se/resolve?urn=urn%3Anbn%3Ase%3Asu%3Adiva-233982" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">https://urn.kb.se/resolve?urn=urn%3Anbn%3Ase%3Asu%3Adiva-233982</a>
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <a
+                      href="/media/bachelor-thesis.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 transition-colors text-primary font-medium"
+                    >
+                      View Thesis PDF
+                    </a>
                   </div>
                 </div>
               </Card>

@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { ShootingStars } from "@/components/ui/shooting-stars";
-import { Github } from "lucide-react";
 import { Footer } from "@/components/Footer";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 
 export default function About() {
@@ -106,7 +106,7 @@ export default function About() {
                               className="inline-flex items-center gap-1 font-medium text-gray-300 hover:text-white transition-colors underline decoration-white/50 hover:decoration-cyan-500"
                             >
                               GitHub
-                              <Github className="w-4 h-4" />
+                              <GitHubLogoIcon className="w-4 h-4" />
                             </a>
                           </span>
                         </li>
