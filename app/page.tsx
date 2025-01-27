@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LinkedinIcon, MailIcon, MoveRight } from "lucide-react";
+import { LinkedinIcon, MailIcon, MoveRight, FileText } from "lucide-react";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { StarsBackground } from "@/components/ui/stars-background";
@@ -9,6 +9,47 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Footer } from "@/components/Footer";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { useState, useEffect } from 'react';
+
+function useMousePosition() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const updatePosition = (e: MouseEvent) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', updatePosition);
+    return () => window.removeEventListener('mousemove', updatePosition);
+  }, []);
+
+  return position;
+}
+
+function HologramCard({ children, className = "" }: { children: React.ReactNode, className?: string }) {
+  const { x, y } = useMousePosition();
+  const style = {
+    '--x': `${x}px`,
+    '--y': `${y}px`,
+    background: `radial-gradient(circle at ${x}px ${y}px, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(0,0,0,0) 80%)`
+  } as React.CSSProperties;
+
+  return (
+    <div 
+      style={style} 
+      className={`relative overflow-hidden rounded-lg border border-white/10 bg-black/50 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -25,7 +66,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
+            className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 leading-relaxed py-2"
           >
             Joel Hägvall
           </motion.h1>
@@ -35,7 +76,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-300 mb-8"
           >
-            Software Developer and Tech Enthusiast
+            {/* Text here */}
           </motion.p>
           
           <motion.div 
@@ -62,12 +103,36 @@ export default function Home() {
             >
               <LinkedinIcon className="w-6 h-6" />
             </a>
+            
+            <Popover>
+              <PopoverTrigger asChild>
+                <button className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50">
+                  <MailIcon className="w-6 h-6" />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80 bg-black/50 backdrop-blur-xl border border-white/10">
+                <div className="space-y-3 p-1">
+                  <h4 className="font-medium text-white">Open Mail App?</h4>
+                  <p className="text-sm text-gray-300">
+                    This will open your default email application to send a message to: joel.hagvall1@gmail.com
+                  </p>
+                  <a
+                    href="mailto:joel.hagvall1@gmail.com"
+                    className="block w-full text-center py-2 px-4 rounded-md bg-white/10 hover:bg-white/20 transition-colors text-white font-medium"
+                  >
+                    Continue
+                  </a>
+                </div>
+              </PopoverContent>
+            </Popover>
+            
             <Link
               href="/about"
               className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-medium px-4"
             >
               About Me
             </Link>
+            
           </motion.div>
         </div>
       </div>
@@ -83,7 +148,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="col-span-full"
             >
-              <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
+              <HologramCard className="bg-primary/5 hover:bg-primary/10">
                 <div className="flex items-start gap-6">
                   <div className="relative shrink-0">
                     <Avatar className="h-20 w-20">
@@ -96,11 +161,11 @@ export default function Home() {
                     <h2 className="text-2xl font-semibold mb-3">Introduction</h2>
                     <p className="text-muted-foreground text-lg">
                       Hi, I'm Joel Hägvall. I'm a software developer and tech enthusiast. Welcome to my website!
-                      Explore my <Link href="/about" className="font-medium text-primary hover:text-primary/80 underline underline-offset-4">About Me</Link> section to learn more.
+                      Check out the <Link href="/about" className="font-medium text-primary hover:text-primary/80 underline underline-offset-4">About Me</Link> page to get to know me better.
                     </p>
                   </div>
                 </div>
-              </Card>
+              </HologramCard>
             </motion.div>
 
             {/* Tech Stack Card */}
@@ -163,7 +228,7 @@ export default function Home() {
                       href="/projects"
                       className="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 transition-colors text-primary font-medium"
                     >
-                      All Projects
+                      More Projects
                       <MoveRight size={16} />
                     </Link>
                   </div>
@@ -195,7 +260,8 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 transition-colors text-primary font-medium"
                     >
-                      View Thesis PDF
+                      <FileText className="h-4 w-4" />
+                      View PDF
                     </a>
                   </div>
                 </div>

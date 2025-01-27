@@ -32,7 +32,7 @@ export default function About() {
             className="relative"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-000/20 to-cyan-500/20 rounded-lg blur opacity-75"></div>
-            <Card className="relative border border-white/10 bg-white/5 backdrop-blur-xl p-8 space-y-6 shadow-2xl">
+            <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
               <div className="space-y-6">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">Who I Am</h3>

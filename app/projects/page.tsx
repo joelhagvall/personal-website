@@ -12,7 +12,7 @@ import { Footer } from "@/components/Footer";
 export default function Projects() {
   return (
     <main className="min-h-screen bg-background text-white p-8 md:p-12">
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-7xl mx-auto">
           <div className="absolute inset-0 pointer-events-none">
             <StarsBackground />
             <ShootingStars />
@@ -33,7 +33,7 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-xl text-gray-400 text-center mb-8"
             >
-              Some of my personal and academic projects, more found on my{" "}
+              Some of my personal and academic projects - more found on my{" "}
               <Link
                 href="https://github.com/joelhagvall"
                 target="_blank"

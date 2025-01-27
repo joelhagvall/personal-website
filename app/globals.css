@@ -80,4 +80,27 @@
     @apply bg-background text-foreground;
     background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
   }
+
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--x) var(--y),
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 80%
+    );
+    pointer-events: none;
+  }
+
+  
 }
