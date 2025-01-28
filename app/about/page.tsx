@@ -173,7 +173,12 @@ export default function About() {
                         scale: 1.05,
                         transition: { duration: 0.3 }
                       }}
-                      whileTap={{ cursor: "grabbing" }}
+                      whileTap={{ 
+                        cursor: "grabbing",
+                        zIndex: 20,
+                        scale: 1.05,
+                        rotateZ: 0
+                      }}
                     >
                       <div className="relative group">
                         <img 
@@ -228,7 +233,11 @@ export default function About() {
                   <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Music</h3>
                   <div className="relative h-[500px] flex justify-center">
                     <motion.div
-                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg touch-none"
+                      drag="x"
+                      dragConstraints={{ left: -100, right: 100 }}
+                      dragElastic={0.2}
+                      dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
                       initial={{ 
                         x: 0, 
                         y: 0,
@@ -243,12 +252,19 @@ export default function About() {
                         scale: 1.05,
                         transition: { duration: 0.3 }
                       }}
+                      whileTap={{ 
+                        cursor: "grabbing",
+                        zIndex: 20,
+                        scale: 1.05,
+                        rotateZ: 0
+                      }}
                     >
                       <div className="relative group">
                         <img 
                           src="/media/parachutes.png"
                           alt="Parachutes - Coldplay (2000)"
                           className="w-full shadow-xl"
+                          draggable="false"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
@@ -280,6 +296,7 @@ export default function About() {
                           src="/media/onerepublic.jpg"
                           alt="Waking Up - OneRepublic (2013)"
                           className="w-full shadow-xl"
+                          draggable="false"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
@@ -311,6 +328,7 @@ export default function About() {
                           src="/media/lana.png"
                           alt="Paradise - Lana Del Rey (2012)"
                           className="w-full shadow-xl"
+                          draggable="false"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
