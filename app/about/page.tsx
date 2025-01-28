@@ -32,7 +32,7 @@ export default function About() {
             className="relative"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-000/20 to-cyan-500/20 rounded-lg blur opacity-75"></div>
-            <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
+            <Card className="p-6 bg-primary/5 transition-all duration-300 border border-primary/10">
               <div className="space-y-6">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">Who I Am</h3>
@@ -147,14 +147,18 @@ export default function About() {
             className="relative"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-000/20 to-cyan-500/20 rounded-lg blur opacity-75"></div>
-            <Card className="relative border border-white/10 bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
+            <Card className="p-6 bg-primary/5 transition-all duration-300 border border-primary/10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Movies Section */}
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Movies</h3>
                   <div className="relative h-[500px] flex justify-center">
                     <motion.div
-                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg"
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg touch-none"
+                      drag="x"
+                      dragConstraints={{ left: -100, right: 100 }}
+                      dragElastic={0.2}
+                      dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
                       initial={{ 
                         x: 0, 
                         y: 0,
@@ -169,12 +173,14 @@ export default function About() {
                         scale: 1.05,
                         transition: { duration: 0.3 }
                       }}
+                      whileTap={{ cursor: "grabbing" }}
                     >
                       <div className="relative group">
                         <img 
                           src="/media/interstellar-poster.jpg"
                           alt="Interstellar (2014)"
                           className="w-full shadow-xl"
+                          draggable="false"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />

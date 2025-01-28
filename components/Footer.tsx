@@ -1,10 +1,11 @@
-import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
+import {LinkedinIcon, MailIcon } from "lucide-react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { motion } from "framer-motion";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export function Footer() {
   return (
@@ -27,7 +28,7 @@ export function Footer() {
              rel="noopener noreferrer"
              className="text-muted-foreground hover:text-primary transition-colors"
              aria-label="GitHub">
-            <GithubIcon className="w-5 h-5" />
+            <GitHubLogoIcon className="w-5 h-5" />
           </a>
           <a href="https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/" 
              target="_blank" 

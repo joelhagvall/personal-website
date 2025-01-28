@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/popover"
 import { useState, useEffect } from 'react';
 
+
 function useMousePosition() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -148,7 +149,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="col-span-full"
             >
-              <HologramCard className="bg-primary/5 hover:bg-primary/10">
+              <Card className="p-6 h-full bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
                 <div className="flex items-start gap-6">
                   <div className="relative shrink-0">
                     <Avatar className="h-20 w-20">
@@ -165,7 +166,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-              </HologramCard>
+              </Card>
             </motion.div>
 
             {/* Tech Stack Card */}
@@ -179,22 +180,48 @@ export default function Home() {
                 <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
                 <div className="flex justify-center">
                   <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
-                    {[
-                      { src: "java-original.svg", alt: "Java" },
-                      { src: "python-original.svg", alt: "Python" },
-                      { src: "react-original.svg", alt: "React" },
-                      { src: "nextjs-original-wordmark.svg", alt: "Next.js", darkInvert: true },
-                      { src: "php-original.svg", alt: "PHP" },
-                      { src: "swift-original.svg", alt: "Swift" },
-                    ].map((icon, index) => (
-                      <div key={index} className="w-16 h-16 p-3 flex items-center justify-center">
-                        <img
-                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon.alt.toLowerCase()}/${icon.src}`}
-                          alt={icon.alt}
-                          className={`w-full h-full ${icon.darkInvert ? 'dark:invert' : ''}`}
-                        />
-                      </div>
-                    ))}
+                    <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                        alt="Java"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        alt="Python"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                        alt="React"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored-dark.svg"
+                        alt="Next.js"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://www.php.net/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                        alt="PHP"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://developer.apple.com/swift/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+                        alt="Swift"
+                        className="w-full h-full"
+                      />
+                    </a>
                   </div>
                 </div>
               </Card>
@@ -212,7 +239,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <h3 className="text-xl font-medium">Tor Onion Site Scraper</h3>
                   <p className="text-muted-foreground text-lg">
-                    Python-based web crawler and analysis tool for Tor websites (educational purposes).
+                    Python-based web crawler and analysis tool for Tor websites (educational purposes), used in the publication below.
                   </p>
                   <div className="flex items-center gap-4 flex-wrap">
                     <a
@@ -263,28 +290,6 @@ export default function Home() {
                       <FileText className="h-4 w-4" />
                       View PDF
                     </a>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-
-            {/* Experience Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="col-span-full"
-            >
-              <Card className="p-6 h-full bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
-                <h2 className="text-2xl font-semibold mb-4">Experience</h2>
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-medium">Senior Developer</h3>
-                    <p className="text-muted-foreground">Company Name • 2020–Present</p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium">Full Stack Developer</h3>
-                    <p className="text-muted-foreground">Previous Company • 2018–2020</p>
                   </div>
                 </div>
               </Card>

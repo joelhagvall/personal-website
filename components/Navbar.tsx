@@ -7,13 +7,12 @@ import { FileText } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
-
   const links = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Me" },
     { href: "/projects", label: "Projects" },
     { 
-      href: "/media/Blockchain-Sweden-Industry-Report-2024-1.pdf",
+      href: "/media/resume.pdf",
       label: "Resume",
       icon: <FileText className="h-4 w-4 inline-block mr-1" />,
       external: true 

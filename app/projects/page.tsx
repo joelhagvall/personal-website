@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GithubIcon, Terminal, Briefcase, Code, ExternalLink, Code2, Headphones, Smartphone } from "lucide-react";
+import {Code, Headphones, Smartphone } from "lucide-react";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
