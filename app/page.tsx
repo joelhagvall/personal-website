@@ -124,7 +124,7 @@ export default function Home() {
                   <div className="flex-1">
                     <h2 className="text-2xl font-semibold mb-3">Introduction</h2>
                     <p className="text-muted-foreground text-lg">
-                      Hi, I'm Joel Hägvall. I'm a software developer and tech enthusiast. Welcome to my website!
+                      Hi, i'm Joel Hägvall. I'm a software developer and tech enthusiast from Stockholm, Sweden. Welcome to my website!
                       Check out the <Link href="/about" className="font-medium text-primary hover:text-primary/80 underline underline-offset-4">About Me</Link> page to get to know me better.
                     </p>
                   </div>

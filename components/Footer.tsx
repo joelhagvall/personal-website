@@ -43,7 +43,7 @@ export function Footer() {
                 <MailIcon size={20} />
               </div>
             </PopoverTrigger>
-            <PopoverContent className="w-60 bg-primary/5 border-primary/10">
+            <PopoverContent className="w-80 bg-black/50 backdrop-blur-xl border border-white/10">
               <div className="space-y-2">
                 <h4 className="font-medium leading-none">Open Mail App?</h4>
                 <p className="text-sm text-muted-foreground">
