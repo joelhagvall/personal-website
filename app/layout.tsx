@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Joel Hägvall - Software Developer",
-  description: 'Software developer based in Stockholm, Sweden specializing in blockchain technology, web development, and AI solutions. Experienced in React, Swift, Flutter, Python, and more.',
+  description: 'Software developer based in Stockholm, Sweden. Experienced in Java, Python, Swift, React and more.',
   
   keywords: [
     'Joel Hägvall',
@@ -37,24 +37,23 @@ export const metadata: Metadata = {
   
   openGraph: {
     title: 'Joel Hägvall - Software Developer',
-    description: 'Professional portfolio showcasing development projects',
-    url: 'https://yourdomain.com',
+    description: 'Software developer based in Stockholm, Sweden. Experienced in Java, Python, Swift, React and more.',
+    url: 'https://joel-hagvall.vercel.app',
     siteName: 'Joel Hägvall - Software Developer',
-    images: [
-      {
-        url: 'https://yourdomain.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-      }
-    ],
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/media/selfie.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Joel Hägvall'
+      }
+    ],
   },
   
-  
-  
   alternates: {
-    canonical: 'https://yourdomain.com',
+    canonical: 'https://joel-hagvall.vercel.app',
   },
 };
 
@@ -68,7 +67,7 @@ export default function RootLayout({
     '@type': 'Person',
     name: 'Joel Hägvall',
     jobTitle: 'Software Developer',
-    url: 'https://yourdomain.com',
+    url: 'https://joel-hagvall.vercel.app',
     sameAs: [
       'https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/',
       'https://github.com/joelhagvall'

@@ -9,48 +9,12 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Footer } from "@/components/Footer";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { useState, useEffect } from 'react';
-
-
-function useMousePosition() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', updatePosition);
-    return () => window.removeEventListener('mousemove', updatePosition);
-  }, []);
-
-  return position;
-}
-
-function HologramCard({ children, className = "" }: { children: React.ReactNode, className?: string }) {
-  const { x, y } = useMousePosition();
-  const style = {
-    '--x': `${x}px`,
-    '--y': `${y}px`,
-    background: `radial-gradient(circle at ${x}px ${y}px, 
-                rgba(255,255,255,0.1) 0%, 
-                rgba(0,0,0,0) 80%)`
-  } as React.CSSProperties;
-
-  return (
-    <div 
-      style={style} 
-      className={`relative overflow-hidden rounded-lg border border-white/10 bg-black/50 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
 
 export default function Home() {
   return (
@@ -133,7 +97,6 @@ export default function Home() {
             >
               About Me
             </Link>
-            
           </motion.div>
         </div>
       </div>

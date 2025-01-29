@@ -38,7 +38,6 @@ export function MeteorsComponent() {
             Explore
           </button>
 
-          {/* Meaty part - Meteor effect */}
           <Meteors number={20} />
         </div>
       </div>

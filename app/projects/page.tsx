@@ -33,7 +33,7 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-xl text-gray-400 text-center mb-8"
             >
-              Some of my personal and academic projects - more found on my{" "}
+              A selection of my personal and academic projects - more found on my{" "}
               <Link
                 href="https://github.com/joelhagvall"
                 target="_blank"
@@ -42,7 +42,7 @@ export default function Projects() {
               >
                 GitHub
                 <GitHubLogoIcon className="w-4 h-4" />
-              </Link>
+              </Link> profile.
             </motion.p>
     
             <div className="space-y-6">

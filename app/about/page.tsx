@@ -7,7 +7,6 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { Footer } from "@/components/Footer";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-
 export default function About() {
   return (
     <main className="min-h-screen bg-background text-white p-8 md:p-12">
@@ -85,10 +84,10 @@ export default function About() {
                         <p>For as long as I can remember, I've always been interested in technology. Today i'm also drawn to tech that makes a difference:</p>
                         <ul className="ml-6 mt-2 space-y-2">
                           <li className="flex items-start gap-3">
-                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>Blockchain technology fascinates me, the use of a distributed ledger together with cryptography that enables transparency, immutability and security - which I believe will solve some of the major issues today in the digital world.</span>
+                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>Blockchain technology fascinates me, the use of a distributed ledger together with cryptography that enables transparency, immutability and security - which I believe will solve some of the major issues today in the digital world when it comes to managing and securing data of all forms.</span>
                           </li>
                           <li className="flex items-start gap-3">
-                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>The use of artificial intelligence, especially for health and optimizing mundane human tasks. AI agents is a good example of this.</span>
+                          <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>The use of artificial intelligence, especially for health and optimizing mundane human tasks. AI agents are very fascinating.</span>
                           </li>
                           <li className="flex items-start gap-3">
                           <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />                            <span>Blockchain together with smart contracts, to perform more error proof, immutable and public transactions.</span>
@@ -103,11 +102,11 @@ export default function About() {
                               href="https://github.com/joelhagvall"
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 font-medium text-gray-300 hover:text-white transition-colors underline decoration-white/50 hover:decoration-cyan-500"
+                              className="inline-flex items-center gap-1 font-medium text-gray-300 hover:text-white transition-colors underline decoration-white/50 hover:decoration-cyan-500 relative z-10"
                             >
                               GitHub
                               <GitHubLogoIcon className="w-4 h-4" />
-                            </a>
+                            </a> profile.
                           </span>
                         </li>
                         </ul>
