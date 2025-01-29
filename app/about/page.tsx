@@ -252,7 +252,7 @@ export default function About() {
                       initial={{ 
                         x: 0, 
                         y: 0,
-                        zIndex: 5,
+                        zIndex: 1,
                         rotateZ: -5
                       }}
                       whileHover={{ 
@@ -262,6 +262,11 @@ export default function About() {
                         rotateZ: 0,
                         scale: 1.05,
                         transition: { duration: 0.3 }
+                      }}
+                      whileDrag={{ 
+                        zIndex: 20,
+                        scale: 1.05,
+                        rotateZ: 0
                       }}
                       whileTap={{ 
                         cursor: "grabbing",
