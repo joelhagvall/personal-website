@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   description: 'Software developer based in Stockholm, Sweden specializing in blockchain technology, web development, and AI solutions. Experienced in React, Swift, Flutter, Python, and more.',
   
   keywords: [
+    'Joel Hägvall',
+    'Hägvall',
     'Software Developer Stockholm',
     'Next.js',
     'React',
