@@ -7,13 +7,12 @@ import { FileText } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
-
   const links = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
+    { href: "/about", label: "About Me" },
     { href: "/projects", label: "Projects" },
     { 
-      href: "/YourName_Resume.pdf",
+      href: "/media/resume.pdf",
       label: "Resume",
       icon: <FileText className="h-4 w-4 inline-block mr-1" />,
       external: true 
@@ -22,7 +21,7 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-7xl items-center justify-center">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-center px-4">
         <div className="flex gap-6 md:gap-10">
           {links.map((link) => (
             <Link
@@ -45,4 +44,4 @@ export function Navbar() {
       </div>
     </nav>
   );
-} 
+}
