@@ -147,6 +147,9 @@ export default function About() {
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-000/20 to-cyan-500/20 rounded-lg blur opacity-75"></div>
             <Card className="p-6 bg-primary/5 transition-all duration-300 border border-primary/10">
+              <p className="text-gray-400 text-center mb-6">
+                Some of my favourite media, swipe through the images!
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Movies Section */}
                 <div>
