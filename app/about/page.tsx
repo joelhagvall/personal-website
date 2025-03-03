@@ -374,7 +374,89 @@ export default function About() {
                 <div>
                   <h3 className="text-2xl font-semibold mb-4 text-white">Favorite Books</h3>
                   <div className="relative h-[500px] flex justify-center">
-
+                    <motion.div
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg touch-none"
+                      drag="x"
+                      dragConstraints={{ left: -100, right: 100 }}
+                      dragElastic={0.2}
+                      dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                      initial={{ 
+                        x: 0, 
+                        y: 0,
+                        zIndex: 5,
+                        rotateZ: -5
+                      }}
+                      whileHover={{ 
+                        x: 0,
+                        y: -20,
+                        zIndex: 10,
+                        rotateZ: 0,
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ 
+                        cursor: "grabbing",
+                        zIndex: 20,
+                        scale: 1.05,
+                        rotateZ: 0
+                      }}
+                    >
+                      <div className="relative group">
+                        <img 
+                          src="/media/imitation-game.jpg"
+                          alt="The Imitation Game"
+                          className="w-full shadow-xl"
+                          draggable="false"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="text-sm font-medium">The Imitation Game (1983) - Andrew Hodges</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute w-[250px] cursor-pointer overflow-hidden rounded-lg touch-none"
+                      drag="x"
+                      dragConstraints={{ left: -100, right: 100 }}
+                      dragElastic={0.2}
+                      dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                      initial={{ 
+                        x: -40, 
+                        y: 20,
+                        zIndex: 4,
+                        rotateZ: -3
+                      }}
+                      whileHover={{ 
+                        x: 0,
+                        y: -20,
+                        zIndex: 10,
+                        rotateZ: 0,
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ 
+                        cursor: "grabbing",
+                        zIndex: 20,
+                        scale: 1.05,
+                        rotateZ: 0
+                      }}
+                    >
+                      <div className="relative group">
+                        <img 
+                          src="/media/network-state.png"
+                          alt="The Network State"
+                          className="w-full shadow-xl"
+                          draggable="false"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.2)_0%,_transparent_60%)] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="text-sm font-medium">The Network State (2022) by Balaji Srinivasan</p>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
               </div>
