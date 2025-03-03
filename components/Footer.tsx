@@ -19,7 +19,7 @@ export function Footer() {
         <div className="text-center md:text-left">
           <h2 className="text-xl font-semibold mb-2">Joel Hägvall</h2>
           <p className="text-sm text-muted-foreground">
-            Software Developer based in Sweden.
+            Software Developer based in Stockholm, Sweden.
           </p>
         </div>
         <div className="flex gap-6">
