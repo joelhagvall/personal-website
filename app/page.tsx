@@ -241,7 +241,7 @@ export default function Home() {
                     Bachelor thesis written by me and co author covering different aspects of cybercrimes present on the Tor network, published in 2024.
                   </p>
                   <p className="text-muted-foreground text-sm">
-                    URN: <a href="https://urn.kb.se/resolve?urn=urn%3Anbn%3Ase%3Asu%3Adiva-233982" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">https://urn.kb.se/resolve?urn=urn%3Anbn%3Ase%3Asu%3Adiva-233982</a>
+                    URN: <a href="https://su.diva-portal.org/smash/record.jsf?pid=diva2%3A1955538&dswid=-9467" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">https://urn.kb.se/resolve?urn=urn%3Anbn%3Ase%3Asu%3Adiva-233982</a>
                   </p>
                   <div className="flex items-center gap-4">
                     <a
