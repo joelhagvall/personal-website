@@ -33,8 +33,13 @@ export const metadata: Metadata = {
     'Flutter',
     'Dart',
     'TypeScript',
+    'JavaScript',
     'Software Development',
     'Developer Sweden',
+    'PostgreSQL',
+    'Supabase',
+    'TanStack Query',
+    'TanStack Form',
   ],
   
   openGraph: {
@@ -100,7 +105,12 @@ export default function RootLayout({
       'Flutter',
       'Dart',
       'TypeScript',
-      'PySimpleGUI'
+      'JavaScript',
+      'PySimpleGUI',
+      'PostgreSQL',
+      'Supabase',
+      'TanStack Query',
+      'TanStack Form'
     ]
   };
 

@@ -142,7 +142,7 @@ export default function Home() {
               <Card className="p-6 h-full bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
                 <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
                 <div className="flex justify-center">
-                  <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-4 sm:grid-cols-4 gap-4">
                     <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
                       <img
                         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
@@ -183,6 +183,48 @@ export default function Home() {
                         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
                         alt="Swift"
                         className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                        alt="TypeScript"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        alt="JavaScript"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                        alt="PostgreSQL"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://supabase.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://avatars.githubusercontent.com/u/54469796?s=200&v=4"
+                        alt="Supabase"
+                        className="w-full h-full rounded"
+                      />
+                    </a>
+                    <a href="https://tanstack.com/query/latest" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://raw.githubusercontent.com/TanStack/query/main/media/emblem-light.svg"
+                        alt="TanStack Query"
+                        className="w-full h-full"
+                      />
+                    </a>
+                    <a href="https://tanstack.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
+                      <img
+                        src="https://avatars.githubusercontent.com/u/72518640?s=200&v=4"
+                        alt="TanStack"
+                        className="w-full h-full rounded"
                       />
                     </a>
                   </div>
