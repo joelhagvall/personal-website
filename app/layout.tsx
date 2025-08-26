@@ -17,6 +17,13 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://joelhagvall.com'),
   title: "Joel Hägvall - Software Developer",
   description: 'Software developer based in Stockholm, Sweden. Experienced in Java, Python, Swift, React and more.',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   
   keywords: [
     'Joel Hägvall',
@@ -117,6 +124,12 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
       <body className={inter.className}>
         <script
           type="application/ld+json"

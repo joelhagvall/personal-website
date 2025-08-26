@@ -1,0 +1,23 @@
+# Security Policy for Joel Hagvall's Personal Website
+# This file follows RFC 9116: https://datatracker.ietf.org/doc/html/rfc9116
+
+# Primary contact for security issues
+Contact: mailto:joel.hagvall1@gmail.com
+
+# Preferred languages for security reports
+Preferred-Languages: en
+
+# Policy for security researchers
+Policy: https://joelhagvall.com/security-policy
+
+# Hiring information (if applicable)
+# Hiring: https://joelhagvall.com/about
+
+# Expiration date (recommended to set one)
+Expires: 2025-12-31T23:59:59.000Z
+
+# Acknowledgments (optional)
+# Acknowledgments: https://joelhagvall.com/about
+
+# Canonical location of this file
+Canonical: https://joelhagvall.com/.well-known/security.txt

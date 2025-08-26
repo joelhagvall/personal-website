@@ -60,8 +60,15 @@ export function Footer() {
             </PopoverContent>
           </Popover>
         </div>
-        <div className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} • Built with Next.js
+        <div className="text-sm text-muted-foreground flex flex-col md:flex-row items-center gap-2">
+          <span>&copy; {new Date().getFullYear()} • Built with Next.js</span>
+          <span className="hidden md:inline">•</span>
+          <a 
+            href="/security-policy" 
+            className="hover:text-primary transition-colors hover:underline"
+          >
+            Security Policy
+          </a>
         </div>
       </div>
     </motion.div>
