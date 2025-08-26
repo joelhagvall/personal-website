@@ -47,7 +47,7 @@ export default function About() {
                       </div>
                     </div>
                     <p className="text-lg text-gray-300">
-                      My name is Joel Hägvall, 24 years old (born 2000). I'm a software developer with a big interest in technology and
+                      My name is Joel Hägvall, 25 years old (born 2000). I'm a software developer with a big interest in technology and
                       how it can be used to make a difference.
                     </p>
                   </div>
