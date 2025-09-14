@@ -126,14 +126,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://vercel.live https://va.vercel-scripts.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
-        <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
         <meta httpEquiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
-        <meta httpEquiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload" />
-        <meta httpEquiv="Cross-Origin-Embedder-Policy" content="unsafe-none" />
-        <meta httpEquiv="Cross-Origin-Opener-Policy" content="same-origin" />
-        <meta httpEquiv="Cross-Origin-Resource-Policy" content="cross-origin" />
         <link rel="icon" href="/favicon_round.png?v=2" type="image/png" />
         <link rel="shortcut icon" href="/favicon_round.png?v=2" type="image/png" />
         <link rel="alternate icon" href="/favicon.ico?v=2" />
