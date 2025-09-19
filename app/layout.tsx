@@ -83,7 +83,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
+  const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Joel Hägvall',
@@ -122,6 +122,20 @@ export default function RootLayout({
     ]
   };
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    url: 'https://joelhagvall.com/',
+    name: 'Joel Hägvall - Software Developer',
+    alternateName: 'Joel Hägvall',
+    description: 'Software developer based in Stockholm, Sweden. Experienced in Java, Python, Swift, React and more.',
+    author: {
+      '@type': 'Person',
+      name: 'Joel Hägvall'
+    },
+    inLanguage: 'en-US'
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -137,7 +151,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <ThemeProvider
           attribute="class"
