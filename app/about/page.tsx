@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { StarsBackground } from "@/components/ui/stars-background";
-import { ShootingStars } from "@/components/ui/shooting-stars";
+import { BackgroundStars } from "@/components/BackgroundStars";
 import { Footer } from "@/components/Footer";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
@@ -11,8 +10,7 @@ export default function About() {
   return (
     <main className="min-h-screen bg-background text-white p-8 md:p-12">
       <div className="max-w-7xl mx-auto">
-      <StarsBackground />
-      <ShootingStars />
+      <BackgroundStars />
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

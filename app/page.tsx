@@ -1,21 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LinkedinIcon, MailIcon, MoveRight, FileText, ZoomIn } from "lucide-react";
+import { MoveRight, FileText, ZoomIn } from "lucide-react";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import { StarsBackground } from "@/components/ui/stars-background";
-import { ShootingStars } from "@/components/ui/shooting-stars";
+import { BackgroundStars } from "@/components/BackgroundStars";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Footer } from "@/components/Footer";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import { SocialLinks } from "@/components/SocialLinks";
 
 export default function Home() {
   return (
@@ -24,8 +18,7 @@ export default function Home() {
       <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary to-accent opacity-5 animate-gradient-x" />
         
-        <StarsBackground />
-        <ShootingStars />
+        <BackgroundStars />
 
         <div className="relative z-10 text-center">
           <motion.h1 
@@ -51,47 +44,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex gap-4 justify-center"
           >
-            <a
-              href="https://github.com/joelhagvall"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub profile"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50"
-            >
-              <GitHubLogoIcon className="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn profile"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50"
-            >
-              <LinkedinIcon className="w-6 h-6" />
-            </a>
-            
-            <Popover>
-              <PopoverTrigger asChild>
-                <button className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50">
-                  <MailIcon className="w-6 h-6" />
-                </button>
-              </PopoverTrigger>
-              <PopoverContent className="w-80 bg-black/50 backdrop-blur-xl border border-white/10">
-                <div className="space-y-3 p-1">
-                  <h4 className="font-medium text-white">Open Mail App?</h4>
-                  <p className="text-sm text-gray-300">
-                    This will open your default email application to send a message to: joel.hagvall1@gmail.com
-                  </p>
-                  <a
-                    href="mailto:joel.hagvall1@gmail.com"
-                    className="block w-full text-center py-2 px-4 rounded-md bg-white/10 hover:bg-white/20 transition-colors text-white font-medium"
-                  >
-                    Continue
-                  </a>
-                </div>
-              </PopoverContent>
-            </Popover>
-            
+            <SocialLinks variant="bubble" mailMode="open" labelVariant="profile" />
             <Link
               href="/about"
               className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-medium px-4"

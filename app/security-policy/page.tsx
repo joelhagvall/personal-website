@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { SOCIAL } from "@/lib/constants";
 
 export default function SecurityPolicyPage() {
   return (
@@ -59,7 +60,7 @@ export default function SecurityPolicyPage() {
                 <div>
                   <h4 className="font-semibold">Email me directly</h4>
                   <p className="text-sm text-muted-foreground">
-                    Send your report to: <a href="mailto:joel.hagvall1@gmail.com" className="text-primary hover:underline">joel.hagvall1@gmail.com</a>
+                    Send your report to: <a href={`mailto:${SOCIAL.email}`} className="text-primary hover:underline">{SOCIAL.email}</a>
                   </p>
                 </div>
               </div>
@@ -195,7 +196,7 @@ export default function SecurityPolicyPage() {
           <CardContent>
             <div className="space-y-2">
               <p className="text-sm">
-                <strong>Security Email:</strong> <a href="mailto:joel.hagvall1@gmail.com" className="text-primary hover:underline">joel.hagvall1@gmail.com</a>
+                <strong>Security Email:</strong> <a href={`mailto:${SOCIAL.email}`} className="text-primary hover:underline">{SOCIAL.email}</a>
               </p>
               <p className="text-sm">
                 <strong>Security.txt:</strong> <a href="/.well-known/security.txt" className="text-primary hover:underline">/.well-known/security.txt</a>

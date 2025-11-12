@@ -1,20 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Star, GitFork, Code, Smartphone, Headphones, Shield } from "lucide-react";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { Star, GitFork, Code, Smartphone, Headphones, Shield, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
+import type { IconName } from "@/types/project";
+import { parseSimpleMarkdown } from "@/lib/markdown";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   technologies: string[];
   githubUrl: string;
-  iconName: "code" | "smartphone" | "headphones" | "shield";
+  iconName: IconName;
   delay: number;
-  stars?: number;
-  forks?: number;
+  stars?: number | undefined;
+  forks?: number | undefined;
+  linkedinUrl?: string | undefined;
+  demoUrl?: string | undefined;
 }
 
 const iconMap = {
@@ -33,8 +37,11 @@ export function ProjectCard({
   delay,
   stars,
   forks,
+  linkedinUrl,
+  demoUrl,
 }: ProjectCardProps) {
   const Icon = iconMap[iconName];
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -49,7 +56,7 @@ export function ProjectCard({
           </h2>
 
           <p className="text-muted-foreground text-lg">
-            {description}
+            {parseSimpleMarkdown(description)}
           </p>
 
           <div className="flex flex-wrap gap-2">
@@ -78,7 +85,7 @@ export function ProjectCard({
             </div>
           )}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             <Link
               href={githubUrl}
               target="_blank"
@@ -88,6 +95,28 @@ export function ProjectCard({
               <GitHubLogoIcon />
               Source Code
             </Link>
+            {linkedinUrl && (
+              <Link
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+              >
+                <LinkedInLogoIcon />
+                LinkedIn Post
+              </Link>
+            )}
+            {demoUrl && (
+              <Link
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </Link>
+            )}
           </div>
         </div>
       </Card>
