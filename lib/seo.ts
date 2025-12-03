@@ -52,3 +52,40 @@ export const websiteJsonLd = {
   inLanguage: 'en-US',
 } as const;
 
+export const profilePageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Joel Hägvall',
+    alternateName: 'joelhagvall',
+    description: 'Software developer based in Stockholm, Sweden. Experienced in React, TypeScript, Python and more.',
+    image: 'https://joelhagvall.com/media/selfie.jpeg',
+    jobTitle: 'Software Developer',
+    url: 'https://joelhagvall.com',
+    sameAs: [
+      'https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/',
+      'https://github.com/joelhagvall',
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Stockholm',
+      addressCountry: 'Sweden',
+    },
+    knowsAbout: [
+      'Java',
+      'Blockchain',
+      'Web Development',
+      'Python',
+      'React',
+      'Next.js',
+      'Swift',
+      'SwiftUI',
+      'TypeScript',
+      'JavaScript',
+    ],
+  },
+  dateCreated: '2024-01-01',
+  dateModified: new Date().toISOString().split('T')[0],
+} as const;
+

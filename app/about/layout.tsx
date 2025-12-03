@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { profilePageJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'About – Joel Hägvall',
@@ -34,7 +35,15 @@ export default function AboutLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
+      />
+      {children}
+    </>
+  );
 }
 
 
