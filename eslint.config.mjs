@@ -6,7 +6,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default [
   {
-    ignores: ['node_modules', '.next', 'dist', 'build', '**/*.config.*'],
+    ignores: ['node_modules', '.next', 'dist', 'build', 'out', '**/*.config.*'],
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
@@ -20,6 +20,28 @@ export default [
       globals: {
         React: 'writable',
         JSX: 'readonly',
+        // Browser globals
+        window: 'readonly',
+        document: 'readonly',
+        navigator: 'readonly',
+        fetch: 'readonly',
+        URL: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        requestAnimationFrame: 'readonly',
+        cancelAnimationFrame: 'readonly',
+        ResizeObserver: 'readonly',
+        HTMLDivElement: 'readonly',
+        HTMLButtonElement: 'readonly',
+        HTMLParagraphElement: 'readonly',
+        HTMLHeadingElement: 'readonly',
+        HTMLCanvasElement: 'readonly',
+        SVGSVGElement: 'readonly',
+        // Node globals
+        console: 'readonly',
+        process: 'readonly',
       },
     },
     plugins: {
@@ -29,6 +51,7 @@ export default [
     },
     rules: {
       ...js.configs.recommended.rules,
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
       'react-hooks/rules-of-hooks': 'error',
