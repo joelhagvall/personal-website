@@ -70,4 +70,20 @@ export default [
       react: { version: 'detect' },
     },
   },
+  {
+    files: ['**/*.test.ts', '**/*.test.tsx'],
+    languageOptions: {
+      globals: {
+        jest: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        global: 'readonly',
+      },
+    },
+  },
 ];
