@@ -13,7 +13,7 @@ import { movies, music, books } from "@/data/media";
 function BulletPoint({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3">
-      <span className={GLOW_STYLES.bullet} />
+      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
       {children}
     </li>
   );
