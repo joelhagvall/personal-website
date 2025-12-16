@@ -1,0 +1,36 @@
+"use client";
+
+import { AnimatedCard } from "@/components/AnimatedCard";
+import { TECH_STACK, type TechStackItem } from "@/data/tech-stack";
+
+function TechIcon({ tech }: { tech: TechStackItem }) {
+  return (
+    <a
+      href={tech.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity"
+    >
+      <img
+        src={tech.icon}
+        alt={tech.name}
+        className={`w-full h-full ${"rounded" in tech && tech.rounded ? "rounded" : ""}`}
+      />
+    </a>
+  );
+}
+
+export function TechStackCard() {
+  return (
+    <AnimatedCard delay={0.2} className="col-span-full md:col-span-2">
+      <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
+      <div className="flex justify-center">
+        <div className="grid grid-cols-4 gap-4">
+          {TECH_STACK.map((tech) => (
+            <TechIcon key={tech.name} tech={tech} />
+          ))}
+        </div>
+      </div>
+    </AnimatedCard>
+  );
+}

@@ -89,3 +89,45 @@ export const profilePageJsonLd = {
   dateModified: new Date().toISOString().split('T')[0],
 } as const;
 
+// Breadcrumbs schema generator
+export function createBreadcrumbsJsonLd(
+  items: { name: string; url: string }[]
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+// SoftwareApplication schema generator
+export function createSoftwareApplicationJsonLd(project: {
+  name: string;
+  description: string;
+  url: string;
+  applicationCategory: string;
+  operatingSystem?: string;
+  programmingLanguage?: string[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareSourceCode',
+    name: project.name,
+    description: project.description,
+    url: project.url,
+    codeRepository: project.url,
+    programmingLanguage: project.programmingLanguage,
+    author: {
+      '@type': 'Person',
+      name: 'Joel Hägvall',
+      url: 'https://joelhagvall.com',
+    },
+    applicationCategory: project.applicationCategory,
+  };
+}
+

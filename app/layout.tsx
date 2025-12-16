@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/Navbar";
+import { BackgroundStars } from "@/components/BackgroundStars";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -76,6 +77,10 @@ export const metadata: Metadata = {
   
   alternates: {
     canonical: 'https://joelhagvall.com',
+    languages: {
+      'en': 'https://joelhagvall.com',
+      'x-default': 'https://joelhagvall.com',
+    },
   },
 };
 
@@ -111,8 +116,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="fixed inset-0 z-0 pointer-events-none bg-background">
+            <BackgroundStars overlay />
+          </div>
           <Navbar />
-          <main role="main">
+          <main role="main" className="relative z-10">
             {children}
             <Analytics />
             <SpeedInsights />

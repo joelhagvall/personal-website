@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 
 export default function Resume() {
   return (
-    <main className="min-h-screen bg-background p-8 md:p-12">
+    <main className="min-h-screen p-8 md:p-12">
       <div className="max-w-7xl mx-auto">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}

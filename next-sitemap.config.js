@@ -20,6 +20,9 @@ module.exports = {
     } else if (path === '/about') {
       changefreq = 'monthly';
       priority = 0.5;
+    } else if (path === '/security-policy') {
+      changefreq = 'yearly';
+      priority = 0.3;
     }
 
     return {

@@ -1,10 +1,20 @@
 import type { Metadata } from 'next';
+import { createBreadcrumbsJsonLd } from '@/lib/seo';
+
+const breadcrumbsJsonLd = createBreadcrumbsJsonLd([
+  { name: 'Home', url: 'https://joelhagvall.com' },
+  { name: 'Resume', url: 'https://joelhagvall.com/resume' },
+]);
 
 export const metadata: Metadata = {
   title: 'Resume – Joel Hägvall',
   description: 'Resume and experience of Joel Hägvall – software developer based in Stockholm.',
   alternates: {
     canonical: 'https://joelhagvall.com/resume',
+    languages: {
+      'en': 'https://joelhagvall.com/resume',
+      'x-default': 'https://joelhagvall.com/resume',
+    },
   },
   openGraph: {
     title: 'Resume – Joel Hägvall',
@@ -34,7 +44,15 @@ export default function ResumeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+      />
+      {children}
+    </>
+  );
 }
 
 

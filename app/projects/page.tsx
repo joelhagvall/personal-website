@@ -1,8 +1,8 @@
-import { BackgroundStars } from "@/components/BackgroundStars";
 import { Footer } from "@/components/Footer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectsHeader } from "@/components/ProjectsHeader";
 import { getGitHubRepo } from "@/lib/github";
+import { createSoftwareApplicationJsonLd } from "@/lib/seo";
 import type { Project } from "@/types/project";
 
 // Define projects with their GitHub repos
@@ -59,13 +59,30 @@ export default async function Projects() {
     })
   );
 
-  return (
-    <main className="min-h-screen bg-background text-white p-8 md:p-12">
-      <div className="max-w-7xl mx-auto">
-        <BackgroundStars overlay />
+  // Generate JSON-LD for each project
+  const projectSchemas = projectsWithStats.map((project) =>
+    createSoftwareApplicationJsonLd({
+      name: project.title,
+      description: project.description.replace(/\*\*/g, ''),
+      url: project.githubUrl,
+      applicationCategory: 'DeveloperApplication',
+      programmingLanguage: project.technologies,
+    })
+  );
 
-        <div className="relative z-10">
-          <ProjectsHeader />
+  return (
+    <>
+      {projectSchemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+      <main className="min-h-screen text-white p-8 md:p-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative z-10">
+            <ProjectsHeader />
 
           <div className="space-y-6">
             {projectsWithStats.map((project, index) => (
@@ -88,5 +105,6 @@ export default async function Projects() {
       </div>
       <Footer mailMode="copy" />
     </main>
+    </>
   );
 }

@@ -1,11 +1,20 @@
 import type { Metadata } from 'next';
-import { profilePageJsonLd } from '@/lib/seo';
+import { profilePageJsonLd, createBreadcrumbsJsonLd } from '@/lib/seo';
+
+const breadcrumbsJsonLd = createBreadcrumbsJsonLd([
+  { name: 'Home', url: 'https://joelhagvall.com' },
+  { name: 'About', url: 'https://joelhagvall.com/about' },
+]);
 
 export const metadata: Metadata = {
   title: 'About – Joel Hägvall',
   description: 'Learn more about Joel Hägvall – software developer based in Stockholm.',
   alternates: {
     canonical: 'https://joelhagvall.com/about',
+    languages: {
+      'en': 'https://joelhagvall.com/about',
+      'x-default': 'https://joelhagvall.com/about',
+    },
   },
   openGraph: {
     title: 'About – Joel Hägvall',
@@ -40,6 +49,10 @@ export default function AboutLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
       />
       {children}
     </>
