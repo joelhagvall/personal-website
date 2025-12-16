@@ -16,8 +16,6 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary to-accent opacity-5 animate-gradient-x" />
-        
         <BackgroundStars />
 
         <div className="relative z-10 text-center">
