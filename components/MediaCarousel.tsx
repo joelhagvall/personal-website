@@ -8,7 +8,6 @@ import {
   mediaCardHover,
   mediaCardTap,
 } from "@/lib/animations";
-import { OVERLAY_STYLES } from "@/lib/styles";
 
 interface MediaCarouselProps {
   title: string;
