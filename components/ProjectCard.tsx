@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
-import { Star, GitFork, Code, Smartphone, Headphones, Shield, ExternalLink } from "lucide-react";
+import { Star, GitFork, Code, Smartphone, Headphones, Shield, ExternalLink, FileText } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
@@ -21,6 +21,7 @@ interface ProjectCardProps {
   forks?: number | undefined;
   linkedinUrl?: string | undefined;
   demoUrl?: string | undefined;
+  publicationUrl?: string | undefined;
   image?: string | undefined;
 }
 
@@ -42,6 +43,7 @@ export function ProjectCard({
   forks,
   linkedinUrl,
   demoUrl,
+  publicationUrl,
   image,
 }: ProjectCardProps) {
   const Icon = iconMap[iconName];
@@ -144,6 +146,17 @@ export function ProjectCard({
               >
                 <ExternalLink className="w-4 h-4" />
                 Live Demo
+              </Link>
+            )}
+            {publicationUrl && (
+              <Link
+                href={publicationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+              >
+                <FileText className="w-4 h-4" />
+                Publication
               </Link>
             )}
           </div>

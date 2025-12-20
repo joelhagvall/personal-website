@@ -20,11 +20,12 @@ const projects: Project[] = [
   },
   {
     title: "Tor Onion Site Scraper",
-    description: "This project is a Python program that crawls websites on the Tor network, retrieves HTML pages, extracts classes and saves them to CSV files for easy analysis using packages such as matplotlib and pandas.",
+    description: "Python-based web crawler developed as part of my bachelor thesis at Stockholm University, analyzing cybercrime services on the Tor network. Retrieves HTML pages, extracts data and saves them to CSV files for analysis using matplotlib and pandas.",
     technologies: ["Python", "Tor", "matplotlib", "pandas", "beautifulsoup"],
     owner: "joelhagvall",
     repo: "tor-onion-site-scraper",
     iconName: "code",
+    publicationUrl: "https://su.diva-portal.org/smash/record.jsf?pid=diva2%3A1955538",
   },
   {
     title: "Carspotter",
@@ -56,6 +57,7 @@ export default async function Projects() {
         forks: repoData?.forks_count,
         linkedinUrl: project.linkedinUrl,
         demoUrl: project.demoUrl,
+        publicationUrl: project.publicationUrl,
       };
     })
   );
@@ -99,6 +101,7 @@ export default async function Projects() {
                 forks={project.forks}
                 linkedinUrl={project.linkedinUrl}
                 demoUrl={project.demoUrl}
+                publicationUrl={project.publicationUrl}
                 image={project.image}
               />
             ))}

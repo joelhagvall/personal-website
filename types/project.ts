@@ -9,6 +9,7 @@ export interface Project {
   iconName: IconName;
   linkedinUrl?: string;
   demoUrl?: string;
+  publicationUrl?: string;
   image?: string;
 }
 
