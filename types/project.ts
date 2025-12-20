@@ -9,5 +9,6 @@ export interface Project {
   iconName: IconName;
   linkedinUrl?: string;
   demoUrl?: string;
+  image?: string;
 }
 

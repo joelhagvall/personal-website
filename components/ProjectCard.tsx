@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { Star, GitFork, Code, Smartphone, Headphones, Shield, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import type { IconName } from "@/types/project";
 import { parseSimpleMarkdown } from "@/lib/markdown";
@@ -19,6 +20,7 @@ interface ProjectCardProps {
   forks?: number | undefined;
   linkedinUrl?: string | undefined;
   demoUrl?: string | undefined;
+  image?: string | undefined;
 }
 
 const iconMap = {
@@ -39,6 +41,7 @@ export function ProjectCard({
   forks,
   linkedinUrl,
   demoUrl,
+  image,
 }: ProjectCardProps) {
   const Icon = iconMap[iconName];
 
@@ -58,6 +61,17 @@ export function ProjectCard({
           <p className="text-muted-foreground text-lg">
             {parseSimpleMarkdown(description)}
           </p>
+
+          {image && (
+            <div className="relative w-full max-w-xl aspect-video rounded-lg overflow-hidden border border-primary/20">
+              <Image
+                src={image}
+                alt={`${title} screenshot`}
+                fill
+                className="object-cover object-top"
+              />
+            </div>
+          )}
 
           <div className="flex flex-wrap gap-2">
             {technologies.map((tag) => (

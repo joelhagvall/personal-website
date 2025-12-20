@@ -16,6 +16,7 @@ const projects: Project[] = [
     iconName: "shield",
     linkedinUrl: "https://www.linkedin.com/posts/joel-h%C3%A4gvall-810601147_sweden-is-one-of-the-few-countries-where-activity-7393215112825892864-88Yf?utm_source=share&utm_medium=member_desktop&rcm=ACoAACOBw0wBEi2wQSiatRzxAKJ2zpXZfInx2iI",
     demoUrl: "https://data-wipe-mailer.vercel.app",
+    image: "/media/data-wipe-mailer-screen.png",
   },
   {
     title: "Tor Onion Site Scraper",
@@ -98,6 +99,7 @@ export default async function Projects() {
                 forks={project.forks}
                 linkedinUrl={project.linkedinUrl}
                 demoUrl={project.demoUrl}
+                image={project.image}
               />
             ))}
           </div>
