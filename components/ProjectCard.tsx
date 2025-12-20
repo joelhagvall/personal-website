@@ -6,6 +6,7 @@ import { Star, GitFork, Code, Smartphone, Headphones, Shield, ExternalLink } fro
 import Link from "next/link";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import type { IconName } from "@/types/project";
 import { parseSimpleMarkdown } from "@/lib/markdown";
 
@@ -63,14 +64,28 @@ export function ProjectCard({
           </p>
 
           {image && (
-            <div className="relative w-full max-w-xl aspect-video rounded-lg overflow-hidden border border-primary/20">
-              <Image
-                src={image}
-                alt={`${title} screenshot`}
-                fill
-                className="object-cover object-top"
-              />
-            </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className="relative w-full max-w-xl aspect-video rounded-lg overflow-hidden border border-primary/20 hover:border-primary/40 transition-all duration-300 cursor-pointer">
+                  <Image
+                    src={image}
+                    alt={`${title} screenshot`}
+                    fill
+                    className="object-cover object-top"
+                  />
+                </button>
+              </DialogTrigger>
+              <DialogContent className="max-w-5xl p-0 border-none bg-transparent">
+                <DialogTitle className="sr-only">{title} screenshot</DialogTitle>
+                <Image
+                  src={image}
+                  alt={`${title} screenshot`}
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto rounded-lg"
+                />
+              </DialogContent>
+            </Dialog>
           )}
 
           <div className="flex flex-wrap gap-2">
