@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { SocialLinks } from "@/components/SocialLinks";
 import { fadeInUp } from "@/lib/animations";
+import { PERSON } from "@/data/site";
+import { LABELS } from "@/data/content";
 
 const Astronaut3D = dynamic(
   () => import("@/components/Astronaut3D").then((mod) => mod.Astronaut3D),
@@ -32,7 +34,7 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
             className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 leading-relaxed py-2"
           >
-            Joel Hägvall
+            {PERSON.name}
           </motion.h1>
           <motion.p
             {...fadeInUp}
@@ -46,12 +48,16 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex gap-4 justify-center"
           >
-            <SocialLinks variant="bubble" mailMode="open" labelVariant="profile" />
+            <SocialLinks
+              variant="bubble"
+              mailMode="open"
+              labelVariant="profile"
+            />
             <Link
               href="/about"
               className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-medium px-4"
             >
-              About Me
+              {LABELS.aboutMe}
             </Link>
           </motion.div>
         </div>

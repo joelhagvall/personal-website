@@ -1,16 +1,23 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { SOCIAL } from "@/lib/constants";
+import { SECURITY_CONTENT } from "@/data/security";
 
 export default function SecurityPolicyPage() {
+  const content = SECURITY_CONTENT;
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4">Security Policy</h1>
-        <p className="text-lg text-muted-foreground">
-          I take security seriously and welcome responsible disclosure of vulnerabilities.
-        </p>
+        <h1 className="text-4xl font-bold mb-4">{content.page.title}</h1>
+        <p className="text-lg text-muted-foreground">{content.page.subtitle}</p>
       </div>
 
       <div className="space-y-6">
@@ -18,28 +25,28 @@ export default function SecurityPolicyPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Badge variant="destructive">Security</Badge>
-              Responsible Disclosure
+              <Badge variant="destructive">
+                {content.responsibleDisclosure.badge}
+              </Badge>
+              {content.responsibleDisclosure.title}
             </CardTitle>
             <CardDescription>
-              How to report security vulnerabilities responsibly
+              {content.responsibleDisclosure.description}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p>
-              I appreciate security researchers who help me maintain the security and privacy of my website visitors. 
-              If you discover a security vulnerability, I encourage you to report it to me responsibly.
-            </p>
-            
+            <p>{content.responsibleDisclosure.intro}</p>
+
             <div className="bg-muted p-4 rounded-lg">
-              <h3 className="font-semibold mb-2">What to report:</h3>
+              <h3 className="font-semibold mb-2">
+                {content.responsibleDisclosure.whatToReport.title}
+              </h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Cross-site scripting (XSS)</li>
-                <li>SQL injection</li>
-                <li>Authentication bypass</li>
-                <li>Data exposure</li>
-                <li>Privilege escalation</li>
-                <li>Any other security-related issues</li>
+                {content.responsibleDisclosure.whatToReport.items.map(
+                  (item, index) => (
+                    <li key={index}>{item}</li>
+                  )
+                )}
               </ul>
             </div>
           </CardContent>
@@ -48,42 +55,32 @@ export default function SecurityPolicyPage() {
         {/* How to Report */}
         <Card>
           <CardHeader>
-            <CardTitle>How to Report</CardTitle>
-            <CardDescription>
-              Steps to follow when reporting a security vulnerability
-            </CardDescription>
+            <CardTitle>{content.howToReport.title}</CardTitle>
+            <CardDescription>{content.howToReport.description}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <Badge variant="outline" className="mt-1">1</Badge>
-                <div>
-                  <h4 className="font-semibold">Email me directly</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Send your report to: <a href={`mailto:${SOCIAL.email}`} className="text-primary hover:underline">{SOCIAL.email}</a>
-                  </p>
+              {content.howToReport.steps.map((step) => (
+                <div key={step.number} className="flex items-start gap-3">
+                  <Badge variant="outline" className="mt-1">
+                    {step.number}
+                  </Badge>
+                  <div>
+                    <h4 className="font-semibold">{step.title}</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {step.description}{" "}
+                      {step.number === "1" && (
+                        <a
+                          href={`mailto:${SOCIAL.email}`}
+                          className="text-primary hover:underline"
+                        >
+                          {SOCIAL.email}
+                        </a>
+                      )}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <Badge variant="outline" className="mt-1">2</Badge>
-                <div>
-                  <h4 className="font-semibold">Include detailed information</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Provide a clear description of the vulnerability, steps to reproduce, and potential impact.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <Badge variant="outline" className="mt-1">3</Badge>
-                <div>
-                  <h4 className="font-semibold">Allow time for response</h4>
-                  <p className="text-sm text-muted-foreground">
-                    I will acknowledge your report within 48 hours and provide updates on my progress.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </CardContent>
         </Card>
@@ -91,38 +88,22 @@ export default function SecurityPolicyPage() {
         {/* What to Expect */}
         <Card>
           <CardHeader>
-            <CardTitle>What to Expect</CardTitle>
+            <CardTitle>{content.whatToExpect.title}</CardTitle>
             <CardDescription>
-              My response process and timeline
+              {content.whatToExpect.description}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <h4 className="font-semibold">48 hours</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Initial acknowledgment of your report
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold">1-2 weeks</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Assessment and validation of the vulnerability
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold">2-4 weeks</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Fix development and testing
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Upon fix</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Public disclosure and acknowledgment
-                  </p>
-                </div>
+                {content.whatToExpect.timeline.map((item, index) => (
+                  <div key={index} className="space-y-2">
+                    <h4 className="font-semibold">{item.time}</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </CardContent>
@@ -131,37 +112,39 @@ export default function SecurityPolicyPage() {
         {/* Guidelines */}
         <Card>
           <CardHeader>
-            <CardTitle>Guidelines</CardTitle>
-            <CardDescription>
-              Important guidelines for security researchers
-            </CardDescription>
+            <CardTitle>{content.guidelines.title}</CardTitle>
+            <CardDescription>{content.guidelines.description}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <Badge variant="secondary" className="mt-1">✓</Badge>
+                <Badge variant="secondary" className="mt-1">
+                  {content.guidelines.do.badge}
+                </Badge>
                 <div>
-                  <h4 className="font-semibold">Do</h4>
+                  <h4 className="font-semibold">{content.guidelines.do.title}</h4>
                   <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Test only on your own accounts or with explicit permission</li>
-                    <li>• Avoid accessing or modifying other users' data</li>
-                    <li>• Use the provided contact method for reporting</li>
-                    <li>• Provide sufficient detail to reproduce the issue</li>
+                    {content.guidelines.do.items.map((item, index) => (
+                      <li key={index}>• {item}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
-              
+
               <Separator />
-              
+
               <div className="flex items-start gap-3">
-                <Badge variant="destructive" className="mt-1">✗</Badge>
+                <Badge variant="destructive" className="mt-1">
+                  {content.guidelines.dont.badge}
+                </Badge>
                 <div>
-                  <h4 className="font-semibold">Don't</h4>
+                  <h4 className="font-semibold">
+                    {content.guidelines.dont.title}
+                  </h4>
                   <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Perform actions that could harm the service or other users</li>
-                    <li>• Access, modify, or delete data that doesn't belong to you</li>
-                    <li>• Disclose the vulnerability publicly before we've had time to fix it</li>
-                    <li>• Use automated tools that could impact service performance</li>
+                    {content.guidelines.dont.items.map((item, index) => (
+                      <li key={index}>• {item}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -172,15 +155,12 @@ export default function SecurityPolicyPage() {
         {/* Recognition */}
         <Card>
           <CardHeader>
-            <CardTitle>Recognition</CardTitle>
-            <CardDescription>
-              How we acknowledge security researchers
-            </CardDescription>
+            <CardTitle>{content.recognition.title}</CardTitle>
+            <CardDescription>{content.recognition.description}</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Security researchers who responsibly disclose vulnerabilities will be acknowledged on this page 
-              (with their permission) and may be eligible for recognition in my security hall of fame.
+              {content.recognition.text}
             </p>
           </CardContent>
         </Card>
@@ -188,21 +168,35 @@ export default function SecurityPolicyPage() {
         {/* Contact */}
         <Card>
           <CardHeader>
-            <CardTitle>Contact Information</CardTitle>
-            <CardDescription>
-              Get in touch for security-related matters
-            </CardDescription>
+            <CardTitle>{content.contact.title}</CardTitle>
+            <CardDescription>{content.contact.description}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
               <p className="text-sm">
-                <strong>Security Email:</strong> <a href={`mailto:${SOCIAL.email}`} className="text-primary hover:underline">{SOCIAL.email}</a>
+                <strong>{content.contact.securityEmailLabel}</strong>{" "}
+                <a
+                  href={`mailto:${SOCIAL.email}`}
+                  className="text-primary hover:underline"
+                >
+                  {SOCIAL.email}
+                </a>
               </p>
               <p className="text-sm">
-                <strong>Security.txt:</strong> <a href="/.well-known/security.txt" className="text-primary hover:underline">/.well-known/security.txt</a>
+                <strong>{content.contact.securityTxtLabel}</strong>{" "}
+                <a
+                  href={content.contact.securityTxtPath}
+                  className="text-primary hover:underline"
+                >
+                  {content.contact.securityTxtPath}
+                </a>
               </p>
               <p className="text-sm text-muted-foreground">
-                For general inquiries, please use the contact information on my <a href="/about" className="text-primary hover:underline">about page</a>.
+                {content.contact.generalInquiries}{" "}
+                <a href="/about" className="text-primary hover:underline">
+                  {content.contact.aboutPageLink}
+                </a>
+                .
               </p>
             </div>
           </CardContent>

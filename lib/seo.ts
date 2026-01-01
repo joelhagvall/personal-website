@@ -1,92 +1,60 @@
+/**
+ * SEO JSON-LD schemas
+ * Uses centralized data from data/site.ts
+ */
+
+import { PERSON, SITE, SOCIAL, SKILLS } from "@/data/site";
+
 export const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Joel Hägvall',
-  jobTitle: 'Software Developer',
-  url: 'https://joelhagvall.com',
-  sameAs: [
-    'https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/',
-    'https://github.com/joelhagvall',
-  ],
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: PERSON.name,
+  jobTitle: PERSON.jobTitle,
+  url: SITE.url,
+  sameAs: [SOCIAL.linkedin.url, SOCIAL.github.url],
   address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Stockholm',
-    addressCountry: 'Sweden',
+    "@type": "PostalAddress",
+    addressLocality: PERSON.location.city,
+    addressCountry: PERSON.location.country,
   },
-  knowsAbout: [
-    'Java',
-    'Blockchain',
-    'Web Development',
-    'Python',
-    'React',
-    'Next.js',
-    'Swift',
-    'SwiftUI',
-    'PHP',
-    'MySQL',
-    'Firebase',
-    'Flutter',
-    'Dart',
-    'TypeScript',
-    'JavaScript',
-    'PySimpleGUI',
-    'PostgreSQL',
-    'Supabase',
-    'TanStack Query',
-    'TanStack Form',
-  ],
+  knowsAbout: [...SKILLS],
 } as const;
 
 export const websiteJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  url: 'https://joelhagvall.com/',
-  name: 'Joel Hägvall - Software Developer',
-  alternateName: 'Joel Hägvall',
-  description:
-    'Software developer based in Stockholm, Sweden. Experienced in Java, Python, Swift, React and more.',
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url: `${SITE.url}/`,
+  name: SITE.title,
+  alternateName: PERSON.name,
+  description: PERSON.description,
   author: {
-    '@type': 'Person',
-    name: 'Joel Hägvall',
+    "@type": "Person",
+    name: PERSON.name,
   },
-  inLanguage: 'en-US',
+  inLanguage: "en-US",
 } as const;
 
 export const profilePageJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
   mainEntity: {
-    '@type': 'Person',
-    name: 'Joel Hägvall',
-    alternateName: 'joelhagvall',
-    description: 'Software developer based in Stockholm, Sweden. Experienced in React, TypeScript, Python and more.',
-    image: 'https://joelhagvall.com/media/selfie.jpeg',
-    jobTitle: 'Software Developer',
-    url: 'https://joelhagvall.com',
-    sameAs: [
-      'https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/',
-      'https://github.com/joelhagvall',
-    ],
+    "@type": "Person",
+    name: PERSON.name,
+    alternateName: PERSON.alternateName,
+    description: PERSON.description,
+    image: `${SITE.url}${PERSON.avatar}`,
+    jobTitle: PERSON.jobTitle,
+    url: SITE.url,
+    sameAs: [SOCIAL.linkedin.url, SOCIAL.github.url],
     address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Stockholm',
-      addressCountry: 'Sweden',
+      "@type": "PostalAddress",
+      addressLocality: PERSON.location.city,
+      addressCountry: PERSON.location.country,
     },
-    knowsAbout: [
-      'Java',
-      'Blockchain',
-      'Web Development',
-      'Python',
-      'React',
-      'Next.js',
-      'Swift',
-      'SwiftUI',
-      'TypeScript',
-      'JavaScript',
-    ],
+    knowsAbout: SKILLS.slice(0, 10),
   },
-  dateCreated: '2024-01-01',
-  dateModified: new Date().toISOString().split('T')[0],
+  dateCreated: "2024-01-01",
+  dateModified: new Date().toISOString().split("T")[0],
 } as const;
 
 // Breadcrumbs schema generator
@@ -94,10 +62,10 @@ export function createBreadcrumbsJsonLd(
   items: { name: string; url: string }[]
 ) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: index + 1,
       name: item.name,
       item: item.url,
@@ -115,19 +83,18 @@ export function createSoftwareApplicationJsonLd(project: {
   programmingLanguage?: string[];
 }) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareSourceCode',
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
     name: project.name,
     description: project.description,
     url: project.url,
     codeRepository: project.url,
     programmingLanguage: project.programmingLanguage,
     author: {
-      '@type': 'Person',
-      name: 'Joel Hägvall',
-      url: 'https://joelhagvall.com',
+      "@type": "Person",
+      name: PERSON.name,
+      url: SITE.url,
     },
     applicationCategory: project.applicationCategory,
   };
 }
-

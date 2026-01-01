@@ -2,13 +2,28 @@
 
 import { motion } from "framer-motion";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
-import { Star, GitFork, Code, Smartphone, Headphones, Shield, ExternalLink, FileText } from "lucide-react";
+import {
+  Star,
+  GitFork,
+  Code,
+  Smartphone,
+  Headphones,
+  Shield,
+  ExternalLink,
+  FileText,
+} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import type { IconName } from "@/types/project";
 import { parseSimpleMarkdown } from "@/lib/markdown";
+import { LABELS } from "@/data/content";
 
 interface ProjectCardProps {
   title: string;
@@ -92,7 +107,10 @@ export function ProjectCard({
 
           <div className="flex flex-wrap gap-2">
             {technologies.map((tag) => (
-              <span key={tag} className="px-3 py-1 bg-white/10 rounded-full text-sm text-primary">
+              <span
+                key={tag}
+                className="px-3 py-1 bg-white/10 rounded-full text-sm text-primary"
+              >
                 {tag}
               </span>
             ))}
@@ -124,7 +142,7 @@ export function ProjectCard({
               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
             >
               <GitHubLogoIcon />
-              Source Code
+              {LABELS.sourceCode}
             </Link>
             {linkedinUrl && (
               <Link
@@ -134,7 +152,7 @@ export function ProjectCard({
                 className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
               >
                 <LinkedInLogoIcon />
-                LinkedIn Post
+                {LABELS.linkedinPost}
               </Link>
             )}
             {demoUrl && (
@@ -145,7 +163,7 @@ export function ProjectCard({
                 className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
               >
                 <ExternalLink className="w-4 h-4" />
-                Live Demo
+                {LABELS.liveDemo}
               </Link>
             )}
             {publicationUrl && (
@@ -156,7 +174,7 @@ export function ProjectCard({
                 className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
               >
                 <FileText className="w-4 h-4" />
-                Publication
+                {LABELS.publication}
               </Link>
             )}
           </div>

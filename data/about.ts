@@ -1,20 +1,18 @@
+/**
+ * About page specific data
+ * Profile info is imported from centralized site.ts
+ */
+
+import { PERSON, SOCIAL } from "./site";
+
 export const profile = {
-  name: "Joel Hägvall",
-  age: 25,
-  birthYear: 2000,
-  bio: "I'm a software developer with a big interest in technology and how it can be used to make a difference.",
-  avatar: "/media/selfie.jpeg",
-  location: {
-    city: "Stockholm",
-    country: "Sweden",
-    flag: "🇸🇪",
-    description: "Born and raised.",
-    coordinates: {
-      lat: "59.3293° N",
-      lng: "18.0686° E",
-    },
-  },
-  githubUrl: "https://github.com/joelhagvall",
+  name: PERSON.name,
+  age: PERSON.age,
+  birthYear: PERSON.birthYear,
+  bio: PERSON.bio,
+  avatar: PERSON.avatar,
+  location: PERSON.location,
+  githubUrl: SOCIAL.github.url,
 } as const;
 
 export const techInterests = [

@@ -6,9 +6,15 @@ import { Footer } from "@/components/Footer";
 import { MediaCarousel } from "@/components/MediaCarousel";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { fadeInUp, withDelay, cardHover } from "@/lib/animations";
-import { TEXT_STYLES, GLOW_STYLES, CARD_STYLES, LINK_STYLES } from "@/lib/styles";
+import {
+  TEXT_STYLES,
+  GLOW_STYLES,
+  CARD_STYLES,
+  LINK_STYLES,
+} from "@/lib/styles";
 import { profile, techInterests, otherInterests } from "@/data/about";
 import { movies, music, books } from "@/data/media";
+import { ABOUT_CONTENT } from "@/data/content";
 
 function BulletPoint({ children }: { children: React.ReactNode }) {
   return (
@@ -28,7 +34,7 @@ export default function About() {
           transition={withDelay(0)}
           className={`text-4xl font-bold mb-8 text-center ${TEXT_STYLES.gradientHeading}`}
         >
-          About Me
+          {ABOUT_CONTENT.pageTitle}
         </motion.h1>
 
         <div className="grid grid-cols-1 gap-8">
@@ -42,7 +48,9 @@ export default function About() {
             <Card className={CARD_STYLES.base}>
               <div className="space-y-6">
                 <div>
-                  <h3 className={TEXT_STYLES.sectionTitle}>Who I Am</h3>
+                  <h3 className={TEXT_STYLES.sectionTitle}>
+                    {ABOUT_CONTENT.sections.whoIAm}
+                  </h3>
                   <div className="flex flex-col items-center mb-6">
                     <div className="relative w-40 h-40 mb-6">
                       <div className={GLOW_STYLES.avatar}></div>
@@ -62,7 +70,9 @@ export default function About() {
                 </div>
 
                 <div>
-                  <h3 className={TEXT_STYLES.sectionTitle}>Where I Live</h3>
+                  <h3 className={TEXT_STYLES.sectionTitle}>
+                    {ABOUT_CONTENT.sections.whereILive}
+                  </h3>
                   <motion.div
                     className="relative p-4 rounded-lg bg-white/5 border border-white/10"
                     whileHover={cardHover}
@@ -87,15 +97,13 @@ export default function About() {
                 </div>
 
                 <div>
-                  <h3 className={TEXT_STYLES.sectionTitle}>My Interests</h3>
+                  <h3 className={TEXT_STYLES.sectionTitle}>
+                    {ABOUT_CONTENT.sections.myInterests}
+                  </h3>
                   <ul className={`${TEXT_STYLES.bodyText} space-y-4`}>
                     <BulletPoint>
                       <div>
-                        <p>
-                          For as long as I can remember, I've always been
-                          interested in technology. Today i'm also drawn to tech
-                          that makes a difference:
-                        </p>
+                        <p>{ABOUT_CONTENT.interests.techIntro}</p>
                         <ul className="ml-6 mt-2 space-y-2">
                           {techInterests.map((interest, index) => (
                             <BulletPoint key={index}>
@@ -104,25 +112,24 @@ export default function About() {
                           ))}
                           <BulletPoint>
                             <span>
-                              Thinking of new software ideas, iterating on them
-                              and actually building them. Open sourced on my{" "}
+                              {ABOUT_CONTENT.interests.buildingIntro}{" "}
                               <a
                                 href={profile.githubUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`inline-flex items-center gap-1 ${LINK_STYLES.underline} relative z-10`}
                               >
-                                GitHub
+                                {ABOUT_CONTENT.interests.githubLink}
                                 <GitHubLogoIcon className="w-4 h-4" />
                               </a>{" "}
-                              profile.
+                              {ABOUT_CONTENT.interests.githubSuffix}
                             </span>
                           </BulletPoint>
                         </ul>
                       </div>
                     </BulletPoint>
                     <BulletPoint>
-                      <span>I'm also interested in other things, like:</span>
+                      <span>{ABOUT_CONTENT.interests.otherIntro}</span>
                     </BulletPoint>
                     <ul className="ml-6 space-y-2">
                       {otherInterests.map((interest, index) => (
@@ -146,12 +153,21 @@ export default function About() {
             <div className={GLOW_STYLES.card}></div>
             <Card className={CARD_STYLES.base}>
               <p className={`${TEXT_STYLES.mutedText} text-center mb-6`}>
-                Some of my favourite media, swipe through the images!
+                {ABOUT_CONTENT.media.description}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <MediaCarousel title="Favorite Movies" items={movies} />
-                <MediaCarousel title="Favorite Music" items={music} />
-                <MediaCarousel title="Favorite Books" items={books} />
+                <MediaCarousel
+                  title={ABOUT_CONTENT.media.movies}
+                  items={movies}
+                />
+                <MediaCarousel
+                  title={ABOUT_CONTENT.media.music}
+                  items={music}
+                />
+                <MediaCarousel
+                  title={ABOUT_CONTENT.media.books}
+                  items={books}
+                />
               </div>
             </Card>
           </motion.div>

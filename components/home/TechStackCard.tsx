@@ -2,6 +2,7 @@
 
 import { AnimatedCard } from "@/components/AnimatedCard";
 import { TECH_STACK, type TechStackItem } from "@/data/tech-stack";
+import { HOME_CONTENT } from "@/data/content";
 
 function TechIcon({ tech }: { tech: TechStackItem }) {
   return (
@@ -23,7 +24,9 @@ function TechIcon({ tech }: { tech: TechStackItem }) {
 export function TechStackCard() {
   return (
     <AnimatedCard delay={0.2} className="col-span-full md:col-span-2">
-      <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
+      <h2 className="text-2xl font-semibold mb-4">
+        {HOME_CONTENT.techStack.heading}
+      </h2>
       <div className="flex justify-center">
         <div className="grid grid-cols-4 gap-4">
           {TECH_STACK.map((tech) => (
