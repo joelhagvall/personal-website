@@ -42,6 +42,9 @@ export const SOCIAL = {
     url: "https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/",
   },
   email: "joel.hagvall1@gmail.com",
+  buymeacoffee: {
+    url: "https://buymeacoffee.com/joelhagvall",
+  },
 } as const;
 
 export const SKILLS = [

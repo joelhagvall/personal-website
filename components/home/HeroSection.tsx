@@ -7,6 +7,8 @@ import { SocialLinks } from "@/components/SocialLinks";
 import { fadeInUp } from "@/lib/animations";
 import { PERSON } from "@/data/site";
 import { LABELS } from "@/data/content";
+import { SOCIAL } from "@/lib/constants";
+import { Coffee } from "lucide-react";
 
 const Astronaut3D = dynamic(
   () => import("@/components/Astronaut3D").then((mod) => mod.Astronaut3D),
@@ -59,6 +61,15 @@ export function HeroSection() {
             >
               {LABELS.aboutMe}
             </Link>
+            <a
+              href={SOCIAL.buymeacoffee}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-medium px-4 flex items-center gap-1.5"
+            >
+              <Coffee className="w-4 h-4" />
+              Buy me a coffee
+            </a>
           </motion.div>
         </div>
       </div>
