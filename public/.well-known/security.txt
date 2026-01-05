@@ -14,7 +14,7 @@ Policy: https://joelhagvall.com/security-policy
 # Hiring: https://joelhagvall.com/about
 
 # Expiration date (recommended to set one)
-Expires: 2025-12-31T23:59:59.000Z
+Expires: 2026-12-31T23:59:59.000Z
 
 # Acknowledgments (optional)
 # Acknowledgments: https://joelhagvall.com/about
