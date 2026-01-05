@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap",
+    "postbuild": "npx tsx scripts/generate-rss.ts && next-sitemap",
     "start": "next start",
     "lint": "eslint .",
     "test": "jest"

@@ -47,6 +47,12 @@ export default function RootLayout({
         />
         <link rel="alternate icon" href="/favicon.ico?v=2" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Joel Hägvall - Blog"
+          href="/feed.xml"
+        />
       </head>
       <body className={inter.className}>
         <script
