@@ -29,9 +29,14 @@ export const LABELS = {
   // Section headers
   introduction: "Introduction",
   featuredProject: "Featured Project",
+  featuredBlog: "Featured Post",
   techStack: "Tech Stack",
   publications: "Publications",
   securityPolicy: "Security Policy",
+
+  // Blog
+  readPost: "Read Post",
+  allPosts: "All Posts",
 
   // Accessibility
   githubProfile: "GitHub profile",
@@ -58,6 +63,9 @@ export const HOME_CONTENT = {
   publications: {
     heading: LABELS.publications,
     urnLabel: "URN:",
+  },
+  featuredBlog: {
+    heading: LABELS.featuredBlog,
   },
 } as const;
 

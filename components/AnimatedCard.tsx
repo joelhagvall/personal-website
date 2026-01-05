@@ -23,9 +23,9 @@ export function AnimatedCard({
     <motion.div
       {...fadeInScale}
       transition={withDelay(delay)}
-      className={className}
+      className={cn("h-full", className)}
     >
-      <Card className={cn(CARD_STYLES.default, cardClassName)}>{children}</Card>
+      <Card className={cn(CARD_STYLES.default, "h-full", cardClassName)}>{children}</Card>
     </motion.div>
   );
 }

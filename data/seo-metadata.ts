@@ -126,6 +126,18 @@ export const PAGE_METADATA = {
       return createTwitter(this.title as string, this.description as string);
     },
   } satisfies Metadata,
+
+  blog: {
+    title: createPageTitle("Blog"),
+    description: `Thoughts, ideas, and things ${PERSON.name} has learned along the way.`,
+    alternates: createAlternates("/blog"),
+    get openGraph() {
+      return createOpenGraph(this.title as string, this.description as string, "/blog");
+    },
+    get twitter() {
+      return createTwitter(this.title as string, this.description as string);
+    },
+  } satisfies Metadata,
 } as const;
 
 // ============================================
@@ -136,4 +148,5 @@ export const BREADCRUMBS = {
   about: { name: "About", url: `${SITE.url}/about` },
   projects: { name: "Projects", url: `${SITE.url}/projects` },
   resume: { name: "Resume", url: `${SITE.url}/resume` },
+  blog: { name: "Blog", url: `${SITE.url}/blog` },
 } as const;

@@ -4,10 +4,14 @@ import {
   IntroductionCard,
   TechStackCard,
   FeaturedProjectCard,
+  FeaturedBlogCard,
   PublicationsCard,
 } from "@/components/home";
+import { getFeaturedPost } from "@/lib/blog";
 
 export default function Home() {
+  const featuredPost = getFeaturedPost();
+
   return (
     <main className="min-h-screen">
       <HeroSection />
@@ -18,6 +22,7 @@ export default function Home() {
             <TechStackCard />
             <FeaturedProjectCard />
             <PublicationsCard />
+            <FeaturedBlogCard post={featuredPost} />
           </div>
         </div>
         <Footer />

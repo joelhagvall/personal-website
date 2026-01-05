@@ -14,11 +14,11 @@ export function PublicationsCard() {
   }
 
   return (
-    <AnimatedCard delay={0.4} className="col-span-full">
+    <AnimatedCard delay={0.5} className="col-span-full md:col-span-3" cardClassName="flex flex-col">
       <h2 className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.publications.heading}
       </h2>
-      <div className="space-y-4">
+      <div className="space-y-4 flex-1">
         <h3 className="text-xl font-medium">{publication.title}</h3>
         <p className="text-muted-foreground text-lg">
           {publication.description}
@@ -34,17 +34,15 @@ export function PublicationsCard() {
             https://urn.kb.se/resolve?urn={publication.urn}
           </a>
         </p>
-        <div className="flex items-center gap-4">
-          <a
-            href={publication.pdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={LINK_STYLES.button}
-          >
-            <FileText className="h-4 w-4" />
-            {LABELS.viewPdf}
-          </a>
-        </div>
+        <a
+          href={publication.pdfUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex items-center gap-2 ${LINK_STYLES.primary} mt-auto`}
+        >
+          <FileText className="h-4 w-4" />
+          {LABELS.viewPdf}
+        </a>
       </div>
     </AnimatedCard>
   );
