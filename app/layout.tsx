@@ -47,6 +47,7 @@ export default function RootLayout({
         />
         <link rel="alternate icon" href="/favicon.ico?v=2" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <link
           rel="alternate"
           type="application/rss+xml"

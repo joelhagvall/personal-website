@@ -3,6 +3,7 @@ module.exports = {
   siteUrl: 'https://joelhagvall.com',
   generateRobotsTxt: true,
   sitemapSize: 7000,
+  exclude: ['/opengraph-image'],
   transform: async (config, path) => {
     // Defaults
     let changefreq = 'daily';

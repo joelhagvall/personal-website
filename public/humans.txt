@@ -1,0 +1,11 @@
+/* TEAM */
+Developer: Joel Hägvall
+Site: https://joelhagvall.com
+Location: Stockholm, Sweden
+
+/* SITE */
+Built with: Next.js, React, TypeScript, Tailwind CSS
+Hosted on: Vercel
+
+/* THANKS */
+Coffee: Lots of it
