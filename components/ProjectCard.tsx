@@ -11,6 +11,7 @@ import {
   Shield,
   ExternalLink,
   FileText,
+  Bot,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -45,6 +46,7 @@ const iconMap = {
   smartphone: Smartphone,
   headphones: Headphones,
   shield: Shield,
+  bot: Bot,
 };
 
 export function ProjectCard({

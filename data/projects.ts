@@ -31,6 +31,16 @@ export const PROJECTS: Project[] = [
       "https://su.diva-portal.org/smash/record.jsf?pid=diva2%3A1955538",
   },
   {
+    title: "J.A.R.V.I.S",
+    description:
+      "A private, local AI assistant that integrates with personal notes, tools, and workflows. Built with SwiftUI for macOS, using Ollama for local LLM execution and MCP servers for system tool integration like iCloud Notes and SL Stockholm public transit. Runs entirely on my machine with no cloud dependencies.",
+    technologies: ["SwiftUI", "Ollama", "MCP"],
+    owner: "joelhagvall",
+    repo: "jarvis-chat",
+    iconName: "bot",
+    image: "https://raw.githubusercontent.com/joelhagvall/jarvis-chat/main/screenshots/4.png",
+  },
+  {
     title: "Carspotter",
     description:
       'Carspotter is a social media platform for car enthusiasts built by me and a group of students for the course "Project in Software Engineering" at Stockholm University, Spring term 2023. Users can upload images of cars they\'ve seen, keep track of them on a map, earn badges/achievements and look at profiles and the cars they\'ve seen on a grid.',

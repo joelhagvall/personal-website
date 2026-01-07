@@ -1,4 +1,4 @@
-export type IconName = 'code' | 'smartphone' | 'headphones' | 'shield';
+export type IconName = 'code' | 'smartphone' | 'headphones' | 'shield' | 'bot';
 
 export interface Project {
   title: string;
