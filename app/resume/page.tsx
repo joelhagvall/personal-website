@@ -25,7 +25,7 @@ export default function Resume() {
           >
             <Card className="p-6 bg-primary/5">
               <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                <Briefcase size={24} />
+                <Briefcase size={24} aria-hidden="true" />
                 Work Experience
               </h2>
               <div className="space-y-4">
@@ -48,7 +48,7 @@ export default function Resume() {
           >
             <Card className="p-6 bg-primary/5">
               <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                <GraduationCap size={24} />
+                <GraduationCap size={24} aria-hidden="true" />
                 Education
               </h2>
               <div className="space-y-4">

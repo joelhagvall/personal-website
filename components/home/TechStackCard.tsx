@@ -13,11 +13,13 @@ const TechIcon = memo(function TechIcon({ tech }: { tech: TechStackItem }) {
       href={tech.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity"
+      aria-label={`${tech.name} (opens in new tab)`}
+      className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
     >
       <img
         src={tech.icon}
-        alt={tech.name}
+        alt=""
+        aria-hidden="true"
         className={`w-full h-full ${"rounded" in tech && tech.rounded ? "rounded" : ""}`}
       />
     </a>
@@ -31,9 +33,11 @@ export function TechStackCard() {
         {HOME_CONTENT.techStack.heading}
       </h2>
       <div className="flex justify-center">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4" role="list" aria-label="Technologies">
           {TECH_STACK.map((tech) => (
-            <TechIcon key={tech.name} tech={tech} />
+            <div key={tech.name} role="listitem">
+              <TechIcon tech={tech} />
+            </div>
           ))}
         </div>
       </div>

@@ -22,10 +22,10 @@ export default function Blog() {
               <Link
                 href="/feed.xml"
                 target="_blank"
-                className="text-gray-400 hover:text-orange-500 transition-colors"
-                title="RSS Feed"
+                className="text-gray-400 hover:text-orange-500 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                aria-label="RSS Feed (opens in new tab)"
               >
-                <Rss className="w-5 h-5" />
+                <Rss className="w-5 h-5" aria-hidden="true" />
               </Link>
             </div>
 

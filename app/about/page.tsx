@@ -19,7 +19,10 @@ import { ABOUT_CONTENT } from "@/data/content";
 function BulletPoint({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3">
-      <span className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
+      <span
+        className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+        aria-hidden="true"
+      />
       {children}
     </li>
   );
@@ -48,16 +51,16 @@ export default function About() {
             <Card className={CARD_STYLES.base}>
               <div className="space-y-6">
                 <div>
-                  <h3 className={TEXT_STYLES.sectionTitle}>
+                  <h2 className={TEXT_STYLES.sectionTitle}>
                     {ABOUT_CONTENT.sections.whoIAm}
-                  </h3>
+                  </h2>
                   <div className="flex flex-col items-center mb-6">
                     <div className="relative w-40 h-40 mb-6">
-                      <div className={GLOW_STYLES.avatar}></div>
+                      <div className={GLOW_STYLES.avatar} aria-hidden="true"></div>
                       <div className="relative rounded-full w-full h-full overflow-hidden border border-white/10">
                         <img
                           src={profile.avatar}
-                          alt="Profile Avatar"
+                          alt={`${profile.name}'s profile photo`}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -70,9 +73,9 @@ export default function About() {
                 </div>
 
                 <div>
-                  <h3 className={TEXT_STYLES.sectionTitle}>
+                  <h2 className={TEXT_STYLES.sectionTitle}>
                     {ABOUT_CONTENT.sections.whereILive}
-                  </h3>
+                  </h2>
                   <motion.div
                     className="relative p-4 rounded-lg bg-white/5 border border-white/10"
                     whileHover={cardHover}
@@ -80,9 +83,9 @@ export default function About() {
                     <div className="flex items-center gap-4">
                       <div className="text-4xl">{profile.location.flag}</div>
                       <div>
-                        <h4 className="text-xl font-medium text-white mb-1">
+                        <h3 className="text-xl font-medium text-white mb-1">
                           {profile.location.city}, {profile.location.country}
-                        </h4>
+                        </h3>
                         <p className={TEXT_STYLES.mutedText}>
                           {profile.location.description}
                         </p>
@@ -97,9 +100,9 @@ export default function About() {
                 </div>
 
                 <div>
-                  <h3 className={TEXT_STYLES.sectionTitle}>
+                  <h2 className={TEXT_STYLES.sectionTitle}>
                     {ABOUT_CONTENT.sections.myInterests}
-                  </h3>
+                  </h2>
                   <ul className={`${TEXT_STYLES.bodyText} space-y-4`}>
                     <BulletPoint>
                       <div>
@@ -117,10 +120,11 @@ export default function About() {
                                 href={profile.githubUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`inline-flex items-center gap-1 ${LINK_STYLES.underline} relative z-10`}
+                                aria-label={`${ABOUT_CONTENT.interests.githubLink} (opens in new tab)`}
+                                className={`inline-flex items-center gap-1 ${LINK_STYLES.underline} relative z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm`}
                               >
                                 {ABOUT_CONTENT.interests.githubLink}
-                                <GitHubLogoIcon className="w-4 h-4" />
+                                <GitHubLogoIcon className="w-4 h-4" aria-hidden="true" />
                               </a>{" "}
                               {ABOUT_CONTENT.interests.githubSuffix}
                             </span>
@@ -129,15 +133,17 @@ export default function About() {
                       </div>
                     </BulletPoint>
                     <BulletPoint>
-                      <span>{ABOUT_CONTENT.interests.otherIntro}</span>
+                      <div>
+                        <span>{ABOUT_CONTENT.interests.otherIntro}</span>
+                        <ul className="ml-6 mt-2 space-y-2">
+                          {otherInterests.map((interest, index) => (
+                            <BulletPoint key={index}>
+                              <span>{interest}</span>
+                            </BulletPoint>
+                          ))}
+                        </ul>
+                      </div>
                     </BulletPoint>
-                    <ul className="ml-6 space-y-2">
-                      {otherInterests.map((interest, index) => (
-                        <BulletPoint key={index}>
-                          <span>{interest}</span>
-                        </BulletPoint>
-                      ))}
-                    </ul>
                   </ul>
                 </div>
               </div>
@@ -152,6 +158,9 @@ export default function About() {
           >
             <div className={GLOW_STYLES.card}></div>
             <Card className={CARD_STYLES.base}>
+              <h2 className="text-2xl font-semibold mb-2 text-white text-center">
+                My Favorites
+              </h2>
               <p className={`${TEXT_STYLES.mutedText} text-center mb-6`}>
                 {ABOUT_CONTENT.media.description}
               </p>
@@ -163,6 +172,7 @@ export default function About() {
                 <MediaCarousel
                   title={ABOUT_CONTENT.media.music}
                   items={music}
+                  aspectRatio="square"
                 />
                 <MediaCarousel
                   title={ABOUT_CONTENT.media.books}

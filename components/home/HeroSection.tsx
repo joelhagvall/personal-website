@@ -65,9 +65,10 @@ export function HeroSection() {
               href={SOCIAL.buymeacoffee}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Buy me a coffee (opens in new tab)"
               className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-medium px-4 flex items-center gap-1.5"
             >
-              <Coffee className="w-4 h-4" />
+              <Coffee className="w-4 h-4" aria-hidden="true" />
               Buy me a coffee
             </a>
           </motion.div>

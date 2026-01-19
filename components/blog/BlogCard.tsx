@@ -38,29 +38,33 @@ export function BlogCard({
   const formattedDate = formatDate(date);
 
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay }}
       className="blog-card-item"
     >
-      <Link href={`/blog/${slug}`} scroll={true}>
-        <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10 cursor-pointer">
+      <Link
+        href={`/blog/${slug}`}
+        scroll={true}
+      >
+        <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10 cursor-pointer focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background">
           <div className="space-y-3">
             <h2 className="text-2xl font-semibold text-white">{title}</h2>
 
             <div className="flex items-center gap-2 text-sm text-gray-400">
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-4 h-4" aria-hidden="true" />
               <time dateTime={date}>{formattedDate}</time>
             </div>
 
             <p className="text-muted-foreground text-lg">{description}</p>
 
             {tags.length > 0 && (
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2" role="list" aria-label="Article tags">
                 {tags.map((tag) => (
                   <span
                     key={tag}
+                    role="listitem"
                     className="px-3 py-1 bg-white/10 rounded-full text-sm text-primary"
                   >
                     {tag}
@@ -71,6 +75,6 @@ export function BlogCard({
           </div>
         </Card>
       </Link>
-    </motion.div>
+    </motion.article>
   );
 }

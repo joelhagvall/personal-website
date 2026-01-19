@@ -176,7 +176,11 @@ interface Astronaut3DProps {
 
 export function Astronaut3D({ className = "" }: Astronaut3DProps) {
   return (
-    <div className={`w-full h-full ${className}`}>
+    <div
+      className={`w-full h-full ${className}`}
+      role="img"
+      aria-label="Animated 3D solar system with orbiting planets"
+    >
       <Canvas
         camera={{ position: [0, 2, 5], fov: 45 }}
         style={{ background: "transparent" }}

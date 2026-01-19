@@ -75,7 +75,7 @@ export function ProjectCard({
       <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-            <Icon className="text-primary" size={24} />
+            <Icon className="text-primary" size={24} aria-hidden="true" />
             {title}
           </h2>
 
@@ -121,30 +121,31 @@ export function ProjectCard({
 
           {/* GitHub Stats */}
           {(stars !== undefined || forks !== undefined) && (
-            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400" aria-label="GitHub statistics">
               {stars !== undefined && (
                 <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 text-yellow-400" />
-                  <span>{stars}</span>
+                  <Star className="w-4 h-4 text-yellow-400" aria-hidden="true" />
+                  <span aria-label={`${stars} stars`}>{stars}</span>
                 </div>
               )}
               {forks !== undefined && (
                 <div className="flex items-center gap-1">
-                  <GitFork className="w-4 h-4 text-blue-400" />
-                  <span>{forks}</span>
+                  <GitFork className="w-4 h-4 text-blue-400" aria-hidden="true" />
+                  <span aria-label={`${forks} forks`}>{forks}</span>
                 </div>
               )}
             </div>
           )}
 
-          <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-center gap-4 flex-wrap" role="group" aria-label="Project links">
             <Link
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+              aria-label={`${LABELS.sourceCode} for ${title} (opens in new tab)`}
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             >
-              <GitHubLogoIcon />
+              <GitHubLogoIcon aria-hidden="true" />
               {LABELS.sourceCode}
             </Link>
             {linkedinUrl && (
@@ -152,9 +153,10 @@ export function ProjectCard({
                 href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+                aria-label={`${LABELS.linkedinPost} about ${title} (opens in new tab)`}
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
               >
-                <LinkedInLogoIcon />
+                <LinkedInLogoIcon aria-hidden="true" />
                 {LABELS.linkedinPost}
               </Link>
             )}
@@ -163,9 +165,10 @@ export function ProjectCard({
                 href={demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+                aria-label={`${LABELS.liveDemo} of ${title} (opens in new tab)`}
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
               >
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-4 h-4" aria-hidden="true" />
                 {LABELS.liveDemo}
               </Link>
             )}
@@ -174,9 +177,10 @@ export function ProjectCard({
                 href={publicationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+                aria-label={`${LABELS.publication} for ${title} (opens in new tab)`}
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-4 h-4" aria-hidden="true" />
                 {LABELS.publication}
               </Link>
             )}
