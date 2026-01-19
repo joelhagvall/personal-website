@@ -1,12 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/data/navigation";
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Preload route on hover/focus for faster navigation
+  // See: https://vercel.com/blog/introducing-react-best-practices (rule 2.5)
+  const handlePrefetch = useCallback(
+    (href: string, external?: boolean) => {
+      if (!external && href !== pathname) {
+        router.prefetch(href);
+      }
+    },
+    [router, pathname]
+  );
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -20,6 +33,8 @@ export function Navbar() {
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
+                onMouseEnter={() => handlePrefetch(link.href, link.external)}
+                onFocus={() => handlePrefetch(link.href, link.external)}
                 className={cn(
                   "transition-colors hover:text-foreground/80 flex items-center",
                   pathname === link.href

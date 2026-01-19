@@ -70,6 +70,7 @@ export function ProjectCard({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay }}
+      className="project-card-item"
     >
       <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
         <div className="space-y-4">

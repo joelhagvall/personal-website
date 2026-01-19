@@ -24,6 +24,7 @@ interface ShootingStarsProps {
   className?: string;
 }
 
+// Hoist function outside component to avoid recreation
 const getRandomStartPoint = () => {
   const side = Math.floor(Math.random() * 4);
   const offset = Math.random() * window.innerWidth;
@@ -56,7 +57,12 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    let isMounted = true;
+
     const createStar = () => {
+      if (!isMounted) return;
+
       const { x, y, angle } = getRandomStartPoint();
       const newStar: ShootingStar = {
         id: Date.now(),
@@ -70,12 +76,15 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
       setStar(newStar);
 
       const randomDelay = Math.random() * (maxDelay - minDelay) + minDelay;
-      setTimeout(createStar, randomDelay);
+      timeoutId = setTimeout(createStar, randomDelay);
     };
 
     createStar();
 
-    return () => {};
+    return () => {
+      isMounted = false;
+      clearTimeout(timeoutId);
+    };
   }, [minSpeed, maxSpeed, minDelay, maxDelay]);
 
   useEffect(() => {
@@ -114,33 +123,38 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
     return () => cancelAnimationFrame(animationFrame);
   }, [star]);
 
+  // Wrap SVG in div for hardware-accelerated CSS animations
+  // See: https://vercel.com/blog/introducing-react-best-practices (rule 6.1)
   return (
-    <svg
-      ref={svgRef}
-      className={cn("w-full h-full absolute inset-0", className)}
-    >
-      {star && (
-        <rect
-          key={star.id}
-          x={star.x}
-          y={star.y}
-          width={starWidth * star.scale}
-          height={starHeight}
-          fill="url(#gradient)"
-          transform={`rotate(${star.angle}, ${
-            star.x + (starWidth * star.scale) / 2
-          }, ${star.y + starHeight / 2})`}
-        />
-      )}
-      <defs>
-        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{ stopColor: trailColor, stopOpacity: 0 }} />
-          <stop
-            offset="100%"
-            style={{ stopColor: starColor, stopOpacity: 1 }}
+    <div className={cn("w-full h-full absolute inset-0", className)}>
+      <svg
+        ref={svgRef}
+        className="w-full h-full"
+        aria-hidden="true"
+      >
+        {star ? (
+          <rect
+            key={star.id}
+            x={star.x}
+            y={star.y}
+            width={starWidth * star.scale}
+            height={starHeight}
+            fill="url(#gradient)"
+            transform={`rotate(${star.angle}, ${
+              star.x + (starWidth * star.scale) / 2
+            }, ${star.y + starHeight / 2})`}
           />
-        </linearGradient>
-      </defs>
-    </svg>
+        ) : null}
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: trailColor, stopOpacity: 0 }} />
+            <stop
+              offset="100%"
+              style={{ stopColor: starColor, stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
   );
 };

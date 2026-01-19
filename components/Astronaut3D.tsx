@@ -5,16 +5,17 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 
+// Hoist static data outside component to avoid recreation on every render
+// See: https://vercel.com/blog/introducing-react-best-practices (rule 6.3)
+const PLANETS = [
+  { name: "Earth", orbit: 0.8, size: 0.07, color: "#4a90d9", speed: 0.4, moon: true },
+  { name: "Mars", orbit: 1.2, size: 0.05, color: "#c1440e", speed: 0.3 },
+  { name: "Saturn", orbit: 1.8, size: 0.11, color: "#e8d5a3", speed: 0.15, rings: true },
+] as const;
+
 function SolarSystem() {
   const sunRef = useRef<THREE.Mesh>(null);
   const planetsRef = useRef<THREE.Group>(null);
-
-  // Planet data: [orbitRadius, size, color, speed, emissive?]
-  const planets = [
-    { name: "Earth", orbit: 0.8, size: 0.07, color: "#4a90d9", speed: 0.4, moon: true },
-    { name: "Mars", orbit: 1.2, size: 0.05, color: "#c1440e", speed: 0.3 },
-    { name: "Saturn", orbit: 1.8, size: 0.11, color: "#e8d5a3", speed: 0.15, rings: true },
-  ];
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
@@ -69,13 +70,13 @@ function SolarSystem() {
 
         {/* === PLANETS === */}
         <group ref={planetsRef}>
-          {planets.map((planet) => (
+          {PLANETS.map((planet) => (
             <Planet key={planet.name} {...planet} />
           ))}
         </group>
 
         {/* === ORBIT LINES === */}
-        {planets.map((planet) => (
+        {PLANETS.map((planet) => (
           <mesh key={`orbit-${planet.name}`} rotation={[Math.PI / 2, 0, 0]}>
             <torusGeometry args={[planet.orbit, 0.003, 8, 64]} />
             <meshStandardMaterial

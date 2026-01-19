@@ -10,6 +10,10 @@ interface FooterProps {
   mailMode?: MailMode;
 }
 
+// Cache the current year to avoid creating new Date on every render
+// This value only changes once per year, safe to cache at module level
+const CURRENT_YEAR = new Date().getFullYear();
+
 export function Footer({ mailMode = "open" }: FooterProps) {
   return (
     <motion.div
@@ -31,7 +35,7 @@ export function Footer({ mailMode = "open" }: FooterProps) {
           labelVariant="plain"
         />
         <div className="text-sm text-muted-foreground flex flex-col md:flex-row items-center gap-2">
-          <span>{FOOTER_CONTENT.copyright(new Date().getFullYear())}</span>
+          <span>{FOOTER_CONTENT.copyright(CURRENT_YEAR)}</span>
           <span className="hidden md:inline">•</span>
           <a
             href="/security-policy"

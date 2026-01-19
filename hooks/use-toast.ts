@@ -171,6 +171,8 @@ function toast({ ...props }: Toast) {
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState);
 
+  // Subscribe once on mount, unsubscribe on unmount
+  // See: https://vercel.com/blog/introducing-react-best-practices (rule 5.3)
   React.useEffect(() => {
     listeners.push(setState);
     return () => {
@@ -179,7 +181,7 @@ function useToast() {
         listeners.splice(index, 1);
       }
     };
-  }, [state]);
+  }, []);
 
   return {
     ...state,

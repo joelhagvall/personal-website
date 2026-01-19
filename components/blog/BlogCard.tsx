@@ -6,6 +6,23 @@ import { Calendar } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import type { PostMeta } from "@/types/blog";
 
+// Cache date formatting to avoid repeated computation
+// See: https://vercel.com/blog/introducing-react-best-practices (rule 7.4)
+const dateFormatCache = new Map<string, string>();
+
+function formatDate(dateString: string): string {
+  if (dateFormatCache.has(dateString)) {
+    return dateFormatCache.get(dateString)!;
+  }
+  const formatted = new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  dateFormatCache.set(dateString, formatted);
+  return formatted;
+}
+
 interface BlogCardProps extends PostMeta {
   delay: number;
 }
@@ -18,17 +35,14 @@ export function BlogCard({
   tags,
   delay,
 }: BlogCardProps) {
-  const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatDate(date);
 
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay }}
+      className="blog-card-item"
     >
       <Link href={`/blog/${slug}`} scroll={true}>
         <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10 cursor-pointer">

@@ -102,5 +102,24 @@
     pointer-events: none;
   }
 
-  
+  /* Performance: content-visibility for long lists
+   * Defers rendering of off-screen items for faster initial render
+   * See: https://vercel.com/blog/introducing-react-best-practices (rule 6.2)
+   */
+  .list-item-deferred {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 200px;
+  }
+
+  /* For project cards */
+  .project-card-item {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 350px;
+  }
+
+  /* For blog cards */
+  .blog-card-item {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 250px;
+  }
 }

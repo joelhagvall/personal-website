@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 export interface GitHubRepo {
   name: string;
   description: string;
@@ -6,7 +8,11 @@ export interface GitHubRepo {
   html_url: string;
 }
 
-export async function getGitHubRepo(owner: string, repo: string): Promise<GitHubRepo | null> {
+// Use React.cache() for per-request deduplication
+// See: https://vercel.com/blog/introducing-react-best-practices (rule 3.4)
+// Multiple calls to getGitHubRepo with same owner/repo within a single request
+// will only execute the fetch once
+export const getGitHubRepo = cache(async (owner: string, repo: string): Promise<GitHubRepo | null> => {
   try {
     const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
       headers: {
@@ -33,4 +39,4 @@ export async function getGitHubRepo(owner: string, repo: string): Promise<GitHub
     console.error(`Error fetching GitHub repo ${owner}/${repo}:`, error);
     return null;
   }
-}
+});
