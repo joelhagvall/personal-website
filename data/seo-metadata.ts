@@ -9,7 +9,8 @@ import { PERSON, SITE } from "./site";
 // ============================================
 // Helper functions
 // ============================================
-const createPageTitle = (page: string) => `${page} – ${PERSON.name}`;
+const createPageTitle = (page: string, suffix?: string) =>
+  suffix ? `${page} – ${PERSON.name} | ${suffix}` : `${page} – ${PERSON.name} | Software Developer`;
 
 const createOpenGraph = (
   title: string,
@@ -93,7 +94,7 @@ export const PAGE_METADATA = {
 
   about: {
     title: createPageTitle("About"),
-    description: `Learn more about ${PERSON.name} – software developer based in ${PERSON.location.city}.`,
+    description: `Learn more about ${PERSON.name} – a software developer based in ${PERSON.location.city}, ${PERSON.location.country}, with experience in web and mobile development using React, Swift, Java and more.`,
     alternates: createAlternates("/about"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/about");
@@ -105,7 +106,7 @@ export const PAGE_METADATA = {
 
   projects: {
     title: createPageTitle("Projects"),
-    description: `A selection of ${PERSON.name}'s personal and academic projects.`,
+    description: `Explore a selection of ${PERSON.name}'s personal and academic projects, including web apps, mobile apps, and open-source contributions built with React, Next.js, Swift and more.`,
     alternates: createAlternates("/projects"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/projects");
@@ -116,8 +117,8 @@ export const PAGE_METADATA = {
   } satisfies Metadata,
 
   resume: {
-    title: createPageTitle("Resume"),
-    description: `Resume and experience of ${PERSON.name} – software developer based in ${PERSON.location.city}.`,
+    title: createPageTitle("Resume", "Experience & Skills"),
+    description: `View the resume and professional experience of ${PERSON.name} – a software developer based in ${PERSON.location.city}, ${PERSON.location.country}, specializing in full-stack web and mobile development.`,
     alternates: createAlternates("/resume"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/resume");
@@ -128,8 +129,8 @@ export const PAGE_METADATA = {
   } satisfies Metadata,
 
   blog: {
-    title: createPageTitle("Blog"),
-    description: `Thoughts, ideas, and things ${PERSON.name} has learned along the way.`,
+    title: createPageTitle("Blog", "Thoughts & Ideas"),
+    description: `Read thoughts, ideas, and technical insights from ${PERSON.name} – a software developer sharing lessons learned about web development, programming, and technology.`,
     alternates: createAlternates("/blog"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/blog");

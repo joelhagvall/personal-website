@@ -18,8 +18,7 @@ const TechIcon = memo(function TechIcon({ tech }: { tech: TechStackItem }) {
     >
       <img
         src={tech.icon}
-        alt=""
-        aria-hidden="true"
+        alt={`${tech.name} logo`}
         className={`w-full h-full ${"rounded" in tech && tech.rounded ? "rounded" : ""}`}
       />
     </a>

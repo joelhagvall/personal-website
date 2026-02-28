@@ -24,21 +24,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const url = `${SITE.url}/blog/${slug}`;
+
   return {
     title: `${post.title} – ${PERSON.name}`,
     description: post.description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: url,
+        "x-default": url,
+      },
+    },
     openGraph: {
       title: post.title,
       description: post.description,
       type: "article",
       publishedTime: post.date,
       authors: [PERSON.name],
-      url: `${SITE.url}/blog/${slug}`,
+      url,
+      siteName: SITE.name,
+      images: [
+        {
+          url: PERSON.avatar,
+          width: 1200,
+          height: 630,
+          alt: PERSON.name,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
+      images: [PERSON.avatar],
     },
   };
 }

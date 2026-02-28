@@ -6,7 +6,7 @@
 export const SITE = {
   url: "https://joelhagvall.com",
   name: "Joel Hägvall",
-  title: "Joel Hägvall - Software Developer",
+  title: "Joel Hägvall - Software Developer Based in Stockholm, Sweden",
   locale: "en_US",
   language: "en",
 } as const;
@@ -19,7 +19,7 @@ export const PERSON = {
   birthYear: 2000,
   bio: "I'm a software developer with a big interest in technology and how it can be used to make a difference.",
   shortBio: "Software developer based in Stockholm, Sweden.",
-  description: "Software developer based in Stockholm, Sweden. Experienced in Java, Python, Swift, React and more.",
+  description: "Software developer based in Stockholm, Sweden. Experienced in building web and mobile applications with Java, Python, Swift, React, Next.js and more.",
   avatar: "/media/selfie.jpeg",
   location: {
     city: "Stockholm",
