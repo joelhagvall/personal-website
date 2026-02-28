@@ -24,7 +24,7 @@ export function Footer({ mailMode = "open" }: FooterProps) {
       aria-label="Site footer"
     >
       <div className="py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="text-center md:text-left">
+        <div className="text-center md:text-left md:flex-1">
           <p className="text-xl font-semibold mb-2">{FOOTER_CONTENT.name}</p>
           <p className="text-sm text-muted-foreground">
             {FOOTER_CONTENT.tagline}
@@ -35,7 +35,7 @@ export function Footer({ mailMode = "open" }: FooterProps) {
           mailMode={mailMode}
           labelVariant="plain"
         />
-        <div className="text-sm text-muted-foreground flex flex-col md:flex-row items-center gap-2">
+        <div className="text-sm text-muted-foreground flex flex-col md:flex-row items-center gap-2 md:flex-1 md:justify-end">
           <span>{FOOTER_CONTENT.copyright(CURRENT_YEAR)}</span>
           <span className="hidden md:inline" aria-hidden="true">•</span>
           <a

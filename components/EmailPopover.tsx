@@ -88,14 +88,14 @@ export function EmailPopover({
       <div className={cn("relative flex items-center", className)}>
         <button
           ref={triggerRef}
-          className={cn(buttonClass, variant === "muted" && "cursor-pointer w-5 h-5")}
+          className={cn(buttonClass, variant === "muted" && "cursor-pointer w-6 h-6")}
           aria-label={LABELS.email}
           aria-expanded={isOpen}
           aria-controls="email-popover"
           type="button"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <MailIcon className={variant === "bubble" ? "w-6 h-6" : "w-5 h-5"} aria-hidden="true" />
+          <MailIcon className={variant === "bubble" ? "w-6 h-6" : "w-[18px] h-[18px]"} aria-hidden="true" />
         </button>
 
         {isOpen && (

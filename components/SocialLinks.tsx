@@ -42,10 +42,10 @@ export function SocialLinks({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${githubLabel} (opens in new tab)`}
-        className={cn(linkClass, variant === "muted" && "w-5 h-5")}
+        className={cn(linkClass, variant === "muted" && "w-6 h-6")}
       >
         <GitHubLogoIcon
-          className={variant === "bubble" ? "w-6 h-6" : "w-5 h-5"}
+          className={variant === "bubble" ? "w-6 h-6" : "w-[18px] h-[18px]"}
           aria-hidden="true"
         />
       </a>
@@ -55,10 +55,10 @@ export function SocialLinks({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${linkedinLabel} (opens in new tab)`}
-        className={cn(linkClass, variant === "muted" && "w-5 h-5")}
+        className={cn(linkClass, variant === "muted" && "w-6 h-6")}
       >
         <LinkedinIcon
-          className={variant === "bubble" ? "w-6 h-6" : "w-5 h-5"}
+          className={variant === "bubble" ? "w-6 h-6" : "w-[18px] h-[18px]"}
           aria-hidden="true"
         />
       </a>
