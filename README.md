@@ -16,8 +16,8 @@ Built with Next.js 16, React 19, and TypeScript. I went with Tailwind CSS for st
 ## Running Locally
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 Then open [localhost:3000](http://localhost:3000)
