@@ -41,7 +41,8 @@ export const SOCIAL = {
   linkedin: {
     url: "https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/",
   },
-  email: "joel.hagvall1@gmail.com",
+  email: "work@joelhagvall.com",
+  freelanceEmail: "work@joelhagvall.com",
   buymeacoffee: {
     url: "https://buymeacoffee.com/joelhagvall",
   },

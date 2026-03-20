@@ -13,6 +13,7 @@ export const LABELS = {
   home: "Home",
   about: "About",
   aboutMe: "About Me",
+  workWithMe: "Work with me",
   projects: "Projects",
   resume: "Resume",
 

@@ -1,6 +1,7 @@
 import { Footer } from "@/components/Footer";
 import {
   HeroSection,
+  FreelanceCard,
   IntroductionCard,
   TechStackCard,
   FeaturedProjectCard,
@@ -20,6 +21,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
             <IntroductionCard />
+            <FreelanceCard />
             <TechStackCard />
             <FeaturedProjectCard />
             <PublicationsCard />

@@ -5,6 +5,7 @@
 
 import type { Metadata } from "next";
 import { PERSON, SITE } from "./site";
+import { FREELANCE } from "./freelance";
 
 // ============================================
 // Helper functions
@@ -116,6 +117,18 @@ export const PAGE_METADATA = {
     },
   } satisfies Metadata,
 
+  freelance: {
+    title: createPageTitle("Work With Me", "Product Development"),
+    description: FREELANCE.metadata.description,
+    alternates: createAlternates("/work-with-me"),
+    get openGraph() {
+      return createOpenGraph(this.title as string, this.description as string, "/work-with-me");
+    },
+    get twitter() {
+      return createTwitter(this.title as string, this.description as string);
+    },
+  } satisfies Metadata,
+
   resume: {
     title: createPageTitle("Resume", "Experience & Skills"),
     description: `View the resume and professional experience of ${PERSON.name} – a software developer based in ${PERSON.location.city}, ${PERSON.location.country}, specializing in full-stack web and mobile development.`,
@@ -147,6 +160,7 @@ export const PAGE_METADATA = {
 export const BREADCRUMBS = {
   home: { name: "Home", url: SITE.url },
   about: { name: "About", url: `${SITE.url}/about` },
+  freelance: { name: "Work with me", url: `${SITE.url}/work-with-me` },
   projects: { name: "Projects", url: `${SITE.url}/projects` },
   resume: { name: "Resume", url: `${SITE.url}/resume` },
   blog: { name: "Blog", url: `${SITE.url}/blog` },

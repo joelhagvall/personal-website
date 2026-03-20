@@ -1,23 +1,11 @@
 import { Footer } from "@/components/Footer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectsHeader } from "@/components/ProjectsHeader";
-import { getGitHubRepo } from "@/lib/github";
+import { getProjectsWithStats } from "@/lib/projects";
 import { createSoftwareApplicationJsonLd } from "@/lib/seo";
-import { PROJECTS, getGitHubUrl } from "@/data/projects";
 
 export default async function Projects() {
-  // Fetch GitHub stats for all projects
-  const projectsWithStats = await Promise.all(
-    PROJECTS.map(async (project) => {
-      const repoData = await getGitHubRepo(project.owner, project.repo);
-      return {
-        ...project,
-        githubUrl: getGitHubUrl(project.owner, project.repo),
-        stars: repoData?.stargazers_count,
-        forks: repoData?.forks_count,
-      };
-    })
-  );
+  const projectsWithStats = await getProjectsWithStats();
 
   // Generate JSON-LD for each project
   const projectSchemas = projectsWithStats.map((project) =>

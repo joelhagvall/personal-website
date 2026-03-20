@@ -3,6 +3,7 @@
  * Uses centralized data from data/site.ts
  */
 
+import { FREELANCE } from "@/data/freelance";
 import { PERSON, SITE, SOCIAL, SKILLS } from "@/data/site";
 
 export const personJsonLd = {
@@ -56,6 +57,59 @@ export const profilePageJsonLd = {
   dateCreated: "2024-01-01",
   dateModified: new Date().toISOString().split("T")[0],
 } as const;
+
+export const freelanceServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: `${PERSON.name} Work With Me`,
+  description: FREELANCE.metadata.description,
+  url: `${SITE.url}/work-with-me`,
+  areaServed: "Worldwide",
+  availableLanguage: ["English"],
+  provider: {
+    "@type": "Person",
+    name: PERSON.name,
+    url: SITE.url,
+    jobTitle: PERSON.jobTitle,
+    sameAs: [SOCIAL.linkedin.url, SOCIAL.github.url],
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email: SOCIAL.freelanceEmail,
+    areaServed: "Worldwide",
+    availableLanguage: ["English"],
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Client work services",
+    itemListElement: FREELANCE.services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.description,
+      },
+    })),
+  },
+} as const;
+
+export function createFaqPageJsonLd(
+  items: readonly { question: string; answer: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
 
 // Breadcrumbs schema generator
 export function createBreadcrumbsJsonLd(

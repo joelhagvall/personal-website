@@ -6,9 +6,7 @@ import Link from "next/link";
 import { SocialLinks } from "@/components/SocialLinks";
 import { fadeInUp } from "@/lib/animations";
 import { PERSON } from "@/data/site";
-import { LABELS } from "@/data/content";
-import { SOCIAL } from "@/lib/constants";
-import { Coffee } from "lucide-react";
+import { FREELANCE } from "@/data/freelance";
 
 const Astronaut3D = dynamic(
   () => import("@/components/Astronaut3D").then((mod) => mod.Astronaut3D),
@@ -38,39 +36,28 @@ export function HeroSection() {
           >
             {PERSON.name}
           </motion.h1>
-          <motion.p
-            {...fadeInUp}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8"
-          >
-            {/* Text here */}
-          </motion.p>
           <motion.div
             {...fadeInUp}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex gap-4 justify-center"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-wrap gap-4 justify-center"
           >
+            <Link
+              href={FREELANCE.primaryCta.href}
+              className="rounded-full border border-white/10 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+            >
+              {FREELANCE.primaryCta.label}
+            </Link>
+            <Link
+              href={FREELANCE.secondaryCta.href}
+              className="rounded-full bg-white/10 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+            >
+              {FREELANCE.secondaryCta.label}
+            </Link>
             <SocialLinks
               variant="bubble"
               mailMode="open"
               labelVariant="profile"
             />
-            <Link
-              href="/about"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-medium px-4"
-            >
-              {LABELS.aboutMe}
-            </Link>
-            <a
-              href={SOCIAL.buymeacoffee}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Buy me a coffee (opens in new tab)"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-medium px-4 flex items-center gap-1.5"
-            >
-              <Coffee className="w-4 h-4" aria-hidden="true" />
-              Buy me a coffee
-            </a>
           </motion.div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 export { HeroSection } from "./HeroSection";
+export { FreelanceCard } from "./FreelanceCard";
 export { ProfileAvatar } from "./ProfileAvatar";
 export { IntroductionCard } from "./IntroductionCard";
 export { TechStackCard } from "./TechStackCard";

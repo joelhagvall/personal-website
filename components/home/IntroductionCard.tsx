@@ -5,6 +5,7 @@ import { AnimatedCard } from "@/components/AnimatedCard";
 import { ProfileAvatar } from "./ProfileAvatar";
 import { LINK_STYLES } from "@/lib/styles";
 import { HOME_CONTENT } from "@/data/content";
+import { FREELANCE } from "@/data/freelance";
 
 export function IntroductionCard() {
   return (
@@ -24,6 +25,16 @@ export function IntroductionCard() {
               {HOME_CONTENT.introduction.linkText}
             </Link>{" "}
             {HOME_CONTENT.introduction.linkSuffix}
+          </p>
+          <p className="mt-4 text-muted-foreground text-base">
+            {FREELANCE.homeCard.availability}{" "}
+            <Link
+              href="/work-with-me"
+              className={`${LINK_STYLES.primary} underline underline-offset-4`}
+            >
+              See how I work
+            </Link>
+            .
           </p>
         </div>
       </div>
