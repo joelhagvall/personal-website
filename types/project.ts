@@ -13,3 +13,8 @@ export interface Project {
   image?: string;
 }
 
+export interface ProjectWithStats extends Project {
+  githubUrl: string;
+  stars?: number | undefined;
+  forks?: number | undefined;
+}

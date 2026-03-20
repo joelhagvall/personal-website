@@ -1,12 +1,6 @@
 import { PROJECTS, getGitHubUrl } from "@/data/projects";
 import { getGitHubRepo } from "@/lib/github";
-import type { Project } from "@/types/project";
-
-export type ProjectWithStats = Project & {
-  githubUrl: string;
-  stars?: number | undefined;
-  forks?: number | undefined;
-};
+import type { Project, ProjectWithStats } from "@/types/project";
 
 export function getProjectsByRepo(repos: readonly string[]) {
   return repos
