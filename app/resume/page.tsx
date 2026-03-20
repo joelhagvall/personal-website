@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Briefcase, GraduationCap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -8,21 +5,12 @@ export default function Resume() {
   return (
     <main className="min-h-screen p-8 md:p-12">
       <div className="max-w-7xl mx-auto">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold mb-8"
-        >
+        <h1 className="text-4xl font-bold mb-8">
           Resume
-        </motion.h1>
+        </h1>
 
         <div className="space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          <div>
             <Card className="p-6 bg-primary/5">
               <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
                 <Briefcase size={24} aria-hidden="true" />
@@ -39,13 +27,9 @@ export default function Resume() {
                 </div>
               </div>
             </Card>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
+          <div>
             <Card className="p-6 bg-primary/5">
               <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
                 <GraduationCap size={24} aria-hidden="true" />
@@ -58,7 +42,7 @@ export default function Resume() {
                 </div>
               </div>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </div>
     </main>

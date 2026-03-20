@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { SocialLinks } from "@/components/SocialLinks";
 import { FOOTER_CONTENT } from "@/data/content";
 
@@ -16,10 +13,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export function Footer({ mailMode = "open" }: FooterProps) {
   return (
-    <motion.footer
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
+    <footer
       className="col-span-3 mt-8 border-t border-primary/10"
       aria-label="Site footer"
     >
@@ -46,6 +40,6 @@ export function Footer({ mailMode = "open" }: FooterProps) {
           </a>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

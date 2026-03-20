@@ -1,5 +1,3 @@
-"use client";
-
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -10,7 +8,7 @@ import { HOME_CONTENT, LABELS } from "@/data/content";
 
 export function FeaturedProjectCard() {
   return (
-    <AnimatedCard delay={0.3} className="col-span-full md:col-span-4">
+    <AnimatedCard className="col-span-full md:col-span-4">
       <h2 className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.featuredProject.heading}
       </h2>

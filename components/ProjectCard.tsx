@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import {
   Star,
@@ -32,7 +31,6 @@ interface ProjectCardProps {
   technologies: string[];
   githubUrl: string;
   iconName: IconName;
-  delay: number;
   stars?: number | undefined;
   forks?: number | undefined;
   linkedinUrl?: string | undefined;
@@ -55,7 +53,6 @@ export function ProjectCard({
   technologies,
   githubUrl,
   iconName,
-  delay,
   stars,
   forks,
   linkedinUrl,
@@ -66,12 +63,7 @@ export function ProjectCard({
   const Icon = iconMap[iconName];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay }}
-      className="project-card-item"
-    >
+    <div className="project-card-item">
       <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
@@ -187,6 +179,6 @@ export function ProjectCard({
           </div>
         </div>
       </Card>
-    </motion.div>
+    </div>
   );
 }

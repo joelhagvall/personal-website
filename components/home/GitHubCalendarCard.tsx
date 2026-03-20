@@ -135,7 +135,6 @@ export async function GitHubCalendarCard() {
 
   return (
     <AnimatedCard
-      delay={0.6}
       className="col-span-full"
       cardClassName="flex flex-col gap-4 sm:gap-5"
     >

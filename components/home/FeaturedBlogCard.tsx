@@ -1,5 +1,3 @@
-"use client";
-
 import { MoveRight, Calendar } from "lucide-react";
 import Link from "next/link";
 import { AnimatedCard } from "@/components/AnimatedCard";
@@ -23,7 +21,7 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
   });
 
   return (
-    <AnimatedCard delay={0.4} className="col-span-full md:col-span-3" cardClassName="flex flex-col">
+    <AnimatedCard className="col-span-full md:col-span-3" cardClassName="flex flex-col">
       <h2 className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.featuredBlog.heading}
       </h2>

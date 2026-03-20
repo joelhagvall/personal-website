@@ -33,7 +33,7 @@ export default async function Projects() {
             <ProjectsHeader />
 
             <div className="space-y-6">
-              {projectsWithStats.map((project, index) => (
+              {projectsWithStats.map((project) => (
                 <ProjectCard
                   key={project.repo}
                   title={project.title}
@@ -41,7 +41,6 @@ export default async function Projects() {
                   technologies={project.technologies}
                   githubUrl={project.githubUrl}
                   iconName={project.iconName}
-                  delay={index * 0.1}
                   stars={project.stars}
                   forks={project.forks}
                   linkedinUrl={project.linkedinUrl}

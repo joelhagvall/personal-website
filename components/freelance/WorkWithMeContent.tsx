@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   CheckCircle2,
   LayoutTemplate,
@@ -14,7 +11,6 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { FreelanceInquiryForm } from "@/components/freelance/FreelanceInquiryForm";
 import { Card, CardContent } from "@/components/ui/card";
 import { FREELANCE } from "@/data/freelance";
-import { fadeInUp, withDelay } from "@/lib/animations";
 import { LINK_STYLES, TEXT_STYLES } from "@/lib/styles";
 import type { ProjectWithStats } from "@/types/project";
 
@@ -46,26 +42,6 @@ function SectionHeading({
   );
 }
 
-function AnimatedSection({
-  children,
-  delay = 0,
-  className,
-  ...props
-}: React.ComponentProps<typeof motion.section> & {
-  delay?: number;
-}) {
-  return (
-    <motion.section
-      {...fadeInUp}
-      {...props}
-      transition={withDelay(delay)}
-      className={className}
-    >
-      {children}
-    </motion.section>
-  );
-}
-
 interface WorkWithMeContentProps {
   projectsWithStats: ProjectWithStats[];
 }
@@ -76,33 +52,17 @@ export function WorkWithMeContent({
   return (
     <div className="min-h-screen px-8 py-12 text-white md:px-12">
       <div className="mx-auto max-w-7xl space-y-12">
-        <AnimatedSection delay={0} className="space-y-6 text-center">
-          <motion.h1
-            {...fadeInUp}
-            transition={withDelay(0)}
-            className={`text-4xl font-bold md:text-5xl ${TEXT_STYLES.gradientHeading}`}
-          >
+        <section className="space-y-6 text-center">
+          <h1 className={`text-4xl font-bold md:text-5xl ${TEXT_STYLES.gradientHeading}`}>
             {FREELANCE.page.title}
-          </motion.h1>
-          <motion.p
-            {...fadeInUp}
-            transition={withDelay(0.1)}
-            className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-300"
-          >
+          </h1>
+          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-300">
             {FREELANCE.page.intro}
-          </motion.p>
-          <motion.p
-            {...fadeInUp}
-            transition={withDelay(0.2)}
-            className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground"
-          >
+          </p>
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground">
             {FREELANCE.page.summary}
-          </motion.p>
-          <motion.div
-            {...fadeInUp}
-            transition={withDelay(0.3)}
-            className="flex flex-wrap justify-center gap-4"
-          >
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
             <Link href="#contact" className={LINK_STYLES.button}>
               Start a project
             </Link>
@@ -112,40 +72,34 @@ export function WorkWithMeContent({
             >
               See all projects
             </Link>
-          </motion.div>
-        </AnimatedSection>
+          </div>
+        </section>
 
-        <AnimatedSection delay={0.15} className="grid gap-4 lg:grid-cols-3">
+        <section className="grid gap-4 lg:grid-cols-3">
           {[FREELANCE.page.availability, FREELANCE.page.responseTime, FREELANCE.page.location].map(
-            (item, index) => (
-              <motion.div
+            (item) => (
+              <div
                 key={item.label}
-                {...fadeInUp}
-                transition={withDelay(0.2 + index * 0.08)}
                 className="rounded-lg border border-primary/10 bg-primary/5 p-6"
               >
                 <p className="text-xs uppercase tracking-[0.2em] text-gray-500">
                   {item.label}
                 </p>
                 <p className="mt-3 text-lg leading-relaxed text-white">{item.value}</p>
-              </motion.div>
+              </div>
             )
           )}
-        </AnimatedSection>
+        </section>
 
-        <AnimatedSection delay={0.25} className="grid gap-12 lg:grid-cols-2">
+        <section className="grid gap-12 lg:grid-cols-2">
           <div className="space-y-6">
             <SectionHeading
               title={FREELANCE.page.sections.services}
               description="What I can own and ship."
             />
             <div className="grid gap-4">
-              {FREELANCE.services.map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  {...fadeInUp}
-                  transition={withDelay(0.3 + index * 0.08)}
-                >
+              {FREELANCE.services.map((service) => (
+                <div key={service.title}>
                   <Card className="border-white/10 bg-white/[0.04] text-white">
                     <CardContent className="flex items-start gap-4 p-5">
                       {(() => {
@@ -169,16 +123,12 @@ export function WorkWithMeContent({
                       })()}
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
-          <motion.div
-            {...fadeInUp}
-            transition={withDelay(0.4)}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <SectionHeading
               title={FREELANCE.page.sections.fit}
               description="Best fit if speed and quality both matter."
@@ -196,16 +146,16 @@ export function WorkWithMeContent({
                 ))}
               </div>
             </div>
-          </motion.div>
-        </AnimatedSection>
+          </div>
+        </section>
 
-        <AnimatedSection delay={0.35} className="space-y-6">
+        <section className="space-y-6">
           <SectionHeading
             title={FREELANCE.page.sections.work}
             description="Relevant work, not filler."
           />
           <div className="space-y-6">
-            {projectsWithStats.map((project, index) => (
+            {projectsWithStats.map((project) => (
               <ProjectCard
                 key={project.repo}
                 title={project.title}
@@ -213,7 +163,6 @@ export function WorkWithMeContent({
                 technologies={project.technologies}
                 githubUrl={project.githubUrl}
                 iconName={project.iconName}
-                delay={index * 0.1}
                 stars={project.stars}
                 forks={project.forks}
                 linkedinUrl={project.linkedinUrl}
@@ -223,37 +172,35 @@ export function WorkWithMeContent({
               />
             ))}
           </div>
-        </AnimatedSection>
+        </section>
 
-        <AnimatedSection delay={0.45} className="space-y-6">
+        <section className="space-y-6">
           <SectionHeading
             title={FREELANCE.page.sections.process}
             description="Short, direct, and built for delivery."
           />
           <div className="grid gap-5 lg:grid-cols-3">
-            {FREELANCE.process.map((step, index) => (
-              <motion.article
+            {FREELANCE.process.map((step) => (
+              <article
                 key={step.title}
-                {...fadeInUp}
-                transition={withDelay(0.5 + index * 0.08)}
                 className="rounded-lg border border-primary/10 bg-primary/5 p-6"
               >
                 <h3 className="text-xl font-semibold text-white">{step.title}</h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
                   {step.description}
                 </p>
-              </motion.article>
+              </article>
             ))}
           </div>
-        </AnimatedSection>
+        </section>
 
-        <AnimatedSection id="contact" delay={0.55} className="space-y-6 scroll-mt-24">
+        <section id="contact" className="space-y-6 scroll-mt-24">
           <SectionHeading
             title={FREELANCE.contact.title}
             description={FREELANCE.contact.description}
           />
           <FreelanceInquiryForm />
-        </AnimatedSection>
+        </section>
 
         <Footer mailMode="copy" />
       </div>

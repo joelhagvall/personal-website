@@ -1,11 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Footer } from "@/components/Footer";
 import { MediaCarousel } from "@/components/MediaCarousel";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { fadeInUp, withDelay, cardHover } from "@/lib/animations";
 import {
   TEXT_STYLES,
   GLOW_STYLES,
@@ -32,21 +28,13 @@ export default function About() {
   return (
     <main className="min-h-screen text-white p-8 md:p-12">
       <div className="max-w-7xl mx-auto">
-        <motion.h1
-          {...fadeInUp}
-          transition={withDelay(0)}
-          className={`text-4xl font-bold mb-8 text-center ${TEXT_STYLES.gradientHeading}`}
-        >
+        <h1 className={`text-4xl font-bold mb-8 text-center ${TEXT_STYLES.gradientHeading}`}>
           {ABOUT_CONTENT.pageTitle}
-        </motion.h1>
+        </h1>
 
         <div className="grid grid-cols-1 gap-8">
           {/* Personal Info Section */}
-          <motion.div
-            {...fadeInUp}
-            transition={withDelay(0.2)}
-            className="relative"
-          >
+          <div className="relative">
             <div className={GLOW_STYLES.card}></div>
             <Card className={CARD_STYLES.base}>
               <div className="space-y-6">
@@ -76,10 +64,7 @@ export default function About() {
                   <h2 className={TEXT_STYLES.sectionTitle}>
                     {ABOUT_CONTENT.sections.whereILive}
                   </h2>
-                  <motion.div
-                    className="relative p-4 rounded-lg bg-white/5 border border-white/10"
-                    whileHover={cardHover}
-                  >
+                  <div className="relative p-4 rounded-lg bg-white/5 border border-white/10">
                     <div className="flex items-center gap-4">
                       <div className="text-4xl">{profile.location.flag}</div>
                       <div>
@@ -96,7 +81,7 @@ export default function About() {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
                 <div>
@@ -148,14 +133,10 @@ export default function About() {
                 </div>
               </div>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Media Section */}
-          <motion.div
-            {...fadeInUp}
-            transition={withDelay(0.3)}
-            className="relative"
-          >
+          <div className="relative">
             <div className={GLOW_STYLES.card}></div>
             <Card className={CARD_STYLES.base}>
               <h2 className="text-2xl font-semibold mb-2 text-white text-center">
@@ -180,7 +161,7 @@ export default function About() {
                 />
               </div>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </div>
       <Footer />

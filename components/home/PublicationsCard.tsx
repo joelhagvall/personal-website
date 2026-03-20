@@ -1,5 +1,3 @@
-"use client";
-
 import { FileText } from "lucide-react";
 import { AnimatedCard } from "@/components/AnimatedCard";
 import { publications } from "@/data/publications";
@@ -14,7 +12,7 @@ export function PublicationsCard() {
   }
 
   return (
-    <AnimatedCard delay={0.5} className="col-span-full md:col-span-3" cardClassName="flex flex-col">
+    <AnimatedCard className="col-span-full md:col-span-3" cardClassName="flex flex-col">
       <h2 className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.publications.heading}
       </h2>

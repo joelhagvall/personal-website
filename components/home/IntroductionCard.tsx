@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { AnimatedCard } from "@/components/AnimatedCard";
 import { ProfileAvatar } from "./ProfileAvatar";
@@ -9,7 +7,7 @@ import { FREELANCE } from "@/data/freelance";
 
 export function IntroductionCard() {
   return (
-    <AnimatedCard delay={0} className="col-span-full">
+    <AnimatedCard className="col-span-full">
       <div className="flex items-start gap-6">
         <ProfileAvatar />
         <div className="flex-1">

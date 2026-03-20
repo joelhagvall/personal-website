@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowRight, Mail } from "lucide-react";
 import { AnimatedCard } from "@/components/AnimatedCard";
@@ -9,7 +7,6 @@ import { LINK_STYLES } from "@/lib/styles";
 export function FreelanceCard() {
   return (
     <AnimatedCard
-      delay={0.15}
       className="col-span-full"
       cardClassName="overflow-hidden"
     >

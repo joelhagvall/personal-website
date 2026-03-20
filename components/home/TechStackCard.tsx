@@ -1,13 +1,8 @@
-"use client";
-
-import { memo } from "react";
 import { AnimatedCard } from "@/components/AnimatedCard";
 import { TECH_STACK, type TechStackItem } from "@/data/tech-stack";
 import { HOME_CONTENT } from "@/data/content";
 
-// Memoize TechIcon to prevent unnecessary re-renders when parent updates
-// See: https://vercel.com/blog/introducing-react-best-practices (rule 5.2)
-const TechIcon = memo(function TechIcon({ tech }: { tech: TechStackItem }) {
+function TechIcon({ tech }: { tech: TechStackItem }) {
   return (
     <a
       href={tech.url}
@@ -23,11 +18,11 @@ const TechIcon = memo(function TechIcon({ tech }: { tech: TechStackItem }) {
       />
     </a>
   );
-});
+}
 
 export function TechStackCard() {
   return (
-    <AnimatedCard delay={0.2} className="col-span-full md:col-span-2">
+    <AnimatedCard className="col-span-full md:col-span-2">
       <h2 className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.techStack.heading}
       </h2>

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Calendar } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -24,7 +21,6 @@ function formatDate(dateString: string): string {
 }
 
 interface BlogCardProps extends PostMeta {
-  delay: number;
 }
 
 export function BlogCard({
@@ -33,17 +29,11 @@ export function BlogCard({
   date,
   description,
   tags,
-  delay,
 }: BlogCardProps) {
   const formattedDate = formatDate(date);
 
   return (
-    <motion.article
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay }}
-      className="blog-card-item"
-    >
+    <article className="blog-card-item">
       <Link
         href={`/blog/${slug}`}
         scroll={true}
@@ -75,6 +65,6 @@ export function BlogCard({
           </div>
         </Card>
       </Link>
-    </motion.article>
+    </article>
   );
 }

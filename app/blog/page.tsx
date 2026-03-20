@@ -33,8 +33,8 @@ export default function Blog() {
               <p className="text-gray-400 text-lg text-center">No posts yet. Check back soon!</p>
             ) : (
               <div className="space-y-6">
-                {posts.map((post, index) => (
-                  <BlogCard key={post.slug} {...post} delay={index * 0.1} />
+                {posts.map((post) => (
+                  <BlogCard key={post.slug} {...post} />
                 ))}
               </div>
             )}
