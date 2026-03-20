@@ -1,18 +1,27 @@
-import { getGitHubRepo } from './github';
-import type { GitHubRepo } from './github';
+import {
+  getGitHubContributionCalendar,
+  getGitHubRepo,
+} from './github';
+import type { GitHubContributionCalendar, GitHubRepo } from './github';
 
 // Mock global fetch
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
+const originalGitHubToken = process.env["GITHUB_TOKEN"];
 
 // Suppress console.error in tests
 beforeEach(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {});
   mockFetch.mockReset();
+  process.env["GITHUB_TOKEN"] = originalGitHubToken;
 });
 
 afterEach(() => {
   jest.restoreAllMocks();
+});
+
+afterAll(() => {
+  process.env["GITHUB_TOKEN"] = originalGitHubToken;
 });
 
 describe('getGitHubRepo', () => {
@@ -107,5 +116,117 @@ describe('getGitHubRepo', () => {
     const result = await getGitHubRepo('owner', 'repo');
 
     expect(result?.description).toBeNull();
+  });
+});
+
+describe('getGitHubContributionCalendar', () => {
+  const mockCalendarData = {
+    data: {
+      user: {
+        contributionsCollection: {
+          contributionCalendar: {
+            totalContributions: 123,
+            weeks: [
+              {
+                firstDay: '2026-03-01',
+                contributionDays: [
+                  {
+                    contributionCount: 0,
+                    date: '2026-03-01',
+                    weekday: 0,
+                  },
+                  {
+                    contributionCount: 4,
+                    date: '2026-03-02',
+                    weekday: 1,
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+    },
+  };
+
+  it('returns null without a GitHub token', async () => {
+    delete process.env["GITHUB_TOKEN"];
+
+    const result = await getGitHubContributionCalendar('missing-token-user');
+
+    expect(result).toBeNull();
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it('returns contribution calendar data on successful fetch', async () => {
+    process.env["GITHUB_TOKEN"] = 'test-token';
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockCalendarData,
+    });
+
+    const result = await getGitHubContributionCalendar('calendar-success-user');
+
+    expect(result).toEqual<GitHubContributionCalendar>({
+      totalContributions: 123,
+      weeks: [
+        {
+          firstDay: '2026-03-01',
+          contributionDays: [
+            {
+              contributionCount: 0,
+              date: '2026-03-01',
+              weekday: 0,
+            },
+            {
+              contributionCount: 4,
+              date: '2026-03-02',
+              weekday: 1,
+            },
+          ],
+        },
+      ],
+    });
+  });
+
+  it('calls the GraphQL API with authorization and variables', async () => {
+    process.env["GITHUB_TOKEN"] = 'test-token';
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockCalendarData,
+    });
+
+    await getGitHubContributionCalendar('graphql-request-user');
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://api.github.com/graphql',
+      expect.objectContaining({
+        method: 'POST',
+        headers: expect.objectContaining({
+          Authorization: 'Bearer test-token',
+          'Content-Type': 'application/json',
+        }),
+        body: expect.stringContaining('"username":"graphql-request-user"'),
+      })
+    );
+  });
+
+  it('returns null when GitHub responds with GraphQL errors', async () => {
+    process.env["GITHUB_TOKEN"] = 'test-token';
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        data: null,
+        errors: [{ message: 'Something went wrong' }],
+      }),
+    });
+
+    const result = await getGitHubContributionCalendar('graphql-error-user');
+
+    expect(result).toBeNull();
+    expect(console.error).toHaveBeenCalledWith(
+      'Failed to parse contribution calendar for graphql-error-user:',
+      [{ message: 'Something went wrong' }]
+    );
   });
 });

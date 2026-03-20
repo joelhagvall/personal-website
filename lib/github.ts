@@ -8,6 +8,22 @@ export interface GitHubRepo {
   html_url: string;
 }
 
+export interface GitHubContributionDay {
+  contributionCount: number;
+  date: string;
+  weekday: number;
+}
+
+export interface GitHubContributionWeek {
+  firstDay: string;
+  contributionDays: GitHubContributionDay[];
+}
+
+export interface GitHubContributionCalendar {
+  totalContributions: number;
+  weeks: GitHubContributionWeek[];
+}
+
 // Use React.cache() for per-request deduplication
 // See: https://vercel.com/blog/introducing-react-best-practices (rule 3.4)
 // Multiple calls to getGitHubRepo with same owner/repo within a single request
@@ -40,3 +56,80 @@ export const getGitHubRepo = cache(async (owner: string, repo: string): Promise<
     return null;
   }
 });
+
+const GITHUB_CONTRIBUTION_QUERY = `
+  query GitHubContributionCalendar($username: String!) {
+    user(login: $username) {
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks {
+            firstDay
+            contributionDays {
+              contributionCount
+              date
+              weekday
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const getGitHubContributionCalendar = cache(
+  async (username: string): Promise<GitHubContributionCalendar | null> => {
+    const token =
+      process.env["GITHUB_TOKEN"] ?? process.env["GITHUB_ACCESS_TOKEN"];
+
+    if (!token) {
+      return null;
+    }
+
+    try {
+      const response = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: {
+          Accept: "application/vnd.github+json",
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: GITHUB_CONTRIBUTION_QUERY,
+          variables: { username },
+        }),
+        next: { revalidate: 21600 },
+      });
+
+      if (!response.ok) {
+        console.error(
+          `Failed to fetch contribution calendar for ${username}: ${response.status}`
+        );
+        return null;
+      }
+
+      const data = await response.json();
+      const calendar =
+        data?.data?.user?.contributionsCollection?.contributionCalendar;
+
+      if (data?.errors?.length || !calendar) {
+        console.error(
+          `Failed to parse contribution calendar for ${username}:`,
+          data?.errors ?? "Missing contribution calendar data"
+        );
+        return null;
+      }
+
+      return {
+        totalContributions: calendar.totalContributions,
+        weeks: calendar.weeks,
+      };
+    } catch (error) {
+      console.error(
+        `Error fetching contribution calendar for ${username}:`,
+        error
+      );
+      return null;
+    }
+  }
+);

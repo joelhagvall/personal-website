@@ -67,6 +67,17 @@ export const HOME_CONTENT = {
   featuredBlog: {
     heading: LABELS.featuredBlog,
   },
+  githubActivity: {
+    heading: "GitHub Activity",
+    description: "A live contribution heatmap from the last 12 months.",
+    totalSuffix: "contributions in the last year",
+    viewProfile: "View profile",
+    swipeHint: "Swipe to explore",
+    unavailable: "Live contribution data is unavailable right now.",
+    missingToken: "Set GITHUB_TOKEN in the environment to render the live graph.",
+    legendLess: "Less",
+    legendMore: "More",
+  },
 } as const;
 
 export const ABOUT_CONTENT = {

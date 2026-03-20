@@ -6,6 +6,7 @@ import {
   FeaturedProjectCard,
   FeaturedBlogCard,
   PublicationsCard,
+  GitHubCalendarCard,
 } from "@/components/home";
 import { getFeaturedPost } from "@/lib/blog";
 
@@ -23,6 +24,7 @@ export default function Home() {
             <FeaturedProjectCard />
             <PublicationsCard />
             <FeaturedBlogCard post={featuredPost} />
+            <GitHubCalendarCard />
           </div>
         </div>
         <Footer />

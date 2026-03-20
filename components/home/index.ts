@@ -5,3 +5,4 @@ export { TechStackCard } from "./TechStackCard";
 export { FeaturedProjectCard } from "./FeaturedProjectCard";
 export { FeaturedBlogCard } from "./FeaturedBlogCard";
 export { PublicationsCard } from "./PublicationsCard";
+export { GitHubCalendarCard } from "./GitHubCalendarCard";
