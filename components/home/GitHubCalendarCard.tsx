@@ -242,6 +242,17 @@ function GitHubCalendar({
         <div className="relative">
           <div className="-mx-2 overflow-x-auto px-2 pb-2 sm:mx-0 sm:px-0">
         <div className="inline-flex min-w-max gap-2.5 sm:gap-3">
+          <div className="grid grid-rows-7 gap-0.5 pt-5 text-[10px] uppercase tracking-[0.2em] text-gray-500 sm:gap-1 sm:pt-6">
+            {["", "Mon", "", "Wed", "", "Fri", ""].map((label, index) => (
+              <span
+                key={`weekday-${index}`}
+                className="flex h-2.5 items-center sm:h-3.5"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+
           <div className="space-y-1.5">
             <div className="flex gap-0.5 px-[1px] text-[10px] uppercase tracking-[0.2em] text-gray-500 sm:gap-1">
               {monthLabels.map((label, index) => (
