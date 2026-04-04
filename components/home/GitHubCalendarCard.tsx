@@ -11,7 +11,6 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   year: "numeric",
 });
-const WEEKDAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
 const CONTRIBUTION_LEVELS = [
   "rgba(148, 163, 184, 0.08)",
   "rgba(125, 211, 252, 0.24)",
@@ -86,8 +85,9 @@ function getContributionShadow(count: number) {
 
 function getMonthLabels(firstDays: string[]) {
   let previousMonth = -1;
+  let lastLabelIndex = -Infinity;
 
-  return firstDays.map((firstDay) => {
+  return firstDays.map((firstDay, index) => {
     const month = new Date(firstDay).getMonth();
 
     if (month === previousMonth) {
@@ -95,6 +95,13 @@ function getMonthLabels(firstDays: string[]) {
     }
 
     previousMonth = month;
+
+    // Skip label if too close to previous label (avoid overlap)
+    if (index - lastLabelIndex < 3) {
+      return "";
+    }
+
+    lastLabelIndex = index;
     return MONTH_FORMATTER.format(new Date(firstDay));
   });
 }
@@ -185,7 +192,10 @@ function GitHubCalendar({
     return null;
   }
 
-  const monthLabels = getMonthLabels(calendar.weeks.map((week) => week.firstDay));
+  // Limit to 53 weeks (1 year) — keep the most recent weeks
+  const MAX_WEEKS = 53;
+  const weeks = calendar.weeks.slice(-MAX_WEEKS);
+  const monthLabels = getMonthLabels(weeks.map((week) => week.firstDay));
 
   return (
     <>
@@ -232,22 +242,11 @@ function GitHubCalendar({
         <div className="relative">
           <div className="-mx-2 overflow-x-auto px-2 pb-2 sm:mx-0 sm:px-0">
         <div className="inline-flex min-w-max gap-2.5 sm:gap-3">
-          <div className="grid grid-rows-7 gap-0.5 pt-5 text-[10px] uppercase tracking-[0.2em] text-gray-500 sm:gap-1 sm:pt-6">
-            {WEEKDAY_LABELS.map((label, index) => (
-              <span
-                key={`${label}-${index}`}
-                className="flex h-2.5 items-center sm:h-3.5"
-              >
-                {label}
-              </span>
-            ))}
-          </div>
-
           <div className="space-y-1.5">
             <div className="flex gap-0.5 px-[1px] text-[10px] uppercase tracking-[0.2em] text-gray-500 sm:gap-1">
               {monthLabels.map((label, index) => (
                 <span
-                  key={`${calendar.weeks[index]?.firstDay}-${label || index}`}
+                  key={`${weeks[index]?.firstDay}-${label || index}`}
                   className="w-2.5 text-left sm:w-3.5"
                 >
                   {label}
@@ -260,7 +259,7 @@ function GitHubCalendar({
               role="img"
               aria-label={`${calendar.totalContributions} GitHub contributions in the last year`}
             >
-              {calendar.weeks.map((week, weekIndex) => (
+              {weeks.map((week, weekIndex) => (
                 <div
                   key={week.firstDay}
                   className="grid grid-rows-7 gap-0.5 sm:gap-1"
@@ -281,7 +280,7 @@ function GitHubCalendar({
                           } on ${DATE_FORMATTER.format(new Date(day.date))}`}
                         />
                         <div
-                          className={`pointer-events-none absolute z-20 hidden whitespace-nowrap rounded-md border border-white/10 bg-black/90 px-2.5 py-1.5 text-[11px] font-medium text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-sm group-hover:block ${getTooltipPositionClass(weekIndex, calendar.weeks.length)} ${getTooltipVerticalClass(day.weekday)}`}
+                          className={`pointer-events-none absolute z-20 hidden whitespace-nowrap rounded-md border border-white/10 bg-black/90 px-2.5 py-1.5 text-[11px] font-medium text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-sm group-hover:block ${getTooltipPositionClass(weekIndex, weeks.length)} ${getTooltipVerticalClass(day.weekday)}`}
                         >
                           {day.contributionCount} contribution
                           {day.contributionCount === 1 ? "" : "s"} on{" "}
