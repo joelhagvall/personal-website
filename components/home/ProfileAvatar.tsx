@@ -87,7 +87,7 @@ export function ProfileAvatar() {
       )}
 
       <span
-        className="absolute bottom-0 right-0 block h-4 w-4 rounded-full bg-green-400 ring-2 ring-white"
+        className="absolute bottom-2.5 right-2.5 block h-4 w-4 rounded-full bg-green-400 ring-2 ring-white"
         role="img"
         aria-label="Online status indicator"
       />
