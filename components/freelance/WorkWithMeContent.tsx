@@ -1,8 +1,11 @@
 import Link from "next/link";
 import {
+  Bot,
   CheckCircle2,
+  CreditCard,
   LayoutTemplate,
   Rocket,
+  ShieldCheck,
   Sparkles,
   Smartphone,
 } from "lucide-react";
@@ -11,6 +14,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { FreelanceInquiryForm } from "@/components/freelance/FreelanceInquiryForm";
 import { Card, CardContent } from "@/components/ui/card";
 import { FREELANCE } from "@/data/freelance";
+import { TECH_STACK } from "@/data/tech-stack";
 import { LINK_STYLES, TEXT_STYLES } from "@/lib/styles";
 import type { ProjectWithStats } from "@/types/project";
 
@@ -20,6 +24,70 @@ const serviceIconMap = {
   sparkles: Sparkles,
   smartphone: Smartphone,
 } as const;
+
+const customTechIconMap = {
+  "AI SDK": Bot,
+  Auth: ShieldCheck,
+  Stripe: CreditCard,
+} as const;
+
+type CustomTechName = keyof typeof customTechIconMap;
+
+function isCustomTechName(name: string): name is CustomTechName {
+  return name in customTechIconMap;
+}
+
+function TechStackRow() {
+  return (
+    <div
+      className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-2 text-sm text-gray-300"
+      aria-label={FREELANCE.page.techStack.label}
+    >
+      <span className="mr-1 text-xs uppercase tracking-[0.2em] text-gray-500">
+        {FREELANCE.page.techStack.label}
+      </span>
+      {FREELANCE.page.techStack.items.map((name) => {
+        const existingTech = TECH_STACK.find((tech) => tech.name === name);
+
+        if (existingTech) {
+          return (
+            <a
+              key={name}
+              href={existingTech.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 transition-colors hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <img
+                src={existingTech.icon}
+                alt=""
+                aria-hidden="true"
+                className={`h-4 w-4 ${"rounded" in existingTech && existingTech.rounded ? "rounded" : ""}`}
+              />
+              <span>{existingTech.name}</span>
+            </a>
+          );
+        }
+
+        if (isCustomTechName(name)) {
+          const Icon = customTechIconMap[name];
+
+          return (
+            <span
+              key={name}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5"
+            >
+              <Icon className="h-4 w-4 text-gray-200" aria-hidden="true" />
+              <span>{name}</span>
+            </span>
+          );
+        }
+
+        return null;
+      })}
+    </div>
+  );
+}
 
 function SectionHeading({
   title,
@@ -52,16 +120,19 @@ export function WorkWithMeContent({
   return (
     <div className="min-h-screen px-8 py-12 text-white md:px-12">
       <div className="mx-auto max-w-7xl space-y-12">
-        <section className="space-y-6 text-center">
-          <h1 className={`text-4xl font-bold md:text-5xl ${TEXT_STYLES.gradientHeading}`}>
+        <section className="space-y-5 text-center">
+          <h1
+            className={`pb-1 text-4xl font-bold leading-[1.12] md:text-5xl md:leading-[1.1] ${TEXT_STYLES.gradientHeading}`}
+          >
             {FREELANCE.page.title}
           </h1>
-          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-300">
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-300">
             {FREELANCE.page.intro}
           </p>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground">
+          <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted-foreground">
             {FREELANCE.page.summary}
           </p>
+          <TechStackRow />
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="#contact" className={LINK_STYLES.button}>
               Start a project
@@ -95,7 +166,7 @@ export function WorkWithMeContent({
           <div className="space-y-6">
             <SectionHeading
               title={FREELANCE.page.sections.services}
-              description="What I can own and ship."
+              description="Clear offers with a concrete shipped result."
             />
             <div className="grid gap-4">
               {FREELANCE.services.map((service) => (
@@ -131,7 +202,7 @@ export function WorkWithMeContent({
           <div className="space-y-6">
             <SectionHeading
               title={FREELANCE.page.sections.fit}
-              description="Best fit if speed and quality both matter."
+              description="The practical upside of working with me."
             />
             <div className="rounded-lg border border-primary/10 bg-primary/5 p-6">
               <div className="grid gap-4">

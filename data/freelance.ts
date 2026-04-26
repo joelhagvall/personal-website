@@ -2,9 +2,9 @@ import { PERSON, SITE, SOCIAL } from "./site";
 
 export const FREELANCE = {
   heroBadge: "Available for client work",
-  heroTitle: "Product development for teams that need to ship.",
+  heroTitle: "AI SaaS features people can use.",
   heroDescription:
-    "I build web products, MVPs, and product features with AI-assisted execution and a real engineering bar.",
+    "I build RAG assistants, embeddings/vector search, document ingestion, AI reports, recommender flows, and the SaaS layer around them.",
   primaryCta: {
     label: "Work with me",
     href: "/work-with-me",
@@ -17,11 +17,11 @@ export const FREELANCE = {
     heading: "Work with me",
     availability: "Available for new projects.",
     description:
-      "For teams that need speed, leverage, and production-ready execution.",
+      "Product engineering for teams that need outcomes, not more process.",
     serviceHighlights: [
-      "AI-assisted build loops",
-      "Frontend and full-stack delivery",
-      "CI/CD and testing discipline",
+      "AI features users can try",
+      "SaaS flows that can sell",
+      "Tests and release discipline",
     ],
     primaryCta: {
       label: "See how I work",
@@ -34,78 +34,83 @@ export const FREELANCE = {
   },
   page: {
     eyebrow: "Work with me",
-    title: "I ship product work fast, with quality.",
+    title: "AI SaaS features people can use.",
     intro:
-      "For startups and small teams that need execution, leverage, and low-overhead delivery.",
+      "I build RAG assistants, embeddings/vector search, document ingestion, AI reports, recommender flows, and the SaaS layer around them.",
     summary:
-      "Based in Stockholm and work remotely. I use AI agents, Cursor, and Codex to compress build cycles, while keeping a real bar around CI/CD and tests.",
+      "Useful AI, connected to real data, shipped with auth, billing, audit logs, tests, and deployment.",
+    techStack: {
+      label: "Stack",
+      items: ["React", "Next.js", "TypeScript", "Supabase", "PostgreSQL", "AI SDK", "Auth", "Stripe"],
+    },
     availability: {
-      label: "Availability",
-      value: "Available for new projects.",
+      label: "Value",
+      value: "One owner across product, frontend, backend, AI, and release.",
     },
     responseTime: {
-      label: "Execution",
-      value: "AI-assisted workflows, short feedback loops, and direct communication.",
+      label: "How",
+      value: "Short scope, AI-assisted build loops, direct updates, and targeted tests.",
     },
     location: {
-      label: "Quality bar",
-      value: "CI/CD, unit tests, integration tests, and E2E coverage where it matters.",
+      label: "Outcome",
+      value: "A working flow users can test, teams can sell, and engineers can maintain.",
     },
     sections: {
-      services: "What I can build",
-      fit: "Best fit if",
-      work: "Selected projects",
-      process: "How I work",
+      services: "Packages",
+      fit: "What you get",
+      work: "Proof",
+      process: "How delivery works",
       contact: "Send a short brief",
     },
   },
   services: [
     {
       icon: "rocket",
-      title: "MVPs",
+      title: "AI MVP Sprint",
       description:
-        "First versions you can put in front of users fast without building a mess.",
+        "A testable AI feature: RAG chat, vector search, document Q&A, report generator, recommender, or agent workflow.",
     },
     {
       icon: "layout",
-      title: "Features",
+      title: "SaaS Feature Sprint",
       description:
-        "Product features, internal tools, and scoped web app delivery.",
+        "The SaaS layer around the feature: onboarding, auth, roles, billing, admin views, API, database, and release.",
     },
     {
       icon: "sparkles",
-      title: "Frontend",
+      title: "AI Product Polish",
       description:
-        "Frontend that feels sharp, ships fast, and holds up in production.",
+        "Make an AI flow more useful: embeddings, retrieval quality, prompts, streaming UX, empty states, errors, and trust signals.",
     },
     {
       icon: "smartphone",
-      title: "Shipping systems",
+      title: "Shipping Hardening",
       description:
-        "CI/CD, testing, and release discipline so delivery stays fast as scope grows.",
+        "Multi-provider routing, cost tracking, audit logs, AI governance checks, eval cases, tests, CI/CD, and handover.",
     },
   ],
   fit: [
-    "You need an MVP built.",
-    "Your roadmap is blocked by lack of engineering time.",
-    "You want modern engineering leverage without lowering the quality bar.",
+    "Concrete AI output: answers, recommendations, generated reports, completed tasks, or admin decisions.",
+    "AI connected to product data, documents, embeddings, permissions, users, billing, and workflows.",
+    "Measurable delivery: fewer manual steps, faster support/admin work, better retrieval quality, shorter time to MVP, or clearer conversion flow.",
+    "Cleaner handover with prompts, tests, decisions, and code another engineer can continue from.",
   ],
   selectedProjectRepos: ["data-wipe-mailer", "jarvis-chat", "PVT15-Project"],
   process: [
     {
       title: "1. Scope",
       description:
-        "Short brief. Scope, priorities, constraints, and what needs to ship first.",
+        "Pick the exact job: answer from documents, draft reports, recommend actions, automate steps, or support admins.",
     },
     {
       title: "2. Build",
       description:
-        "Build in tight loops with AI-assisted execution, regular updates, and no unnecessary process.",
+        "Connect ingestion, embeddings, retrieval, model calls, UI, permissions, logging, fallbacks, and the SaaS flow.",
     },
     {
       title: "3. Ship",
       description:
-        "Ship through CI/CD, cover risk with tests, hand over cleanly, and fix what needs fixing.",
+        "Deploy it, test real cases, check cost and failure modes, then hand over the next useful iteration.",
     },
   ],
   contact: {
@@ -114,9 +119,9 @@ export const FREELANCE = {
     submitLabel: "Open email draft",
     copyDraftLabel: "Copy project details",
     description:
-      "Send the product, scope, timeline, and what help you need. If speed and quality both matter, this is the right place to start.",
+      "Send the product, scope, timeline, and the measurable outcome you need. I will reply with what I would ship first and why.",
     note:
-      "If it is a fit, I will reply with next steps, open questions, and the fastest way to get moving.",
+      "Good briefs include the user, the blocked flow, the deadline, and what should be true after the work is done.",
     emailCtaLabel: "Email directly",
     copyEmailLabel: "Copy email",
     fields: {
@@ -136,14 +141,20 @@ export const FREELANCE = {
         "What are you building, what help do you need, and what outcome matters most?",
     },
     projectTypes: [
-      "MVP",
-      "Web app feature delivery",
-      "Frontend implementation",
-      "Mobile prototype",
-      "Technical scoping",
+      "AI MVP",
+      "RAG or vector search",
+      "Document ingestion",
+      "AI report generator",
+      "Recommendation engine",
+      "Tool-calling agent",
+      "AI governance or audit logs",
+      "SaaS feature delivery",
+      "Internal tool",
+      "Release hardening",
       "Other",
     ],
     budgetOptions: [
+      "Under $500",
       "Under $2k",
       "$2k-$5k",
       "$5k-$10k",
@@ -161,7 +172,7 @@ export const FREELANCE = {
   metadata: {
     title: `Work with me – ${PERSON.name}`,
     description:
-      "I ship product work fast for startups and small teams, using AI-assisted workflows with a real engineering bar.",
+      "AI product engineering, SaaS feature delivery, and internal tool builds for startups and small teams that need measurable outcomes.",
     canonical: `${SITE.url}/work-with-me`,
   },
 } as const;
