@@ -134,14 +134,19 @@ export function WorkWithMeContent({
           </p>
           <TechStackRow />
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="#contact" className={LINK_STYLES.button}>
-              Start a project
-            </Link>
+            <a
+              href={FREELANCE.contact.calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={LINK_STYLES.button}
+            >
+              {FREELANCE.page.primaryContactCta}
+            </a>
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 text-gray-300 transition-colors hover:text-white"
             >
-              See all projects
+              {FREELANCE.page.secondaryProjectsCta}
             </Link>
           </div>
         </section>

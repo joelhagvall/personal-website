@@ -60,8 +60,10 @@ export const FREELANCE = {
       fit: "What you get",
       work: "Proof",
       process: "How delivery works",
-      contact: "Send a short brief",
+      contact: "Book a call",
     },
+    primaryContactCta: "Book 15 min",
+    secondaryProjectsCta: "See all projects",
   },
   services: [
     {
@@ -115,11 +117,21 @@ export const FREELANCE = {
   ],
   contact: {
     email: SOCIAL.freelanceEmail,
-    title: "Send a short brief.",
+    calendlyUrl: "https://calendly.com/joel-hagvall/30min",
+    title: "Book 15 min.",
+    bookingLabel: "Book 15 min",
+    bookingHeading: "Start with a focused call",
+    bookingDescription:
+      "Pick a time and we will map the outcome, scope, timeline, and first useful ship.",
+    backupLabel: "or email:",
+    backupDescription:
+      "Use email if you are not ready to book yet or want to send context first.",
+    copiedLabel: "Copied",
+    copyFailedLabel: "Copy failed",
     submitLabel: "Open email draft",
     copyDraftLabel: "Copy project details",
     description:
-      "Send the product, scope, timeline, and the measurable outcome you need. I will reply with what I would ship first and why.",
+      "High-ticket work closes on calls. Calendly is the main path, email is the backup.",
     note:
       "Good briefs include the user, the blocked flow, the deadline, and what should be true after the work is done.",
     emailCtaLabel: "Email directly",
