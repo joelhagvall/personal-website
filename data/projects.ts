@@ -7,6 +7,26 @@ import type { Project } from "@/types/project";
 
 export const PROJECTS: Project[] = [
   {
+    title: "ResiliaAI",
+    description:
+      "An AI-powered resilience and crisis preparedness platform for housing associations and organizations. It helps teams prepare for, coordinate during, and recover from disruptions. AI-assisted guidance is grounded in a curated knowledge base of **25,000+ Q&A pairs** drawn from crisis-preparedness regulations and official guidelines, alongside role-based coordination and operational dashboards. Built end-to-end by me as **founder and engineer**.",
+    technologies: [
+      "React",
+      "TypeScript",
+      "TanStack",
+      "Supabase",
+      "PostgreSQL",
+      "Vercel AI SDK",
+      "OpenRouter",
+      "Berget AI",
+      "Hugging Face",
+      "RAG",
+      "AI Agents",
+    ],
+    iconName: "shield",
+    status: "Active development",
+  },
+  {
     title: "Data Wipe Mailer",
     description:
       "A simple, privacy-focused web app that helps Swedish citizens exercise their GDPR Article 17 right to erasure by sending deletion requests to Swedish data brokers like MrKoll, Ratsit, and others. Built with Next.js and hosted on Vercel, operating entirely client-side with no server data transmission. My LinkedIn post about this project received **2k+ likes** and **200k+ views** with overwhelmingly positive feedback.",

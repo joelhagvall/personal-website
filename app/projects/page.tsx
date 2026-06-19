@@ -3,6 +3,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectsHeader } from "@/components/ProjectsHeader";
 import { getProjectsWithStats } from "@/lib/projects";
 import { createSoftwareApplicationJsonLd } from "@/lib/seo";
+import { SITE } from "@/data/site";
 
 export default async function Projects() {
   const projectsWithStats = await getProjectsWithStats();
@@ -12,7 +13,7 @@ export default async function Projects() {
     createSoftwareApplicationJsonLd({
       name: project.title,
       description: project.description.replace(/\*\*/g, ""),
-      url: project.githubUrl,
+      url: project.githubUrl ?? `${SITE.url}/projects`,
       applicationCategory: "DeveloperApplication",
       programmingLanguage: project.technologies,
     })
@@ -35,12 +36,13 @@ export default async function Projects() {
             <div className="space-y-6">
               {projectsWithStats.map((project) => (
                 <ProjectCard
-                  key={project.repo}
+                  key={project.repo ?? project.title}
                   title={project.title}
                   description={project.description}
                   technologies={project.technologies}
                   githubUrl={project.githubUrl}
                   iconName={project.iconName}
+                  status={project.status}
                   stars={project.stars}
                   forks={project.forks}
                   linkedinUrl={project.linkedinUrl}

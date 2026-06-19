@@ -29,8 +29,9 @@ interface ProjectCardProps {
   title: string;
   description: string;
   technologies: string[];
-  githubUrl: string;
+  githubUrl?: string | undefined;
   iconName: IconName;
+  status?: string | undefined;
   stars?: number | undefined;
   forks?: number | undefined;
   linkedinUrl?: string | undefined;
@@ -53,6 +54,7 @@ export function ProjectCard({
   technologies,
   githubUrl,
   iconName,
+  status,
   stars,
   forks,
   linkedinUrl,
@@ -66,9 +68,18 @@ export function ProjectCard({
     <div className="project-card-item">
       <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
         <div className="space-y-4">
-          <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+          <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2 flex-wrap">
             <Icon className="text-primary" size={24} aria-hidden="true" />
             {title}
+            {status && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
+                <span
+                  className="w-2 h-2 rounded-full bg-primary animate-pulse"
+                  aria-hidden="true"
+                />
+                {status}
+              </span>
+            )}
           </h2>
 
           <p className="text-muted-foreground text-lg">
@@ -130,16 +141,18 @@ export function ProjectCard({
           )}
 
           <div className="flex items-center gap-4 flex-wrap" role="group" aria-label="Project links">
-            <Link
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${LABELS.sourceCode} for ${title} (opens in new tab)`}
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-            >
-              <GitHubLogoIcon aria-hidden="true" />
-              {LABELS.sourceCode}
-            </Link>
+            {githubUrl && (
+              <Link
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${LABELS.sourceCode} for ${title} (opens in new tab)`}
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              >
+                <GitHubLogoIcon aria-hidden="true" />
+                {LABELS.sourceCode}
+              </Link>
+            )}
             {linkedinUrl && (
               <Link
                 href={linkedinUrl}

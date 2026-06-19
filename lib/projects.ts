@@ -13,6 +13,11 @@ export async function getProjectsWithStats(
 ): Promise<ProjectWithStats[]> {
   return Promise.all(
     projects.map(async (project) => {
+      // Projects without a public repo (e.g. work in progress) have no GitHub link or stats.
+      if (!project.owner || !project.repo) {
+        return { ...project };
+      }
+
       const repoData = await getGitHubRepo(project.owner, project.repo);
 
       return {

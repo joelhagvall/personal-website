@@ -4,9 +4,10 @@ export interface Project {
   title: string;
   description: string;
   technologies: string[];
-  owner: string;
-  repo: string;
+  owner?: string;
+  repo?: string;
   iconName: IconName;
+  status?: string;
   linkedinUrl?: string;
   demoUrl?: string;
   publicationUrl?: string;
@@ -14,7 +15,7 @@ export interface Project {
 }
 
 export interface ProjectWithStats extends Project {
-  githubUrl: string;
+  githubUrl?: string;
   stars?: number | undefined;
   forks?: number | undefined;
 }
