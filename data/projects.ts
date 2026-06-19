@@ -9,7 +9,7 @@ export const PROJECTS: Project[] = [
   {
     title: "ResiliaAI",
     description:
-      "An AI-powered resilience and crisis preparedness platform for housing associations and organizations. It helps teams prepare for, coordinate during, and recover from disruptions. AI-assisted guidance is grounded in a curated knowledge base of **25,000+ Q&A pairs** drawn from crisis-preparedness regulations and official guidelines, alongside role-based coordination and operational dashboards. Built end-to-end by me as **founder and engineer**.",
+      "An AI-powered resilience and crisis preparedness platform for housing associations and organizations. It helps teams prepare for, coordinate during, and recover from disruptions. AI-assisted guidance is grounded in a curated knowledge base of **25,000+ Q&A pairs** drawn from crisis-preparedness regulations and official guidelines, alongside role-based coordination and operational dashboards. Built end-to-end by me as **engineer**.",
     technologies: [
       "React",
       "TypeScript",
