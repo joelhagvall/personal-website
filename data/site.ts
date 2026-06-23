@@ -15,7 +15,7 @@ export const PERSON = {
   name: "Joel Hägvall",
   alternateName: "joelhagvall",
   jobTitle: "Software Developer",
-  age: 25,
+  age: 26,
   birthYear: 2000,
   bio: "I'm a software developer with a big interest in technology and how it can be used to make a difference.",
   shortBio: "Software developer based in Stockholm, Sweden.",
