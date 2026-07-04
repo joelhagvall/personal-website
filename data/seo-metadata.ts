@@ -4,7 +4,7 @@
  */
 
 import type { Metadata } from "next";
-import { PERSON, SITE } from "./site";
+import { OG_IMAGE, PERSON, SITE } from "./site";
 import { FREELANCE } from "./freelance";
 
 // ============================================
@@ -24,21 +24,14 @@ const createOpenGraph = (
   siteName: SITE.title,
   type: "website" as const,
   locale: SITE.locale,
-  images: [
-    {
-      url: PERSON.avatar,
-      width: 1200,
-      height: 630,
-      alt: PERSON.name,
-    },
-  ],
+  images: [OG_IMAGE],
 });
 
 const createTwitter = (title: string, description: string) => ({
   card: "summary_large_image" as const,
   title,
   description,
-  images: [PERSON.avatar],
+  images: [OG_IMAGE.url],
 });
 
 const createAlternates = (path: string = "") => ({

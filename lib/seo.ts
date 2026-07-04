@@ -4,7 +4,7 @@
  */
 
 import { FREELANCE } from "@/data/freelance";
-import { PERSON, SITE, SOCIAL, SKILLS } from "@/data/site";
+import { OG_IMAGE, PERSON, SITE, SOCIAL, SKILLS } from "@/data/site";
 
 export const personJsonLd = {
   "@context": "https://schema.org",
@@ -150,5 +150,40 @@ export function createSoftwareApplicationJsonLd(project: {
       url: SITE.url,
     },
     applicationCategory: project.applicationCategory,
+  };
+}
+
+export function blogPostingJsonLd(post: {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+}) {
+  const url = `${SITE.url}/blog/${post.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    keywords: post.tags,
+    url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    image: OG_IMAGE.url,
+    inLanguage: "en-US",
+    author: {
+      "@type": "Person",
+      name: PERSON.name,
+      url: SITE.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: PERSON.name,
+      url: SITE.url,
+    },
   };
 }

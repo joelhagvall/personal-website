@@ -28,7 +28,7 @@ describe("PAGE_METADATA.freelance", () => {
       card: "summary_large_image",
       title: PAGE_METADATA.freelance.title,
       description: FREELANCE.metadata.description,
-      images: ["/media/selfie.jpeg"],
+      images: [`${SITE.url}/opengraph-image`],
     });
   });
 });

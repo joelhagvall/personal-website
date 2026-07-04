@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { PERSON, SITE } from '@/data/site'
+import { OG_IMAGE, PERSON, SITE } from '@/data/site'
 
 const url = `${SITE.url}/security-policy`;
 const title = `Security Policy – ${PERSON.name} | Responsible Disclosure`;
@@ -21,20 +21,13 @@ export const metadata: Metadata = {
     type: 'website',
     url,
     siteName: SITE.name,
-    images: [
-      {
-        url: PERSON.avatar,
-        width: 1200,
-        height: 630,
-        alt: PERSON.name,
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title,
     description,
-    images: [PERSON.avatar],
+    images: [OG_IMAGE.url],
   },
 }
 

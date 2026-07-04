@@ -38,7 +38,7 @@ export function ProfileAvatar() {
           onClick={() => setIsOpen(true)}
         >
           <Avatar className="h-20 w-20 cursor-pointer">
-            <AvatarImage src="/media/selfie.jpeg" alt="Joel Hägvall" />
+            <AvatarImage src="/media/selfie.webp" alt="Joel Hägvall" />
             <AvatarFallback>JH</AvatarFallback>
           </Avatar>
           <span
@@ -78,7 +78,7 @@ export function ProfileAvatar() {
               <X className="h-8 w-8" aria-hidden="true" />
             </button>
             <img
-              src="/media/selfie.jpeg"
+              src="/media/selfie.webp"
               alt="Joel Hägvall - profile photo"
               className="w-full h-auto rounded-xl"
             />

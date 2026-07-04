@@ -1,0 +1,20 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 60000,
+    "wait": 1500,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+    }
+  },
+  "urls": [
+    "http://localhost:4173/",
+    "http://localhost:4173/about",
+    "http://localhost:4173/projects",
+    "http://localhost:4173/resume",
+    "http://localhost:4173/blog",
+    "http://localhost:4173/blog/noise",
+    "http://localhost:4173/work-with-me",
+    "http://localhost:4173/security-policy"
+  ]
+}

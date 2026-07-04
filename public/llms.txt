@@ -1,0 +1,30 @@
+# Joel Hägvall
+
+> Personal website of Joel Hägvall, a software developer based in Stockholm, Sweden. Experienced in building web and mobile applications with TypeScript, React, Next.js, Java, Python, Swift and more. Available for freelance product development work.
+
+This is a personal portfolio and blog site. All content is in English.
+
+## Pages
+
+- [Home](https://joelhagvall.com/): Introduction, featured projects and contact information
+- [About](https://joelhagvall.com/about): Background, skills and interests of Joel Hägvall
+- [Projects](https://joelhagvall.com/projects): Personal and academic projects — web apps, mobile apps and open-source work
+- [Resume](https://joelhagvall.com/resume): Professional experience, education and skills
+- [Work With Me](https://joelhagvall.com/work-with-me): Freelance product development services — AI features, SaaS feature sprints and product polish
+- [Blog](https://joelhagvall.com/blog): Thoughts and technical writing
+
+## Blog posts
+
+- [Stripping Away the Noise](https://joelhagvall.com/blog/noise): On building transparent, trust-minimized systems — verifiable voting, open financial infrastructure and decentralized energy
+
+## Machine-readable resources
+
+- [Sitemap](https://joelhagvall.com/sitemap.xml): Full list of pages
+- [RSS feed](https://joelhagvall.com/feed.xml): Blog updates
+- [humans.txt](https://joelhagvall.com/humans.txt): Site credits
+
+## Contact
+
+- Email: work@joelhagvall.com
+- GitHub: https://github.com/joelhagvall
+- LinkedIn: https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/
