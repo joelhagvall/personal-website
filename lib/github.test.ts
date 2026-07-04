@@ -1,4 +1,5 @@
 import {
+  contributionsToCalendar,
   getGitHubContributionCalendar,
   getGitHubRepo,
 } from './github';
@@ -228,5 +229,44 @@ describe('getGitHubContributionCalendar', () => {
       'Failed to parse contribution calendar for graphql-error-user:',
       [{ message: 'Something went wrong' }]
     );
+  });
+});
+
+describe('contributionsToCalendar', () => {
+  // 2026-06-28 is a Sunday
+  const days = [
+    { date: '2026-06-26', count: 2 }, // Friday
+    { date: '2026-06-27', count: 0 }, // Saturday
+    { date: '2026-06-28', count: 5 }, // Sunday — starts a new week
+    { date: '2026-06-29', count: 1 }, // Monday
+  ];
+
+  it('groups days into weeks starting on Sundays', () => {
+    const calendar = contributionsToCalendar(days, 8);
+
+    expect(calendar.totalContributions).toBe(8);
+    expect(calendar.weeks).toHaveLength(2);
+    expect(calendar.weeks[0]).toEqual({
+      firstDay: '2026-06-26',
+      contributionDays: [
+        { contributionCount: 2, date: '2026-06-26', weekday: 5 },
+        { contributionCount: 0, date: '2026-06-27', weekday: 6 },
+      ],
+    });
+    expect(calendar.weeks[1]?.firstDay).toBe('2026-06-28');
+    expect(calendar.weeks[1]?.contributionDays).toHaveLength(2);
+  });
+
+  it('sums contribution counts when no total is provided', () => {
+    const calendar = contributionsToCalendar(days);
+
+    expect(calendar.totalContributions).toBe(8);
+  });
+
+  it('returns an empty calendar for no days', () => {
+    expect(contributionsToCalendar([])).toEqual({
+      totalContributions: 0,
+      weeks: [],
+    });
   });
 });

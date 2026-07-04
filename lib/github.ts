@@ -57,6 +57,41 @@ export const getGitHubRepo = cache(async (owner: string, repo: string): Promise<
   }
 });
 
+// Day entry from the public contributions API
+// (https://github-contributions-api.jogruber.de), used for client-side
+// refresh of the build-time calendar
+export interface PublicContributionDay {
+  date: string;
+  count: number;
+}
+
+export function contributionsToCalendar(
+  days: PublicContributionDay[],
+  totalContributions?: number
+): GitHubContributionCalendar {
+  const weeks: GitHubContributionWeek[] = [];
+
+  for (const day of days) {
+    const weekday = new Date(`${day.date}T00:00:00Z`).getUTCDay();
+
+    if (weekday === 0 || weeks.length === 0) {
+      weeks.push({ firstDay: day.date, contributionDays: [] });
+    }
+
+    weeks[weeks.length - 1]!.contributionDays.push({
+      contributionCount: day.count,
+      date: day.date,
+      weekday,
+    });
+  }
+
+  return {
+    totalContributions:
+      totalContributions ?? days.reduce((sum, day) => sum + day.count, 0),
+    weeks,
+  };
+}
+
 const GITHUB_CONTRIBUTION_QUERY = `
   query GitHubContributionCalendar($username: String!) {
     user(login: $username) {

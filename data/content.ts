@@ -75,7 +75,6 @@ export const HOME_CONTENT = {
     viewProfile: "View profile",
     swipeHint: "Swipe to explore",
     unavailable: "Live contribution data is unavailable right now.",
-    missingToken: "Set GITHUB_TOKEN in the environment to render the live graph.",
     legendLess: "Less",
     legendMore: "More",
   },
