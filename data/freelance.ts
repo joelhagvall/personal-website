@@ -62,7 +62,7 @@ export const FREELANCE = {
       process: "How delivery works",
       contact: "Book a call",
     },
-    primaryContactCta: "Book 15 min",
+    primaryContactCta: "Book 30 min",
     secondaryProjectsCta: "See all projects",
   },
   services: [
@@ -118,8 +118,8 @@ export const FREELANCE = {
   contact: {
     email: SOCIAL.freelanceEmail,
     calendlyUrl: "https://calendly.com/joel-hagvall/30min",
-    title: "Book 15 min.",
-    bookingLabel: "Book 15 min",
+    title: "Book 30 min.",
+    bookingLabel: "Book 30 min",
     bookingHeading: "Start with a focused call",
     bookingDescription:
       "Pick a time and we will map the outcome, scope, timeline, and first useful ship.",
