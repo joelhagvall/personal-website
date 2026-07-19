@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -14,16 +14,22 @@ const PLANETS = [
 ] as const;
 
 function SolarSystem() {
-  const sunRef = useRef<THREE.Mesh>(null);
+  const glowInnerRef = useRef<THREE.Mesh>(null);
+  const glowOuterRef = useRef<THREE.Mesh>(null);
   const planetsRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
 
-    // Sun pulse
-    if (sunRef.current) {
-      const material = sunRef.current.material as THREE.MeshStandardMaterial;
-      material.emissiveIntensity = 1.5 + Math.sin(t * 2) * 0.3;
+    // Sun pulse via the glow layers' opacity
+    const pulse = Math.sin(t * 2) * 0.08;
+    if (glowInnerRef.current) {
+      (glowInnerRef.current.material as THREE.MeshBasicMaterial).opacity =
+        0.4 + pulse;
+    }
+    if (glowOuterRef.current) {
+      (glowOuterRef.current.material as THREE.MeshBasicMaterial).opacity =
+        0.2 + pulse * 0.5;
     }
 
     // Rotate entire system slowly
@@ -32,37 +38,34 @@ function SolarSystem() {
     }
   });
 
+  // The sun, its glow layers and the orbit lines are self-lit decoration, so
+  // they use unlit meshBasicMaterial — no PBR lighting cost. Only the planets
+  // are actually shaded by the point light.
   return (
     <Float speed={0.5} rotationIntensity={0.1} floatIntensity={0.2}>
       <group rotation={[0.4, 0, 0]}>
 
         {/* === SUN === */}
-        <mesh ref={sunRef}>
+        <mesh>
           <sphereGeometry args={[0.25, 32, 32]} />
-          <meshStandardMaterial
-            color="#fbbf24"
-            emissive="#f97316"
-            emissiveIntensity={1.5}
-          />
+          <meshBasicMaterial color="#fbbf24" toneMapped={false} />
         </mesh>
 
         {/* Sun glow layers */}
-        <mesh>
+        <mesh ref={glowInnerRef}>
           <sphereGeometry args={[0.28, 32, 32]} />
-          <meshStandardMaterial
+          <meshBasicMaterial
             color="#fbbf24"
-            emissive="#fbbf24"
-            emissiveIntensity={0.8}
+            toneMapped={false}
             transparent
             opacity={0.4}
           />
         </mesh>
-        <mesh>
+        <mesh ref={glowOuterRef}>
           <sphereGeometry args={[0.32, 32, 32]} />
-          <meshStandardMaterial
+          <meshBasicMaterial
             color="#f97316"
-            emissive="#f97316"
-            emissiveIntensity={0.5}
+            toneMapped={false}
             transparent
             opacity={0.2}
           />
@@ -79,11 +82,7 @@ function SolarSystem() {
         {PLANETS.map((planet) => (
           <mesh key={`orbit-${planet.name}`} rotation={[Math.PI / 2, 0, 0]}>
             <torusGeometry args={[planet.orbit, 0.003, 8, 64]} />
-            <meshStandardMaterial
-              color="#ffffff"
-              transparent
-              opacity={0.15}
-            />
+            <meshBasicMaterial color="#ffffff" transparent opacity={0.15} />
           </mesh>
         ))}
 
@@ -136,7 +135,7 @@ function Planet({ orbit, size, color, speed, moon, rings }: PlanetProps) {
       {rings && (
         <mesh rotation={[Math.PI / 2.5, 0, 0]}>
           <ringGeometry args={[size * 1.4, size * 2.2, 32]} />
-          <meshStandardMaterial
+          <meshBasicMaterial
             color="#d4c4a8"
             transparent
             opacity={0.7}
@@ -175,8 +174,34 @@ interface Astronaut3DProps {
 }
 
 export function Astronaut3D({ className = "" }: Astronaut3DProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  // "always" while visible, "never" when scrolled out of view (the WebGL loop
+  // otherwise keeps rendering at 60fps behind the rest of the page), and a
+  // single static "demand" frame for prefers-reduced-motion users.
+  const [frameloop, setFrameloop] = useState<"always" | "never" | "demand">(
+    "always"
+  );
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setFrameloop("demand");
+      return;
+    }
+
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry) return;
+      setFrameloop(entry.isIntersecting ? "always" : "never");
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
+      ref={containerRef}
       className={`w-full h-full ${className}`}
       role="img"
       aria-label="Animated 3D solar system with orbiting planets"
@@ -184,6 +209,9 @@ export function Astronaut3D({ className = "" }: Astronaut3DProps) {
       <Canvas
         camera={{ position: [0, 2, 5], fov: 45 }}
         style={{ background: "transparent" }}
+        frameloop={frameloop}
+        dpr={[1, 1.5]}
+        gl={{ powerPreference: "low-power" }}
       >
         <ambientLight intensity={0.1} />
         <pointLight position={[0, 0, 0]} intensity={2} color="#fbbf24" />

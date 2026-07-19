@@ -1,16 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState, useRef } from "react";
-
-interface ShootingStar {
-  id: number;
-  x: number;
-  y: number;
-  angle: number;
-  scale: number;
-  speed: number;
-  distance: number;
-}
+import React, { useEffect, useId, useRef } from "react";
 
 interface ShootingStarsProps {
   minSpeed?: number;
@@ -42,6 +32,15 @@ const getRandomStartPoint = () => {
       return { x: 0, y: 0, angle: 45 };
   }
 };
+
+interface StarState {
+  x: number;
+  y: number;
+  angle: number;
+  speed: number;
+  distance: number;
+}
+
 export const ShootingStars: React.FC<ShootingStarsProps> = ({
   minSpeed = 10,
   maxSpeed = 30,
@@ -53,100 +52,122 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   starHeight = 1,
   className,
 }) => {
-  const [star, setStar] = useState<ShootingStar | null>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<SVGRectElement>(null);
+  const gradientId = useId();
 
+  // The animation mutates the <rect> directly instead of going through React
+  // state — a setState per frame would re-render the whole component at 60fps.
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    let isMounted = true;
+    const rect = rectRef.current;
+    const container = containerRef.current;
+    if (!rect || !container) return;
 
-    const createStar = () => {
-      if (!isMounted) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    let rafId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let inViewport = true;
+    let star: StarState | null = null;
+    let lastTime = 0;
+
+    const scheduleNext = () => {
+      const delay = Math.random() * (maxDelay - minDelay) + minDelay;
+      timeoutId = setTimeout(spawn, delay);
+    };
+
+    const spawn = () => {
+      if (!inViewport) {
+        scheduleNext();
+        return;
+      }
       const { x, y, angle } = getRandomStartPoint();
-      const newStar: ShootingStar = {
-        id: Date.now(),
+      star = {
         x,
         y,
         angle,
-        scale: 1,
         speed: Math.random() * (maxSpeed - minSpeed) + minSpeed,
         distance: 0,
       };
-      setStar(newStar);
-
-      const randomDelay = Math.random() * (maxDelay - minDelay) + minDelay;
-      timeoutId = setTimeout(createStar, randomDelay);
+      lastTime = performance.now();
+      rafId = requestAnimationFrame(move);
     };
 
-    createStar();
+    const move = (now: number) => {
+      if (!star) return;
+
+      // Speeds are tuned as px/frame at 60fps; scale by elapsed frames so the
+      // star moves at the same visual speed on 120Hz+ displays. Cap the step
+      // so a background-tab pause doesn't teleport the star off screen.
+      const frames = Math.min((now - lastTime) / (1000 / 60), 3);
+      lastTime = now;
+
+      const step = star.speed * frames;
+      star.x += step * Math.cos((star.angle * Math.PI) / 180);
+      star.y += step * Math.sin((star.angle * Math.PI) / 180);
+      star.distance += step;
+
+      if (
+        star.x < -20 ||
+        star.x > window.innerWidth + 20 ||
+        star.y < -20 ||
+        star.y > window.innerHeight + 20
+      ) {
+        star = null;
+        rect.setAttribute("visibility", "hidden");
+        scheduleNext();
+        return;
+      }
+
+      const scale = 1 + star.distance / 100;
+      const width = starWidth * scale;
+      rect.setAttribute("visibility", "visible");
+      rect.setAttribute("x", String(star.x));
+      rect.setAttribute("y", String(star.y));
+      rect.setAttribute("width", String(width));
+      rect.setAttribute(
+        "transform",
+        `rotate(${star.angle}, ${star.x + width / 2}, ${star.y + starHeight / 2})`
+      );
+
+      rafId = requestAnimationFrame(move);
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry) return;
+      inViewport = entry.isIntersecting;
+      if (!inViewport && star) {
+        star = null;
+        if (rafId !== undefined) cancelAnimationFrame(rafId);
+        rect.setAttribute("visibility", "hidden");
+        scheduleNext();
+      }
+    });
+    observer.observe(container);
+
+    spawn();
 
     return () => {
-      isMounted = false;
-      clearTimeout(timeoutId);
+      observer.disconnect();
+      if (rafId !== undefined) cancelAnimationFrame(rafId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
     };
-  }, [minSpeed, maxSpeed, minDelay, maxDelay]);
+  }, [minSpeed, maxSpeed, minDelay, maxDelay, starWidth, starHeight]);
 
-  useEffect(() => {
-    const moveStar = () => {
-      if (star) {
-        setStar((prevStar) => {
-          if (!prevStar) return null;
-          const newX =
-            prevStar.x +
-            prevStar.speed * Math.cos((prevStar.angle * Math.PI) / 180);
-          const newY =
-            prevStar.y +
-            prevStar.speed * Math.sin((prevStar.angle * Math.PI) / 180);
-          const newDistance = prevStar.distance + prevStar.speed;
-          const newScale = 1 + newDistance / 100;
-          if (
-            newX < -20 ||
-            newX > window.innerWidth + 20 ||
-            newY < -20 ||
-            newY > window.innerHeight + 20
-          ) {
-            return null;
-          }
-          return {
-            ...prevStar,
-            x: newX,
-            y: newY,
-            distance: newDistance,
-            scale: newScale,
-          };
-        });
-      }
-    };
-
-    const animationFrame = requestAnimationFrame(moveStar);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [star]);
-
-  // Wrap SVG in div for hardware-accelerated CSS animations
-  // See: https://vercel.com/blog/introducing-react-best-practices (rule 6.1)
   return (
-    <div className={cn("w-full h-full absolute inset-0", className)}>
-      <svg
-        ref={svgRef}
-        className="w-full h-full"
-        aria-hidden="true"
-      >
-        {star ? (
-          <rect
-            key={star.id}
-            x={star.x}
-            y={star.y}
-            width={starWidth * star.scale}
-            height={starHeight}
-            fill="url(#gradient)"
-            transform={`rotate(${star.angle}, ${
-              star.x + (starWidth * star.scale) / 2
-            }, ${star.y + starHeight / 2})`}
-          />
-        ) : null}
+    <div
+      ref={containerRef}
+      className={cn("w-full h-full absolute inset-0", className)}
+    >
+      <svg className="w-full h-full" aria-hidden="true">
+        <rect
+          ref={rectRef}
+          visibility="hidden"
+          height={starHeight}
+          fill={`url(#${gradientId})`}
+        />
         <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: trailColor, stopOpacity: 0 }} />
             <stop
               offset="100%"
