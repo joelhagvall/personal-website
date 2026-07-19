@@ -1,5 +1,3 @@
-export const revalidate = 21600; // Revalidate every 6 hours
-
 import { Footer } from "@/components/Footer";
 import {
   HeroSection,

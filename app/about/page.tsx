@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Footer } from "@/components/Footer";
-import { MediaCarousel } from "@/components/MediaCarousel";
+import { MediaCarouselLazy } from "@/components/MediaCarouselLazy";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import {
   TEXT_STYLES,
@@ -146,16 +146,16 @@ export default function About() {
                 {ABOUT_CONTENT.media.description}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <MediaCarousel
+                <MediaCarouselLazy
                   title={ABOUT_CONTENT.media.movies}
                   items={movies}
                 />
-                <MediaCarousel
+                <MediaCarouselLazy
                   title={ABOUT_CONTENT.media.music}
                   items={music}
                   aspectRatio="square"
                 />
-                <MediaCarousel
+                <MediaCarouselLazy
                   title={ABOUT_CONTENT.media.books}
                   items={books}
                 />

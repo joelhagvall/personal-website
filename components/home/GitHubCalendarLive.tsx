@@ -27,6 +27,23 @@ const CONTRIBUTION_LEVELS = [
   "rgba(59, 130, 246, 0.95)",
 ] as const;
 
+// Border and shadow per contribution level, indexed like CONTRIBUTION_LEVELS
+const CONTRIBUTION_BORDERS = [
+  "rgba(255, 255, 255, 0.08)",
+  "rgba(125, 211, 252, 0.35)",
+  "rgba(125, 211, 252, 0.55)",
+  "rgba(103, 232, 249, 0.75)",
+  "rgba(147, 197, 253, 0.9)",
+] as const;
+
+const CONTRIBUTION_SHADOWS = [
+  "none",
+  "0 0 10px rgba(56, 189, 248, 0.18)",
+  "0 0 10px rgba(56, 189, 248, 0.18)",
+  "0 0 14px rgba(34, 211, 238, 0.26)",
+  "0 0 16px rgba(59, 130, 246, 0.35)",
+] as const;
+
 function getContributionLevel(count: number) {
   if (count <= 0) {
     return 0;
@@ -45,50 +62,6 @@ function getContributionLevel(count: number) {
   }
 
   return 4;
-}
-
-function getContributionColor(count: number) {
-  return CONTRIBUTION_LEVELS[getContributionLevel(count)];
-}
-
-function getContributionBorderColor(count: number) {
-  const level = getContributionLevel(count);
-
-  if (level === 0) {
-    return "rgba(255, 255, 255, 0.08)";
-  }
-
-  if (level === 4) {
-    return "rgba(147, 197, 253, 0.9)";
-  }
-
-  if (level === 3) {
-    return "rgba(103, 232, 249, 0.75)";
-  }
-
-  if (level === 2) {
-    return "rgba(125, 211, 252, 0.55)";
-  }
-
-  return "rgba(125, 211, 252, 0.35)";
-}
-
-function getContributionShadow(count: number) {
-  const level = getContributionLevel(count);
-
-  if (level === 0) {
-    return "none";
-  }
-
-  if (level === 4) {
-    return "0 0 16px rgba(59, 130, 246, 0.35)";
-  }
-
-  if (level === 3) {
-    return "0 0 14px rgba(34, 211, 238, 0.26)";
-  }
-
-  return "0 0 10px rgba(56, 189, 248, 0.18)";
 }
 
 function getMonthLabels(firstDays: string[]) {
@@ -279,35 +252,39 @@ function GitHubCalendar({
                   className="grid grid-rows-7 gap-0.5 sm:gap-1"
                   aria-hidden="true"
                 >
-                  {normalizeContributionDays(week.contributionDays).map((day, index) =>
-                    day ? (
+                  {normalizeContributionDays(week.contributionDays).map((day, index) => {
+                    if (!day) {
+                      return (
+                        <div
+                          key={`${week.firstDay}-empty-${index}`}
+                          className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5"
+                        />
+                      );
+                    }
+
+                    const level = getContributionLevel(day.contributionCount);
+                    const label = `${day.contributionCount} contribution${
+                      day.contributionCount === 1 ? "" : "s"
+                    } on ${DATE_FORMATTER.format(new Date(day.date))}`;
+
+                    return (
                       <div key={day.date} className="group relative">
                         <div
                           className="h-2.5 w-2.5 rounded-[4px] border sm:h-3.5 sm:w-3.5"
                           style={{
-                            backgroundColor: getContributionColor(day.contributionCount),
-                            borderColor: getContributionBorderColor(day.contributionCount),
-                            boxShadow: getContributionShadow(day.contributionCount),
+                            backgroundColor: CONTRIBUTION_LEVELS[level],
+                            borderColor: CONTRIBUTION_BORDERS[level],
+                            boxShadow: CONTRIBUTION_SHADOWS[level],
                           }}
-                          aria-label={`${day.contributionCount} contribution${
-                            day.contributionCount === 1 ? "" : "s"
-                          } on ${DATE_FORMATTER.format(new Date(day.date))}`}
                         />
                         <div
                           className={`pointer-events-none absolute z-20 hidden whitespace-nowrap rounded-md border border-white/10 bg-black/90 px-2.5 py-1.5 text-[11px] font-medium text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-sm group-hover:block ${getTooltipPositionClass(weekIndex, weeks.length)} ${getTooltipVerticalClass(day.weekday)}`}
                         >
-                          {day.contributionCount} contribution
-                          {day.contributionCount === 1 ? "" : "s"} on{" "}
-                          {DATE_FORMATTER.format(new Date(day.date))}
+                          {label}
                         </div>
                       </div>
-                    ) : (
-                      <div
-                        key={`${week.firstDay}-empty-${index}`}
-                        className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5"
-                      />
-                    )
-                  )}
+                    );
+                  })}
                 </div>
               ))}
             </div>
