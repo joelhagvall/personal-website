@@ -9,8 +9,6 @@ const nextConfig = {
       'lucide-react',
       '@radix-ui/react-icons',
       'framer-motion',
-      '@heroicons/react',
-      '@primer/octicons-react',
     ],
   },
 };
