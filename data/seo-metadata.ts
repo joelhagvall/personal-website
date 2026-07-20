@@ -100,7 +100,7 @@ export const PAGE_METADATA = {
 
   projects: {
     title: createPageTitle("Projects"),
-    description: `Explore a selection of ${PERSON.name}'s personal and academic projects, including web apps, mobile apps, and open-source contributions built with React, Next.js, Swift and more.`,
+    description: `Explore ${PERSON.name}'s products, public pre-releases and open-source work across TypeScript, React, workflow automation and privacy-focused AI.`,
     alternates: createAlternates("/projects"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/projects");
@@ -124,7 +124,7 @@ export const PAGE_METADATA = {
 
   resume: {
     title: createPageTitle("Resume", "Experience & Skills"),
-    description: `View the resume and professional experience of ${PERSON.name} – a software developer based in ${PERSON.location.city}, ${PERSON.location.country}, specializing in full-stack web and mobile development.`,
+    description: `View the resume and professional experience of ${PERSON.name} - a software engineer based in ${PERSON.location.city}, ${PERSON.location.country}, working across enterprise systems, TypeScript, AI and workflow automation.`,
     alternates: createAlternates("/resume"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/resume");

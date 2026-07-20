@@ -9,7 +9,7 @@ export const PROJECTS: Project[] = [
   {
     title: "ResiliaAI",
     description:
-      "An AI-powered resilience and crisis preparedness platform for housing associations and organizations. It helps teams prepare for, coordinate during, and recover from disruptions. AI-assisted guidance is grounded in a curated knowledge base of **25,000+ Q&A pairs** drawn from crisis-preparedness regulations and official guidelines, alongside role-based coordination and operational dashboards. Built end-to-end by me as **engineer**.",
+      "An AI-powered resilience and crisis preparedness platform for housing associations and organizations. I am the sole engineer in a three-person team, building the pre-launch platform alongside full-time work at Scania. My work spans the React and TypeScript product, APIs, PostgreSQL, AI orchestration, workflow automation, testing, CI/CD and hosted development environments.",
     technologies: [
       "React",
       "TypeScript",
@@ -24,7 +24,27 @@ export const PROJECTS: Project[] = [
       "AI Agents",
     ],
     iconName: "shield",
-    status: "Active development",
+    status: "Part-time, pre-launch venture",
+  },
+  {
+    title: "Maskera",
+    description:
+      "Swedish-first, client-side PII redaction for browser, Node.js, edge and AI workflows. Names, personnummer and addresses are masked before text reaches an LLM, logs or analytics. The public pre-release includes npm packages and the **joelhagvall/maskera-sv-ner** model on Hugging Face; the source repository will open with the formal open-source launch planned for August 2026. Its local-first architecture combines deterministic rules for structured PII with an approximately **43 MB** q4 ONNX model running through Transformers.js and WebGPU/WASM.",
+    technologies: [
+      "TypeScript",
+      "ONNX",
+      "Transformers.js",
+      "WebGPU",
+      "Hugging Face",
+      "PyTorch",
+    ],
+    iconName: "shield",
+    status: "Public pre-release · Open-source launch Aug 2026",
+    demoUrl: "https://maskera.dev",
+    npmUrl: "https://www.npmjs.com/package/maskera",
+    modelUrl: "https://huggingface.co/joelhagvall/maskera-sv-ner",
+    image: "/media/maskera-demo.png",
+    imagePriority: true,
   },
   {
     title: "Data Wipe Mailer",

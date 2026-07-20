@@ -22,6 +22,8 @@ export const LABELS = {
   viewPdf: "View PDF",
   moreProjects: "More Projects",
   liveDemo: "Live Demo",
+  npmPackage: "npm Package",
+  huggingFaceModel: "Hugging Face Model",
   publication: "Publication",
   linkedinPost: "LinkedIn Post",
   continue: "Continue",
@@ -104,9 +106,50 @@ export const ABOUT_CONTENT = {
 
 export const PROJECTS_CONTENT = {
   pageTitle: LABELS.projects,
-  description: `A selection of my personal and academic projects - more found on my`,
+  description: `A selection of products, open-source work and academic projects. More public source code is available on my`,
   githubLink: "GitHub",
   githubSuffix: "profile.",
+} as const;
+
+export const RESUME_CONTENT = {
+  pageTitle: LABELS.resume,
+  introduction:
+    "Software Engineer working across enterprise systems, developer tooling, workflow automation, AI products and local-first privacy technology.",
+  currentExperienceHeading: "Current Experience",
+  experience: [
+    {
+      role: "Software Developer",
+      organization: "Scania",
+      period: "Sep 2024 - Present",
+      description:
+        "Building and maintaining internal .NET/C# microservices, TypeScript/React tooling, integrations and automated workflows.",
+    },
+    {
+      role: "Creator & Maintainer",
+      organization: "Maskera",
+      period: "Jun 2026 - Present",
+      status: "Public pre-release · Open-source launch planned Aug 2026",
+      description:
+        "Building Swedish-first, local PII redaction packages and an on-device NER model for browser, Node.js, edge and AI workflows.",
+    },
+    {
+      role: "Sole Software Engineer",
+      organization: "ResiliaAI",
+      period: "2025 - Present",
+      status: "Part-time, pre-launch venture",
+      description:
+        "Building the pre-launch platform in a three-person team alongside full-time work at Scania.",
+    },
+  ],
+  educationHeading: "Education",
+  education: {
+    degree: "B.Sc. in Computer and Systems Sciences",
+    school: "Stockholm University",
+    period: "2021 - 2024 · 180 ECTS",
+  },
+  pdfHref: "/media/resume.pdf",
+  pdfLabel: LABELS.viewPdf,
+  pdfAriaLabel: "View Joel Hägvall's resume as a PDF",
 } as const;
 
 // ============================================

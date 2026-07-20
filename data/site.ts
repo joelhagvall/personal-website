@@ -6,7 +6,7 @@
 export const SITE = {
   url: "https://joelhagvall.com",
   name: "Joel Hägvall",
-  title: "Joel Hägvall - Software Developer Based in Stockholm, Sweden",
+  title: "Joel Hägvall - Software Engineer Based in Stockholm, Sweden",
   locale: "en_US",
   language: "en",
 } as const;
@@ -14,12 +14,12 @@ export const SITE = {
 export const PERSON = {
   name: "Joel Hägvall",
   alternateName: "joelhagvall",
-  jobTitle: "Software Developer",
+  jobTitle: "Software Engineer",
   age: 26,
   birthYear: 2000,
-  bio: "I'm a software developer with a big interest in technology and how it can be used to make a difference.",
-  shortBio: "Software developer based in Stockholm, Sweden.",
-  description: "Software developer based in Stockholm, Sweden. Experienced in building web and mobile applications with Java, Python, Swift, React, Next.js and more.",
+  bio: "I'm a software engineer building enterprise systems, developer tooling, workflow automation and privacy-focused AI products.",
+  shortBio: "Software engineer based in Stockholm, Sweden.",
+  description: "Software engineer based in Stockholm, Sweden, working across TypeScript, React, .NET/C#, developer tooling, workflow automation and AI products.",
   avatar: "/media/selfie.webp",
   location: {
     city: "Stockholm",

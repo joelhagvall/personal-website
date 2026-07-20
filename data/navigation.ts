@@ -8,9 +8,8 @@ export const navLinks: NavLink[] = [
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
   {
-    href: "/media/resume.pdf",
+    href: "/resume",
     label: "Resume",
     icon: FileText,
-    external: true,
   },
 ];

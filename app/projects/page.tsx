@@ -47,8 +47,11 @@ export default async function Projects() {
                   forks={project.forks}
                   linkedinUrl={project.linkedinUrl}
                   demoUrl={project.demoUrl}
+                  npmUrl={project.npmUrl}
+                  modelUrl={project.modelUrl}
                   publicationUrl={project.publicationUrl}
                   image={project.image}
+                  imagePriority={project.imagePriority}
                 />
               ))}
             </div>

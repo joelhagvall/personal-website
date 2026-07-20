@@ -36,8 +36,11 @@ interface ProjectCardProps {
   forks?: number | undefined;
   linkedinUrl?: string | undefined;
   demoUrl?: string | undefined;
+  npmUrl?: string | undefined;
+  modelUrl?: string | undefined;
   publicationUrl?: string | undefined;
   image?: string | undefined;
+  imagePriority?: boolean | undefined;
 }
 
 const iconMap = {
@@ -59,8 +62,11 @@ export function ProjectCard({
   forks,
   linkedinUrl,
   demoUrl,
+  npmUrl,
+  modelUrl,
   publicationUrl,
   image,
+  imagePriority,
 }: ProjectCardProps) {
   const Icon = iconMap[iconName];
 
@@ -94,6 +100,7 @@ export function ProjectCard({
                     src={image}
                     alt={`${title} screenshot`}
                     fill
+                    priority={imagePriority ?? false}
                     className="object-cover object-top"
                   />
                 </button>
@@ -105,6 +112,7 @@ export function ProjectCard({
                   alt={`${title} screenshot`}
                   width={1920}
                   height={1080}
+                  priority={imagePriority ?? false}
                   className="w-full h-auto rounded-lg"
                 />
               </DialogContent>
@@ -175,6 +183,30 @@ export function ProjectCard({
               >
                 <ExternalLink className="w-4 h-4" aria-hidden="true" />
                 {LABELS.liveDemo}
+              </Link>
+            )}
+            {npmUrl && (
+              <Link
+                href={npmUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${LABELS.npmPackage} for ${title} (opens in new tab)`}
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              >
+                <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                {LABELS.npmPackage}
+              </Link>
+            )}
+            {modelUrl && (
+              <Link
+                href={modelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${LABELS.huggingFaceModel} for ${title} (opens in new tab)`}
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              >
+                <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                {LABELS.huggingFaceModel}
               </Link>
             )}
             {publicationUrl && (

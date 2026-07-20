@@ -10,8 +10,11 @@ export interface Project {
   status?: string;
   linkedinUrl?: string;
   demoUrl?: string;
+  npmUrl?: string;
+  modelUrl?: string;
   publicationUrl?: string;
   image?: string;
+  imagePriority?: boolean;
 }
 
 export interface ProjectWithStats extends Project {
