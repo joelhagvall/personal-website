@@ -2,9 +2,9 @@ import { PROJECTS, getGitHubUrl } from "@/data/projects";
 import { getGitHubRepo } from "@/lib/github";
 import type { Project, ProjectWithStats } from "@/types/project";
 
-export function getProjectsByRepo(repos: readonly string[]) {
-  return repos
-    .map((repo) => PROJECTS.find((project) => project.repo === repo))
+export function getProjectsByTitle(titles: readonly string[]) {
+  return titles
+    .map((title) => PROJECTS.find((project) => project.title === title))
     .filter((project): project is Project => Boolean(project));
 }
 

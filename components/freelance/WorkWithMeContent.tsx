@@ -233,16 +233,19 @@ export function WorkWithMeContent({
           <div className="space-y-6">
             {projectsWithStats.map((project) => (
               <ProjectCard
-                key={project.repo}
+                key={project.title}
                 title={project.title}
                 description={project.description}
                 technologies={project.technologies}
                 githubUrl={project.githubUrl}
                 iconName={project.iconName}
+                status={project.status}
                 stars={project.stars}
                 forks={project.forks}
                 linkedinUrl={project.linkedinUrl}
                 demoUrl={project.demoUrl}
+                npmUrl={project.npmUrl}
+                modelUrl={project.modelUrl}
                 publicationUrl={project.publicationUrl}
                 image={project.image}
               />

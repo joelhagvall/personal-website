@@ -97,7 +97,7 @@ export const FREELANCE = {
     "Measurable delivery: fewer manual steps, faster support/admin work, better retrieval quality, shorter time to MVP, or clearer conversion flow.",
     "Cleaner handover with prompts, tests, decisions, and code another engineer can continue from.",
   ],
-  selectedProjectRepos: ["data-wipe-mailer", "jarvis-chat", "PVT15-Project"],
+  selectedProjectTitles: ["ResiliaAI", "Maskera", "Data Wipe Mailer"],
   process: [
     {
       title: "1. Scope",

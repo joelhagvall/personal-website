@@ -26,14 +26,14 @@ jest.mock("@/lib/github", () => ({
 
 import { PROJECTS, getGitHubUrl } from "@/data/projects";
 import { getGitHubRepo } from "@/lib/github";
-import { getProjectsByRepo, getProjectsWithStats } from "./projects";
+import { getProjectsByTitle, getProjectsWithStats } from "./projects";
 
 const mockGetGitHubRepo = jest.mocked(getGitHubRepo);
 const mockGetGitHubUrl = jest.mocked(getGitHubUrl);
 
-describe("getProjectsByRepo", () => {
-  it("preserves the requested order and skips unknown repos", () => {
-    const result = getProjectsByRepo(["repo-beta", "missing-repo", "repo-alpha"]);
+describe("getProjectsByTitle", () => {
+  it("preserves the requested order and skips unknown titles", () => {
+    const result = getProjectsByTitle(["Repo Beta", "Missing Project", "Repo Alpha"]);
 
     expect(result).toEqual([PROJECTS[1], PROJECTS[0]]);
   });

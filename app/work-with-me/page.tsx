@@ -1,9 +1,9 @@
 import { WorkWithMeContent } from "@/components/freelance/WorkWithMeContent";
 import { FREELANCE } from "@/data/freelance";
-import { getProjectsByRepo, getProjectsWithStats } from "@/lib/projects";
+import { getProjectsByTitle, getProjectsWithStats } from "@/lib/projects";
 
 export default async function WorkWithMePage() {
-  const selectedProjects = getProjectsByRepo(FREELANCE.selectedProjectRepos);
+  const selectedProjects = getProjectsByTitle(FREELANCE.selectedProjectTitles);
   const projectsWithStats = await getProjectsWithStats(selectedProjects);
 
   return <WorkWithMeContent projectsWithStats={projectsWithStats} />;
