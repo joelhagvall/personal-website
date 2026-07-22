@@ -14,7 +14,8 @@
       ],
       "numberOfRuns": 1,
       "settings": {
-        "preset": "desktop",
+        "formFactor": "mobile",
+        "throttlingMethod": "devtools",
         "chromeFlags": "--no-sandbox --disable-dev-shm-usage"
       }
     },
@@ -28,7 +29,7 @@
     },
     "upload": {
       "target": "filesystem",
-      "outputDir": ".lighthouseci/reports"
+      "outputDir": ".lighthouseci/mobile-reports"
     }
   }
 }

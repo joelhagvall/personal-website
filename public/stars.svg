@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <pattern id="stars" width="320" height="260" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="24" r="0.8" fill="#fff" fill-opacity=".7"/>
+      <circle cx="73" cy="61" r="0.65" fill="#fff" fill-opacity=".45"/>
+      <circle cx="141" cy="97" r="0.8" fill="#fff" fill-opacity=".55"/>
+      <circle cx="209" cy="36" r="0.65" fill="#fff" fill-opacity=".35"/>
+      <circle cx="287" cy="128" r="0.75" fill="#fff" fill-opacity=".6"/>
+      <circle cx="42" cy="189" r="0.6" fill="#fff" fill-opacity=".4"/>
+      <circle cx="118" cy="231" r="0.7" fill="#fff" fill-opacity=".65"/>
+      <circle cx="184" cy="172" r="0.55" fill="#fff" fill-opacity=".4"/>
+      <circle cx="251" cy="218" r="0.8" fill="#fff" fill-opacity=".55"/>
+      <circle cx="305" cy="249" r="0.55" fill="#fff" fill-opacity=".35"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#stars)"/>
+</svg>

@@ -1,24 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { cn } from "@/lib/utils";
 import { navLinks } from "@/data/navigation";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // Preload route on hover/focus for faster navigation
-  // See: https://vercel.com/blog/introducing-react-best-practices (rule 2.5)
   const handlePrefetch = useCallback(
     (href: string, external?: boolean) => {
       if (!external && href !== pathname) {
         router.prefetch(href);
+        if (href === "/") {
+          void import("@/components/Astronaut3D");
+        }
       }
     },
-    [router, pathname]
+    [pathname, router]
   );
 
   return (
@@ -36,14 +37,15 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  prefetch={false}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
                   onMouseEnter={() => handlePrefetch(link.href, link.external)}
                   onFocus={() => handlePrefetch(link.href, link.external)}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "flex items-center rounded-sm transition-colors hover:text-foreground/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                    isActive ? "text-foreground" : "text-foreground/60"
+                    "flex items-center rounded-sm transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                    isActive ? "text-foreground" : "text-foreground/70"
                   )}
                 >
                   {Icon && (

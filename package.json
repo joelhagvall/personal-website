@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "test": "jest",
     "lighthouse": "lhci autorun",
+    "lighthouse:mobile": "lhci autorun --config=.lighthouserc.mobile.json",
     "a11y": "pa11y-ci",
     "audit": "bash scripts/audit.sh"
   },

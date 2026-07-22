@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Briefcase, FileText, GraduationCap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { RESUME_CONTENT } from "@/data/content";
@@ -12,7 +11,7 @@ export default function Resume() {
           <p className="max-w-3xl text-lg text-muted-foreground">
             {RESUME_CONTENT.introduction}
           </p>
-          <Link
+          <a
             href={RESUME_CONTENT.pdfHref}
             target="_blank"
             rel="noopener noreferrer"
@@ -21,7 +20,7 @@ export default function Resume() {
           >
             <FileText size={18} aria-hidden="true" />
             {RESUME_CONTENT.pdfLabel}
-          </Link>
+          </a>
         </div>
 
         <div className="space-y-6">

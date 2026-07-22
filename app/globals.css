@@ -81,13 +81,32 @@
     background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
   }
 
+  .shooting-star-static {
+    position: absolute;
+    top: 14%;
+    left: -10rem;
+    width: 8rem;
+    height: 1px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, transparent, #2eb9df 65%, #9e00ff);
+    opacity: 0;
+    transform: rotate(35deg) translate3d(0, 0, 0);
+    transform-origin: right center;
+    animation: shooting-star-crossing 8s linear 3s infinite;
+    will-change: transform, opacity;
+  }
+
   .glass-card {
     position: relative;
     overflow: hidden;
     border-radius: 0.5rem;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(12px);
-    transition: all 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
   }
   
   .glass-card::before {
@@ -139,6 +158,28 @@
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+}
+
+@keyframes shooting-star-crossing {
+  0%,
+  72% {
+    opacity: 0;
+    transform: rotate(35deg) translate3d(0, 0, 0);
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  92%,
+  100% {
+    opacity: 0;
+    transform: rotate(35deg) translate3d(130vw, 0, 0);
   }
 }
 

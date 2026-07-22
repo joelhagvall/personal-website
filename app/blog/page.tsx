@@ -2,7 +2,6 @@ import { Footer } from "@/components/Footer";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { getAllPosts } from "@/lib/blog";
 import { Rss } from "lucide-react";
-import Link from "next/link";
 
 export default function Blog() {
   const posts = getAllPosts();
@@ -19,14 +18,14 @@ export default function Blog() {
               <p className="text-xl text-gray-400">
                 Thoughts, ideas, and things I&apos;ve learned along the way.
               </p>
-              <Link
+              <a
                 href="/feed.xml"
                 target="_blank"
                 className="text-gray-400 hover:text-orange-500 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 aria-label="RSS Feed (opens in new tab)"
               >
                 <Rss className="w-5 h-5" aria-hidden="true" />
-              </Link>
+              </a>
             </div>
 
             {posts.length === 0 ? (

@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float } from "@react-three/drei";
 import * as THREE from "three";
 
 // Hoist static data outside component to avoid recreation on every render
@@ -14,12 +13,19 @@ const PLANETS = [
 ] as const;
 
 function SolarSystem() {
+  const floatingRef = useRef<THREE.Group>(null);
   const glowInnerRef = useRef<THREE.Mesh>(null);
   const glowOuterRef = useRef<THREE.Mesh>(null);
   const planetsRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
+
+    if (floatingRef.current) {
+      floatingRef.current.position.y = Math.sin(t * 0.5) * 0.04;
+      floatingRef.current.rotation.x = Math.cos(t * 0.25) * 0.02;
+      floatingRef.current.rotation.z = Math.sin(t * 0.25) * 0.02;
+    }
 
     // Sun pulse via the glow layers' opacity
     const pulse = Math.sin(t * 2) * 0.08;
@@ -42,7 +48,7 @@ function SolarSystem() {
   // they use unlit meshBasicMaterial — no PBR lighting cost. Only the planets
   // are actually shaded by the point light.
   return (
-    <Float speed={0.5} rotationIntensity={0.1} floatIntensity={0.2}>
+    <group ref={floatingRef}>
       <group rotation={[0.4, 0, 0]}>
 
         {/* === SUN === */}
@@ -87,8 +93,31 @@ function SolarSystem() {
         ))}
 
       </group>
-    </Float>
+    </group>
   );
+}
+
+function FirstFrameReady({ onReady }: { onReady: () => void }) {
+  const readyRef = useRef(false);
+  const animationFrameRef = useRef<number | null>(null);
+
+  useFrame(() => {
+    if (readyRef.current) return;
+
+    readyRef.current = true;
+    animationFrameRef.current = window.requestAnimationFrame(onReady);
+  });
+
+  useEffect(
+    () => () => {
+      if (animationFrameRef.current !== null) {
+        window.cancelAnimationFrame(animationFrameRef.current);
+      }
+    },
+    []
+  );
+
+  return null;
 }
 
 interface PlanetProps {
@@ -175,12 +204,14 @@ interface Astronaut3DProps {
 
 export function Astronaut3D({ className = "" }: Astronaut3DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [canvasReady, setCanvasReady] = useState(false);
   // "always" while visible, "never" when scrolled out of view (the WebGL loop
   // otherwise keeps rendering at 60fps behind the rest of the page), and a
   // single static "demand" frame for prefers-reduced-motion users.
   const [frameloop, setFrameloop] = useState<"always" | "never" | "demand">(
     "always"
   );
+  const handleFirstFrame = useCallback(() => setCanvasReady(true), []);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -202,23 +233,30 @@ export function Astronaut3D({ className = "" }: Astronaut3DProps) {
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full ${className}`}
+      className={`relative w-full h-full ${className}`}
       role="img"
       aria-label="Animated 3D solar system with orbiting planets"
     >
-      <Canvas
-        camera={{ position: [0, 2, 5], fov: 45 }}
-        style={{ background: "transparent" }}
-        frameloop={frameloop}
-        dpr={[1, 1.5]}
-        gl={{ powerPreference: "low-power" }}
+      <div
+        className={`absolute inset-0 transition-opacity duration-200 ${
+          canvasReady ? "opacity-100" : "opacity-0"
+        }`}
       >
-        <ambientLight intensity={0.1} />
-        <pointLight position={[0, 0, 0]} intensity={2} color="#fbbf24" />
-        <directionalLight position={[5, 5, 5]} intensity={0.3} />
+        <Canvas
+          camera={{ position: [0, 2, 5], fov: 45 }}
+          style={{ background: "transparent" }}
+          frameloop={frameloop}
+          dpr={[1, 1.5]}
+          gl={{ powerPreference: "low-power" }}
+        >
+          <ambientLight intensity={0.1} />
+          <pointLight position={[0, 0, 0]} intensity={2} color="#fbbf24" />
+          <directionalLight position={[5, 5, 5]} intensity={0.3} />
 
-        <SolarSystem />
-      </Canvas>
+          <SolarSystem />
+          <FirstFrameReady onReady={handleFirstFrame} />
+        </Canvas>
+      </div>
     </div>
   );
 }

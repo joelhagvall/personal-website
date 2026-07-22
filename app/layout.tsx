@@ -1,7 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/Navbar";
 import { BackgroundStars } from "@/components/BackgroundStars";
 import { Analytics } from "@vercel/analytics/react";
@@ -9,12 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
 import { PAGE_METADATA } from "@/data/seo-metadata";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-  preload: true,
-});
+const isVercelDeployment = process.env["VERCEL"] === "1";
 
 export const metadata: Metadata = PAGE_METADATA.home;
 
@@ -24,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
       <head>
         <meta
           httpEquiv="Content-Security-Policy"
@@ -55,7 +48,7 @@ export default function RootLayout({
           href="/feed.xml"
         />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -64,29 +57,26 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+        {/* Skip to main content link for keyboard/screen reader users */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:ring-2 focus:ring-ring focus:outline-none"
         >
-          {/* Skip to main content link for keyboard/screen reader users */}
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:ring-2 focus:ring-ring focus:outline-none"
-          >
-            Skip to main content
-          </a>
-          <div className="fixed inset-0 z-0 pointer-events-none bg-background">
-            <BackgroundStars overlay />
-          </div>
-          <Navbar />
-          <main id="main-content" className="relative z-10">
-            {children}
-            <Analytics />
-            <SpeedInsights />
-          </main>
-        </ThemeProvider>
+          Skip to main content
+        </a>
+        <div className="fixed inset-0 z-0 pointer-events-none bg-background">
+          <BackgroundStars overlay />
+        </div>
+        <Navbar />
+        <main id="main-content" className="relative z-10">
+          {children}
+          {isVercelDeployment ? (
+            <>
+              <Analytics />
+              <SpeedInsights />
+            </>
+          ) : null}
+        </main>
       </body>
     </html>
   );

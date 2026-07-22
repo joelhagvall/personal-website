@@ -1,7 +1,3 @@
-"use client";
-
-import { StarsBackground } from "@/components/ui/stars-background";
-import { ShootingStars } from "@/components/ui/shooting-stars";
 import { cn } from "@/lib/utils";
 
 interface BackgroundStarsProps {
@@ -10,18 +6,24 @@ interface BackgroundStarsProps {
 }
 
 export function BackgroundStars({ overlay = true, className }: BackgroundStarsProps) {
-  if (overlay) {
-    return (
-      <div className={cn("absolute inset-0 pointer-events-none", className)}>
-        <StarsBackground />
-        <ShootingStars />
-      </div>
-    );
-  }
   return (
-    <div className={cn("relative", className)}>
-      <StarsBackground />
-      <ShootingStars />
+    <div
+      className={cn(
+        overlay ? "absolute inset-0" : "relative min-h-full",
+        "pointer-events-none overflow-hidden",
+        className
+      )}
+      aria-hidden="true"
+    >
+      <img
+        src="/stars.svg"
+        alt=""
+        width={1600}
+        height={900}
+        fetchPriority="high"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <span className="shooting-star-static" />
     </div>
   );
 }
