@@ -2,6 +2,9 @@
 const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
+  turbopack: {
+    root: __dirname,
+  },
   experimental: {
     inlineCss: true,
     // Optimize barrel file imports for faster builds and smaller bundles
