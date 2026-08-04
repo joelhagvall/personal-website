@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "bun x tsx scripts/generate-rss.ts && next-sitemap",
+    "postbuild": "bun scripts/generate-rss.ts && next-sitemap",
     "start": "next start",
     "lint": "eslint .",
     "test": "jest",
