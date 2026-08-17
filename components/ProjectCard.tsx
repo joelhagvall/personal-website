@@ -24,7 +24,8 @@ import {
 import type {
   IconName,
   ProjectCaseStudy,
-  ProjectProofLink,
+  ProjectProofItem,
+  ProjectProofSource,
 } from "@/types/project";
 import { parseSimpleMarkdown } from "@/lib/markdown";
 import { LABELS, PROJECTS_CONTENT } from "@/data/content";
@@ -69,8 +70,12 @@ function RedditIcon({ className }: { className?: string }) {
   );
 }
 
-function ProofLinkIcon({ iconName }: { iconName: ProjectProofLink["iconName"] }) {
-  const iconClassName = "h-5 w-5";
+function ProofSourceIcon({
+  iconName,
+}: {
+  iconName: ProjectProofSource["iconName"];
+}) {
+  const iconClassName = "h-3 w-3";
 
   switch (iconName) {
     case "dfri":
@@ -78,9 +83,9 @@ function ProofLinkIcon({ iconName }: { iconName: ProjectProofLink["iconName"] })
         <Image
           src="/media/dfri-logo.png"
           alt=""
-          width={20}
-          height={20}
-          className={`${iconClassName} rounded-sm`}
+          width={12}
+          height={12}
+          className={`${iconClassName} rounded-[2px]`}
         />
       );
     case "reddit":
@@ -95,15 +100,30 @@ function ProofLinkIcon({ iconName }: { iconName: ProjectProofLink["iconName"] })
   }
 }
 
+function ProofSourceChip({ source }: { source: ProjectProofSource }) {
+  return (
+    <Link
+      href={source.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Source: ${source.label} (opens in new tab)`}
+      className="group ml-1.5 inline-flex translate-y-[-1px] items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.06] py-0.5 pl-1 pr-2 align-middle text-xs font-medium text-gray-300 transition-colors hover:border-white/20 hover:bg-white/[0.12] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white/90">
+        <ProofSourceIcon iconName={source.iconName} />
+      </span>
+      {source.label}
+    </Link>
+  );
+}
+
 function CaseStudyItem({
   label,
-  paragraphs,
-  links,
+  items,
   className,
 }: {
   label: string;
-  paragraphs: readonly string[];
-  links?: readonly ProjectProofLink[] | undefined;
+  items: readonly ProjectProofItem[];
   className?: string | undefined;
 }) {
   return (
@@ -114,32 +134,12 @@ function CaseStudyItem({
         {label}
       </dt>
       <dd className="mt-3 space-y-3 leading-relaxed text-gray-200">
-        {paragraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
+        {items.map((item) => (
+          <p key={item.text}>
+            {item.text}
+            {item.source ? <ProofSourceChip source={item.source} /> : null}
+          </p>
         ))}
-        {links && links.length > 0 ? (
-          <div className="flex flex-wrap gap-2 pt-1">
-            {links.map((link) => (
-              <Link
-                key={link.url}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${link.label} (opens in new tab)`}
-                className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] py-1.5 pl-2 pr-3 text-sm font-medium text-gray-200 transition-colors hover:border-white/20 hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/90">
-                  <ProofLinkIcon iconName={link.iconName} />
-                </span>
-                {link.label}
-                <ExternalLink
-                  className="h-3.5 w-3.5 text-gray-500 transition-colors group-hover:text-gray-300"
-                  aria-hidden="true"
-                />
-              </Link>
-            ))}
-          </div>
-        ) : null}
       </dd>
     </div>
   );
@@ -191,21 +191,20 @@ export function ProjectCard({
 
           {caseStudy ? (
             <dl
-              className={`grid gap-3 ${caseStudy.proofLinks ? "md:grid-cols-2" : "md:grid-cols-3"}`}
+              className={`grid gap-3 ${caseStudy.proof.length > 1 ? "md:grid-cols-2" : "md:grid-cols-3"}`}
             >
               <CaseStudyItem
                 label={PROJECTS_CONTENT.caseLabels.problem}
-                paragraphs={[caseStudy.problem]}
+                items={[{ text: caseStudy.problem }]}
               />
               <CaseStudyItem
                 label={PROJECTS_CONTENT.caseLabels.built}
-                paragraphs={[caseStudy.built]}
+                items={[{ text: caseStudy.built }]}
               />
               <CaseStudyItem
                 label={PROJECTS_CONTENT.caseLabels.proof}
-                paragraphs={caseStudy.proof}
-                links={caseStudy.proofLinks}
-                className={caseStudy.proofLinks ? "md:col-span-2" : undefined}
+                items={caseStudy.proof}
+                className={caseStudy.proof.length > 1 ? "md:col-span-2" : undefined}
               />
             </dl>
           ) : null}

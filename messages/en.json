@@ -22,10 +22,10 @@
       "proof": "Proof"
     },
     "linkLabels": {
-      "dfriReference": "DFRI’s privacy guide",
-      "redditEarlyFeedback": "Reddit user feedback",
-      "redditIndependentShare": "Shared independently on Reddit",
-      "linkedinLaunch": "LinkedIn launch post"
+      "dfriReference": "DFRI",
+      "redditEarlyFeedback": "Reddit",
+      "redditIndependentShare": "Reddit",
+      "linkedinLaunch": "LinkedIn"
     },
     "items": {
       "resiliaAI": {
@@ -49,11 +49,12 @@
         "summary": "A privacy-focused web app that helps Swedish citizens send General Data Protection Regulation (GDPR) Article 17 deletion requests.",
         "problem": "Requesting deletion from several data brokers requires finding each process and writing repetitive requests.",
         "built": "I built a client-side Next.js app that prepares each request without sending personal data to a server.",
-        "proof": [
-          "Föreningen för Digitala Fri- och Rättigheter (DFRI) is a Swedish nonprofit and nonpartisan digital rights association. DFRI’s privacy guide links to Data Wipe Mailer as a way to open deletion-request templates in your email app.",
-          "Two Reddit threads contain positive user feedback. People reported trying the tool, thanked me for building it, and described it as useful. In one thread, a user received several automated responses within three minutes.",
-          "The LinkedIn launch post reached 200,000+ views and generated 2,300+ reactions and 168 comments."
-        ]
+        "proof": {
+          "dfri": "Föreningen för Digitala Fri- och Rättigheter (DFRI), a Swedish nonprofit and nonpartisan digital rights association, links to Data Wipe Mailer in its privacy guide as a way to open deletion-request templates in your email app.",
+          "redditEarlyFeedback": "Reddit users reported trying the tool, thanked me for building it, and described it as useful. One user received several automated responses within three minutes.",
+          "redditIndependentShare": "A Reddit user later shared the tool independently as a reminder to delete personal data from people-search sites.",
+          "linkedin": "The LinkedIn launch post reached 200,000+ views and generated 2,300+ reactions and 168 comments."
+        }
       },
       "jarvis": {
         "title": "J.A.R.V.I.S",

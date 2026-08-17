@@ -2,17 +2,21 @@ export type IconName = 'code' | 'smartphone' | 'headphones' | 'shield' | 'bot';
 export type ProjectProminence = 'featured' | 'supporting' | 'earlier';
 export type ProjectProofIconName = 'dfri' | 'reddit' | 'linkedin';
 
-export interface ProjectProofLink {
+export interface ProjectProofSource {
   label: string;
   url: string;
   iconName: ProjectProofIconName;
 }
 
+export interface ProjectProofItem {
+  text: string;
+  source?: ProjectProofSource;
+}
+
 export interface ProjectCaseStudy {
   problem: string;
   built: string;
-  proof: string[];
-  proofLinks?: ProjectProofLink[];
+  proof: ProjectProofItem[];
 }
 
 export interface Project {
