@@ -23,7 +23,8 @@
     },
     "linkLabels": {
       "dfriReference": "DFRI’s privacy guide",
-      "redditFeedback": "Reddit usage and feedback",
+      "redditEarlyFeedback": "Reddit user feedback",
+      "redditIndependentShare": "Shared independently on Reddit",
       "linkedinLaunch": "LinkedIn launch post"
     },
     "items": {
@@ -49,9 +50,9 @@
         "problem": "Requesting deletion from several data brokers requires finding each process and writing repetitive requests.",
         "built": "I built a client-side Next.js app that prepares each request without sending personal data to a server.",
         "proof": [
-          "Föreningen för Digitala Fri- och Rättigheter (DFRI) is a Swedish nonprofit and nonpartisan digital rights association. DFRI links to Data Wipe Mailer in its guide for removing personal data online.",
-          "Reddit users have independently shared the tool and reported using it to send deletion requests.",
-          "The LinkedIn launch post reached 200,000+ views and 2,000+ likes."
+          "Föreningen för Digitala Fri- och Rättigheter (DFRI) is a Swedish nonprofit and nonpartisan digital rights association. DFRI’s privacy guide links to Data Wipe Mailer as a way to open deletion-request templates in your email app.",
+          "Two Reddit threads contain positive user feedback. People reported trying the tool, thanked me for building it, and described it as useful. In one thread, a user received several automated responses within three minutes.",
+          "The LinkedIn launch post reached 200,000+ views and generated 2,300+ reactions and 168 comments."
         ]
       },
       "jarvis": {

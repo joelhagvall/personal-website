@@ -81,19 +81,35 @@
     background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
   }
 
+  /* Two stars with different paths and prime-ish durations so the combined
+     pattern rarely repeats. Each is visible ~1.3s per cycle. */
   .shooting-star-static {
     position: absolute;
-    top: 14%;
     left: -10rem;
     width: 8rem;
     height: 1px;
     border-radius: 9999px;
     background: linear-gradient(90deg, transparent, #2eb9df 65%, #9e00ff);
     opacity: 0;
-    transform: rotate(35deg) translate3d(0, 0, 0);
+    transform: rotate(var(--star-angle)) translate3d(0, 0, 0);
     transform-origin: right center;
-    animation: shooting-star-crossing 8s linear 3s infinite;
+    animation: shooting-star-crossing var(--star-duration) linear
+      var(--star-delay) infinite;
     will-change: transform, opacity;
+  }
+
+  .shooting-star-static--a {
+    --star-angle: 35deg;
+    --star-duration: 23s;
+    --star-delay: 3s;
+    top: 14%;
+  }
+
+  .shooting-star-static--b {
+    --star-angle: 22deg;
+    --star-duration: 37s;
+    --star-delay: 15s;
+    top: 42%;
   }
 
   .glass-card {
@@ -163,23 +179,23 @@
 
 @keyframes shooting-star-crossing {
   0%,
-  72% {
+  92% {
     opacity: 0;
-    transform: rotate(35deg) translate3d(0, 0, 0);
+    transform: rotate(var(--star-angle)) translate3d(0, 0, 0);
   }
 
-  75% {
+  93% {
     opacity: 1;
   }
 
-  88% {
+  97.5% {
     opacity: 1;
   }
 
-  92%,
+  99%,
   100% {
     opacity: 0;
-    transform: rotate(35deg) translate3d(130vw, 0, 0);
+    transform: rotate(var(--star-angle)) translate3d(130vw, 0, 0);
   }
 }
 

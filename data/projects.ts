@@ -78,7 +78,12 @@ export const PROJECTS: Project[] = [
           iconName: "dfri",
         },
         {
-          label: messages.projects.linkLabels.redditFeedback,
+          label: messages.projects.linkLabels.redditEarlyFeedback,
+          url: "https://www.reddit.com/r/sweden/comments/1qqd4jp/hur_jag_raderade_mig_fr%C3%A5n_sidor_som_ratsit_mrkoll/",
+          iconName: "reddit",
+        },
+        {
+          label: messages.projects.linkLabels.redditIndependentShare,
           url: "https://www.reddit.com/r/sweden/comments/1vomcas/v%C3%A4nlig_p%C3%A5minnelse_s%C3%A5_g%C3%B6r_du_f%C3%B6r_att_radera_din/",
           iconName: "reddit",
         },
@@ -105,7 +110,8 @@ export const PROJECTS: Project[] = [
       built: projectCopy.jarvis.built,
       proof: [projectCopy.jarvis.proof],
     },
-    image: "https://raw.githubusercontent.com/joelhagvall/jarvis-chat/main/screenshots/4.png",
+    image:
+      "https://raw.githubusercontent.com/joelhagvall/jarvis-chat/main/screenshots/4.png",
   },
   {
     title: projectCopy.torScraper.title,

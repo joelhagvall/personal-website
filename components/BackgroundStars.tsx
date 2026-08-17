@@ -23,7 +23,8 @@ export function BackgroundStars({ overlay = true, className }: BackgroundStarsPr
         fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <span className="shooting-star-static" />
+      <span className="shooting-star-static shooting-star-static--a" />
+      <span className="shooting-star-static shooting-star-static--b" />
     </div>
   );
 }
