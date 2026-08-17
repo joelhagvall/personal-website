@@ -8,6 +8,10 @@ import messages from "@/messages/en.json";
 
 const projectCopy = messages.projects.items;
 
+/** Helper to build GitHub URL from owner and repo */
+export const getGitHubUrl = (owner: string, repo: string) =>
+  `https://github.com/${owner}/${repo}`;
+
 export const PROJECTS: Project[] = [
   {
     title: projectCopy.resiliaAI.title,
@@ -51,7 +55,28 @@ export const PROJECTS: Project[] = [
     caseStudy: {
       problem: projectCopy.maskera.problem,
       built: projectCopy.maskera.built,
-      proof: [{ text: projectCopy.maskera.proof }],
+      proof: [
+        {
+          text: projectCopy.maskera.proof,
+          sources: [
+            {
+              label: messages.projects.linkLabels.maskeraDemo,
+              url: "https://maskera.dev",
+              iconName: "website",
+            },
+            {
+              label: messages.projects.linkLabels.npm,
+              url: "https://www.npmjs.com/package/maskera",
+              iconName: "npm",
+            },
+            {
+              label: messages.projects.linkLabels.huggingFace,
+              url: "https://huggingface.co/joelhagvall/maskera-sv-ner",
+              iconName: "huggingface",
+            },
+          ],
+        },
+      ],
     },
     demoUrl: "https://maskera.dev",
     npmUrl: "https://www.npmjs.com/package/maskera",
@@ -73,35 +98,43 @@ export const PROJECTS: Project[] = [
       proof: [
         {
           text: projectCopy.dataWipeMailer.proof.dfri,
-          source: {
-            label: messages.projects.linkLabels.dfriReference,
-            url: "https://www.dfri.se/sv/engagera-dig/hur-tar-jag-bort/",
-            iconName: "dfri",
-          },
+          sources: [
+            {
+              label: messages.projects.linkLabels.dfriReference,
+              url: "https://www.dfri.se/sv/engagera-dig/hur-tar-jag-bort/",
+              iconName: "dfri",
+            },
+          ],
         },
         {
           text: projectCopy.dataWipeMailer.proof.redditEarlyFeedback,
-          source: {
-            label: messages.projects.linkLabels.redditEarlyFeedback,
-            url: "https://www.reddit.com/r/sweden/comments/1qqd4jp/hur_jag_raderade_mig_fr%C3%A5n_sidor_som_ratsit_mrkoll/",
-            iconName: "reddit",
-          },
+          sources: [
+            {
+              label: messages.projects.linkLabels.redditEarlyFeedback,
+              url: "https://www.reddit.com/r/sweden/comments/1qqd4jp/hur_jag_raderade_mig_fr%C3%A5n_sidor_som_ratsit_mrkoll/",
+              iconName: "reddit",
+            },
+          ],
         },
         {
           text: projectCopy.dataWipeMailer.proof.redditIndependentShare,
-          source: {
-            label: messages.projects.linkLabels.redditIndependentShare,
-            url: "https://www.reddit.com/r/sweden/comments/1vomcas/v%C3%A4nlig_p%C3%A5minnelse_s%C3%A5_g%C3%B6r_du_f%C3%B6r_att_radera_din/",
-            iconName: "reddit",
-          },
+          sources: [
+            {
+              label: messages.projects.linkLabels.redditIndependentShare,
+              url: "https://www.reddit.com/r/sweden/comments/1vomcas/v%C3%A4nlig_p%C3%A5minnelse_s%C3%A5_g%C3%B6r_du_f%C3%B6r_att_radera_din/",
+              iconName: "reddit",
+            },
+          ],
         },
         {
           text: projectCopy.dataWipeMailer.proof.linkedin,
-          source: {
-            label: messages.projects.linkLabels.linkedinLaunch,
-            url: "https://www.linkedin.com/posts/joel-h%C3%A4gvall-810601147_sweden-is-one-of-the-few-countries-where-activity-7393215112825892864-88Yf?utm_source=share&utm_medium=member_desktop&rcm=ACoAACOBw0wBEi2wQSiatRzxAKJ2zpXZfInx2iI",
-            iconName: "linkedin",
-          },
+          sources: [
+            {
+              label: messages.projects.linkLabels.linkedinLaunch,
+              url: "https://www.linkedin.com/posts/joel-h%C3%A4gvall-810601147_sweden-is-one-of-the-few-countries-where-activity-7393215112825892864-88Yf?utm_source=share&utm_medium=member_desktop&rcm=ACoAACOBw0wBEi2wQSiatRzxAKJ2zpXZfInx2iI",
+              iconName: "linkedin",
+            },
+          ],
         },
       ],
     },
@@ -119,7 +152,18 @@ export const PROJECTS: Project[] = [
     caseStudy: {
       problem: projectCopy.jarvis.problem,
       built: projectCopy.jarvis.built,
-      proof: [{ text: projectCopy.jarvis.proof }],
+      proof: [
+        {
+          text: projectCopy.jarvis.proof,
+          sources: [
+            {
+              label: messages.projects.linkLabels.github,
+              url: getGitHubUrl("joelhagvall", "jarvis-chat"),
+              iconName: "github",
+            },
+          ],
+        },
+      ],
     },
     image:
       "https://raw.githubusercontent.com/joelhagvall/jarvis-chat/main/screenshots/4.png",
@@ -135,7 +179,23 @@ export const PROJECTS: Project[] = [
     caseStudy: {
       problem: projectCopy.torScraper.problem,
       built: projectCopy.torScraper.built,
-      proof: [{ text: projectCopy.torScraper.proof }],
+      proof: [
+        {
+          text: projectCopy.torScraper.proof,
+          sources: [
+            {
+              label: messages.projects.linkLabels.diva,
+              url: "https://su.diva-portal.org/smash/record.jsf?pid=diva2%3A1955538",
+              iconName: "stockholm-university",
+            },
+            {
+              label: messages.projects.linkLabels.github,
+              url: getGitHubUrl("joelhagvall", "tor-onion-site-scraper"),
+              iconName: "github",
+            },
+          ],
+        },
+      ],
     },
     publicationUrl:
       "https://su.diva-portal.org/smash/record.jsf?pid=diva2%3A1955538",
@@ -164,9 +224,3 @@ export const PROJECTS: Project[] = [
     prominence: "earlier",
   },
 ];
-
-/**
- * Helper to build GitHub URL from owner and repo
- */
-export const getGitHubUrl = (owner: string, repo: string) =>
-  `https://github.com/${owner}/${repo}`;

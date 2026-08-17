@@ -25,7 +25,12 @@
       "dfriReference": "DFRI",
       "redditEarlyFeedback": "Reddit",
       "redditIndependentShare": "Reddit",
-      "linkedinLaunch": "LinkedIn"
+      "linkedinLaunch": "LinkedIn",
+      "github": "GitHub",
+      "npm": "npm",
+      "huggingFace": "Hugging Face",
+      "maskeraDemo": "maskera.dev",
+      "diva": "DiVA"
     },
     "items": {
       "resiliaAI": {

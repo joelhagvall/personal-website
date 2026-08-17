@@ -1,6 +1,14 @@
 export type IconName = 'code' | 'smartphone' | 'headphones' | 'shield' | 'bot';
 export type ProjectProminence = 'featured' | 'supporting' | 'earlier';
-export type ProjectProofIconName = 'dfri' | 'reddit' | 'linkedin';
+export type ProjectProofIconName =
+  | 'dfri'
+  | 'reddit'
+  | 'linkedin'
+  | 'github'
+  | 'npm'
+  | 'huggingface'
+  | 'website'
+  | 'stockholm-university';
 
 export interface ProjectProofSource {
   label: string;
@@ -10,7 +18,7 @@ export interface ProjectProofSource {
 
 export interface ProjectProofItem {
   text: string;
-  source?: ProjectProofSource;
+  sources?: ProjectProofSource[];
 }
 
 export interface ProjectCaseStudy {

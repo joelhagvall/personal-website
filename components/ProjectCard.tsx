@@ -11,6 +11,7 @@ import {
   ExternalLink,
   FileText,
   Bot,
+  Globe,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -70,6 +71,19 @@ function RedditIcon({ className }: { className?: string }) {
   );
 }
 
+function NpmIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" />
+    </svg>
+  );
+}
+
 function ProofSourceIcon({
   iconName,
 }: {
@@ -88,14 +102,47 @@ function ProofSourceIcon({
           className={`${iconClassName} rounded-[2px]`}
         />
       );
+    case "stockholm-university":
+      return (
+        <Image
+          src="/media/su-logo.png"
+          alt=""
+          width={12}
+          height={12}
+          className={`${iconClassName} rounded-full`}
+        />
+      );
+    case "huggingface":
+      return (
+        <Image
+          src="/media/huggingface-logo.svg"
+          alt=""
+          width={12}
+          height={12}
+          className={iconClassName}
+        />
+      );
     case "reddit":
       return <RedditIcon className={`${iconClassName} text-[#FF4500]`} />;
+    case "npm":
+      return <NpmIcon className={`${iconClassName} text-[#CB3837]`} />;
     case "linkedin":
       return (
         <LinkedInLogoIcon
           className={`${iconClassName} text-[#0A66C2]`}
           aria-hidden="true"
         />
+      );
+    case "github":
+      return (
+        <GitHubLogoIcon
+          className={`${iconClassName} text-black`}
+          aria-hidden="true"
+        />
+      );
+    case "website":
+      return (
+        <Globe className={`${iconClassName} text-gray-800`} aria-hidden="true" />
       );
   }
 }
@@ -137,7 +184,9 @@ function CaseStudyItem({
         {items.map((item) => (
           <p key={item.text}>
             {item.text}
-            {item.source ? <ProofSourceChip source={item.source} /> : null}
+            {item.sources?.map((source) => (
+              <ProofSourceChip key={source.url} source={source} />
+            ))}
           </p>
         ))}
       </dd>
