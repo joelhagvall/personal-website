@@ -100,15 +100,15 @@
 
   .shooting-star-static--a {
     --star-angle: 35deg;
-    --star-duration: 23s;
+    --star-duration: 41s;
     --star-delay: 3s;
     top: 14%;
   }
 
   .shooting-star-static--b {
     --star-angle: 22deg;
-    --star-duration: 37s;
-    --star-delay: 15s;
+    --star-duration: 67s;
+    --star-delay: 27s;
     top: 42%;
   }
 
@@ -179,20 +179,20 @@
 
 @keyframes shooting-star-crossing {
   0%,
-  92% {
+  95% {
     opacity: 0;
     transform: rotate(var(--star-angle)) translate3d(0, 0, 0);
   }
 
-  93% {
+  95.5% {
     opacity: 1;
   }
 
-  97.5% {
+  98.5% {
     opacity: 1;
   }
 
-  99%,
+  99.5%,
   100% {
     opacity: 0;
     transform: rotate(var(--star-angle)) translate3d(130vw, 0, 0);
