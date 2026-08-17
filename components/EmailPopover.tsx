@@ -21,6 +21,7 @@ export function EmailPopover({
   className,
 }: EmailPopoverProps) {
   const [copyFeedback, setCopyFeedback] = useState<string | null>(null);
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
   const [isOpen, setIsOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -38,12 +39,16 @@ export function EmailPopover({
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText(SOCIAL.email);
+      setCopyState("copied");
       setCopyFeedback("Email copied to clipboard");
-      setTimeout(() => setCopyFeedback(null), 2000);
     } catch {
+      setCopyState("failed");
       setCopyFeedback("Failed to copy email");
-      setTimeout(() => setCopyFeedback(null), 2000);
     }
+    setTimeout(() => {
+      setCopyState("idle");
+      setCopyFeedback(null);
+    }, 2000);
   };
 
   // Close on click outside
@@ -156,11 +161,20 @@ export function EmailPopover({
                 <p className="text-sm text-muted-foreground">{SOCIAL.email}</p>
                 <button
                   onClick={handleCopyEmail}
-                  className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm text-left"
+                  className={cn(
+                    "text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm text-left transition-colors",
+                    copyState === "copied" && "text-green-500",
+                    copyState === "failed" && "text-red-500",
+                    copyState === "idle" && "text-primary"
+                  )}
                   type="button"
                   aria-label={`Copy email address ${SOCIAL.email} to clipboard`}
                 >
-                  {LABELS.copyToClipboard}
+                  {copyState === "copied"
+                    ? LABELS.copied
+                    : copyState === "failed"
+                      ? LABELS.copyFailed
+                      : LABELS.copyToClipboard}
                 </button>
               </div>
             )}

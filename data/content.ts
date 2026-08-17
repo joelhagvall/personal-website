@@ -29,6 +29,8 @@ export const LABELS = {
   linkedinPost: "LinkedIn Post",
   continue: "Continue",
   copyToClipboard: "Copy to clipboard",
+  copied: "Copied!",
+  copyFailed: "Copy failed",
 
   // Section headers
   introduction: "Introduction",
