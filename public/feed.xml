@@ -5,8 +5,15 @@
     <link>https://joelhagvall.com/blog</link>
     <description>Blog posts by Joel Hägvall</description>
     <language>en</language>
-    <lastBuildDate>Mon, 20 Jul 2026 11:47:21 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 19:59:28 GMT</lastBuildDate>
     <atom:link href="https://joelhagvall.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Automate Everything Possible</title>
+      <link>https://joelhagvall.com/blog/automate-everything</link>
+      <guid isPermaLink="true">https://joelhagvall.com/blog/automate-everything</guid>
+      <description>You have no excuses anymore. Not with AI. Not with anything.</description>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>Stripping Away the Noise</title>
       <link>https://joelhagvall.com/blog/noise</link>
