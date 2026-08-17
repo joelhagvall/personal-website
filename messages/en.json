@@ -1,0 +1,81 @@
+{
+  "projects": {
+    "page": {
+      "title": "Product work you can inspect.",
+      "description": "Selected AI, privacy, and workflow projects. Each case shows the problem, what I built, and the evidence behind it.",
+      "githubPrefix": "Explore more public source code on my",
+      "githubLink": "GitHub profile",
+      "featuredTitle": "Selected case studies",
+      "featuredDescription": "The strongest examples of product ownership, technical execution, and public proof.",
+      "supportingTitle": "Technical and academic work",
+      "supportingDescription": "Working systems that show how I connect AI, local tools, data collection, and research.",
+      "earlierTitle": "Earlier projects",
+      "earlierDescription": "Student and hobby projects across mobile products, APIs, and automation.",
+      "ctaTitle": "Turn a blocked product flow into a working release.",
+      "ctaDescription": "I can own the path from scope to frontend, backend, AI, tests, and deployment.",
+      "ctaLabel": "See how I work",
+      "metadataDescription": "Inspect Joel Hägvall’s product work through focused case studies covering the problem, implementation, and public proof."
+    },
+    "caseLabels": {
+      "problem": "Problem",
+      "built": "What I built",
+      "proof": "Proof"
+    },
+    "linkLabels": {
+      "dfriReference": "DFRI’s privacy guide",
+      "redditFeedback": "Reddit usage and feedback",
+      "linkedinLaunch": "LinkedIn launch post"
+    },
+    "items": {
+      "resiliaAI": {
+        "title": "ResiliaAI",
+        "summary": "An AI-powered resilience and crisis preparedness platform for housing associations and organizations.",
+        "status": "Part-time, pre-launch venture",
+        "problem": "A three-person venture needed one engineer to turn the product concept into a testable pre-launch platform.",
+        "built": "I own the React and TypeScript product, APIs, PostgreSQL data layer, and AI orchestration. I also own workflow automation, tests, continuous integration, delivery, and hosted development environments.",
+        "proof": "I am the sole engineer and work across product decisions, implementation, and release preparation."
+      },
+      "maskera": {
+        "title": "Maskera",
+        "summary": "Local redaction of Swedish personally identifiable information for browser, Node.js, edge, and AI workflows.",
+        "status": "Public pre-release",
+        "problem": "Teams risk sending names, Swedish personal identity numbers, and addresses to LLMs, logs, and analytics.",
+        "built": "I combined deterministic rules with an approximately 43 MB quantized ONNX model that runs locally through Transformers.js with WebGPU or WASM.",
+        "proof": "The public pre-release includes a live demo, npm package, and Hugging Face model."
+      },
+      "dataWipeMailer": {
+        "title": "Data Wipe Mailer",
+        "summary": "A privacy-focused web app that helps Swedish citizens send General Data Protection Regulation (GDPR) Article 17 deletion requests.",
+        "problem": "Requesting deletion from several data brokers requires finding each process and writing repetitive requests.",
+        "built": "I built a client-side Next.js app that prepares each request without sending personal data to a server.",
+        "proof": [
+          "Föreningen för Digitala Fri- och Rättigheter (DFRI) is a Swedish nonprofit and nonpartisan digital rights association. DFRI links to Data Wipe Mailer in its guide for removing personal data online.",
+          "Reddit users have independently shared the tool and reported using it to send deletion requests.",
+          "The LinkedIn launch post reached 200,000+ views and 2,000+ likes."
+        ]
+      },
+      "jarvis": {
+        "title": "J.A.R.V.I.S",
+        "summary": "A private macOS assistant that connects local AI with personal notes, tools, and everyday workflows.",
+        "problem": "Personal notes and everyday tools live in separate apps. A cloud assistant would also expose private context.",
+        "built": "I built the app with SwiftUI, Ollama, and Model Context Protocol servers for iCloud Notes and Stockholm public transit.",
+        "proof": "The working macOS app reads notes and calls tools without cloud model dependencies."
+      },
+      "torScraper": {
+        "title": "Tor Onion Site Scraper",
+        "summary": "A Python crawler and analysis pipeline developed for my bachelor thesis at Stockholm University.",
+        "problem": "The thesis needed repeatable data collection from cybercrime services hosted on Tor onion sites.",
+        "built": "I built a crawler that retrieves pages, extracts structured data, exports CSV files, and supports analysis with pandas and matplotlib.",
+        "proof": "Stockholm University published the thesis, and the crawler source code is public."
+      },
+      "carspotter": {
+        "title": "Carspotter",
+        "summary": "A student-built social app where car enthusiasts can log sightings, map cars, earn achievements, and browse profiles."
+      },
+      "spotifyPlaylistGenerator": {
+        "title": "Spotify Playlist Generator",
+        "summary": "A Python desktop app that creates randomized playlists through the Spotify API."
+      }
+    }
+  }
+}

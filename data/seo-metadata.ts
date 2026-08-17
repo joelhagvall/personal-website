@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import { OG_IMAGE, PERSON, SITE } from "./site";
 import { FREELANCE } from "./freelance";
+import { PROJECTS_CONTENT } from "./content";
 
 // ============================================
 // Helper functions
@@ -100,7 +101,7 @@ export const PAGE_METADATA = {
 
   projects: {
     title: createPageTitle("Projects"),
-    description: `Explore ${PERSON.name}'s products, public pre-releases and open-source work across TypeScript, React, workflow automation and privacy-focused AI.`,
+    description: PROJECTS_CONTENT.page.metadataDescription,
     alternates: createAlternates("/projects"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/projects");

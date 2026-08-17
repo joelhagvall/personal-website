@@ -4,6 +4,7 @@
  */
 
 import { PERSON } from "./site";
+import messages from "@/messages/en.json";
 
 // ============================================
 // Navigation & Common Labels
@@ -104,12 +105,7 @@ export const ABOUT_CONTENT = {
   },
 } as const;
 
-export const PROJECTS_CONTENT = {
-  pageTitle: LABELS.projects,
-  description: `A selection of products, open-source work and academic projects. More public source code is available on my`,
-  githubLink: "GitHub",
-  githubSuffix: "profile.",
-} as const;
+export const PROJECTS_CONTENT = messages.projects;
 
 export const RESUME_CONTENT = {
   pageTitle: LABELS.resume,

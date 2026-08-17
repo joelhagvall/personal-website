@@ -1,9 +1,26 @@
 export type IconName = 'code' | 'smartphone' | 'headphones' | 'shield' | 'bot';
+export type ProjectProminence = 'featured' | 'supporting' | 'earlier';
+export type ProjectProofIconName = 'dfri' | 'reddit' | 'linkedin';
+
+export interface ProjectProofLink {
+  label: string;
+  url: string;
+  iconName: ProjectProofIconName;
+}
+
+export interface ProjectCaseStudy {
+  problem: string;
+  built: string;
+  proof: string[];
+  proofLinks?: ProjectProofLink[];
+}
 
 export interface Project {
   title: string;
   description: string;
   technologies: string[];
+  prominence: ProjectProminence;
+  caseStudy?: ProjectCaseStudy;
   owner?: string;
   repo?: string;
   iconName: IconName;

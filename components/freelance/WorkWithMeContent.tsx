@@ -248,6 +248,7 @@ export function WorkWithMeContent({
                 modelUrl={project.modelUrl}
                 publicationUrl={project.publicationUrl}
                 image={project.image}
+                caseStudy={project.caseStudy}
               />
             ))}
           </div>
