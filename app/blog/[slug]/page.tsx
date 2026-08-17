@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <Footer mailMode="copy" />
+      <Footer />
     </main>
   );
 }

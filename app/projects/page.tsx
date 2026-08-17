@@ -124,7 +124,7 @@ export default async function Projects() {
             </section>
           </div>
         </div>
-        <Footer mailMode="copy" />
+        <Footer />
       </main>
     </>
   );

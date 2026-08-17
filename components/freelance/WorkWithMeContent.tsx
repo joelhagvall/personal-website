@@ -282,7 +282,7 @@ export function WorkWithMeContent({
           <FreelanceInquiryForm />
         </section>
 
-        <Footer mailMode="copy" />
+        <Footer />
       </div>
     </div>
   );

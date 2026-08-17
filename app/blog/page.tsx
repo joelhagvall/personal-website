@@ -40,7 +40,7 @@ export default function Blog() {
           </div>
         </div>
       </div>
-      <Footer mailMode="copy" />
+      <Footer />
     </main>
   );
 }

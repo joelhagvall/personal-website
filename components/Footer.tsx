@@ -1,17 +1,11 @@
 import { SocialLinks } from "@/components/SocialLinks";
 import { FOOTER_CONTENT } from "@/data/content";
 
-type MailMode = "open" | "copy";
-
-interface FooterProps {
-  mailMode?: MailMode;
-}
-
 // Cache the current year to avoid creating new Date on every render
 // This value only changes once per year, safe to cache at module level
 const CURRENT_YEAR = new Date().getFullYear();
 
-export function Footer({ mailMode = "open" }: FooterProps) {
+export function Footer() {
   return (
     <footer
       className="col-span-3 mt-8 border-t border-primary/10"
@@ -24,11 +18,7 @@ export function Footer({ mailMode = "open" }: FooterProps) {
             {FOOTER_CONTENT.tagline}
           </p>
         </div>
-        <SocialLinks
-          variant="muted"
-          mailMode={mailMode}
-          labelVariant="plain"
-        />
+        <SocialLinks variant="muted" labelVariant="plain" />
         <div className="text-sm text-muted-foreground flex flex-col md:flex-row items-center gap-2 md:flex-1 md:justify-end">
           <span>{FOOTER_CONTENT.copyright(CURRENT_YEAR)}</span>
           <span className="hidden md:inline" aria-hidden="true">•</span>
