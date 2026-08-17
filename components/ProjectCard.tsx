@@ -154,7 +154,7 @@ function ProofSourceChip({ source }: { source: ProjectProofSource }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Source: ${source.label} (opens in new tab)`}
-      className="group ml-1.5 inline-flex translate-y-[-1px] items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.06] py-0.5 pl-1 pr-2 align-middle text-xs font-medium text-gray-300 transition-colors hover:border-white/20 hover:bg-white/[0.12] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group inline-flex translate-y-[-1px] items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.06] py-0.5 pl-1 pr-2 align-middle text-xs font-medium text-gray-300 transition-colors hover:border-white/20 hover:bg-white/[0.12] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white/90">
         <ProofSourceIcon iconName={source.iconName} />
@@ -184,9 +184,16 @@ function CaseStudyItem({
         {items.map((item) => (
           <p key={item.text}>
             {item.text}
-            {item.sources?.map((source) => (
-              <ProofSourceChip key={source.url} source={source} />
-            ))}
+            {item.sources && item.sources.length > 0 ? (
+              <>
+                {" "}
+                <span className="inline-flex flex-wrap gap-1.5 align-middle">
+                  {item.sources.map((source) => (
+                    <ProofSourceChip key={source.url} source={source} />
+                  ))}
+                </span>
+              </>
+            ) : null}
           </p>
         ))}
       </dd>
@@ -213,6 +220,22 @@ export function ProjectCard({
   caseStudy,
 }: ProjectCardProps) {
   const Icon = iconMap[iconName];
+  // Links already shown as proof-source chips are dropped from the footer
+  // row so the same destination isn't listed twice on one card.
+  const proofUrls = new Set(
+    caseStudy?.proof.flatMap((item) => item.sources?.map((s) => s.url) ?? []) ?? []
+  );
+  const isNotProof = (url: string | undefined) =>
+    url !== undefined && !proofUrls.has(url);
+  const footerLinks = {
+    demoUrl: isNotProof(demoUrl) ? demoUrl : undefined,
+    npmUrl: isNotProof(npmUrl) ? npmUrl : undefined,
+    modelUrl: isNotProof(modelUrl) ? modelUrl : undefined,
+    publicationUrl: isNotProof(publicationUrl) ? publicationUrl : undefined,
+    githubUrl: isNotProof(githubUrl) ? githubUrl : undefined,
+    linkedinUrl: isNotProof(linkedinUrl) ? linkedinUrl : undefined,
+  };
+  const hasFooterLinks = Object.values(footerLinks).some(Boolean);
   const hasStars = stars !== undefined && stars > 0;
   const hasForks = forks !== undefined && forks > 0;
 
@@ -314,80 +337,82 @@ export function ProjectCard({
             </div>
           )}
 
-          <div className="flex items-center gap-4 flex-wrap" role="group" aria-label="Project links">
-            {demoUrl && (
-              <Link
-                href={demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${LABELS.liveDemo} of ${title} (opens in new tab)`}
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-              >
-                <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                {LABELS.liveDemo}
-              </Link>
-            )}
-            {npmUrl && (
-              <Link
-                href={npmUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${LABELS.npmPackage} for ${title} (opens in new tab)`}
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-              >
-                <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                {LABELS.npmPackage}
-              </Link>
-            )}
-            {modelUrl && (
-              <Link
-                href={modelUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${LABELS.huggingFaceModel} for ${title} (opens in new tab)`}
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-              >
-                <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                {LABELS.huggingFaceModel}
-              </Link>
-            )}
-            {publicationUrl && (
-              <Link
-                href={publicationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${LABELS.publication} for ${title} (opens in new tab)`}
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-              >
-                <FileText className="w-4 h-4" aria-hidden="true" />
-                {LABELS.publication}
-              </Link>
-            )}
-            {githubUrl && (
-              <Link
-                href={githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${LABELS.sourceCode} for ${title} (opens in new tab)`}
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-              >
-                <GitHubLogoIcon aria-hidden="true" />
-                {LABELS.sourceCode}
-              </Link>
-            )}
-            {linkedinUrl && (
-              <Link
-                href={linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${LABELS.linkedinPost} about ${title} (opens in new tab)`}
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-              >
-                <LinkedInLogoIcon aria-hidden="true" />
-                {LABELS.linkedinPost}
-              </Link>
-            )}
-          </div>
+          {hasFooterLinks ? (
+            <div className="flex items-center gap-4 flex-wrap" role="group" aria-label="Project links">
+              {footerLinks.demoUrl && (
+                <Link
+                  href={footerLinks.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${LABELS.liveDemo} of ${title} (opens in new tab)`}
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                >
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                  {LABELS.liveDemo}
+                </Link>
+              )}
+              {footerLinks.npmUrl && (
+                <Link
+                  href={footerLinks.npmUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${LABELS.npmPackage} for ${title} (opens in new tab)`}
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                >
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                  {LABELS.npmPackage}
+                </Link>
+              )}
+              {footerLinks.modelUrl && (
+                <Link
+                  href={footerLinks.modelUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${LABELS.huggingFaceModel} for ${title} (opens in new tab)`}
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                >
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                  {LABELS.huggingFaceModel}
+                </Link>
+              )}
+              {footerLinks.publicationUrl && (
+                <Link
+                  href={footerLinks.publicationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${LABELS.publication} for ${title} (opens in new tab)`}
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                >
+                  <FileText className="w-4 h-4" aria-hidden="true" />
+                  {LABELS.publication}
+                </Link>
+              )}
+              {footerLinks.githubUrl && (
+                <Link
+                  href={footerLinks.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${LABELS.sourceCode} for ${title} (opens in new tab)`}
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                >
+                  <GitHubLogoIcon aria-hidden="true" />
+                  {LABELS.sourceCode}
+                </Link>
+              )}
+              {footerLinks.linkedinUrl && (
+                <Link
+                  href={footerLinks.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${LABELS.linkedinPost} about ${title} (opens in new tab)`}
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                >
+                  <LinkedInLogoIcon aria-hidden="true" />
+                  {LABELS.linkedinPost}
+                </Link>
+              )}
+            </div>
+          ) : null}
         </div>
       </Card>
     </div>
