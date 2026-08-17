@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
             {
               label: messages.projects.linkLabels.maskeraDemo,
               url: "https://maskera.dev",
-              iconName: "website",
+              iconName: "maskera",
             },
             {
               label: messages.projects.linkLabels.npm,

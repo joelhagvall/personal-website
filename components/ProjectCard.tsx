@@ -112,6 +112,16 @@ function ProofSourceIcon({
           className={`${iconClassName} rounded-full`}
         />
       );
+    case "maskera":
+      return (
+        <Image
+          src="/media/maskera-logo.svg"
+          alt=""
+          width={12}
+          height={12}
+          className={`${iconClassName} rounded-[3px]`}
+        />
+      );
     case "huggingface":
       return (
         <Image

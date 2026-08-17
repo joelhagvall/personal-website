@@ -8,6 +8,7 @@ export type ProjectProofIconName =
   | 'npm'
   | 'huggingface'
   | 'website'
+  | 'maskera'
   | 'stockholm-university';
 
 export interface ProjectProofSource {
