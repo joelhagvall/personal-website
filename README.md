@@ -22,6 +22,12 @@ bun run dev
 
 Then open [localhost:3000](http://localhost:3000)
 
+The GitHub contribution graph on the home page uses the GitHub API. Set `GITHUB_TOKEN` in `.env.local` to raise the rate limit (works without it too).
+
 ## Deployment
 
 Hosted on Vercel.
+
+## License
+
+The code is MIT licensed — see [LICENSE](LICENSE). The content (blog posts, images, resume, and other personal material) is mine; please don't republish it as your own.

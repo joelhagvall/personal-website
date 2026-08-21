@@ -163,8 +163,9 @@ export const FOOTER_CONTENT = {
   name: PERSON.name,
   tagline: `Software Developer based in ${PERSON.location.city}, ${PERSON.location.country}.`,
   copyright: (year: number) => `© ${year}`,
-  builtWith: "Built with Next.js",
   securityPolicy: LABELS.securityPolicy,
+  viewSource: "View source",
+  sourceUrl: "https://github.com/joelhagvall/personal-website",
 } as const;
 
 // ============================================

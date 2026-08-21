@@ -28,6 +28,15 @@ export function Footer() {
           >
             {FOOTER_CONTENT.securityPolicy}
           </a>
+          <span className="hidden md:inline" aria-hidden="true">•</span>
+          <a
+            href={FOOTER_CONTENT.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+          >
+            {FOOTER_CONTENT.viewSource}
+          </a>
         </div>
       </div>
     </footer>
