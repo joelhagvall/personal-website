@@ -53,10 +53,13 @@ export default function About() {
                         />
                       </div>
                     </div>
-                    <p className={TEXT_STYLES.bodyText}>
-                      My name is {profile.name}, {profile.age} years old (born{" "}
-                      {profile.birthYear}). {profile.bio}
-                    </p>
+                    <div className="space-y-4 max-w-3xl">
+                      {ABOUT_CONTENT.story.map((paragraph, index) => (
+                        <p key={index} className={TEXT_STYLES.bodyText}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
