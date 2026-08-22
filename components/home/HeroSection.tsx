@@ -8,7 +8,7 @@ import { FREELANCE } from "@/data/freelance";
 
 export function HeroSection() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+    <header className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
       <div className="relative z-10 flex min-h-[424px] w-full flex-col items-center justify-center px-4">
         {/* 3D Astronaut - Above name */}
         <div className="w-48 h-48 md:w-56 md:h-56 mb-4">
@@ -43,6 +43,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

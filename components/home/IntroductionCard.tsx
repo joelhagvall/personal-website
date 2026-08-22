@@ -7,11 +7,11 @@ import { FREELANCE } from "@/data/freelance";
 
 export function IntroductionCard() {
   return (
-    <AnimatedCard className="col-span-full">
+    <AnimatedCard as="section" aria-labelledby="introduction-heading" className="col-span-full">
       <div className="flex items-start gap-6">
         <ProfileAvatar />
         <div className="flex-1">
-          <h2 className="text-2xl font-semibold mb-3">
+          <h2 id="introduction-heading" className="text-2xl font-semibold mb-3">
             {HOME_CONTENT.introduction.heading}
           </h2>
           <p className="text-muted-foreground text-lg">

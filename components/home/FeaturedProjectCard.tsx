@@ -8,8 +8,8 @@ import { HOME_CONTENT, LABELS } from "@/data/content";
 
 export function FeaturedProjectCard() {
   return (
-    <AnimatedCard className="col-span-full md:col-span-4">
-      <h2 className="text-2xl font-semibold mb-4">
+    <AnimatedCard as="section" aria-labelledby="featured-project-heading" className="col-span-full md:col-span-4">
+      <h2 id="featured-project-heading" className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.featuredProject.heading}
       </h2>
       <div className="space-y-4">

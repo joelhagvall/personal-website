@@ -21,8 +21,8 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
   });
 
   return (
-    <AnimatedCard className="col-span-full md:col-span-3" cardClassName="flex flex-col">
-      <h2 className="text-2xl font-semibold mb-4">
+    <AnimatedCard as="section" aria-labelledby="featured-post-heading" className="col-span-full md:col-span-3" cardClassName="flex flex-col">
+      <h2 id="featured-post-heading" className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.featuredBlog.heading}
       </h2>
       <div className="space-y-3">

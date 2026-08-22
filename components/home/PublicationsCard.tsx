@@ -12,8 +12,8 @@ export function PublicationsCard() {
   }
 
   return (
-    <AnimatedCard className="col-span-full md:col-span-3" cardClassName="flex flex-col">
-      <h2 className="text-2xl font-semibold mb-4">
+    <AnimatedCard as="section" aria-labelledby="publications-heading" className="col-span-full md:col-span-3" cardClassName="flex flex-col">
+      <h2 id="publications-heading" className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.publications.heading}
       </h2>
       <div className="space-y-4 flex-1">

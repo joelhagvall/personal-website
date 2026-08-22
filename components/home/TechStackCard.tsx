@@ -22,8 +22,8 @@ function TechIcon({ tech }: { tech: TechStackItem }) {
 
 export function TechStackCard() {
   return (
-    <AnimatedCard className="col-span-full md:col-span-2">
-      <h2 className="text-2xl font-semibold mb-4">
+    <AnimatedCard as="section" aria-labelledby="tech-stack-heading" className="col-span-full md:col-span-2">
+      <h2 id="tech-stack-heading" className="text-2xl font-semibold mb-4">
         {HOME_CONTENT.techStack.heading}
       </h2>
       <div className="flex justify-center">

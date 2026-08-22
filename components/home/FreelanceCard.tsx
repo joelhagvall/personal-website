@@ -7,6 +7,8 @@ import { LINK_STYLES } from "@/lib/styles";
 export function FreelanceCard() {
   return (
     <AnimatedCard
+      as="section"
+      aria-labelledby="work-with-me-heading"
       className="col-span-full"
       cardClassName="overflow-hidden"
     >
@@ -16,7 +18,7 @@ export function FreelanceCard() {
             {FREELANCE.heroBadge}
           </div>
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold text-white md:text-3xl">
+            <h2 id="work-with-me-heading" className="text-2xl font-semibold text-white md:text-3xl">
               {FREELANCE.homeCard.heading}
             </h2>
             <p className="text-lg text-white/90">

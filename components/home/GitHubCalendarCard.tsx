@@ -13,12 +13,14 @@ export async function GitHubCalendarCard() {
 
   return (
     <AnimatedCard
+      as="section"
+      aria-labelledby="github-activity-heading"
       className="col-span-full"
       cardClassName="flex flex-col gap-4 sm:gap-5"
     >
       <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <div className="space-y-2">
-          <h2 className="text-xl font-semibold sm:text-2xl">
+          <h2 id="github-activity-heading" className="text-xl font-semibold sm:text-2xl">
             {HOME_CONTENT.githubActivity.heading}
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
