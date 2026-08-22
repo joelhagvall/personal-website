@@ -14,7 +14,7 @@ I build RAG assistants, embeddings/vector search, document ingestion, AI reports
 
 ## Publications
 
-- **Analyzing Cybercrime Services and Trust Dynamics on the Dark Web: A Case Study of DarkDock Marketplace** (2024) — Bachelor thesis written by me and co author covering different aspects of cybercrimes present on the Tor network, published in 2024. [Publication record](https://su.diva-portal.org/smash/record.jsf?pid=diva2%3A1955538&dswid=-9467)
+- **Analyzing Cybercrime Services and Trust Dynamics on the Dark Web: A Case Study of DarkDock Marketplace** (2024) — Bachelor thesis written with a co-author, covering different aspects of cybercrime on the Tor network, published in 2024. [Publication record](https://su.diva-portal.org/smash/record.jsf?pid=diva2%3A1955538&dswid=-9467)
 
 ## Latest from the blog
 

@@ -56,7 +56,19 @@ export default function About() {
                     <div className="space-y-4 max-w-3xl">
                       {ABOUT_CONTENT.story.map((paragraph, index) => (
                         <p key={index} className={TEXT_STYLES.bodyText}>
-                          {paragraph}
+                          {paragraph.text}
+                          {"link" in paragraph && (
+                            <>
+                              {" "}
+                              <a
+                                href={paragraph.link.href}
+                                className={`${LINK_STYLES.underline} relative z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm`}
+                              >
+                                {paragraph.link.label}
+                              </a>
+                              .
+                            </>
+                          )}
                         </p>
                       ))}
                     </div>

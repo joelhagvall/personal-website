@@ -111,7 +111,11 @@ ${SKILLS.join(", ")}
   pages["about.md"] = pageMd(
     `About ${PERSON.name}`,
     PERSON.description,
-    `${ABOUT_CONTENT.story.join("\n\n")}
+    `${ABOUT_CONTENT.story
+      .map((p) =>
+        "link" in p ? `${p.text} [${p.link.label}](${SITE.url}${p.link.href}).` : p.text
+      )
+      .join("\n\n")}
 
 ## Where I live
 

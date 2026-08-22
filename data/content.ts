@@ -93,13 +93,25 @@ export const ABOUT_CONTENT = {
     myInterests: "My Interests",
   },
   story: [
-    `I'm ${PERSON.name}, ${PERSON.age} years old, born and raised in Stockholm. I've always liked figuring out how things work. These days that means workflows, systems and products. I studied Computer and Systems Sciences at Stockholm University and now build microservices, tooling and automated workflows at Scania.`,
-    "That's also how I work. Find every blocker. Remove it. Everything should just work. Most of a normal workday isn't hard problems, it's glue. Moving data between systems, reformatting, checking, waiting, reminding. None of it needs a human anymore. So I automate everything possible. At work, in my own projects, and for clients.",
-    "I also care a lot about privacy. Automating with AI means sending data somewhere, and a lot of that data should never leave your machine. That's why I built Maskera, a tool that redacts Swedish personal data completely locally. Same reason I'm interested in privacy enhancing technologies and systems that expose mistakes instead of hiding them.",
-    "Next to my full-time job I do freelance work building AI SaaS features, and I'm the sole engineer at ResiliaAI, a pre-launch venture. I think the next few years belong to builders. People who can talk to the customer, design the flow, write the code, ship it and fix it. That's what I'm going for.",
+    {
+      text: `I'm ${PERSON.name}, ${PERSON.age} years old, born and raised in Stockholm. I've always liked figuring out how things work. These days that means workflows, systems and products. I studied Computer and Systems Sciences at Stockholm University and now build microservices, tooling and automated workflows at Scania.`,
+    },
+    {
+      text: "My way of working is simple: find every blocker and remove it. Most of a normal workday isn't hard problems, it's glue between systems, so I automate everything possible. At work, in my own projects, and for clients. I wrote more about that in",
+      link: { label: "Automate Everything Possible", href: "/blog/automate-everything" },
+    },
+    {
+      text: "I also care a lot about privacy. Automating with AI means sending data somewhere, and a lot of that data should never leave your machine. That's why I built Maskera, a tool that redacts Swedish personal data completely locally.",
+    },
+    {
+      text: "Next to my full-time job I do freelance work building AI SaaS features, and I'm the sole engineer at ResiliaAI, a pre-launch venture.",
+    },
+    {
+      text: "I think the next few years belong to builders. People who can talk to the customer, design the flow, write the code, ship it and fix it. That's what I'm going for.",
+    },
   ],
   interests: {
-    techIntro: "For as long as I can remember, I've always been interested in technology. Today i'm also drawn to tech that makes a difference:",
+    techIntro: "For as long as I can remember, I've always been interested in technology. Today I'm also drawn to tech that makes a difference:",
     buildingIntro: "Thinking of new software ideas, iterating on them and actually building them. Open sourced on my",
     githubLink: "GitHub",
     githubSuffix: "profile.",
