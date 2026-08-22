@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { HOME_CONTENT } from "@/data/content";
 import {
   contributionsToCalendar,
+  expandCalendar,
+  type CompactContributionCalendar,
   type GitHubContributionCalendar,
   type PublicContributionDay,
 } from "@/lib/github";
@@ -19,29 +21,14 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   year: "numeric",
 });
+// Cell colours per level live in app/globals.css (.gh-day[data-level]);
+// these are only used for the legend swatches.
 const CONTRIBUTION_LEVELS = [
   "rgba(148, 163, 184, 0.08)",
   "rgba(125, 211, 252, 0.24)",
   "rgba(56, 189, 248, 0.44)",
   "rgba(34, 211, 238, 0.7)",
   "rgba(59, 130, 246, 0.95)",
-] as const;
-
-// Border and shadow per contribution level, indexed like CONTRIBUTION_LEVELS
-const CONTRIBUTION_BORDERS = [
-  "rgba(255, 255, 255, 0.08)",
-  "rgba(125, 211, 252, 0.35)",
-  "rgba(125, 211, 252, 0.55)",
-  "rgba(103, 232, 249, 0.75)",
-  "rgba(147, 197, 253, 0.9)",
-] as const;
-
-const CONTRIBUTION_SHADOWS = [
-  "none",
-  "0 0 10px rgba(56, 189, 248, 0.18)",
-  "0 0 10px rgba(56, 189, 248, 0.18)",
-  "0 0 14px rgba(34, 211, 238, 0.26)",
-  "0 0 16px rgba(59, 130, 246, 0.35)",
 ] as const;
 
 function getContributionLevel(count: number) {
@@ -95,34 +82,33 @@ function normalizeContributionDays(
   });
 }
 
-function getTooltipPositionClass(weekIndex: number, totalWeeks: number) {
+// Tooltip placement, rendered by .gh-day::after in app/globals.css
+function getTooltipX(weekIndex: number, totalWeeks: number) {
   if (weekIndex <= 1) {
-    return "left-0 translate-x-0";
+    return "l";
   }
 
   if (weekIndex >= totalWeeks - 2) {
-    return "right-0 left-auto translate-x-0";
+    return "r";
   }
 
-  return "left-1/2 -translate-x-1/2";
+  return "c";
 }
 
-function getTooltipVerticalClass(weekday: number) {
-  if (weekday <= 1) {
-    return "top-full mt-2";
-  }
-
-  return "bottom-full mb-2";
+function getTooltipY(weekday: number) {
+  return weekday <= 1 ? "b" : "t";
 }
 
 export function GitHubCalendarLive({
   initial,
   username,
 }: {
-  initial: GitHubContributionCalendar | null;
+  initial: CompactContributionCalendar | null;
   username: string;
 }) {
-  const [calendar, setCalendar] = useState(initial);
+  const [calendar, setCalendar] = useState<GitHubContributionCalendar | null>(
+    () => (initial ? expandCalendar(initial) : null)
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -268,21 +254,14 @@ function GitHubCalendar({
                     } on ${DATE_FORMATTER.format(new Date(day.date))}`;
 
                     return (
-                      <div key={day.date} className="group relative">
-                        <div
-                          className="h-2.5 w-2.5 rounded-[4px] border sm:h-3.5 sm:w-3.5"
-                          style={{
-                            backgroundColor: CONTRIBUTION_LEVELS[level],
-                            borderColor: CONTRIBUTION_BORDERS[level],
-                            boxShadow: CONTRIBUTION_SHADOWS[level],
-                          }}
-                        />
-                        <div
-                          className={`pointer-events-none absolute z-20 hidden whitespace-nowrap rounded-md border border-white/10 bg-black/90 px-2.5 py-1.5 text-[11px] font-medium text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-sm group-hover:block ${getTooltipPositionClass(weekIndex, weeks.length)} ${getTooltipVerticalClass(day.weekday)}`}
-                        >
-                          {label}
-                        </div>
-                      </div>
+                      <div
+                        key={day.date}
+                        className="gh-day"
+                        data-level={level}
+                        data-tip={label}
+                        data-tip-x={getTooltipX(weekIndex, weeks.length)}
+                        data-tip-y={getTooltipY(day.weekday)}
+                      />
                     );
                   })}
                 </div>

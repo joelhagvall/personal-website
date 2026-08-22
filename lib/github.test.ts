@@ -1,5 +1,7 @@
 import {
+  compactCalendar,
   contributionsToCalendar,
+  expandCalendar,
   getGitHubContributionCalendar,
   getGitHubRepo,
 } from './github';
@@ -268,5 +270,43 @@ describe('contributionsToCalendar', () => {
       totalContributions: 0,
       weeks: [],
     });
+  });
+});
+
+describe('compactCalendar / expandCalendar', () => {
+  // Three partial/full weeks starting on a Friday, like GitHub's first week
+  const days = Array.from({ length: 17 }, (_, i) => {
+    const date = new Date(Date.UTC(2026, 0, 2 + i)); // 2026-01-02 is a Friday
+    return {
+      contributionCount: i % 5,
+      date: date.toISOString().slice(0, 10),
+      weekday: date.getUTCDay(),
+    };
+  });
+  const calendar = contributionsToCalendar(
+    days.map((d) => ({ date: d.date, count: d.contributionCount })),
+    123
+  );
+
+  it('round-trips through the compact wire format', () => {
+    const compact = compactCalendar(calendar);
+    expect(compact).toEqual({
+      total: 123,
+      start: '2026-01-02',
+      counts: days.map((d) => d.contributionCount),
+    });
+    expect(expandCalendar(compact)).toEqual(calendar);
+  });
+
+  it('keeps the payload small: one integer per day', () => {
+    const compact = compactCalendar(calendar);
+    expect(JSON.stringify(compact).length).toBeLessThan(
+      JSON.stringify(calendar).length / 3
+    );
+  });
+
+  it('returns null for empty or invalid input', () => {
+    expect(expandCalendar({ total: 0, start: '', counts: [] })).toBeNull();
+    expect(expandCalendar({ total: 0, start: 'nope', counts: [1] })).toBeNull();
   });
 });

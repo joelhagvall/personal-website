@@ -92,6 +92,49 @@ export function contributionsToCalendar(
   };
 }
 
+/**
+ * Wire-compact calendar: first day + one count per consecutive day. Used as
+ * the client component's initial prop so the SSR HTML/RSC payload carries
+ * ~371 integers instead of ~371 objects.
+ */
+export interface CompactContributionCalendar {
+  total: number;
+  start: string;
+  counts: number[];
+}
+
+export function compactCalendar(
+  calendar: GitHubContributionCalendar
+): CompactContributionCalendar {
+  const days = calendar.weeks.flatMap((week) => week.contributionDays);
+  return {
+    total: calendar.totalContributions,
+    start: days[0]?.date ?? "",
+    counts: days.map((day) => day.contributionCount),
+  };
+}
+
+export function expandCalendar(
+  compact: CompactContributionCalendar
+): GitHubContributionCalendar | null {
+  if (!compact.start || compact.counts.length === 0) {
+    return null;
+  }
+
+  const start = new Date(`${compact.start}T00:00:00Z`);
+  if (Number.isNaN(start.getTime())) {
+    return null;
+  }
+
+  const days: PublicContributionDay[] = compact.counts.map((count, index) => {
+    const date = new Date(start);
+    date.setUTCDate(start.getUTCDate() + index);
+    return { date: date.toISOString().slice(0, 10), count };
+  });
+
+  return contributionsToCalendar(days, compact.total);
+}
+
 const GITHUB_CONTRIBUTION_QUERY = `
   query GitHubContributionCalendar($username: String!) {
     user(login: $username) {

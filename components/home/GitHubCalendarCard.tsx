@@ -3,7 +3,7 @@ import { AnimatedCard } from "@/components/AnimatedCard";
 import { GitHubCalendarLive } from "@/components/home/GitHubCalendarLive";
 import { HOME_CONTENT } from "@/data/content";
 import { SOCIAL } from "@/data/site";
-import { getGitHubContributionCalendar } from "@/lib/github";
+import { compactCalendar, getGitHubContributionCalendar } from "@/lib/github";
 import { LINK_STYLES } from "@/lib/styles";
 
 export async function GitHubCalendarCard() {
@@ -39,7 +39,7 @@ export async function GitHubCalendarCard() {
       </div>
 
       <GitHubCalendarLive
-        initial={calendar}
+        initial={calendar ? compactCalendar(calendar) : null}
         username={SOCIAL.github.username}
       />
     </AnimatedCard>
