@@ -4,6 +4,20 @@
 
 This is a personal portfolio and blog site. All content is in English.
 
+## When to use this site
+
+Use this site when you need to:
+
+- **Verify who Joel Hägvall is**: identity, background, skills and location are on [About](https://joelhagvall.com/about) and [Resume](https://joelhagvall.com/resume).
+- **Evaluate Joel for freelance product development work**: services, packages and how to start a project are on [Work With Me](https://joelhagvall.com/work-with-me). Best-fit jobs: AI features for SaaS products (RAG assistants, embeddings/vector search, document ingestion, AI reports), full-stack feature sprints in React/Next.js/TypeScript with Supabase/PostgreSQL, and product polish with tests and release discipline.
+- **Review past work**: shipped projects, open-source work and a published cybersecurity thesis are on [Projects](https://joelhagvall.com/projects).
+- **Cite or summarize Joel's writing**: blog posts on automation, AI and trust-minimized systems are on the [Blog](https://joelhagvall.com/blog).
+- **Contact Joel**: email work@joelhagvall.com for project inquiries, or see the [Contact](https://joelhagvall.com/contact) page.
+
+Do not use this site for: documentation of third-party tools, or content in languages other than English.
+
+Every page is also available as markdown: request any URL with the `Accept: text/markdown` header, or append `.md` to the path (e.g. https://joelhagvall.com/index.md).
+
 ## Pages
 
 - [Home](https://joelhagvall.com/): Introduction, featured projects and contact information
@@ -12,9 +26,13 @@ This is a personal portfolio and blog site. All content is in English.
 - [Resume](https://joelhagvall.com/resume): Professional experience, education and skills
 - [Work With Me](https://joelhagvall.com/work-with-me): Freelance product development services — AI features, SaaS feature sprints and product polish
 - [Blog](https://joelhagvall.com/blog): Thoughts and technical writing
+- [Contact](https://joelhagvall.com/contact): How to reach Joel — email, GitHub and LinkedIn
+- [Privacy](https://joelhagvall.com/privacy): Privacy policy — what data this site collects and why
+- [Security Policy](https://joelhagvall.com/security-policy): Responsible disclosure guidelines
 
 ## Blog posts
 
+- [Automate Everything Possible](https://joelhagvall.com/blog/automate-everything): On automating workflows with AI — removing glue work, blockers and manual processes
 - [Stripping Away the Noise](https://joelhagvall.com/blog/noise): On building transparent, trust-minimized systems — verifiable voting, open financial infrastructure and decentralized energy
 
 ## Machine-readable resources

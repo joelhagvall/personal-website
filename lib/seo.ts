@@ -10,6 +10,7 @@ export const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: PERSON.name,
+  description: PERSON.description,
   jobTitle: PERSON.jobTitle,
   url: SITE.url,
   sameAs: [SOCIAL.linkedin.url, SOCIAL.github.url],

@@ -135,6 +135,30 @@ export const PAGE_METADATA = {
     },
   } satisfies Metadata,
 
+  contact: {
+    title: createPageTitle("Contact"),
+    description: `Get in touch with ${PERSON.name} – email, GitHub and LinkedIn. Based in ${PERSON.location.city}, ${PERSON.location.country}, available for freelance product development work.`,
+    alternates: createAlternates("/contact"),
+    get openGraph() {
+      return createOpenGraph(this.title as string, this.description as string, "/contact");
+    },
+    get twitter() {
+      return createTwitter(this.title as string, this.description as string);
+    },
+  } satisfies Metadata,
+
+  privacy: {
+    title: createPageTitle("Privacy"),
+    description: `Privacy policy for joelhagvall.com – what data is collected, how it is used, and what is never collected on ${PERSON.name}'s personal website.`,
+    alternates: createAlternates("/privacy"),
+    get openGraph() {
+      return createOpenGraph(this.title as string, this.description as string, "/privacy");
+    },
+    get twitter() {
+      return createTwitter(this.title as string, this.description as string);
+    },
+  } satisfies Metadata,
+
   blog: {
     title: createPageTitle("Blog", "Thoughts & Ideas"),
     description: `Read thoughts, ideas, and technical insights from ${PERSON.name} – a software developer sharing lessons learned about web development, programming, and technology.`,

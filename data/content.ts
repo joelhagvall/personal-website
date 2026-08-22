@@ -3,7 +3,7 @@
  * All user-facing text in one place for easy maintenance
  */
 
-import { PERSON } from "./site";
+import { PERSON, SOCIAL } from "./site";
 import messages from "@/messages/en.json";
 
 // ============================================
@@ -157,12 +157,91 @@ export const RESUME_CONTENT = {
 } as const;
 
 // ============================================
+// Contact page
+// ============================================
+export const CONTACT_CONTENT = {
+  pageTitle: "Contact",
+  subtitle: `Get in touch with ${PERSON.name}`,
+  intro: `The fastest way to reach me is email. I'm based in ${PERSON.location.city}, ${PERSON.location.country} (CET/CEST), and I usually reply within one or two business days. Whether you have a freelance project in mind, a question about something I've built or written, or just want to say hi — my inbox is open.`,
+  channels: {
+    heading: "Channels",
+    email: {
+      label: "Email",
+      value: SOCIAL.email,
+      description:
+        "Best for project inquiries, collaboration and anything that needs a real answer. Include a short description of what you're building and I'll get back to you.",
+    },
+    github: {
+      label: "GitHub",
+      value: SOCIAL.github.url,
+      description:
+        "For issues, pull requests and discussions about my open-source projects.",
+    },
+    linkedin: {
+      label: "LinkedIn",
+      value: SOCIAL.linkedin.url,
+      description: "For professional networking and recruiter contact.",
+    },
+  },
+  freelance: {
+    heading: "Hiring me for a project?",
+    text: "Have a look at the Work With Me page first — it describes the kind of AI and SaaS product work I take on, how I work and what you get. Then send an email with your idea and timeline.",
+    linkLabel: "Work with me",
+    linkHref: "/work-with-me",
+  },
+  security: {
+    heading: "Reporting a security issue?",
+    text: "Please follow the responsible disclosure guidelines on the security policy page.",
+    linkLabel: "Security policy",
+    linkHref: "/security-policy",
+  },
+} as const;
+
+// ============================================
+// Privacy page
+// ============================================
+export const PRIVACY_CONTENT = {
+  pageTitle: "Privacy Policy",
+  subtitle: "What this site collects, and what it doesn't",
+  updated: "Last updated: August 2026",
+  intro: `This is the personal website of ${PERSON.name}. It's a static site — a portfolio and blog — and it's built to collect as little data about you as possible. This page explains exactly what happens when you visit.`,
+  sections: [
+    {
+      heading: "What is collected",
+      paragraphs: [
+        "The site uses Vercel Analytics and Vercel Speed Insights to understand aggregate traffic and performance. These collect anonymized, aggregated data such as page views, referrers, country-level location, device type and Core Web Vitals. They do not use cookies and do not track you across sites. No personally identifiable information is stored.",
+      ],
+    },
+    {
+      heading: "What is never collected",
+      paragraphs: [
+        "There are no accounts, no forms that store your data, no advertising trackers, no third-party marketing pixels and no cross-site tracking cookies. The site does not sell, share or monetize visitor data in any way. If you email me, your message stays in my inbox and is used only to reply to you.",
+      ],
+    },
+    {
+      heading: "Third-party services",
+      paragraphs: [
+        "The site is hosted on Vercel, which processes standard server logs (IP address, user agent) to serve requests and prevent abuse, per Vercel's own privacy policy. Fonts are self-hosted or loaded from Google Fonts. The GitHub contribution graph on the homepage fetches public data from a GitHub contributions API.",
+      ],
+    },
+    {
+      heading: "Your rights and contact",
+      paragraphs: [
+        `Since the site stores no personal data about visitors, there is nothing to request, correct or delete. If you have any questions about this policy, email ${SOCIAL.email}.`,
+      ],
+    },
+  ],
+} as const;
+
+// ============================================
 // Footer
 // ============================================
 export const FOOTER_CONTENT = {
   name: PERSON.name,
   tagline: `Software Developer based in ${PERSON.location.city}, ${PERSON.location.country}.`,
   copyright: (year: number) => `© ${year}`,
+  contact: "Contact",
+  privacy: "Privacy",
   securityPolicy: LABELS.securityPolicy,
   viewSource: "View source",
   sourceUrl: "https://github.com/joelhagvall/personal-website",

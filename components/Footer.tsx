@@ -23,6 +23,20 @@ export function Footer() {
           <span>{FOOTER_CONTENT.copyright(CURRENT_YEAR)}</span>
           <span className="hidden md:inline" aria-hidden="true">•</span>
           <a
+            href="/contact"
+            className="hover:text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+          >
+            {FOOTER_CONTENT.contact}
+          </a>
+          <span className="hidden md:inline" aria-hidden="true">•</span>
+          <a
+            href="/privacy"
+            className="hover:text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+          >
+            {FOOTER_CONTENT.privacy}
+          </a>
+          <span className="hidden md:inline" aria-hidden="true">•</span>
+          <a
             href="/security-policy"
             className="hover:text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
           >
