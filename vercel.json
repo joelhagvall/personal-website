@@ -1,7 +1,8 @@
 {
-  "rewrites": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "header",
@@ -9,10 +10,10 @@
           "value": ".*text/markdown.*"
         }
       ],
-      "destination": "/index.md"
+      "dest": "/index.md"
     },
     {
-      "source": "/:path([^.]+)",
+      "src": "^/([^.]+?)/?$",
       "has": [
         {
           "type": "header",
@@ -20,7 +21,7 @@
           "value": ".*text/markdown.*"
         }
       ],
-      "destination": "/:path.md"
+      "dest": "/$1.md"
     }
   ],
   "headers": [
