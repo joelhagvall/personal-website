@@ -147,7 +147,7 @@ ${otherInterests.map((t) => `- ${t}`).join("\n")}`
   );
 
   pages["resume.md"] = pageMd(
-    `Resume – ${PERSON.name}`,
+    `Resume - ${PERSON.name}`,
     RESUME_CONTENT.introduction,
     `## ${RESUME_CONTENT.currentExperienceHeading}
 
@@ -191,7 +191,7 @@ Email ${SOCIAL.freelanceEmail} with a short description of what you're building,
   );
 
   pages["blog.md"] = pageMd(
-    `Blog – ${PERSON.name}`,
+    `Blog - ${PERSON.name}`,
     "Thoughts, ideas and technical writing.",
     posts
       .map(

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${SITE.url}/blog/${slug}`;
 
   return {
-    title: `${post.title} – ${PERSON.name}`,
+    title: `${post.title} - ${PERSON.name}`,
     description: post.description,
     alternates: {
       canonical: url,

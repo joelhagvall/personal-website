@@ -12,7 +12,7 @@ import { PROJECTS_CONTENT } from "./content";
 // Helper functions
 // ============================================
 const createPageTitle = (page: string, suffix?: string) =>
-  suffix ? `${page} – ${PERSON.name} | ${suffix}` : `${page} – ${PERSON.name} | Software Developer`;
+  suffix ? `${page} - ${PERSON.name} | ${suffix}` : `${page} - ${PERSON.name} | Software Developer`;
 
 const createOpenGraph = (
   title: string,
@@ -92,7 +92,7 @@ export const PAGE_METADATA = {
 
   about: {
     title: createPageTitle("About"),
-    description: `Learn more about ${PERSON.name} – a software developer based in ${PERSON.location.city}, ${PERSON.location.country}, with experience in web and mobile development using React, Swift, Java and more.`,
+    description: `Learn more about ${PERSON.name} - a software developer based in ${PERSON.location.city}, ${PERSON.location.country}, with experience in web and mobile development using React, Swift, Java and more.`,
     alternates: createAlternates("/about"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/about");
@@ -140,7 +140,7 @@ export const PAGE_METADATA = {
 
   contact: {
     title: createPageTitle("Contact"),
-    description: `Get in touch with ${PERSON.name} – email, GitHub and LinkedIn. Based in ${PERSON.location.city}, ${PERSON.location.country}, available for freelance product development work.`,
+    description: `Get in touch with ${PERSON.name} - email, GitHub and LinkedIn. Based in ${PERSON.location.city}, ${PERSON.location.country}, available for freelance product development work.`,
     alternates: createAlternates("/contact"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/contact");
@@ -152,7 +152,7 @@ export const PAGE_METADATA = {
 
   privacy: {
     title: createPageTitle("Privacy"),
-    description: `Privacy policy for joelhagvall.com – what data is collected, how it is used, and what is never collected on ${PERSON.name}'s personal website.`,
+    description: `Privacy policy for joelhagvall.com - what data is collected, how it is used, and what is never collected on ${PERSON.name}'s personal website.`,
     alternates: createAlternates("/privacy"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/privacy");
@@ -164,7 +164,7 @@ export const PAGE_METADATA = {
 
   blog: {
     title: createPageTitle("Blog", "Thoughts & Ideas"),
-    description: `Read thoughts, ideas, and technical insights from ${PERSON.name} – a software developer sharing lessons learned about web development, programming, and technology.`,
+    description: `Read thoughts, ideas, and technical insights from ${PERSON.name} - a software developer sharing lessons learned about web development, programming, and technology.`,
     alternates: createAlternates("/blog"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/blog");

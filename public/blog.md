@@ -1,4 +1,4 @@
-# Blog – Joel Hägvall
+# Blog - Joel Hägvall
 
 > Thoughts, ideas and technical writing.
 

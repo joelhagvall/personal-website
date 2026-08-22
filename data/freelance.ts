@@ -182,7 +182,7 @@ export const FREELANCE = {
     ],
   },
   metadata: {
-    title: `Work with me – ${PERSON.name}`,
+    title: `Work with me - ${PERSON.name}`,
     description:
       "AI product engineering, SaaS feature delivery, and internal tool builds for startups and small teams that need measurable outcomes.",
     canonical: `${SITE.url}/work-with-me`,

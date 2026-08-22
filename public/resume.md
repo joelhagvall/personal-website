@@ -1,4 +1,4 @@
-# Resume – Joel Hägvall
+# Resume - Joel Hägvall
 
 > Software Engineer working across enterprise systems, developer tooling, workflow automation, AI products and local-first privacy technology.
 

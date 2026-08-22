@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { OG_IMAGE, PERSON, SITE } from '@/data/site'
 
 const url = `${SITE.url}/security-policy`;
-const title = `Security Policy – ${PERSON.name} | Responsible Disclosure`;
+const title = `Security Policy - ${PERSON.name} | Responsible Disclosure`;
 const description = `Security policy and responsible disclosure guidelines for ${PERSON.name}'s personal website. Learn how to report security vulnerabilities and view our commitment to keeping user data safe.`;
 
 export const metadata: Metadata = {

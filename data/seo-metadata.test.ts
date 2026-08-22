@@ -5,7 +5,7 @@ import { SITE } from "./site";
 describe("PAGE_METADATA.freelance", () => {
   it("uses the freelance metadata copy and canonical URLs", () => {
     expect(PAGE_METADATA.freelance.title).toBe(
-      "Work With Me – Joel Hägvall | Product Development"
+      "Work With Me - Joel Hägvall | Product Development"
     );
     expect(PAGE_METADATA.freelance.description).toBe(FREELANCE.metadata.description);
     expect(PAGE_METADATA.freelance.alternates).toEqual({
