@@ -24,7 +24,7 @@ export default function SecurityPolicyPage() {
         {/* Responsible Disclosure */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle as="h2" className="flex items-center gap-2">
               <Badge variant="destructive">
                 {content.responsibleDisclosure.badge}
               </Badge>
@@ -55,7 +55,7 @@ export default function SecurityPolicyPage() {
         {/* How to Report */}
         <Card>
           <CardHeader>
-            <CardTitle>{content.howToReport.title}</CardTitle>
+            <CardTitle as="h2">{content.howToReport.title}</CardTitle>
             <CardDescription>{content.howToReport.description}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -66,7 +66,7 @@ export default function SecurityPolicyPage() {
                     {step.number}
                   </Badge>
                   <div>
-                    <h4 className="font-semibold">{step.title}</h4>
+                    <h3 className="font-semibold">{step.title}</h3>
                     <p className="text-sm text-muted-foreground">
                       {step.description}{" "}
                       {step.number === "1" && (
@@ -88,7 +88,7 @@ export default function SecurityPolicyPage() {
         {/* What to Expect */}
         <Card>
           <CardHeader>
-            <CardTitle>{content.whatToExpect.title}</CardTitle>
+            <CardTitle as="h2">{content.whatToExpect.title}</CardTitle>
             <CardDescription>
               {content.whatToExpect.description}
             </CardDescription>
@@ -98,7 +98,7 @@ export default function SecurityPolicyPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 {content.whatToExpect.timeline.map((item, index) => (
                   <div key={index} className="space-y-2">
-                    <h4 className="font-semibold">{item.time}</h4>
+                    <h3 className="font-semibold">{item.time}</h3>
                     <p className="text-sm text-muted-foreground">
                       {item.description}
                     </p>
@@ -112,7 +112,7 @@ export default function SecurityPolicyPage() {
         {/* Guidelines */}
         <Card>
           <CardHeader>
-            <CardTitle>{content.guidelines.title}</CardTitle>
+            <CardTitle as="h2">{content.guidelines.title}</CardTitle>
             <CardDescription>{content.guidelines.description}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -122,7 +122,7 @@ export default function SecurityPolicyPage() {
                   {content.guidelines.do.badge}
                 </Badge>
                 <div>
-                  <h4 className="font-semibold">{content.guidelines.do.title}</h4>
+                  <h3 className="font-semibold">{content.guidelines.do.title}</h3>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     {content.guidelines.do.items.map((item, index) => (
                       <li key={index}>• {item}</li>
@@ -138,9 +138,9 @@ export default function SecurityPolicyPage() {
                   {content.guidelines.dont.badge}
                 </Badge>
                 <div>
-                  <h4 className="font-semibold">
+                  <h3 className="font-semibold">
                     {content.guidelines.dont.title}
-                  </h4>
+                  </h3>
                   <ul className="text-sm text-muted-foreground space-y-1">
                     {content.guidelines.dont.items.map((item, index) => (
                       <li key={index}>• {item}</li>
@@ -155,7 +155,7 @@ export default function SecurityPolicyPage() {
         {/* Recognition */}
         <Card>
           <CardHeader>
-            <CardTitle>{content.recognition.title}</CardTitle>
+            <CardTitle as="h2">{content.recognition.title}</CardTitle>
             <CardDescription>{content.recognition.description}</CardDescription>
           </CardHeader>
           <CardContent>
@@ -168,7 +168,7 @@ export default function SecurityPolicyPage() {
         {/* Contact */}
         <Card>
           <CardHeader>
-            <CardTitle>{content.contact.title}</CardTitle>
+            <CardTitle as="h2">{content.contact.title}</CardTitle>
             <CardDescription>{content.contact.description}</CardDescription>
           </CardHeader>
           <CardContent>

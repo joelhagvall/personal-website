@@ -10,7 +10,8 @@
         "http://localhost:4173/resume",
         "http://localhost:4173/blog",
         "http://localhost:4173/blog/noise",
-        "http://localhost:4173/work-with-me"
+        "http://localhost:4173/work-with-me",
+        "http://localhost:4173/security-policy"
       ],
       "numberOfRuns": 1,
       "settings": {
@@ -21,10 +22,30 @@
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["error", { "minScore": 1 }],
-        "categories:accessibility": ["error", { "minScore": 1 }],
-        "categories:best-practices": ["error", { "minScore": 1 }],
-        "categories:seo": ["error", { "minScore": 1 }]
+        "categories:performance": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "categories:accessibility": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "categories:best-practices": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "categories:seo": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ]
       }
     },
     "upload": {
