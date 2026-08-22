@@ -15,9 +15,9 @@ I appreciate security researchers who help me maintain the security and privacy 
 
 ## How to Report
 
-1. **Email me directly** — Send your report to: work@joelhagvall.com
-2. **Include detailed information** — Provide a clear description of the vulnerability, steps to reproduce, and potential impact.
-3. **Allow time for response** — I will acknowledge your report within 48 hours and provide updates on my progress.
+1. **Email me directly**: Send your report to: work@joelhagvall.com
+2. **Include detailed information**: Provide a clear description of the vulnerability, steps to reproduce, and potential impact.
+3. **Allow time for response**: I will acknowledge your report within 48 hours and provide updates on my progress.
 
 ## What to Expect
 

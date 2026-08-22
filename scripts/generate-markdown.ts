@@ -82,15 +82,15 @@ ${FREELANCE.page.intro} ${FREELANCE.page.summary} See [Work With Me](${SITE.url}
 
 ## Featured project
 
-**[${featuredProject.title}](${featuredProject.githubUrl})** — ${featuredProject.description}
+**[${featuredProject.title}](${featuredProject.githubUrl})**: ${featuredProject.description}
 
 ## Publications
 
-${publications.map((p) => `- **${p.title}** (${p.year}) — ${p.description} [Publication record](${p.urnUrl})`).join("\n")}
+${publications.map((p) => `- **${p.title}** (${p.year}): ${p.description} [Publication record](${p.urnUrl})`).join("\n")}
 
 ## Latest from the blog
 
-${posts.map((p) => `- [${p.title}](${SITE.url}/blog/${p.slug}) (${p.date}) — ${p.description}`).join("\n")}
+${posts.map((p) => `- [${p.title}](${SITE.url}/blog/${p.slug}) (${p.date}): ${p.description}`).join("\n")}
 
 ## Tech stack
 
@@ -98,14 +98,14 @@ ${SKILLS.join(", ")}
 
 ## Pages
 
-- [About](${SITE.url}/about) — background, skills and interests
-- [Projects](${SITE.url}/projects) — personal and open-source work
-- [Resume](${SITE.url}/resume) — experience and education
-- [Work With Me](${SITE.url}/work-with-me) — freelance services
-- [Blog](${SITE.url}/blog) — thoughts and technical writing
-- [Contact](${SITE.url}/contact) — how to reach me
-- [Privacy](${SITE.url}/privacy) — privacy policy
-- [Security Policy](${SITE.url}/security-policy) — responsible disclosure`
+- [About](${SITE.url}/about): background, skills and interests
+- [Projects](${SITE.url}/projects): personal and open-source work
+- [Resume](${SITE.url}/resume): experience and education
+- [Work With Me](${SITE.url}/work-with-me): freelance services
+- [Blog](${SITE.url}/blog): thoughts and technical writing
+- [Contact](${SITE.url}/contact): how to reach me
+- [Privacy](${SITE.url}/privacy): privacy policy
+- [Security Policy](${SITE.url}/security-policy): responsible disclosure`
   );
 
   pages["about.md"] = pageMd(
@@ -132,7 +132,7 @@ ${otherInterests.map((t) => `- ${t}`).join("\n")}`
 
   pages["projects.md"] = pageMd(
     `Projects by ${PERSON.name}`,
-    "Personal and academic projects — web apps, mobile apps and open-source work.",
+    "Personal and academic projects: web apps, mobile apps and open-source work.",
     PROJECTS.map((p) => {
       const lines = [`## ${p.title}`, "", p.description, ""];
       if (p.status) lines.push(`- Status: ${p.status}`);
@@ -216,9 +216,9 @@ Email ${SOCIAL.freelanceEmail} with a short description of what you're building,
 
 ## ${CONTACT_CONTENT.channels.heading}
 
-- **Email:** ${SOCIAL.email} — ${CONTACT_CONTENT.channels.email.description}
-- **GitHub:** ${SOCIAL.github.url} — ${CONTACT_CONTENT.channels.github.description}
-- **LinkedIn:** ${SOCIAL.linkedin.url} — ${CONTACT_CONTENT.channels.linkedin.description}
+- **Email:** ${SOCIAL.email}. ${CONTACT_CONTENT.channels.email.description}
+- **GitHub:** ${SOCIAL.github.url}. ${CONTACT_CONTENT.channels.github.description}
+- **LinkedIn:** ${SOCIAL.linkedin.url}. ${CONTACT_CONTENT.channels.linkedin.description}
 
 ## ${CONTACT_CONTENT.freelance.heading}
 
@@ -279,8 +279,8 @@ ${SECURITY_CONTENT.responsibleDisclosure.whatToReport.items.map((i) => `- ${i}`)
 ${SECURITY_CONTENT.howToReport.steps
   .map((s) =>
     s.number === "1"
-      ? `${s.number}. **${s.title}** — ${s.description} ${SOCIAL.email}`
-      : `${s.number}. **${s.title}** — ${s.description}`
+      ? `${s.number}. **${s.title}**: ${s.description} ${SOCIAL.email}`
+      : `${s.number}. **${s.title}**: ${s.description}`
   )
   .join("\n")}
 

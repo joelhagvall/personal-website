@@ -6,9 +6,9 @@ The fastest way to reach me is email. I'm based in Stockholm, Sweden (CET/CEST),
 
 ## Channels
 
-- **Email:** work@joelhagvall.com — Best for project inquiries, collaboration and anything that needs a real answer. Include a short description of what you're building and I'll get back to you.
-- **GitHub:** https://github.com/joelhagvall — For issues, pull requests and discussions about my open-source projects.
-- **LinkedIn:** https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/ — For professional networking and recruiter contact.
+- **Email:** work@joelhagvall.com. Best for project inquiries, collaboration and anything that needs a real answer. Include a short description of what you're building and I'll get back to you.
+- **GitHub:** https://github.com/joelhagvall. For issues, pull requests and discussions about my open-source projects.
+- **LinkedIn:** https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/. For professional networking and recruiter contact.
 
 ## Hiring me for a project?
 

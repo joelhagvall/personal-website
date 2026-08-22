@@ -1,6 +1,6 @@
 # Projects by Joel Hägvall
 
-> Personal and academic projects — web apps, mobile apps and open-source work.
+> Personal and academic projects: web apps, mobile apps and open-source work.
 
 ## ResiliaAI
 

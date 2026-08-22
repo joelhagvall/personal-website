@@ -22,18 +22,18 @@ Every page is also available as markdown: request any URL with the `Accept: text
 
 - [Home](https://joelhagvall.com/): Introduction, featured projects and contact information
 - [About](https://joelhagvall.com/about): Background, skills and interests of Joel Hägvall
-- [Projects](https://joelhagvall.com/projects): Personal and academic projects — web apps, mobile apps and open-source work
+- [Projects](https://joelhagvall.com/projects): Personal and academic projects, including web apps, mobile apps and open-source work
 - [Resume](https://joelhagvall.com/resume): Professional experience, education and skills
-- [Work With Me](https://joelhagvall.com/work-with-me): Freelance product development services — AI features, SaaS feature sprints and product polish
+- [Work With Me](https://joelhagvall.com/work-with-me): Freelance product development services such as AI features, SaaS feature sprints and product polish
 - [Blog](https://joelhagvall.com/blog): Thoughts and technical writing
-- [Contact](https://joelhagvall.com/contact): How to reach Joel — email, GitHub and LinkedIn
-- [Privacy](https://joelhagvall.com/privacy): Privacy policy — what data this site collects and why
+- [Contact](https://joelhagvall.com/contact): How to reach Joel via email, GitHub and LinkedIn
+- [Privacy](https://joelhagvall.com/privacy): Privacy policy explaining what data this site collects and why
 - [Security Policy](https://joelhagvall.com/security-policy): Responsible disclosure guidelines
 
 ## Blog posts
 
-- [Automate Everything Possible](https://joelhagvall.com/blog/automate-everything): On automating workflows with AI — removing glue work, blockers and manual processes
-- [Stripping Away the Noise](https://joelhagvall.com/blog/noise): On building transparent, trust-minimized systems — verifiable voting, open financial infrastructure and decentralized energy
+- [Automate Everything Possible](https://joelhagvall.com/blog/automate-everything): On automating workflows with AI and removing glue work, blockers and manual processes
+- [Stripping Away the Noise](https://joelhagvall.com/blog/noise): On building transparent, trust-minimized systems like verifiable voting, open financial infrastructure and decentralized energy
 
 ## Machine-readable resources
 
