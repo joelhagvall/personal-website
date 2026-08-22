@@ -2,7 +2,7 @@
 
 > What this site collects, and what it doesn't. Last updated: August 2026.
 
-This is the personal website of Joel Hägvall. It's a static site — a portfolio and blog — and it's built to collect as little data about you as possible. This page explains exactly what happens when you visit.
+This is the personal website of Joel Hägvall. It's a static site, a portfolio and blog, built to collect as little data about you as possible. This page explains exactly what happens when you visit.
 
 ## What is collected
 

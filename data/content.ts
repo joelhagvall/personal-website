@@ -174,7 +174,7 @@ export const RESUME_CONTENT = {
 export const CONTACT_CONTENT = {
   pageTitle: "Contact",
   subtitle: `Get in touch with ${PERSON.name}`,
-  intro: `The fastest way to reach me is email. I'm based in ${PERSON.location.city}, ${PERSON.location.country} (CET/CEST), and I usually reply within one or two business days. Whether you have a freelance project in mind, a question about something I've built or written, or just want to say hi — my inbox is open.`,
+  intro: `The fastest way to reach me is email. I'm based in ${PERSON.location.city}, ${PERSON.location.country} (CET/CEST), and I usually reply within one or two business days. Whether you have a freelance project in mind, a question about something I've built or written, or just want to say hi, my inbox is open.`,
   channels: {
     heading: "Channels",
     email: {
@@ -197,7 +197,7 @@ export const CONTACT_CONTENT = {
   },
   freelance: {
     heading: "Hiring me for a project?",
-    text: "Have a look at the Work With Me page first — it describes the kind of AI and SaaS product work I take on, how I work and what you get. Then send an email with your idea and timeline.",
+    text: "Have a look at the Work With Me page first. It describes the kind of AI and SaaS product work I take on, how I work and what you get. Then send an email with your idea and timeline.",
     linkLabel: "Work with me",
     linkHref: "/work-with-me",
   },
@@ -216,7 +216,7 @@ export const PRIVACY_CONTENT = {
   pageTitle: "Privacy Policy",
   subtitle: "What this site collects, and what it doesn't",
   updated: "Last updated: August 2026",
-  intro: `This is the personal website of ${PERSON.name}. It's a static site — a portfolio and blog — and it's built to collect as little data about you as possible. This page explains exactly what happens when you visit.`,
+  intro: `This is the personal website of ${PERSON.name}. It's a static site, a portfolio and blog, built to collect as little data about you as possible. This page explains exactly what happens when you visit.`,
   sections: [
     {
       heading: "What is collected",

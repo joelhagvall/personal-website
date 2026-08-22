@@ -2,7 +2,7 @@
 
 > Get in touch with Joel Hägvall
 
-The fastest way to reach me is email. I'm based in Stockholm, Sweden (CET/CEST), and I usually reply within one or two business days. Whether you have a freelance project in mind, a question about something I've built or written, or just want to say hi — my inbox is open.
+The fastest way to reach me is email. I'm based in Stockholm, Sweden (CET/CEST), and I usually reply within one or two business days. Whether you have a freelance project in mind, a question about something I've built or written, or just want to say hi, my inbox is open.
 
 ## Channels
 
@@ -12,7 +12,7 @@ The fastest way to reach me is email. I'm based in Stockholm, Sweden (CET/CEST),
 
 ## Hiring me for a project?
 
-Have a look at the Work With Me page first — it describes the kind of AI and SaaS product work I take on, how I work and what you get. Then send an email with your idea and timeline. See [Work With Me](https://joelhagvall.com/work-with-me).
+Have a look at the Work With Me page first. It describes the kind of AI and SaaS product work I take on, how I work and what you get. Then send an email with your idea and timeline. See [Work With Me](https://joelhagvall.com/work-with-me).
 
 ## Reporting a security issue?
 
