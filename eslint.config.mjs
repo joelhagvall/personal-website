@@ -41,6 +41,7 @@ export default [
         HTMLParagraphElement: 'readonly',
         HTMLHeadingElement: 'readonly',
         HTMLCanvasElement: 'readonly',
+        CanvasRenderingContext2D: 'readonly',
         SVGSVGElement: 'readonly',
         SVGRectElement: 'readonly',
         // Node globals

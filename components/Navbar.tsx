@@ -14,9 +14,6 @@ export function Navbar() {
     (href: string, external?: boolean) => {
       if (!external && href !== pathname) {
         router.prefetch(href);
-        if (href === "/") {
-          void import("@/components/Astronaut3D");
-        }
       }
     },
     [pathname, router]

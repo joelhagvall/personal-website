@@ -1,15 +1,10 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
+import { Astronaut3D } from "@/components/Astronaut3D";
 import { SocialLinks } from "@/components/SocialLinks";
 import { PERSON } from "@/data/site";
 import { FREELANCE } from "@/data/freelance";
-
-const Astronaut3D = dynamic(
-  () => import("@/components/Astronaut3D").then((mod) => mod.Astronaut3D),
-  { ssr: false }
-);
 
 export function HeroSection() {
   return (
