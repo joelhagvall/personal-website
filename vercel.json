@@ -32,6 +32,43 @@
         "Content-Type": "text/markdown; charset=utf-8",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
       }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/(.*)$",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "dest": "/404.md",
+      "status": 404,
+      "headers": {
+        "Vary": "Accept",
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      }
+    },
+    {
+      "src": "^/(.*)$",
+      "missing": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/html.*"
+        }
+      ],
+      "dest": "/404.md",
+      "status": 404,
+      "headers": {
+        "Vary": "Accept",
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      }
     }
   ],
   "headers": [
