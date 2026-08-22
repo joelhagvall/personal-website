@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         en: url,
         "x-default": url,
       },
+      types: {
+        "text/markdown": `${url}.md`,
+      },
     },
     openGraph: {
       title: post.title,

@@ -14,6 +14,9 @@ describe("PAGE_METADATA.freelance", () => {
         en: `${SITE.url}/work-with-me`,
         "x-default": `${SITE.url}/work-with-me`,
       },
+      types: {
+        "text/markdown": `${SITE.url}/work-with-me.md`,
+      },
     });
   });
 

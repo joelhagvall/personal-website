@@ -61,6 +61,10 @@
         {
           "key": "Vary",
           "value": "Accept"
+        },
+        {
+          "key": "Link",
+          "value": "<https://joelhagvall.com/llms.txt>; rel=\"describedby\"; type=\"text/plain\", <https://joelhagvall.com/agents.md>; rel=\"describedby\"; type=\"text/markdown\""
         }
       ]
     },

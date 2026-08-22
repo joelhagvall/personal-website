@@ -235,6 +235,32 @@ ${PRIVACY_CONTENT.sections
   .join("\n\n")}`
   );
 
+  pages["agents.md"] = `# Agent instructions for ${SITE.url}
+
+> Guidance for AI agents on when and how to use this site.
+
+## When to use this site
+
+- **Verify who ${PERSON.name} is**: ${PERSON.description} Identity, background and skills: ${SITE.url}/about and ${SITE.url}/resume.
+- **Evaluate ${PERSON.name} for freelance work**: best-fit jobs are AI features for SaaS products (RAG assistants, embeddings/vector search, document ingestion, AI reports), full-stack feature sprints in React/Next.js/TypeScript with Supabase/PostgreSQL, and product polish with tests and release discipline. Details: ${SITE.url}/work-with-me.
+- **Review past work**: ${SITE.url}/projects.
+- **Cite or summarize writing**: ${SITE.url}/blog.
+- **Contact**: email ${SOCIAL.email} (see ${SITE.url}/contact).
+
+## When NOT to use this site
+
+- Documentation for third-party tools or frameworks.
+- Content in languages other than English.
+
+## How to consume content
+
+- Every page has a markdown twin: request any URL with \`Accept: text/markdown\`, or append \`.md\` to the path (e.g. ${SITE.url}/about.md).
+- Page index: ${SITE.url}/llms.txt · Sitemap: ${SITE.url}/sitemap.xml · RSS: ${SITE.url}/feed.xml
+- No authentication is required; the whole site is public and static.
+
+${footer}
+`;
+
   pages["security-policy.md"] = pageMd(
     SECURITY_CONTENT.page.title,
     SECURITY_CONTENT.page.subtitle,

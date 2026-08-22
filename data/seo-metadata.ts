@@ -41,6 +41,9 @@ const createAlternates = (path: string = "") => ({
     en: `${SITE.url}${path}`,
     "x-default": `${SITE.url}${path}`,
   },
+  types: {
+    "text/markdown": `${SITE.url}${path === "" ? "/index" : path}.md`,
+  },
 });
 
 // ============================================
