@@ -34,7 +34,7 @@ And I don't think people have realised this yet. It's a bit annoying and honestl
 
 One thing that genuinely annoys me: every time AI and jobs come up, the conversation is about juniors. Junior developers won't get hired. Entry-level roles will disappear. As if the threat politely stops there.
 
-It doesn't. The senior whose value is knowing one legacy system by heart. The mid-level who is good at a process rather than a problem. The manager whose day is mostly moving information between people — that's glue, and glue is exactly what gets automated first. Nobody is safe. Pretending otherwise is just comfortable.
+It doesn't. The senior whose value is knowing one legacy system by heart. The mid-level who is good at a process rather than a problem. The manager whose day is mostly moving information between people. That's glue, and glue is exactly what gets automated first. Nobody is safe. Pretending otherwise is just comfortable.
 
 And it goes deeper than roles. A lot of people have built their identity on a language or a way of working. "I'm a Java developer." "This is how we've always done things." That identity is going to be threatened too, because languages and workflows are exactly what the tools are eating. The part that holds up is the builder part: understanding the problem, and shipping something that solves it.
 
