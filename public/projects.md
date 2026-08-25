@@ -17,7 +17,7 @@ An AI-powered resilience and crisis preparedness platform for housing associatio
 
 Local redaction of Swedish personally identifiable information for browser, Node.js, edge, and AI workflows.
 
-- Status: Public pre-release
+- Status: Live · Open source
 - Technologies: TypeScript, ONNX, Transformers.js, WebGPU, Hugging Face, PyTorch
 
 **Problem:** Teams risk sending names, Swedish personal identity numbers, and addresses to LLMs, logs, and analytics.

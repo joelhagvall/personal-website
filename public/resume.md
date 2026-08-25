@@ -13,7 +13,7 @@ Building and maintaining internal .NET/C# microservices, TypeScript/React toolin
 ### Creator & Maintainer, Maskera
 
 - Jun 2026 - Present
-- Public pre-release · Open-source launch planned Aug 2026
+- Live · Open source since Aug 2026
 
 Building Swedish-first, local PII redaction packages and an on-device NER model for browser, Node.js, edge and AI workflows.
 

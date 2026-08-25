@@ -44,10 +44,10 @@
       "maskera": {
         "title": "Maskera",
         "summary": "Local redaction of Swedish personally identifiable information for browser, Node.js, edge, and AI workflows.",
-        "status": "Public pre-release",
+        "status": "Live · Open source",
         "problem": "Teams risk sending names, Swedish personal identity numbers, and addresses to LLMs, logs, and analytics.",
         "built": "I combined deterministic rules with an approximately 43 MB quantized ONNX model that runs locally through Transformers.js with WebGPU or WASM.",
-        "proof": "The public pre-release includes a live demo, npm package, and Hugging Face model."
+        "proof": "Launched as open source in August 2026 with a live demo, npm package, and Hugging Face model."
       },
       "dataWipeMailer": {
         "title": "Data Wipe Mailer",

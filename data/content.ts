@@ -144,7 +144,7 @@ export const RESUME_CONTENT = {
       role: "Creator & Maintainer",
       organization: "Maskera",
       period: "Jun 2026 - Present",
-      status: "Public pre-release · Open-source launch planned Aug 2026",
+      status: "Live · Open source since Aug 2026",
       description:
         "Building Swedish-first, local PII redaction packages and an on-device NER model for browser, Node.js, edge and AI workflows.",
     },
