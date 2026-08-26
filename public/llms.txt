@@ -1,6 +1,6 @@
 # Joel Hägvall
 
-> Personal website of Joel Hägvall, a software developer based in Stockholm, Sweden. Experienced in building web and mobile applications with TypeScript, React, Next.js, Java, Python, Swift and more. Available for freelance product development work.
+> Personal website of Joel Hägvall, a software engineer based in Stockholm, Sweden. Experienced in building web and mobile applications with TypeScript, React, Next.js, Java, Python, Swift and more. Available for freelance product development work.
 
 This is a personal portfolio and blog site. All content is in English.
 

@@ -12,7 +12,7 @@ import { PROJECTS_CONTENT } from "./content";
 // Helper functions
 // ============================================
 const createPageTitle = (page: string, suffix?: string) =>
-  suffix ? `${page} - ${PERSON.name} | ${suffix}` : `${page} - ${PERSON.name} | Software Developer`;
+  suffix ? `${page} - ${PERSON.name} | ${suffix}` : `${page} - ${PERSON.name} | Software Engineer`;
 
 const createOpenGraph = (
   title: string,
@@ -92,7 +92,7 @@ export const PAGE_METADATA = {
 
   about: {
     title: createPageTitle("About"),
-    description: `Learn more about ${PERSON.name} - a software developer based in ${PERSON.location.city}, ${PERSON.location.country}, with experience in web and mobile development using React, Swift, Java and more.`,
+    description: `Learn more about ${PERSON.name} - a software engineer based in ${PERSON.location.city}, ${PERSON.location.country}, with experience in web and mobile development using React, Swift, Java and more.`,
     alternates: createAlternates("/about"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/about");
@@ -164,7 +164,7 @@ export const PAGE_METADATA = {
 
   blog: {
     title: createPageTitle("Blog", "Thoughts & Ideas"),
-    description: `Read thoughts, ideas, and technical insights from ${PERSON.name} - a software developer sharing lessons learned about web development, programming, and technology.`,
+    description: `Read thoughts, ideas, and technical insights from ${PERSON.name} - a software engineer sharing lessons learned about web development, programming, and technology.`,
     alternates: createAlternates("/blog"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/blog");

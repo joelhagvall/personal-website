@@ -250,7 +250,7 @@ export const PRIVACY_CONTENT = {
 // ============================================
 export const FOOTER_CONTENT = {
   name: PERSON.name,
-  tagline: `Software Developer based in ${PERSON.location.city}, ${PERSON.location.country}.`,
+  tagline: `Software Engineer based in ${PERSON.location.city}, ${PERSON.location.country}.`,
   copyright: (year: number) => `© ${year}`,
   contact: "Contact",
   privacy: "Privacy",
