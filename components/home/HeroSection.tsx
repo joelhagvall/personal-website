@@ -20,6 +20,7 @@ export function HeroSection() {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 leading-relaxed py-2">
             {PERSON.name}
           </h1>
+          <p className="-mt-4 mb-6 text-lg text-gray-400">{PERSON.shortBio}</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href={FREELANCE.primaryCta.href}

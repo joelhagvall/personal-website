@@ -131,7 +131,7 @@ export const FREELANCE = {
     submitLabel: "Open email draft",
     copyDraftLabel: "Copy project details",
     description:
-      "High-ticket work closes on calls. Calendly is the main path, email is the backup.",
+      "A 30 minute call is the quickest way to see if I can help. Email works too.",
     note:
       "Good briefs include the user, the blocked flow, the deadline, and what should be true after the work is done.",
     emailCtaLabel: "Email directly",

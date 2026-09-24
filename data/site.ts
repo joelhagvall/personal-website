@@ -15,15 +15,17 @@ export const PERSON = {
   name: "Joel Hägvall",
   alternateName: "joelhagvall",
   jobTitle: "Software Engineer",
-  age: 26,
-  birthYear: 2000,
+  birthDate: { year: 2000, month: 6, day: 2 },
   bio: "I'm a software engineer building enterprise systems, developer tooling, workflow automation and privacy-focused AI products.",
   shortBio: "Software engineer based in Stockholm, Sweden.",
   description: "Software engineer based in Stockholm, Sweden, working across TypeScript, React, .NET/C#, developer tooling, workflow automation and AI products.",
   avatar: "/media/selfie.webp",
+  employer: "Scania",
+  almaMater: "Stockholm University",
   location: {
     city: "Stockholm",
     country: "Sweden",
+    countryCode: "SE",
     flag: "🇸🇪",
     description: "Born and raised.",
     coordinates: {
@@ -46,6 +48,9 @@ export const SOCIAL = {
   github: {
     url: "https://github.com/joelhagvall",
     username: "joelhagvall",
+  },
+  huggingface: {
+    url: "https://huggingface.co/joelhagvall",
   },
   linkedin: {
     url: "https://www.linkedin.com/in/joel-h%C3%A4gvall-810601147/",
@@ -73,6 +78,8 @@ export const SKILLS = [
   "Dart",
   "TypeScript",
   "JavaScript",
+  "C#",
+  ".NET",
   "PySimpleGUI",
   "PostgreSQL",
   "Supabase",

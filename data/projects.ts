@@ -49,6 +49,8 @@ export const PROJECTS: Project[] = [
       "Hugging Face",
       "PyTorch",
     ],
+    owner: "joelhagvall",
+    repo: "maskera",
     iconName: "shield",
     status: projectCopy.maskera.status,
     prominence: "featured",
@@ -81,8 +83,7 @@ export const PROJECTS: Project[] = [
     demoUrl: "https://maskera.dev/en",
     npmUrl: "https://www.npmjs.com/package/maskera",
     modelUrl: "https://huggingface.co/joelhagvall/maskera-sv-ner",
-    image: "/media/maskera-demo.png",
-    imagePriority: true,
+    image: "/media/maskera-demo.webp",
   },
   {
     title: projectCopy.dataWipeMailer.title,
@@ -139,7 +140,7 @@ export const PROJECTS: Project[] = [
       ],
     },
     demoUrl: "https://data-wipe-mailer.vercel.app",
-    image: "/media/data-wipe-mailer-screen.png",
+    image: "/media/data-wipe-mailer-screen.webp",
   },
   {
     title: projectCopy.jarvis.title,
@@ -165,8 +166,7 @@ export const PROJECTS: Project[] = [
         },
       ],
     },
-    image:
-      "https://raw.githubusercontent.com/joelhagvall/jarvis-chat/main/screenshots/4.png",
+    image: "/media/jarvis-chat.webp",
   },
   {
     title: projectCopy.torScraper.title,

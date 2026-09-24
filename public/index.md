@@ -23,7 +23,7 @@ I build RAG assistants, embeddings/vector search, document ingestion, AI reports
 
 ## Tech stack
 
-Java, Blockchain, Web Development, Python, React, Next.js, Swift, SwiftUI, PHP, MySQL, Firebase, Flutter, Dart, TypeScript, JavaScript, PySimpleGUI, PostgreSQL, Supabase, TanStack Query, TanStack Form
+Java, Blockchain, Web Development, Python, React, Next.js, Swift, SwiftUI, PHP, MySQL, Firebase, Flutter, Dart, TypeScript, JavaScript, C#, .NET, PySimpleGUI, PostgreSQL, Supabase, TanStack Query, TanStack Form
 
 ## Pages
 

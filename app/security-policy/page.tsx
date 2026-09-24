@@ -9,12 +9,23 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { SOCIAL } from "@/lib/constants";
 import { SECURITY_CONTENT } from "@/data/security";
+import { BREADCRUMBS } from "@/data/seo-metadata";
+import { createBreadcrumbsJsonLd } from "@/lib/seo";
+
+const breadcrumbsJsonLd = createBreadcrumbsJsonLd([
+  BREADCRUMBS.home,
+  BREADCRUMBS.securityPolicy,
+]);
 
 export default function SecurityPolicyPage() {
   const content = SECURITY_CONTENT;
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+      />
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4">{content.page.title}</h1>
         <p className="text-lg text-muted-foreground">{content.page.subtitle}</p>
@@ -24,12 +35,12 @@ export default function SecurityPolicyPage() {
         {/* Responsible Disclosure */}
         <Card>
           <CardHeader>
-            <CardTitle as="h2" className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <Badge variant="destructive">
                 {content.responsibleDisclosure.badge}
               </Badge>
-              {content.responsibleDisclosure.title}
-            </CardTitle>
+              <CardTitle as="h2">{content.responsibleDisclosure.title}</CardTitle>
+            </div>
             <CardDescription>
               {content.responsibleDisclosure.description}
             </CardDescription>
@@ -193,7 +204,7 @@ export default function SecurityPolicyPage() {
               </p>
               <p className="text-sm text-muted-foreground">
                 {content.contact.generalInquiries}{" "}
-                <a href="/about" className="text-primary hover:underline">
+                <a href="/contact" className="text-primary hover:underline">
                   {content.contact.aboutPageLink}
                 </a>
                 .

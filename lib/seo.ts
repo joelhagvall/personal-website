@@ -6,79 +6,82 @@
 import { FREELANCE } from "@/data/freelance";
 import { OG_IMAGE, PERSON, SITE, SOCIAL, SKILLS } from "@/data/site";
 
-export const personJsonLd = {
-  "@context": "https://schema.org",
+export const PERSON_ID = `${SITE.url}/#person`;
+export const WEBSITE_ID = `${SITE.url}/#website`;
+
+const personRef = {
   "@type": "Person",
+  "@id": PERSON_ID,
   name: PERSON.name,
+  url: SITE.url,
+} as const;
+
+const personEntity = {
+  "@type": "Person",
+  "@id": PERSON_ID,
+  name: PERSON.name,
+  alternateName: PERSON.alternateName,
   description: PERSON.description,
   jobTitle: PERSON.jobTitle,
   url: SITE.url,
-  sameAs: [SOCIAL.linkedin.url, SOCIAL.github.url],
+  image: `${SITE.url}${PERSON.avatar}`,
+  email: `mailto:${SOCIAL.email}`,
+  sameAs: [SOCIAL.linkedin.url, SOCIAL.github.url, SOCIAL.huggingface.url],
   address: {
     "@type": "PostalAddress",
     addressLocality: PERSON.location.city,
-    addressCountry: PERSON.location.country,
+    addressCountry: PERSON.location.countryCode,
   },
+  worksFor: { "@type": "Organization", name: PERSON.employer },
+  alumniOf: { "@type": "CollegeOrUniversity", name: PERSON.almaMater },
   knowsAbout: [...SKILLS],
+} as const;
+
+export const personJsonLd = {
+  "@context": "https://schema.org",
+  ...personEntity,
 } as const;
 
 export const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": WEBSITE_ID,
   url: `${SITE.url}/`,
-  name: SITE.title,
-  alternateName: PERSON.name,
+  name: SITE.name,
+  alternateName: [PERSON.alternateName, "joelhagvall.com"],
   description: PERSON.description,
-  author: {
-    "@type": "Person",
-    name: PERSON.name,
-  },
-  inLanguage: "en-US",
+  publisher: personRef,
+  inLanguage: SITE.language,
 } as const;
 
 export const profilePageJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  mainEntity: {
-    "@type": "Person",
-    name: PERSON.name,
-    alternateName: PERSON.alternateName,
-    description: PERSON.description,
-    image: `${SITE.url}${PERSON.avatar}`,
-    jobTitle: PERSON.jobTitle,
-    url: SITE.url,
-    sameAs: [SOCIAL.linkedin.url, SOCIAL.github.url],
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: PERSON.location.city,
-      addressCountry: PERSON.location.country,
-    },
-    knowsAbout: SKILLS.slice(0, 10),
-  },
-  dateCreated: "2024-01-01",
-  dateModified: new Date().toISOString().split("T")[0],
+  url: `${SITE.url}/about`,
+  isPartOf: { "@id": WEBSITE_ID },
+  mainEntity: personEntity,
+} as const;
+
+export const contactPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  url: `${SITE.url}/contact`,
+  isPartOf: { "@id": WEBSITE_ID },
+  mainEntity: personRef,
 } as const;
 
 export const freelanceServiceJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Service",
   name: `${PERSON.name} Work With Me`,
+  serviceType: "Software engineering",
   description: FREELANCE.metadata.description,
   url: `${SITE.url}/work-with-me`,
   areaServed: "Worldwide",
-  availableLanguage: ["English"],
-  provider: {
-    "@type": "Person",
-    name: PERSON.name,
-    url: SITE.url,
-    jobTitle: PERSON.jobTitle,
-    sameAs: [SOCIAL.linkedin.url, SOCIAL.github.url],
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "sales",
-    email: SOCIAL.freelanceEmail,
-    areaServed: "Worldwide",
+  provider: personRef,
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: `${SITE.url}/work-with-me`,
     availableLanguage: ["English"],
   },
   hasOfferCatalog: {
@@ -128,29 +131,42 @@ export function createBreadcrumbsJsonLd(
   };
 }
 
-// SoftwareApplication schema generator
-export function createSoftwareApplicationJsonLd(project: {
+// Actual languages; everything else in a project's stack goes in keywords
+const PROGRAMMING_LANGUAGES = new Set([
+  "TypeScript",
+  "JavaScript",
+  "Python",
+  "Java",
+  "Swift",
+  "Dart",
+  "PHP",
+  "C#",
+  "SQL",
+]);
+
+// Projects with a public repo are SoftwareSourceCode, the rest CreativeWork
+export function createProjectJsonLd(project: {
   name: string;
   description: string;
-  url: string;
-  applicationCategory: string;
-  operatingSystem?: string;
-  programmingLanguage?: string[];
+  technologies: readonly string[];
+  githubUrl?: string;
+  demoUrl?: string;
 }) {
+  const programmingLanguage = project.technologies.filter((t) =>
+    PROGRAMMING_LANGUAGES.has(t)
+  );
   return {
     "@context": "https://schema.org",
-    "@type": "SoftwareSourceCode",
+    "@type": project.githubUrl ? "SoftwareSourceCode" : "CreativeWork",
     name: project.name,
     description: project.description,
-    url: project.url,
-    codeRepository: project.url,
-    programmingLanguage: project.programmingLanguage,
-    author: {
-      "@type": "Person",
-      name: PERSON.name,
-      url: SITE.url,
-    },
-    applicationCategory: project.applicationCategory,
+    url: project.demoUrl ?? project.githubUrl ?? `${SITE.url}/projects`,
+    ...(project.githubUrl ? { codeRepository: project.githubUrl } : {}),
+    ...(project.githubUrl && programmingLanguage.length > 0
+      ? { programmingLanguage }
+      : {}),
+    keywords: project.technologies.join(", "),
+    author: personRef,
   };
 }
 
@@ -159,6 +175,7 @@ export function blogPostingJsonLd(post: {
   title: string;
   description: string;
   date: string;
+  updated?: string;
   tags: string[];
 }) {
   const url = `${SITE.url}/blog/${post.slug}`;
@@ -168,6 +185,7 @@ export function blogPostingJsonLd(post: {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    dateModified: post.updated ?? post.date,
     keywords: post.tags,
     url,
     mainEntityOfPage: {
@@ -175,16 +193,26 @@ export function blogPostingJsonLd(post: {
       "@id": url,
     },
     image: OG_IMAGE.url,
-    inLanguage: "en-US",
-    author: {
-      "@type": "Person",
-      name: PERSON.name,
-      url: SITE.url,
-    },
-    publisher: {
-      "@type": "Person",
-      name: PERSON.name,
-      url: SITE.url,
-    },
+    inLanguage: SITE.language,
+    isPartOf: { "@id": WEBSITE_ID },
+    author: personRef,
+    publisher: personRef,
+  };
+}
+
+export function blogJsonLd(posts: readonly { slug: string; title: string; date: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: `${PERSON.name} - Blog`,
+    url: `${SITE.url}/blog`,
+    isPartOf: { "@id": WEBSITE_ID },
+    author: personRef,
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      url: `${SITE.url}/blog/${post.slug}`,
+      datePublished: post.date,
+    })),
   };
 }

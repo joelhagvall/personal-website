@@ -2,6 +2,56 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
+      "src": "^/(.*)$",
+      "continue": true,
+      "headers": {
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Cross-Origin-Resource-Policy": "cross-origin",
+        "Vary": "Accept",
+        "Link": "<https://joelhagvall.com/llms.txt>; rel=\"describedby\"; type=\"text/plain\", <https://joelhagvall.com/agents.md>; rel=\"describedby\"; type=\"text/markdown\""
+      }
+    },
+    {
+      "src": "^/opengraph-image$",
+      "continue": true,
+      "headers": {
+        "Content-Type": "image/png"
+      }
+    },
+    {
+      "src": "^/(?:media|tech)/(.*)$",
+      "continue": true,
+      "headers": {
+        "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800"
+      }
+    },
+    {
+      "src": "^/index\\.md$",
+      "continue": true,
+      "headers": {
+        "Link": "<https://joelhagvall.com/>; rel=\"canonical\""
+      }
+    },
+    {
+      "src": "^/((?!(?:404|agents|index)\\.md$).+)\\.md$",
+      "continue": true,
+      "headers": {
+        "Link": "<https://joelhagvall.com/$1>; rel=\"canonical\""
+      }
+    },
+    {
+      "src": "^/((?!(?:llms|humans|robots)\\.txt$).+)\\.txt$",
+      "continue": true,
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
       "src": "^/$",
       "has": [
         {
@@ -13,8 +63,7 @@
       "dest": "/index.md",
       "headers": {
         "Vary": "Accept",
-        "Content-Type": "text/markdown; charset=utf-8",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+        "Content-Type": "text/markdown; charset=utf-8"
       }
     },
     {
@@ -29,8 +78,7 @@
       "dest": "/$1.md",
       "headers": {
         "Vary": "Accept",
-        "Content-Type": "text/markdown; charset=utf-8",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+        "Content-Type": "text/markdown; charset=utf-8"
       }
     },
     {
@@ -49,8 +97,7 @@
       "status": 404,
       "headers": {
         "Vary": "Accept",
-        "Content-Type": "text/markdown; charset=utf-8",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+        "Content-Type": "text/markdown; charset=utf-8"
       }
     },
     {
@@ -66,53 +113,8 @@
       "status": 404,
       "headers": {
         "Vary": "Accept",
-        "Content-Type": "text/markdown; charset=utf-8",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+        "Content-Type": "text/markdown; charset=utf-8"
       }
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=31536000; includeSubDomains; preload"
-        },
-        {
-          "key": "Cross-Origin-Embedder-Policy",
-          "value": "unsafe-none"
-        },
-        {
-          "key": "Cross-Origin-Opener-Policy",
-          "value": "same-origin"
-        },
-        {
-          "key": "Cross-Origin-Resource-Policy",
-          "value": "cross-origin"
-        },
-        {
-          "key": "Vary",
-          "value": "Accept"
-        },
-        {
-          "key": "Link",
-          "value": "<https://joelhagvall.com/llms.txt>; rel=\"describedby\"; type=\"text/plain\", <https://joelhagvall.com/agents.md>; rel=\"describedby\"; type=\"text/markdown\""
-        }
-      ]
-    },
-    {
-      "source": "/:path(.*)\\.md",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/markdown; charset=utf-8"
-        }
-      ]
     }
   ]
 }

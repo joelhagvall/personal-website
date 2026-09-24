@@ -253,9 +253,11 @@ export function ProjectCard({
     <div className="project-card-item">
       <Card className="h-full p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
         <div className="space-y-4">
-          <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2 flex-wrap">
-            <Icon className="text-primary" size={24} aria-hidden="true" />
-            {title}
+          <div className="mb-4 flex items-center gap-2 flex-wrap">
+            <h3 className="text-2xl font-semibold flex items-center gap-2">
+              <Icon className="text-primary" size={24} aria-hidden="true" />
+              {title}
+            </h3>
             {status && (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
                 <span
@@ -265,7 +267,7 @@ export function ProjectCard({
                 {status}
               </span>
             )}
-          </h3>
+          </div>
 
           <p className="text-muted-foreground text-lg">
             {parseSimpleMarkdown(description)}

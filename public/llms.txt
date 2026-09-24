@@ -1,6 +1,6 @@
 # Joel Hägvall
 
-> Personal website of Joel Hägvall, a software engineer based in Stockholm, Sweden. Experienced in building web and mobile applications with TypeScript, React, Next.js, Java, Python, Swift and more. Available for freelance product development work.
+> Personal website of Joel Hägvall, a software engineer based in Stockholm, Sweden, working across TypeScript, React, .NET/C#, developer tooling, workflow automation and AI products. Software developer at Scania and creator of the open-source Maskera. Available for freelance product development work.
 
 This is a personal portfolio and blog site. All content is in English.
 
@@ -39,6 +39,7 @@ Every page is also available as markdown: request any URL with the `Accept: text
 
 - [Sitemap](https://joelhagvall.com/sitemap.xml): Full list of pages
 - [RSS feed](https://joelhagvall.com/feed.xml): Blog updates
+- [Agent instructions](https://joelhagvall.com/agents.md): How agents should use this site
 - [humans.txt](https://joelhagvall.com/humans.txt): Site credits
 
 ## Contact

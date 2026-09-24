@@ -62,6 +62,10 @@ function TechStackRow() {
                 src={existingTech.icon}
                 alt=""
                 aria-hidden="true"
+                width={16}
+                height={16}
+                loading="lazy"
+                decoding="async"
                 className={`h-4 w-4 ${"rounded" in existingTech && existingTech.rounded ? "rounded" : ""}`}
               />
               <span>{existingTech.name}</span>

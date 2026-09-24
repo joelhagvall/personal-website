@@ -307,3 +307,494 @@
   bottom: 100%;
   margin-bottom: 0.5rem;
 }
+
+/* ============================================
+ * Bookshelf (about page)
+ * ============================================
+ * Pure CSS: books and films stand spine out and turn in 3D to show their
+ * cover on hover or focus, records sit face out and slide their disc out of
+ * the sleeve. Item sizes come from inline custom properties (--h spine height,
+ * --w spine width, --cw cover width) and scale with --s.
+ */
+
+.bookshelf-case {
+  --s: 0.78;
+  --wood: #4a2f1c;
+  --wood-dark: #2a1a0f;
+  position: relative;
+  margin: 0 auto;
+  max-width: 44rem;
+  padding: 0 calc(14px * var(--s));
+  border-radius: 10px;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(255, 196, 120, 0.13), transparent 70%),
+    linear-gradient(180deg, #17110d, #0e0a08);
+  box-shadow:
+    inset calc(14px * var(--s)) 0 0 var(--wood-dark),
+    inset calc(-14px * var(--s)) 0 0 var(--wood-dark),
+    inset 0 calc(12px * var(--s)) 0 var(--wood-dark),
+    0 30px 60px -20px rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 640px) {
+  .bookshelf-case {
+    --s: 1;
+  }
+}
+
+.bookshelf-shelf {
+  position: relative;
+  padding: calc(48px * var(--s)) calc(16px * var(--s)) 0;
+}
+
+.bookshelf-shelf + .bookshelf-shelf {
+  margin-top: calc(18px * var(--s));
+}
+
+.bookshelf-label {
+  position: absolute;
+  top: calc(18px * var(--s));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 10px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #c9a45c, #8c6a2f);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: #2a1a0f;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bookshelf-row {
+  position: relative;
+  perspective: 900px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: calc(3px * var(--s));
+  min-height: calc(250px * var(--s));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* On narrow screens the records fan out and overlap; the hovered one comes
+   to the front */
+.bookshelf-records {
+  --rec: 84px;
+  gap: 0;
+  padding-right: calc(var(--rec) * 0.2);
+  min-height: calc(var(--rec) + 12px);
+}
+
+.bookshelf-records > li + li {
+  margin-left: calc(var(--rec) * -0.35);
+}
+
+@media (min-width: 640px) {
+  .bookshelf-records {
+    --rec: 150px;
+    gap: calc(var(--rec) * 0.22);
+  }
+
+  .bookshelf-records > li + li {
+    margin-left: 0;
+  }
+}
+
+.bookshelf-plank {
+  position: relative;
+  height: calc(16px * var(--s));
+  margin: 0 calc(-30px * var(--s));
+  border-radius: 2px;
+  background: linear-gradient(180deg, #7a5233 0%, var(--wood) 35%, var(--wood-dark) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 220, 170, 0.35),
+    0 10px 18px -6px rgba(0, 0, 0, 0.9);
+}
+
+/* ---------- caption shown under the shelf for the active item ---------- */
+
+.bookshelf-caption-area {
+  position: relative;
+  height: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .bookshelf-caption-area {
+    height: 46px;
+  }
+}
+
+/* Captions sit in the row's containing block (the row has perspective), so
+   they are placed below the plank from the row's bottom edge */
+.bookshelf-caption,
+.bookshelf-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0 0.5rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.bookshelf-caption {
+  top: calc(100% + 26px * var(--s));
+  color: #fff;
+  opacity: 0;
+}
+
+.bookshelf-caption span {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.bookshelf-hint {
+  top: calc(10px * var(--s));
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.bookshelf-shelf:has(.bookshelf-item:hover, .bookshelf-item:focus-within) .bookshelf-hint {
+  opacity: 0;
+}
+
+.bookshelf-item:hover .bookshelf-caption,
+.bookshelf-item:focus-within .bookshelf-caption {
+  opacity: 1;
+}
+
+/* ---------- books and films ---------- */
+
+.bookshelf-item {
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.bookshelf-box,
+.bookshelf-record-inner {
+  outline: none;
+}
+
+.bookshelf-box:focus-visible .bookshelf-face,
+.bookshelf-record-inner:focus-visible .bookshelf-sleeve {
+  box-shadow: 0 0 0 2px hsl(var(--ring));
+}
+
+.bookshelf-book {
+  flex-shrink: 0;
+  width: calc(var(--w) * var(--s));
+  height: calc(var(--h) * var(--s));
+  transition: width 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bookshelf-book:hover,
+.bookshelf-book:focus-within {
+  width: calc(var(--cw) * var(--s));
+}
+
+.bookshelf-box {
+  position: relative;
+  display: block;
+  left: 50%;
+  width: calc(var(--w) * var(--s));
+  height: 100%;
+  margin-left: calc(var(--w) * var(--s) / -2);
+  transform-style: preserve-3d;
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bookshelf-book:hover .bookshelf-box,
+.bookshelf-book:focus-within .bookshelf-box {
+  transform: translateY(calc(-10px * var(--s))) rotateY(-90deg);
+}
+
+.bookshelf-face {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 2px;
+}
+
+.bookshelf-spine {
+  left: 0;
+  width: 100%;
+  transform: translateZ(calc(var(--cw) * var(--s) / 2));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(10px * var(--s)) 0;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.45), rgba(255, 255, 255, 0.12) 22%, transparent 45%, rgba(0, 0, 0, 0.35)),
+    var(--color);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Book titles may wrap into a second column like a real spine */
+.bookshelf-spine-title {
+  writing-mode: vertical-rl;
+  max-height: 74%;
+  overflow: hidden;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: calc(13px * var(--s));
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: pre-line;
+}
+
+.bookshelf-spine-meta {
+  writing-mode: vertical-rl;
+  font-size: calc(10px * var(--s));
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+.bookshelf-cover {
+  left: calc((var(--w) - var(--cw)) * var(--s) / 2);
+  width: calc(var(--cw) * var(--s));
+  transform: rotateY(90deg) translateZ(calc(var(--w) * var(--s) / 2));
+  overflow: hidden;
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.8);
+}
+
+.bookshelf-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hinge shading along the spine edge of the cover */
+.bookshelf-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 8%, rgba(255, 255, 255, 0.08) 12%, transparent 20%);
+}
+
+/* Films are slimmer cases with a colored band at the top */
+.bookshelf-film .bookshelf-spine {
+  padding-top: 0;
+  background:
+    linear-gradient(180deg, var(--ink) 0 calc(14px * var(--s)), transparent calc(14px * var(--s))),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.18) 30%, transparent 60%, rgba(0, 0, 0, 0.4)),
+    var(--color);
+}
+
+.bookshelf-film .bookshelf-spine-title {
+  margin-top: calc(20px * var(--s));
+  font-family: inherit;
+  font-size: calc(11px * var(--s));
+  white-space: nowrap;
+}
+
+/* A bookend between books and films */
+.bookshelf-bookend {
+  width: calc(10px * var(--s));
+  height: calc(120px * var(--s));
+  margin: 0 calc(14px * var(--s));
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg, #6b6f76, #c8ccd2 40%, #7d8188);
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Decorations, only where there is room for them */
+.bookshelf-stack,
+.bookshelf-planet {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .bookshelf-stack,
+  .bookshelf-planet {
+    display: flex;
+  }
+}
+
+.bookshelf-stack {
+  flex-direction: column;
+  align-items: center;
+  margin-right: 28px;
+}
+
+.bookshelf-stack span {
+  display: block;
+  height: 16px;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.bookshelf-stack span:nth-child(1) {
+  width: 104px;
+  height: 13px;
+  background: #5b2a2a;
+  transform: translateX(6px);
+}
+
+.bookshelf-stack span:nth-child(2) {
+  width: 118px;
+  background: #2f4a3c;
+}
+
+.bookshelf-stack span:nth-child(3) {
+  width: 126px;
+  height: 20px;
+  background: #3b3553;
+  transform: translateX(-4px);
+}
+
+.bookshelf-planet {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 36px;
+}
+
+.bookshelf-planet-body {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(170deg, transparent 0 6px, rgba(120, 80, 40, 0.18) 6px 9px),
+    radial-gradient(circle at 35% 30%, #f3dcae, #c89b5c 55%, #6b4a26);
+  box-shadow: 0 0 24px rgba(243, 220, 174, 0.25);
+}
+
+.bookshelf-planet-body::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  right: -18px;
+  top: 50%;
+  height: 16px;
+  margin-top: -8px;
+  border-radius: 50%;
+  border: 3px solid rgba(230, 205, 160, 0.8);
+  transform: rotate(-16deg);
+  mask: linear-gradient(180deg, #000 45%, transparent 45% 62%, #000 62%);
+}
+
+.bookshelf-planet-stand {
+  width: 3px;
+  height: 22px;
+  background: linear-gradient(90deg, #7d6440, #caa46a, #7d6440);
+}
+
+.bookshelf-planet-stand::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 34px;
+  height: 7px;
+  margin-left: -17px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, #caa46a, #7d6440);
+}
+
+/* ---------- records ---------- */
+
+.bookshelf-record {
+  flex-shrink: 0;
+  width: var(--rec);
+  height: var(--rec);
+}
+
+.bookshelf-record-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bookshelf-disc {
+  position: absolute;
+  inset: calc(4px * var(--s));
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #111 0 3%, var(--color) 3.5% 30%, #0b0b0b 31%),
+    #0b0b0b;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+  transform: translateX(18%);
+  transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Grooves and a fixed glare */
+.bookshelf-disc::before,
+.bookshelf-disc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.bookshelf-disc::before {
+  background: repeating-radial-gradient(circle, transparent 0 2px, rgba(255, 255, 255, 0.035) 2px 3px);
+  mask: radial-gradient(circle, transparent 31%, #000 32%, #000 69%, transparent 70%);
+}
+
+.bookshelf-disc::after {
+  background: conic-gradient(from 20deg, transparent 0 10%, rgba(255, 255, 255, 0.14) 14%, transparent 20% 60%, rgba(255, 255, 255, 0.1) 64%, transparent 70%);
+}
+
+.bookshelf-record:hover .bookshelf-record-inner,
+.bookshelf-record:focus-within .bookshelf-record-inner {
+  z-index: 2;
+}
+
+.bookshelf-record:hover .bookshelf-disc,
+.bookshelf-record:focus-within .bookshelf-disc {
+  transform: translateX(52%) rotate(200deg);
+}
+
+.bookshelf-sleeve {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px -6px rgba(0, 0, 0, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bookshelf-sleeve img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bookshelf-sleeve::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 40%);
+}
+
+.bookshelf-record:hover .bookshelf-sleeve,
+.bookshelf-record:focus-within .bookshelf-sleeve {
+  transform: translateY(calc(-6px * var(--s))) rotate(-2deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bookshelf-book,
+  .bookshelf-box,
+  .bookshelf-disc,
+  .bookshelf-sleeve,
+  .bookshelf-caption,
+  .bookshelf-hint {
+    transition: none;
+  }
+}

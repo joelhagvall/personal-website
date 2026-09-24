@@ -3,12 +3,11 @@ import { AnimatedCard } from "@/components/AnimatedCard";
 import { ProfileAvatar } from "./ProfileAvatar";
 import { LINK_STYLES } from "@/lib/styles";
 import { HOME_CONTENT } from "@/data/content";
-import { FREELANCE } from "@/data/freelance";
 
 export function IntroductionCard() {
   return (
     <AnimatedCard as="section" aria-labelledby="introduction-heading" className="col-span-full">
-      <div className="flex items-start gap-6">
+      <div className="flex flex-col items-start gap-6 sm:flex-row">
         <ProfileAvatar />
         <div className="flex-1">
           <h2 id="introduction-heading" className="text-2xl font-semibold mb-3">
@@ -23,16 +22,6 @@ export function IntroductionCard() {
               {HOME_CONTENT.introduction.linkText}
             </Link>{" "}
             {HOME_CONTENT.introduction.linkSuffix}
-          </p>
-          <p className="mt-4 text-muted-foreground text-base">
-            {FREELANCE.homeCard.availability}{" "}
-            <Link
-              href="/work-with-me"
-              className={`${LINK_STYLES.primary} underline underline-offset-4`}
-            >
-              See how I work
-            </Link>
-            .
           </p>
         </div>
       </div>

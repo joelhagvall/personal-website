@@ -1,16 +1,16 @@
 export const TECH_STACK = [
-  { name: "Java", url: "https://www.java.com/", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-  { name: "Python", url: "https://www.python.org/", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-  { name: "React", url: "https://reactjs.org/", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-  { name: "Next.js", url: "https://nextjs.org/", icon: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored-dark.svg" },
-  { name: "PHP", url: "https://www.php.net/", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
-  { name: "Swift", url: "https://developer.apple.com/swift/", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" },
-  { name: "TypeScript", url: "https://www.typescriptlang.org/", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-  { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-  { name: "PostgreSQL", url: "https://www.postgresql.org/", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-  { name: "Supabase", url: "https://supabase.com/", icon: "https://avatars.githubusercontent.com/u/54469796?s=200&v=4", rounded: true },
-  { name: "TanStack Query", url: "https://tanstack.com/query/latest", icon: "https://raw.githubusercontent.com/TanStack/query/main/media/emblem-light.svg" },
-  { name: "TanStack", url: "https://tanstack.com/", icon: "https://avatars.githubusercontent.com/u/72518640?s=200&v=4", rounded: true },
+  { name: "Java", url: "https://www.java.com/", icon: "/tech/java.svg" },
+  { name: "Python", url: "https://www.python.org/", icon: "/tech/python.svg" },
+  { name: "React", url: "https://reactjs.org/", icon: "/tech/react.svg" },
+  { name: "Next.js", url: "https://nextjs.org/", icon: "/tech/nextjs.svg" },
+  { name: "PHP", url: "https://www.php.net/", icon: "/tech/php.svg" },
+  { name: "Swift", url: "https://developer.apple.com/swift/", icon: "/tech/swift.svg" },
+  { name: "TypeScript", url: "https://www.typescriptlang.org/", icon: "/tech/typescript.svg" },
+  { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", icon: "/tech/javascript.svg" },
+  { name: "PostgreSQL", url: "https://www.postgresql.org/", icon: "/tech/postgresql.svg" },
+  { name: "Supabase", url: "https://supabase.com/", icon: "/tech/supabase.webp", rounded: true },
+  { name: "TanStack Query", url: "https://tanstack.com/query/latest", icon: "/tech/tanstack-query.svg" },
+  { name: "TanStack", url: "https://tanstack.com/", icon: "/tech/tanstack.webp", rounded: true },
 ] as const;
 
 export type TechStackItem = typeof TECH_STACK[number];

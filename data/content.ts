@@ -6,6 +6,9 @@
 import { PERSON, SOCIAL } from "./site";
 import messages from "@/messages/en.json";
 
+// Replaced with the live age where the story is rendered (see components/Age.tsx)
+export const AGE_PLACEHOLDER = "{age}";
+
 // ============================================
 // Navigation & Common Labels
 // ============================================
@@ -94,7 +97,7 @@ export const ABOUT_CONTENT = {
   },
   story: [
     {
-      text: `I'm ${PERSON.name}, ${PERSON.age} years old, born and raised in Stockholm. I've always liked figuring out how things work. These days that means workflows, systems and products. I studied Computer and Systems Sciences at Stockholm University and now build microservices, tooling and automated workflows at Scania.`,
+      text: `I'm ${PERSON.name}, ${AGE_PLACEHOLDER} years old, born and raised in Stockholm. I've always liked figuring out how things work. These days that means workflows, systems and products. I studied Computer and Systems Sciences at Stockholm University and now build microservices, tooling and automated workflows at Scania.`,
     },
     {
       text: "My way of working is simple: find every blocker and remove it. Most of a normal workday isn't hard problems, it's glue between systems, so I automate everything possible. At work, in my own projects, and for clients. I wrote more about that in",
@@ -118,10 +121,7 @@ export const ABOUT_CONTENT = {
     otherIntro: "I'm also interested in other things, like:",
   },
   media: {
-    description: "Some of my favourite media, swipe through the images!",
-    movies: "Favorite Movies",
-    music: "Favorite Music",
-    books: "Favorite Books",
+    description: "Books, films and records I keep coming back to.",
   },
 } as const;
 
@@ -165,7 +165,7 @@ export const RESUME_CONTENT = {
   },
   pdfHref: "/media/resume.pdf",
   pdfLabel: LABELS.viewPdf,
-  pdfAriaLabel: "View Joel Hägvall's resume as a PDF",
+  pdfAriaLabel: "View PDF of Joel Hägvall's resume",
 } as const;
 
 // ============================================

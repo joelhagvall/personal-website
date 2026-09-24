@@ -32,14 +32,6 @@ export default function RootLayout({
           httpEquiv="Permissions-Policy"
           content="camera=(), microphone=(), geolocation=(), interest-cohort=()"
         />
-        <link rel="icon" href="/favicon_round.png?v=2" type="image/png" />
-        <link
-          rel="shortcut icon"
-          href="/favicon_round.png?v=2"
-          type="image/png"
-        />
-        <link rel="alternate icon" href="/favicon.ico?v=2" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <link
           rel="alternate"

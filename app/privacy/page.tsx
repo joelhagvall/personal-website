@@ -6,7 +6,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { PRIVACY_CONTENT } from "@/data/content";
-import { PAGE_METADATA } from "@/data/seo-metadata";
+import { BREADCRUMBS, PAGE_METADATA } from "@/data/seo-metadata";
+import { createBreadcrumbsJsonLd } from "@/lib/seo";
+
+const breadcrumbsJsonLd = createBreadcrumbsJsonLd([
+  BREADCRUMBS.home,
+  BREADCRUMBS.privacy,
+]);
 
 export const metadata: Metadata = PAGE_METADATA.privacy;
 
@@ -15,6 +21,10 @@ export default function PrivacyPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+      />
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4">{content.pageTitle}</h1>
         <p className="text-lg text-muted-foreground">{content.subtitle}</p>

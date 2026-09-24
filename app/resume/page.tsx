@@ -4,7 +4,7 @@ import { RESUME_CONTENT } from "@/data/content";
 
 export default function Resume() {
   return (
-    <main className="min-h-screen p-8 md:p-12">
+    <div className="min-h-screen p-8 md:p-12">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 space-y-4">
           <h1 className="text-4xl font-bold">{RESUME_CONTENT.pageTitle}</h1>
@@ -59,6 +59,6 @@ export default function Resume() {
           </Card>
         </div>
       </div>
-    </main>
+    </div>
   );
 } 

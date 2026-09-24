@@ -15,7 +15,7 @@ export default function Home() {
   const featuredPost = getFeaturedPost();
 
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       <HeroSection />
       <div className="p-8 md:p-12">
         <div className="max-w-7xl mx-auto">
@@ -31,6 +31,6 @@ export default function Home() {
         </div>
         <Footer />
       </div>
-    </main>
+    </div>
   );
 }

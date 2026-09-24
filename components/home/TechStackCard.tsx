@@ -14,6 +14,10 @@ function TechIcon({ tech }: { tech: TechStackItem }) {
       <img
         src={tech.icon}
         alt={`${tech.name} logo`}
+        width={40}
+        height={40}
+        loading="lazy"
+        decoding="async"
         className={`w-full h-full ${"rounded" in tech && tech.rounded ? "rounded" : ""}`}
       />
     </a>

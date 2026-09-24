@@ -115,6 +115,6 @@ export const SECURITY_CONTENT = {
     securityTxtPath: "/.well-known/security.txt",
     generalInquiries:
       "For general inquiries, please use the contact information on my",
-    aboutPageLink: "about page",
+    aboutPageLink: "contact page",
   },
 } as const;

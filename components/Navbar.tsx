@@ -24,9 +24,9 @@ export function Navbar() {
       className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       aria-label="Main navigation"
     >
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-7xl px-3 sm:px-4">
         <div className="overflow-x-auto">
-          <div className="flex h-14 w-max min-w-full items-center justify-center gap-4 whitespace-nowrap sm:gap-6 md:gap-10">
+          <div className="flex h-14 w-max min-w-full items-center justify-center gap-2.5 whitespace-nowrap text-sm sm:gap-6 sm:text-base md:gap-10">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -46,7 +46,7 @@ export function Navbar() {
                   )}
                 >
                   {Icon && (
-                    <Icon className="h-4 w-4 inline-block mr-1" aria-hidden="true" />
+                    <Icon className="hidden h-4 w-4 mr-1 sm:inline-block" aria-hidden="true" />
                   )}
                   {link.label}
                 </Link>

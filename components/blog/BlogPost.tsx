@@ -2,6 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Calendar, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import rehypePrettyCode from "rehype-pretty-code";
+import { PERSON } from "@/data/site";
 import type { Post } from "@/types/blog";
 import { mdxComponents } from "./mdx-components";
 
@@ -35,6 +36,13 @@ export function BlogPost({ post }: BlogPostProps) {
         <div className="flex items-center gap-2 text-gray-400 mb-4">
           <Calendar className="w-4 h-4" />
           <time dateTime={post.date}>{formattedDate}</time>
+          <span aria-hidden="true">·</span>
+          <span>
+            By{" "}
+            <Link href="/about" className="text-gray-300 hover:text-white underline underline-offset-4">
+              {PERSON.name}
+            </Link>
+          </span>
         </div>
 
         {post.tags.length > 0 && (

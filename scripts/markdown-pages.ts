@@ -10,7 +10,9 @@ import path from "path";
 import matter from "gray-matter";
 
 import { PERSON, SITE, SOCIAL, SKILLS } from "../data/site";
+import { getAge } from "../lib/age";
 import {
+  AGE_PLACEHOLDER,
   ABOUT_CONTENT,
   CONTACT_CONTENT,
   PRIVACY_CONTENT,
@@ -109,7 +111,9 @@ ${SKILLS.join(", ")}
     PERSON.description,
     `${ABOUT_CONTENT.story
       .map((p) =>
-        "link" in p ? `${p.text} [${p.link.label}](${SITE.url}${p.link.href}).` : p.text
+        "link" in p
+          ? `${p.text} [${p.link.label}](${SITE.url}${p.link.href}).`
+          : p.text.replace(AGE_PLACEHOLDER, String(getAge()))
       )
       .join("\n\n")}
 

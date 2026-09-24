@@ -4,7 +4,7 @@ My personal website where I share my projects, writing, resume, and a bit about 
 
 ## About
 
-Built with Next.js 16, React 19, and TypeScript, exported as a static site. I went with Tailwind CSS for styling and Radix UI for accessible components. Framer Motion handles the animations. Blog posts are MDX files in `content/blog`.
+Built with Next.js 16, React 19, and TypeScript, exported as a static site. I went with Tailwind CSS for styling and Radix UI for accessible components. Blog posts are MDX files in `content/blog`.
 
 ## What's Here
 

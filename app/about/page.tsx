@@ -1,6 +1,8 @@
+import { Fragment } from "react";
 import { Card } from "@/components/ui/card";
+import { Age } from "@/components/Age";
 import { Footer } from "@/components/Footer";
-import { MediaCarouselLazy } from "@/components/MediaCarouselLazy";
+import { Bookshelf } from "@/components/Bookshelf";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import {
   TEXT_STYLES,
@@ -10,7 +12,8 @@ import {
 } from "@/lib/styles";
 import { profile, techInterests, otherInterests } from "@/data/about";
 import { movies, music, books } from "@/data/media";
-import { ABOUT_CONTENT } from "@/data/content";
+import { ABOUT_CONTENT, AGE_PLACEHOLDER } from "@/data/content";
+import { getAge } from "@/lib/age";
 
 function BulletPoint({ children }: { children: React.ReactNode }) {
   return (
@@ -26,7 +29,7 @@ function BulletPoint({ children }: { children: React.ReactNode }) {
 
 export default function About() {
   return (
-    <main className="min-h-screen text-white p-8 md:p-12">
+    <div className="min-h-screen text-white p-8 md:p-12">
       <div className="max-w-7xl mx-auto">
         <h1 className={`text-4xl font-bold mb-8 text-center ${TEXT_STYLES.gradientHeading}`}>
           {ABOUT_CONTENT.pageTitle}
@@ -47,7 +50,9 @@ export default function About() {
                       <div className={GLOW_STYLES.avatar} aria-hidden="true"></div>
                       <div className="relative rounded-full w-full h-full overflow-hidden border border-white/10">
                         <img
-                          src={profile.avatar}
+                          src="/media/selfie-320.webp"
+                          width={160}
+                          height={160}
                           alt={`${profile.name}'s profile photo`}
                           className="w-full h-full object-cover"
                         />
@@ -56,7 +61,12 @@ export default function About() {
                     <div className="space-y-4 max-w-3xl">
                       {ABOUT_CONTENT.story.map((paragraph, index) => (
                         <p key={index} className={TEXT_STYLES.bodyText}>
-                          {paragraph.text}
+                          {paragraph.text.split(AGE_PLACEHOLDER).map((part, i) => (
+                            <Fragment key={i}>
+                              {i > 0 && <Age initial={getAge()} />}
+                              {part}
+                            </Fragment>
+                          ))}
                           {"link" in paragraph && (
                             <>
                               {" "}
@@ -160,26 +170,12 @@ export default function About() {
               <p className={`${TEXT_STYLES.mutedText} text-center mb-6`}>
                 {ABOUT_CONTENT.media.description}
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <MediaCarouselLazy
-                  title={ABOUT_CONTENT.media.movies}
-                  items={movies}
-                />
-                <MediaCarouselLazy
-                  title={ABOUT_CONTENT.media.music}
-                  items={music}
-                  aspectRatio="square"
-                />
-                <MediaCarouselLazy
-                  title={ABOUT_CONTENT.media.books}
-                  items={books}
-                />
-              </div>
+              <Bookshelf books={books} films={movies} records={music} />
             </Card>
           </div>
         </div>
       </div>
       <Footer />
-    </main>
+    </div>
   );
 }

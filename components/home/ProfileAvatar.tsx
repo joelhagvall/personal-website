@@ -38,7 +38,7 @@ export function ProfileAvatar() {
           onClick={() => setIsOpen(true)}
         >
           <Avatar className="h-20 w-20 cursor-pointer">
-            <AvatarImage src="/media/selfie.webp" alt="Joel Hägvall" />
+            <AvatarImage src="/media/selfie-160.webp" alt="Joel Hägvall" />
             <AvatarFallback>JH</AvatarFallback>
           </Avatar>
           <span

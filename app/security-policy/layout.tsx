@@ -3,7 +3,7 @@ import { OG_IMAGE, PERSON, SITE } from '@/data/site'
 
 const url = `${SITE.url}/security-policy`;
 const title = `Security Policy - ${PERSON.name} | Responsible Disclosure`;
-const description = `Security policy and responsible disclosure guidelines for ${PERSON.name}'s personal website. Learn how to report security vulnerabilities and view our commitment to keeping user data safe.`;
+const description = `How to report a security issue on ${PERSON.name}'s website, what to include in the report and how responsible disclosure works here.`;
 
 export const metadata: Metadata = {
   title,
@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     languages: {
       en: url,
       "x-default": url,
+    },
+    types: {
+      "text/markdown": `${url}.md`,
     },
   },
   openGraph: {

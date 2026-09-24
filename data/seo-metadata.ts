@@ -22,7 +22,7 @@ const createOpenGraph = (
   title,
   description,
   url: `${SITE.url}${path}`,
-  siteName: SITE.title,
+  siteName: SITE.name,
   type: "website" as const,
   locale: SITE.locale,
   images: [OG_IMAGE],
@@ -92,7 +92,7 @@ export const PAGE_METADATA = {
 
   about: {
     title: createPageTitle("About"),
-    description: `Learn more about ${PERSON.name} - a software engineer based in ${PERSON.location.city}, ${PERSON.location.country}, with experience in web and mobile development using React, Swift, Java and more.`,
+    description: `About ${PERSON.name}, a software engineer in ${PERSON.location.city} who builds .NET and TypeScript tooling at Scania and made the open-source Maskera.`,
     alternates: createAlternates("/about"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/about");
@@ -127,8 +127,8 @@ export const PAGE_METADATA = {
   } satisfies Metadata,
 
   resume: {
-    title: createPageTitle("Resume", "Experience & Skills"),
-    description: `View the resume and professional experience of ${PERSON.name} - a software engineer based in ${PERSON.location.city}, ${PERSON.location.country}, working across enterprise systems, TypeScript, AI and workflow automation.`,
+    title: createPageTitle("Resume"),
+    description: `Resume of ${PERSON.name}: software developer at Scania, creator of the open-source Maskera and sole engineer at ResiliaAI. B.Sc. from Stockholm University.`,
     alternates: createAlternates("/resume"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/resume");
@@ -140,7 +140,7 @@ export const PAGE_METADATA = {
 
   contact: {
     title: createPageTitle("Contact"),
-    description: `Get in touch with ${PERSON.name} - email, GitHub and LinkedIn. Based in ${PERSON.location.city}, ${PERSON.location.country}, available for freelance product development work.`,
+    description: `Get in touch with ${PERSON.name} by email, GitHub or LinkedIn. Based in ${PERSON.location.city}, ${PERSON.location.country}, available for freelance product development work.`,
     alternates: createAlternates("/contact"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/contact");
@@ -152,7 +152,7 @@ export const PAGE_METADATA = {
 
   privacy: {
     title: createPageTitle("Privacy"),
-    description: `Privacy policy for joelhagvall.com - what data is collected, how it is used, and what is never collected on ${PERSON.name}'s personal website.`,
+    description: `Privacy policy for joelhagvall.com: what data is collected, how it is used, and what is never collected on ${PERSON.name}'s personal website.`,
     alternates: createAlternates("/privacy"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/privacy");
@@ -164,7 +164,7 @@ export const PAGE_METADATA = {
 
   blog: {
     title: createPageTitle("Blog", "Thoughts & Ideas"),
-    description: `Read thoughts, ideas, and technical insights from ${PERSON.name} - a software engineer sharing lessons learned about web development, programming, and technology.`,
+    description: `Posts by ${PERSON.name} on automation, AI and building software, written by a software engineer in ${PERSON.location.city}.`,
     alternates: createAlternates("/blog"),
     get openGraph() {
       return createOpenGraph(this.title as string, this.description as string, "/blog");
@@ -185,4 +185,7 @@ export const BREADCRUMBS = {
   projects: { name: "Projects", url: `${SITE.url}/projects` },
   resume: { name: "Resume", url: `${SITE.url}/resume` },
   blog: { name: "Blog", url: `${SITE.url}/blog` },
+  contact: { name: "Contact", url: `${SITE.url}/contact` },
+  privacy: { name: "Privacy", url: `${SITE.url}/privacy` },
+  securityPolicy: { name: "Security policy", url: `${SITE.url}/security-policy` },
 } as const;

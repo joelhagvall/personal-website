@@ -19,6 +19,7 @@ Local redaction of Swedish personally identifiable information for browser, Node
 
 - Status: Live · Open source
 - Technologies: TypeScript, ONNX, Transformers.js, WebGPU, Hugging Face, PyTorch
+- Source: https://github.com/joelhagvall/maskera
 
 **Problem:** Teams risk sending names, Swedish personal identity numbers, and addresses to LLMs, logs, and analytics.
 

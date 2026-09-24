@@ -1,13 +1,28 @@
 import { Footer } from "@/components/Footer";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { getAllPosts } from "@/lib/blog";
+import { blogJsonLd, createBreadcrumbsJsonLd } from "@/lib/seo";
+import { BREADCRUMBS } from "@/data/seo-metadata";
 import { Rss } from "lucide-react";
+
+const breadcrumbsJsonLd = createBreadcrumbsJsonLd([
+  BREADCRUMBS.home,
+  BREADCRUMBS.blog,
+]);
 
 export default function Blog() {
   const posts = getAllPosts();
 
   return (
-    <main className="min-h-screen text-white p-8 md:p-12 flex flex-col">
+    <div className="min-h-screen text-white p-8 md:p-12 flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd(posts)) }}
+      />
       <div className="flex-grow">
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10">
@@ -41,6 +56,6 @@ export default function Blog() {
         </div>
       </div>
       <Footer />
-    </main>
+    </div>
   );
 }

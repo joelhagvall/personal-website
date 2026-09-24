@@ -5,8 +5,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectsHeader } from "@/components/ProjectsHeader";
 import { PROJECTS_CONTENT } from "@/data/content";
 import { getProjectsWithStats } from "@/lib/projects";
-import { createSoftwareApplicationJsonLd } from "@/lib/seo";
-import { SITE } from "@/data/site";
+import { createProjectJsonLd } from "@/lib/seo";
 
 export default async function Projects() {
   const projectsWithStats = await getProjectsWithStats();
@@ -22,12 +21,12 @@ export default async function Projects() {
 
   // Generate JSON-LD for each project
   const projectSchemas = projectsWithStats.map((project) =>
-    createSoftwareApplicationJsonLd({
+    createProjectJsonLd({
       name: project.title,
       description: project.description.replace(/\*\*/g, ""),
-      url: project.githubUrl ?? `${SITE.url}/projects`,
-      applicationCategory: "DeveloperApplication",
-      programmingLanguage: project.technologies,
+      technologies: project.technologies,
+      ...(project.githubUrl ? { githubUrl: project.githubUrl } : {}),
+      ...(project.demoUrl ? { demoUrl: project.demoUrl } : {}),
     })
   );
 
@@ -40,7 +39,7 @@ export default async function Projects() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
-      <main className="min-h-screen p-8 text-white md:p-12">
+      <div className="min-h-screen p-8 text-white md:p-12">
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10 space-y-16">
             <ProjectsHeader />
@@ -125,7 +124,7 @@ export default async function Projects() {
           </div>
         </div>
         <Footer />
-      </main>
+      </div>
     </>
   );
 }

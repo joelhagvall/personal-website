@@ -4,7 +4,8 @@ import matter from "gray-matter";
 
 const SITE_URL = "https://joelhagvall.com";
 const BLOG_DIR = path.join(process.cwd(), "content/blog");
-const OUTPUT_DIR = path.join(process.cwd(), "public");
+const PUBLIC_DIR = path.join(process.cwd(), "public");
+const OUT_DIR = path.join(process.cwd(), "out");
 
 interface PostMeta {
   slug: string;
@@ -80,10 +81,14 @@ ${items}
 
 function main() {
   const feed = generateRssFeed();
-  const outputPath = path.join(OUTPUT_DIR, "feed.xml");
+  // public/ is committed; out/ is what this build deploys, since next build
+  // has already copied public/ before postbuild runs
+  const targets = [PUBLIC_DIR, ...(fs.existsSync(OUT_DIR) ? [OUT_DIR] : [])];
 
-  fs.writeFileSync(outputPath, feed, "utf-8");
-  console.log(`✓ RSS feed generated: ${outputPath}`);
+  for (const target of targets) {
+    fs.writeFileSync(path.join(target, "feed.xml"), feed, "utf-8");
+  }
+  console.log(`✓ RSS feed generated → ${targets.join(", ")}`);
 }
 
 main();
