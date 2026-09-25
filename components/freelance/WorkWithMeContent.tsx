@@ -43,7 +43,7 @@ function TechStackRow() {
       className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-2 text-sm text-gray-300"
       aria-label={FREELANCE.page.techStack.label}
     >
-      <span className="mr-1 text-xs uppercase tracking-[0.2em] text-gray-500">
+      <span className="mr-1 text-xs uppercase text-gray-500">
         {FREELANCE.page.techStack.label}
       </span>
       {FREELANCE.page.techStack.items.map((name) => {
@@ -162,7 +162,7 @@ export function WorkWithMeContent({
                 key={item.label}
                 className="rounded-lg border border-primary/10 bg-primary/5 p-6"
               >
-                <p className="text-xs uppercase tracking-[0.2em] text-gray-500">
+                <p className="text-xs uppercase text-gray-500">
                   {item.label}
                 </p>
                 <p className="mt-3 text-lg leading-relaxed text-white">{item.value}</p>

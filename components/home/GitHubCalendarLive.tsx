@@ -192,7 +192,7 @@ function GitHubCalendar({
 
       <div className="space-y-2">
         <div className="flex items-center justify-between md:hidden">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-gray-500">
+          <p className="text-[11px] font-medium uppercase text-gray-500">
             {HOME_CONTENT.githubActivity.swipeHint}
           </p>
           <div className="flex items-center gap-1.5 text-gray-500" aria-hidden="true">
@@ -204,7 +204,7 @@ function GitHubCalendar({
         <div className="relative">
           <div className="-mx-2 overflow-x-auto px-2 pb-2 sm:mx-0 sm:px-0">
         <div className="inline-flex min-w-max gap-2.5 sm:gap-3">
-          <div className="grid grid-rows-7 gap-0.5 pt-5 text-[10px] uppercase tracking-[0.2em] text-gray-500 sm:gap-1 sm:pt-6">
+          <div className="grid grid-rows-7 gap-0.5 pt-5 text-[10px] uppercase text-gray-500 sm:gap-1 sm:pt-6">
             {["", "Mon", "", "Wed", "", "Fri", ""].map((label, index) => (
               <span
                 key={`weekday-${index}`}
@@ -216,7 +216,7 @@ function GitHubCalendar({
           </div>
 
           <div className="space-y-1.5">
-            <div className="flex gap-0.5 px-[1px] text-[10px] uppercase tracking-[0.2em] text-gray-500 sm:gap-1">
+            <div className="flex gap-0.5 px-[1px] text-[10px] uppercase text-gray-500 sm:gap-1">
               {monthLabels.map((label, index) => (
                 <span
                   key={`${weeks[index]?.firstDay}-${label || index}`}

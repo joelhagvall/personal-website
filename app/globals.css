@@ -363,7 +363,6 @@
   color: #2a1a0f;
   font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -547,7 +546,6 @@
   font-size: calc(13px * var(--s));
   font-weight: 600;
   line-height: 1.2;
-  letter-spacing: 0.08em;
   text-align: center;
   text-transform: uppercase;
   white-space: pre-line;
@@ -556,7 +554,6 @@
 .bookshelf-spine-meta {
   writing-mode: vertical-rl;
   font-size: calc(10px * var(--s));
-  letter-spacing: 0.1em;
   opacity: 0.75;
   white-space: nowrap;
 }
