@@ -112,6 +112,20 @@
     top: 42%;
   }
 
+  /* A few stars that fade in and out on top of the static sky. Only opacity
+     animates, so it stays on the compositor. Under reduced motion they rest at
+     the base opacity */
+  .twinkle-star {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 calc(var(--size) * 2) rgba(255, 255, 255, 0.5);
+    opacity: 0.5;
+    animation: twinkle var(--cycle) ease-in-out var(--offset) infinite;
+  }
+
   .glass-card {
     position: relative;
     overflow: hidden;
@@ -174,6 +188,17 @@
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.9;
   }
 }
 
