@@ -11,6 +11,8 @@ interface BookshelfProps {
 const BOOK = { height: 236, widths: [52, 40] };
 const FILM = { height: 204, width: 22 };
 const POSTER_RATIO = 2 / 3;
+// A standard DVD keep case is 135 x 190 mm
+const DVD_RATIO = 135 / 190;
 const COVER_RATIOS: Record<string, number> = {
   "/media/imitation-game.webp": 500 / 775,
   "/media/network-state.webp": 500 / 664,
@@ -32,7 +34,9 @@ function Spine({
   width: number;
   height: number;
 }) {
-  const coverWidth = Math.round(height * (COVER_RATIOS[item.src] ?? POSTER_RATIO));
+  const coverWidth = Math.round(height * (
+    COVER_RATIOS[item.src] ?? (kind === "film" ? DVD_RATIO : POSTER_RATIO)
+  ));
   const vars = {
     "--w": `${width}px`,
     "--h": `${height}px`,
@@ -53,6 +57,7 @@ function Spine({
         aria-label={caption(item)}
       >
         <span className="bookshelf-face bookshelf-spine">
+          {kind === "film" && <span className="bookshelf-dvd-logo">DVD</span>}
           <span className="bookshelf-spine-title">{item.spineTitle ?? item.title}</span>
           <span className="bookshelf-spine-meta">
             {kind === "book" ? item.author?.split(" ").at(-1) : item.year}
@@ -61,6 +66,7 @@ function Spine({
         <span className="bookshelf-face bookshelf-cover">
           <img src={item.src} alt="" loading="lazy" decoding="async" />
         </span>
+        {kind === "film" && <span className="bookshelf-dvd-disc" />}
       </span>
       <span className="bookshelf-caption" aria-hidden="true">
         {item.title} <span>· {item.author ? `${item.author}, ` : ""}{item.year}</span>

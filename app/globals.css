@@ -319,6 +319,7 @@
 
 .bookshelf-case {
   --s: 0.78;
+  --peek: 0.2;
   --wood: #4a2f1c;
   --wood-dark: #2a1a0f;
   position: relative;
@@ -339,6 +340,7 @@
 @media (min-width: 640px) {
   .bookshelf-case {
     --s: 1;
+    --peek: 0.5;
   }
 }
 
@@ -580,27 +582,100 @@
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 8%, rgba(255, 255, 255, 0.08) 12%, transparent 20%);
 }
 
-/* Films are slimmer cases with a colored band at the top */
+/* Films are DVD keep cases: black plastic rims at the ends of the spine, the
+   sleeve showing through the clear wrap and a DVD band at the top */
 .bookshelf-film .bookshelf-spine {
-  padding-top: 0;
+  padding: calc(5px * var(--s)) 0 calc(10px * var(--s));
+  border-radius: 3px;
   background:
-    linear-gradient(180deg, var(--ink) 0 calc(14px * var(--s)), transparent calc(14px * var(--s))),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.18) 30%, transparent 60%, rgba(0, 0, 0, 0.4)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(255, 255, 255, 0.22) 30%, transparent 55%, rgba(0, 0, 0, 0.45)),
+    linear-gradient(180deg, #0c0c0e calc(5px * var(--s)), transparent 0 calc(100% - 5px * var(--s)), #0c0c0e 0),
     var(--color);
 }
 
+.bookshelf-dvd-logo {
+  width: 100%;
+  padding: calc(3px * var(--s)) 0;
+  background: var(--ink);
+  color: var(--color);
+  font-size: calc(8px * var(--s));
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
 .bookshelf-film .bookshelf-spine-title {
-  margin-top: calc(20px * var(--s));
   font-family: inherit;
   font-size: calc(11px * var(--s));
   white-space: nowrap;
+}
+
+/* The front of the case: a thin plastic frame and a gloss over the sleeve */
+.bookshelf-film .bookshelf-cover {
+  padding: calc(4px * var(--s)) calc(4px * var(--s)) calc(4px * var(--s)) calc(3px * var(--s));
+  border-radius: 4px;
+  background: #0c0c0e;
+}
+
+.bookshelf-film .bookshelf-cover img {
+  border-radius: 1px;
+}
+
+.bookshelf-film .bookshelf-cover::after {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 8%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.16), transparent 35% 70%, rgba(255, 255, 255, 0.06));
+}
+
+/* The disc sits behind the cover in the same plane and slides out to the
+   right once the case has turned. The item widens by --e so the disc has room */
+.bookshelf-film {
+  --d: calc(var(--h) * 120 / 190 * var(--s));
+  --e: calc(var(--d) * var(--peek));
+}
+
+.bookshelf-film:hover,
+.bookshelf-film:focus-within {
+  width: calc(var(--cw) * var(--s) + var(--e));
+}
+
+.bookshelf-film:hover .bookshelf-box,
+.bookshelf-film:focus-within .bookshelf-box {
+  transform: translateX(calc(var(--e) / -2)) translateY(calc(-10px * var(--s))) rotateY(-90deg);
+}
+
+.bookshelf-dvd-disc {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--w) * var(--s) / 2 - var(--d) / 2);
+  width: var(--d);
+  height: var(--d);
+  margin-top: calc(var(--d) / -2);
+  border-radius: 50%;
+  backface-visibility: hidden;
+  background:
+    radial-gradient(circle, transparent 0 16%, rgba(255, 255, 255, 0.35) 16.5% 17.5%, transparent 18% 95%, rgba(255, 255, 255, 0.5) 96%),
+    radial-gradient(circle, rgba(215, 222, 232, 0.55) 0 17%, transparent 17.5%),
+    conic-gradient(from 30deg, #c4cad3, #f3f4f6, #a9c3e6, #eadcf3, #c4cad3, #f6e7c4, #b9ddd5, #eef0f3, #c4cad3);
+  mask: radial-gradient(circle, transparent 7%, #000 7.5%);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+  transform: rotateY(90deg) translateZ(calc(var(--w) * var(--s) / 2 - 2px));
+  transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bookshelf-film:hover .bookshelf-dvd-disc,
+.bookshelf-film:focus-within .bookshelf-dvd-disc {
+  transform: rotateY(90deg) translateZ(calc(var(--w) * var(--s) / 2 - 2px))
+    translateX(calc(var(--e) + (var(--cw) * var(--s) - var(--d)) / 2)) rotate(200deg);
+  transition-delay: 200ms;
 }
 
 /* A bookend between books and films */
 .bookshelf-bookend {
   width: calc(10px * var(--s));
   height: calc(120px * var(--s));
-  margin: 0 calc(14px * var(--s));
+  margin: 0 6px;
   border-radius: 2px 2px 0 0;
   background: linear-gradient(90deg, #6b6f76, #c8ccd2 40%, #7d8188);
   box-shadow: 4px 0 8px rgba(0, 0, 0, 0.5);
@@ -613,6 +688,10 @@
 }
 
 @media (min-width: 640px) {
+  .bookshelf-bookend {
+    margin: 0 14px;
+  }
+
   .bookshelf-stack,
   .bookshelf-planet {
     display: flex;
@@ -789,6 +868,7 @@
   .bookshelf-book,
   .bookshelf-box,
   .bookshelf-disc,
+  .bookshelf-dvd-disc,
   .bookshelf-sleeve,
   .bookshelf-caption,
   .bookshelf-hint {
