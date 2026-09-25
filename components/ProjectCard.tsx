@@ -164,7 +164,7 @@ function ProofSourceChip({ source }: { source: ProjectProofSource }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Source: ${source.label} (opens in new tab)`}
-      className="group inline-flex translate-y-[-1px] items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.06] py-0.5 pl-1 pr-2 align-middle text-xs font-medium text-gray-300 transition-colors hover:border-white/20 hover:bg-white/[0.12] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group inline-flex translate-y-[-1px] items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.06] py-0.5 pl-1 pr-2 align-middle text-xs font-medium text-foreground/80 transition-colors hover:border-white/20 hover:bg-white/[0.12] hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white/90">
         <ProofSourceIcon iconName={source.iconName} />
@@ -187,10 +187,10 @@ function CaseStudyItem({
     <div
       className={`rounded-lg border border-white/10 bg-black/20 p-4 ${className ?? ""}`}
     >
-      <dt className="text-sm font-medium tracking-normal text-gray-400">
+      <dt className="text-sm font-medium tracking-normal text-muted-foreground">
         {label}
       </dt>
-      <dd className="mt-3 space-y-3 leading-relaxed text-gray-200">
+      <dd className="mt-3 space-y-3 leading-relaxed text-foreground/90">
         {items.map((item) => (
           <p key={item.text}>
             {item.text}
@@ -333,7 +333,7 @@ export function ProjectCard({
 
           {/* GitHub Stats */}
           {(hasStars || hasForks) && (
-            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400" aria-label="GitHub statistics">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground" aria-label="GitHub statistics">
               {hasStars && (
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 text-yellow-400" aria-hidden="true" />

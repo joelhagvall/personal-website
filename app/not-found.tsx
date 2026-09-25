@@ -5,8 +5,8 @@ export default function NotFound() {
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center p-8">
       <div className="glass-card p-12 text-center max-w-md border border-white/10">
-        <h1 className="text-8xl font-bold text-white/20 mb-4">404</h1>
-        <h2 className="text-2xl font-semibold text-white mb-2">
+        <h1 className="text-8xl font-bold text-foreground/20 mb-4">404</h1>
+        <h2 className="text-2xl font-semibold text-foreground mb-2">
           Page not found
         </h2>
         <p className="text-muted-foreground mb-6">

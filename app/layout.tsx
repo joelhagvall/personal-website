@@ -1,11 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { BackgroundStars } from "@/components/BackgroundStars";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
 import { PAGE_METADATA } from "@/data/seo-metadata";
+
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 const isVercelDeployment = process.env["VERCEL"] === "1";
 
@@ -17,7 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
+    <html
+      lang="en"
+      className={`dark ${geistSans.variable} ${geistMono.variable}`}
+      style={{ colorScheme: "dark" }}
+    >
       <head>
         <meta
           httpEquiv="Content-Security-Policy"

@@ -27,7 +27,7 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
       </h2>
       <div className="space-y-3">
         <h3 className="text-xl font-medium">{post.title}</h3>
-        <div className="flex items-center gap-2 text-sm text-gray-400">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Calendar className="w-4 h-4" aria-hidden="true" />
           <time dateTime={post.date}>{formattedDate}</time>
         </div>

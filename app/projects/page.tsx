@@ -39,7 +39,7 @@ export default async function Projects() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
-      <div className="min-h-screen p-8 text-white md:p-12">
+      <div className="min-h-screen p-8 text-foreground md:p-12">
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10 space-y-16">
             <ProjectsHeader />
@@ -115,7 +115,7 @@ export default async function Projects() {
               </div>
               <Link
                 href="/work-with-me"
-                className="mt-6 inline-flex flex-shrink-0 items-center gap-2 rounded-md bg-white px-5 py-3 font-medium text-black transition-colors hover:bg-gray-200 md:mt-0"
+                className="mt-6 inline-flex flex-shrink-0 items-center gap-2 rounded-md bg-primary px-5 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90 md:mt-0"
               >
                 {PROJECTS_CONTENT.page.ctaLabel}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />

@@ -31,7 +31,7 @@ export function EmailPopover({
   }
 
   const baseBubble =
-    "p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center";
+    "p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center";
   const baseMuted =
     "text-muted-foreground hover:text-primary transition-colors flex items-center justify-center";
   const buttonClass = variant === "bubble" ? baseBubble : baseMuted;
@@ -93,7 +93,7 @@ export function EmailPopover({
       <div className={cn("relative flex items-center", className)}>
         <button
           ref={triggerRef}
-          className={cn(buttonClass, variant === "muted" && "cursor-pointer w-6 h-6")}
+          className={cn(buttonClass, variant === "muted" && "cursor-pointer h-11 w-11")}
           aria-label={LABELS.email}
           aria-expanded={isOpen}
           aria-controls="email-popover"
@@ -120,24 +120,24 @@ export function EmailPopover({
             {mailMode === "open" ? (
               <div className="space-y-3 p-4">
                 <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-white" id="email-dialog-title">
+                  <h4 className="font-medium text-foreground" id="email-dialog-title">
                     {EMAIL_POPOVER.openMailTitle}
                   </h4>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="text-gray-400 hover:text-white transition-colors rounded-sm focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="text-muted-foreground hover:text-foreground transition-colors rounded-sm focus:outline-none focus:ring-2 focus:ring-white/50"
                     aria-label="Close"
                     type="button"
                   >
                     <X className="w-4 h-4" aria-hidden="true" />
                   </button>
                 </div>
-                <p className="text-sm text-gray-300">
+                <p className="text-sm text-foreground/80">
                   {EMAIL_POPOVER.openMailDescription(SOCIAL.email)}
                 </p>
                 <a
                   href={`mailto:${SOCIAL.email}`}
-                  className="block w-full text-center py-2 px-4 rounded-md bg-white/10 hover:bg-white/20 transition-colors text-white font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+                  className="block w-full text-center py-2 px-4 rounded-md bg-white/10 hover:bg-white/20 transition-colors text-foreground font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
                   onClick={() => setIsOpen(false)}
                 >
                   {LABELS.continue}

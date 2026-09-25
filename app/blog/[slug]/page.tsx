@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: Props) {
   ]);
 
   return (
-    <div className="min-h-screen text-white p-8 md:p-12 flex flex-col">
+    <div className="min-h-screen text-foreground p-8 md:p-12 flex flex-col">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

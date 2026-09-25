@@ -27,9 +27,9 @@ export function FreelanceInquiryForm() {
   }
 
   return (
-    <Card className="overflow-hidden border-white/10 bg-white/[0.04] text-white">
+    <Card className="overflow-hidden border-white/10 bg-white/[0.04] text-foreground">
       <CardHeader className="border-b border-white/10 bg-white/[0.03]">
-        <CardTitle className="text-2xl text-white">
+        <CardTitle className="text-2xl text-foreground">
           {FREELANCE.contact.bookingHeading}
         </CardTitle>
         <CardDescription className="max-w-2xl text-base leading-relaxed">
@@ -41,7 +41,7 @@ export function FreelanceInquiryForm() {
           <Button
             asChild
             size="lg"
-            className="h-12 w-full gap-2.5 bg-white px-6 text-base font-semibold text-black hover:bg-gray-200 sm:w-auto"
+            className="h-12 w-full gap-2.5 bg-primary px-6 text-base font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
           >
             <a
               href={FREELANCE.contact.calendlyUrl}
@@ -57,7 +57,7 @@ export function FreelanceInquiryForm() {
             <span>{FREELANCE.contact.backupLabel}</span>
             <a
               href={`mailto:${FREELANCE.contact.email}`}
-              className="font-medium text-white underline-offset-4 transition-colors hover:text-gray-300 hover:underline"
+              className="font-medium text-foreground underline-offset-4 transition-colors hover:text-foreground/80 hover:underline"
             >
               {FREELANCE.contact.email}
             </a>
@@ -72,7 +72,7 @@ export function FreelanceInquiryForm() {
             <Button
               asChild
               variant="outline"
-              className="w-full justify-center gap-2.5 border-white/10 bg-transparent px-4 text-white hover:bg-white/10 hover:text-white"
+              className="w-full justify-center gap-2.5 border-white/10 bg-transparent px-4 text-foreground hover:bg-white/10 hover:text-foreground"
             >
               <a href={`mailto:${FREELANCE.contact.email}`}>
                 <Mail className="h-4 w-4" aria-hidden="true" />
@@ -83,7 +83,7 @@ export function FreelanceInquiryForm() {
               type="button"
               variant="outline"
               onClick={handleCopyEmail}
-              className="w-full justify-center gap-2.5 border-white/10 bg-transparent px-4 text-white hover:bg-white/10 hover:text-white"
+              className="w-full justify-center gap-2.5 border-white/10 bg-transparent px-4 text-foreground hover:bg-white/10 hover:text-foreground"
             >
               {copyEmailState === "copied" ? (
                 <Check className="h-4 w-4" aria-hidden="true" />

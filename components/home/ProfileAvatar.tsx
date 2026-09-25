@@ -45,7 +45,7 @@ export function ProfileAvatar() {
             className="pointer-events-none absolute inset-0 rounded-full bg-black/30 opacity-0 transition-opacity group-hover:opacity-100 flex items-center justify-center"
             aria-hidden="true"
           >
-            <ZoomIn className="h-6 w-6 text-white" />
+            <ZoomIn className="h-6 w-6 text-foreground" />
           </span>
         </button>
       </div>
@@ -72,7 +72,7 @@ export function ProfileAvatar() {
             </h2>
             <button
               onClick={handleClose}
-              className="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 rounded-sm p-1"
+              className="absolute -top-12 right-0 text-foreground/70 hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 rounded-sm p-1"
               aria-label="Close image preview"
             >
               <X className="h-8 w-8" aria-hidden="true" />

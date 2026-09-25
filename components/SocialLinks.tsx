@@ -25,7 +25,7 @@ export function SocialLinks({
   labelVariant = "plain",
 }: SocialLinksProps) {
   const baseBubble =
-    "p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center";
+    "p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center";
   const baseMuted =
     "text-muted-foreground hover:text-primary transition-colors flex items-center justify-center";
   const linkClass = variant === "bubble" ? baseBubble : baseMuted;
@@ -36,13 +36,13 @@ export function SocialLinks({
     labelVariant === "profile" ? LABELS.linkedinProfile : "LinkedIn";
 
   return (
-    <div className={cn("flex gap-4 items-center", className)} role="group" aria-label="Social links">
+    <div className={cn("flex items-center", variant === "bubble" ? "gap-4" : "gap-0", className)} role="group" aria-label="Social links">
       <a
         href={SOCIAL.github}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${githubLabel} (opens in new tab)`}
-        className={cn(linkClass, variant === "muted" && "w-6 h-6")}
+        className={cn(linkClass, variant === "muted" && "h-11 w-11")}
       >
         <GitHubLogoIcon
           className={variant === "bubble" ? "w-6 h-6" : "w-[18px] h-[18px]"}
@@ -55,7 +55,7 @@ export function SocialLinks({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${linkedinLabel} (opens in new tab)`}
-        className={cn(linkClass, variant === "muted" && "w-6 h-6")}
+        className={cn(linkClass, variant === "muted" && "h-11 w-11")}
       >
         <LinkedinIcon
           className={variant === "bubble" ? "w-6 h-6" : "w-[18px] h-[18px]"}

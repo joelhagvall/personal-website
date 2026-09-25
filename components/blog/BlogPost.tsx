@@ -22,24 +22,24 @@ export function BlogPost({ post }: BlogPostProps) {
       <Link
         href="/blog"
         scroll={true}
-        className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
       >
         <ArrowLeft className="w-4 h-4" />
         Back to blog
       </Link>
 
       <header className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
           {post.title}
         </h1>
 
-        <div className="flex items-center gap-2 text-gray-400 mb-4">
+        <div className="flex items-center gap-2 text-muted-foreground mb-4">
           <Calendar className="w-4 h-4" />
           <time dateTime={post.date}>{formattedDate}</time>
           <span aria-hidden="true">·</span>
           <span>
             By{" "}
-            <Link href="/about" className="text-gray-300 hover:text-white underline underline-offset-4">
+            <Link href="/about" className="text-foreground/80 hover:text-foreground underline underline-offset-4">
               {PERSON.name}
             </Link>
           </span>

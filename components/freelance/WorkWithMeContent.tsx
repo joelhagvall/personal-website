@@ -40,10 +40,10 @@ function isCustomTechName(name: string): name is CustomTechName {
 function TechStackRow() {
   return (
     <div
-      className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-2 text-sm text-gray-300"
+      className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-2 text-sm text-foreground/80"
       aria-label={FREELANCE.page.techStack.label}
     >
-      <span className="mr-1 text-xs uppercase text-gray-500">
+      <span className="mr-1 text-xs uppercase text-muted-foreground/80">
         {FREELANCE.page.techStack.label}
       </span>
       {FREELANCE.page.techStack.items.map((name) => {
@@ -81,7 +81,7 @@ function TechStackRow() {
               key={name}
               className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5"
             >
-              <Icon className="h-4 w-4 text-gray-200" aria-hidden="true" />
+              <Icon className="h-4 w-4 text-foreground/90" aria-hidden="true" />
               <span>{name}</span>
             </span>
           );
@@ -122,7 +122,7 @@ export function WorkWithMeContent({
   projectsWithStats,
 }: WorkWithMeContentProps) {
   return (
-    <div className="min-h-screen px-8 py-12 text-white md:px-12">
+    <div className="min-h-screen px-8 py-12 text-foreground md:px-12">
       <div className="mx-auto max-w-7xl space-y-12">
         <section className="space-y-5 text-center">
           <h1
@@ -130,7 +130,7 @@ export function WorkWithMeContent({
           >
             {FREELANCE.page.title}
           </h1>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-300">
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-foreground/80">
             {FREELANCE.page.intro}
           </p>
           <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted-foreground">
@@ -148,7 +148,7 @@ export function WorkWithMeContent({
             </a>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 text-gray-300 transition-colors hover:text-white"
+              className="inline-flex items-center gap-2 text-foreground/80 transition-colors hover:text-foreground"
             >
               {FREELANCE.page.secondaryProjectsCta}
             </Link>
@@ -162,10 +162,10 @@ export function WorkWithMeContent({
                 key={item.label}
                 className="rounded-lg border border-primary/10 bg-primary/5 p-6"
               >
-                <p className="text-xs uppercase text-gray-500">
+                <p className="text-xs uppercase text-muted-foreground/80">
                   {item.label}
                 </p>
-                <p className="mt-3 text-lg leading-relaxed text-white">{item.value}</p>
+                <p className="mt-3 text-lg leading-relaxed text-foreground">{item.value}</p>
               </div>
             )
           )}
@@ -180,7 +180,7 @@ export function WorkWithMeContent({
             <div className="grid gap-4">
               {FREELANCE.services.map((service) => (
                 <div key={service.title}>
-                  <Card className="border-white/10 bg-white/[0.04] text-white">
+                  <Card className="border-white/10 bg-white/[0.04] text-foreground">
                     <CardContent className="flex items-start gap-4 p-5">
                       {(() => {
                         const Icon = serviceIconMap[service.icon];
@@ -188,10 +188,10 @@ export function WorkWithMeContent({
                         return (
                           <>
                             <div className="mt-0.5 rounded-md border border-white/10 bg-white/5 p-2">
-                              <Icon className="h-4 w-4 text-gray-200" aria-hidden="true" />
+                              <Icon className="h-4 w-4 text-foreground/90" aria-hidden="true" />
                             </div>
                             <div>
-                              <h3 className="text-xl font-medium text-white">
+                              <h3 className="text-xl font-medium text-foreground">
                                 {service.title}
                               </h3>
                               <p className="mt-2 leading-relaxed text-muted-foreground">
@@ -218,10 +218,10 @@ export function WorkWithMeContent({
                 {FREELANCE.fit.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle2
-                      className="mt-0.5 h-5 w-5 flex-shrink-0 text-white"
+                      className="mt-0.5 h-5 w-5 flex-shrink-0 text-foreground"
                       aria-hidden="true"
                     />
-                    <p className="leading-relaxed text-gray-200">{item}</p>
+                    <p className="leading-relaxed text-foreground/90">{item}</p>
                   </div>
                 ))}
               </div>
@@ -269,7 +269,7 @@ export function WorkWithMeContent({
                 key={step.title}
                 className="rounded-lg border border-primary/10 bg-primary/5 p-6"
               >
-                <h3 className="text-xl font-semibold text-white">{step.title}</h3>
+                <h3 className="text-xl font-semibold text-foreground">{step.title}</h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
                   {step.description}
                 </p>

@@ -163,14 +163,14 @@ function GitHubCalendar({
     <>
       <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <p className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {calendar.totalContributions}
           </p>
           <p className="text-sm leading-tight text-muted-foreground sm:text-base">
             {HOME_CONTENT.githubActivity.totalSuffix}
           </p>
         </div>
-        <div className="hidden items-center gap-2 text-xs text-gray-400 md:flex">
+        <div className="hidden items-center gap-2 text-xs text-muted-foreground md:flex">
           <span>{HOME_CONTENT.githubActivity.legendLess}</span>
           {CONTRIBUTION_LEVELS.map((color) => (
             <span
@@ -192,10 +192,10 @@ function GitHubCalendar({
 
       <div className="space-y-2">
         <div className="flex items-center justify-between md:hidden">
-          <p className="text-[11px] font-medium uppercase text-gray-500">
+          <p className="text-[11px] font-medium uppercase text-muted-foreground/80">
             {HOME_CONTENT.githubActivity.swipeHint}
           </p>
-          <div className="flex items-center gap-1.5 text-gray-500" aria-hidden="true">
+          <div className="flex items-center gap-1.5 text-muted-foreground/80" aria-hidden="true">
             <span className="h-1.5 w-1.5 rounded-full bg-current/55" />
             <span className="h-1.5 w-5 rounded-full bg-current/35" />
           </div>
@@ -204,7 +204,7 @@ function GitHubCalendar({
         <div className="relative">
           <div className="-mx-2 overflow-x-auto px-2 pb-2 sm:mx-0 sm:px-0">
         <div className="inline-flex min-w-max gap-2.5 sm:gap-3">
-          <div className="grid grid-rows-7 gap-0.5 pt-5 text-[10px] uppercase text-gray-500 sm:gap-1 sm:pt-6">
+          <div className="grid grid-rows-7 gap-0.5 pt-5 text-[10px] uppercase text-muted-foreground/80 sm:gap-1 sm:pt-6">
             {["", "Mon", "", "Wed", "", "Fri", ""].map((label, index) => (
               <span
                 key={`weekday-${index}`}
@@ -216,7 +216,7 @@ function GitHubCalendar({
           </div>
 
           <div className="space-y-1.5">
-            <div className="flex gap-0.5 px-[1px] text-[10px] uppercase text-gray-500 sm:gap-1">
+            <div className="flex gap-0.5 px-[1px] text-[10px] uppercase text-muted-foreground/80 sm:gap-1">
               {monthLabels.map((label, index) => (
                 <span
                   key={`${weeks[index]?.firstDay}-${label || index}`}
@@ -273,7 +273,7 @@ function GitHubCalendar({
         </div>
       </div>
 
-      <div className="flex items-center gap-2 text-xs text-gray-400 md:hidden">
+      <div className="flex items-center gap-2 text-xs text-muted-foreground md:hidden">
         <span>{HOME_CONTENT.githubActivity.legendLess}</span>
         {CONTRIBUTION_LEVELS.map((color) => (
           <span

@@ -40,9 +40,9 @@ export function BlogCard({
       >
         <Card className="p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10 cursor-pointer focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background">
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold text-white">{title}</h2>
+            <h2 className="text-2xl font-semibold text-foreground">{title}</h2>
 
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Calendar className="w-4 h-4" aria-hidden="true" />
               <time dateTime={date}>{formattedDate}</time>
             </div>

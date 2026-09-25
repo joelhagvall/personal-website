@@ -3,16 +3,16 @@ import Link from "next/link";
 
 export const mdxComponents: MDXComponents = {
   h1: ({ children }) => (
-    <h1 className="text-3xl font-bold text-white mt-8 mb-4">{children}</h1>
+    <h1 className="text-3xl font-bold text-foreground mt-8 mb-4">{children}</h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-2xl font-semibold text-white mt-8 mb-3">{children}</h2>
+    <h2 className="text-2xl font-semibold text-foreground mt-8 mb-3">{children}</h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-xl font-semibold text-white mt-6 mb-2">{children}</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">{children}</h3>
   ),
   p: ({ children }) => (
-    <p className="text-gray-300 text-lg leading-relaxed mb-4">{children}</p>
+    <p className="text-foreground/80 text-lg leading-relaxed mb-4">{children}</p>
   ),
   a: ({ href, children }) => (
     <Link
@@ -25,18 +25,18 @@ export const mdxComponents: MDXComponents = {
     </Link>
   ),
   ul: ({ children }) => (
-    <ul className="list-disc pl-6 text-gray-300 mb-4 space-y-2">
+    <ul className="list-disc pl-6 text-foreground/80 mb-4 space-y-2">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="list-decimal pl-6 text-gray-300 mb-4 space-y-2">
+    <ol className="list-decimal pl-6 text-foreground/80 mb-4 space-y-2">
       {children}
     </ol>
   ),
   li: ({ children }) => <li className="text-lg pl-2">{children}</li>,
   blockquote: ({ children }) => (
-    <blockquote className="border-l-4 border-primary/50 pl-4 my-4 text-gray-400 italic">
+    <blockquote className="border-l-4 border-primary/50 pl-4 my-4 text-muted-foreground italic">
       {children}
     </blockquote>
   ),
@@ -52,7 +52,7 @@ export const mdxComponents: MDXComponents = {
   ),
   hr: () => <hr className="border-primary/20 my-8" />,
   strong: ({ children }) => (
-    <strong className="font-semibold text-white">{children}</strong>
+    <strong className="font-semibold text-foreground">{children}</strong>
   ),
-  em: ({ children }) => <em className="italic text-gray-200">{children}</em>,
+  em: ({ children }) => <em className="italic text-foreground/90">{children}</em>,
 };

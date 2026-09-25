@@ -6,7 +6,6 @@ import { Bookshelf } from "@/components/Bookshelf";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import {
   TEXT_STYLES,
-  GLOW_STYLES,
   CARD_STYLES,
   LINK_STYLES,
 } from "@/lib/styles";
@@ -29,7 +28,7 @@ function BulletPoint({ children }: { children: React.ReactNode }) {
 
 export default function About() {
   return (
-    <div className="min-h-screen text-white p-8 md:p-12">
+    <div className="min-h-screen text-foreground p-8 md:p-12">
       <div className="max-w-7xl mx-auto">
         <h1 className={`text-4xl font-bold mb-8 text-center ${TEXT_STYLES.gradientHeading}`}>
           {ABOUT_CONTENT.pageTitle}
@@ -38,7 +37,6 @@ export default function About() {
         <div className="grid grid-cols-1 gap-8">
           {/* Personal Info Section */}
           <div className="relative">
-            <div className={GLOW_STYLES.card}></div>
             <Card className={CARD_STYLES.base}>
               <div className="space-y-6">
                 <div>
@@ -47,7 +45,6 @@ export default function About() {
                   </h2>
                   <div className="flex flex-col items-center mb-6">
                     <div className="relative w-40 h-40 mb-6">
-                      <div className={GLOW_STYLES.avatar} aria-hidden="true"></div>
                       <div className="relative rounded-full w-full h-full overflow-hidden border border-white/10">
                         <img
                           src="/media/selfie-320.webp"
@@ -93,13 +90,13 @@ export default function About() {
                     <div className="flex items-center gap-4">
                       <div className="text-4xl">{profile.location.flag}</div>
                       <div>
-                        <h3 className="text-xl font-medium text-white mb-1">
+                        <h3 className="text-xl font-medium text-foreground mb-1">
                           {profile.location.city}, {profile.location.country}
                         </h3>
                         <p className={TEXT_STYLES.mutedText}>
                           {profile.location.description}
                         </p>
-                        <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+                        <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground/80">
                           <span>{profile.location.coordinates.lat}</span>
                           <span>•</span>
                           <span>{profile.location.coordinates.lng}</span>
@@ -162,9 +159,8 @@ export default function About() {
 
           {/* Media Section */}
           <div className="relative">
-            <div className={GLOW_STYLES.card}></div>
             <Card className={CARD_STYLES.base}>
-              <h2 className="text-2xl font-semibold mb-2 text-white text-center">
+              <h2 className="text-2xl font-semibold mb-2 text-foreground text-center">
                 My Favorites
               </h2>
               <p className={`${TEXT_STYLES.mutedText} text-center mb-6`}>

@@ -41,7 +41,7 @@ export function Navbar() {
                   onFocus={() => handlePrefetch(link.href, link.external)}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "flex items-center rounded-sm transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                    "flex items-center rounded-sm py-3 transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                     isActive ? "text-foreground" : "text-foreground/70"
                   )}
                 >

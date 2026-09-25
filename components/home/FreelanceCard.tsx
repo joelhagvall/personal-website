@@ -14,14 +14,14 @@ export function FreelanceCard() {
     >
       <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
         <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase text-gray-300">
+          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase text-foreground/80">
             {FREELANCE.heroBadge}
           </div>
           <div className="space-y-3">
-            <h2 id="work-with-me-heading" className="text-2xl font-semibold text-white md:text-3xl">
+            <h2 id="work-with-me-heading" className="text-2xl font-semibold text-foreground md:text-3xl">
               {FREELANCE.homeCard.heading}
             </h2>
-            <p className="text-lg text-white/90">
+            <p className="text-lg text-foreground/90">
               {FREELANCE.homeCard.availability}
             </p>
             <p className="max-w-2xl text-muted-foreground text-lg">
@@ -30,7 +30,7 @@ export function FreelanceCard() {
           </div>
         </div>
 
-        <div className="grid gap-3 text-sm text-gray-300 sm:grid-cols-3 lg:max-w-md lg:grid-cols-1">
+        <div className="grid gap-3 text-sm text-foreground/80 sm:grid-cols-3 lg:max-w-md lg:grid-cols-1">
           {FREELANCE.homeCard.serviceHighlights.map((item) => (
             <div
               key={item}
@@ -49,7 +49,7 @@ export function FreelanceCard() {
         </Link>
         <a
           href={FREELANCE.homeCard.secondaryCta.href}
-          className="inline-flex items-center gap-2 text-gray-300 transition-colors hover:text-white"
+          className="inline-flex items-center gap-2 text-foreground/80 transition-colors hover:text-foreground"
         >
           <Mail className="h-4 w-4" aria-hidden="true" />
           {FREELANCE.homeCard.secondaryCta.label}
