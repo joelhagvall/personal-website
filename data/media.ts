@@ -1,4 +1,4 @@
-import type { MediaItem, MediaSection } from "@/types/media";
+import type { MediaItem } from "@/types/media";
 
 export const movies: MediaItem[] = [
   {
@@ -67,10 +67,4 @@ export const books: MediaItem[] = [
     author: "Balaji Srinivasan",
     year: 2022,
   },
-];
-
-export const mediaSections: MediaSection[] = [
-  { title: "Favorite Movies", items: movies },
-  { title: "Favorite Music", items: music },
-  { title: "Favorite Books", items: books },
 ];

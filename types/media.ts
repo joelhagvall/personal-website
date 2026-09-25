@@ -10,8 +10,3 @@ export interface MediaItem {
   color: string;
   ink?: string;
 }
-
-export interface MediaSection {
-  title: string;
-  items: MediaItem[];
-}

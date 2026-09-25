@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { MediaItem } from "@/types/media";
+import { BookshelfCase } from "@/components/BookshelfCase";
 
 interface BookshelfProps {
   books: MediaItem[];
@@ -101,7 +102,7 @@ function Record({ item }: { item: MediaItem }) {
 
 export function Bookshelf({ books, films, records }: BookshelfProps) {
   return (
-    <div className="bookshelf-case">
+    <BookshelfCase>
       <div className="bookshelf-shelf">
         <h3 className="bookshelf-label">Books & films</h3>
         <ul className="bookshelf-row" role="list">
@@ -152,6 +153,6 @@ export function Bookshelf({ books, films, records }: BookshelfProps) {
           <p className="bookshelf-hint">Hover or tap to pull one out</p>
         </div>
       </div>
-    </div>
+    </BookshelfCase>
   );
 }
