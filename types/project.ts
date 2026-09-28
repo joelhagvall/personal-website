@@ -1,4 +1,4 @@
-export type IconName = 'code' | 'smartphone' | 'headphones' | 'shield' | 'bot';
+export type IconName = 'code' | 'smartphone' | 'headphones' | 'shield' | 'bot' | 'train';
 export type ProjectProminence = 'featured' | 'supporting' | 'earlier';
 export type ProjectProofIconName =
   | 'dfri'
@@ -9,6 +9,7 @@ export type ProjectProofIconName =
   | 'huggingface'
   | 'website'
   | 'maskera'
+  | 'under-stockholm'
   | 'stockholm-university';
 
 export interface ProjectProofSource {

@@ -36,6 +36,18 @@ A privacy-focused web app that helps Swedish citizens send General Data Protecti
 
 **Built:** I built a client-side Next.js app that prepares each request without sending personal data to a server.
 
+## Under Stockholm
+
+The whole Stockholm metro in the browser: walk the platforms and ride the trains through all 100 stations.
+
+- Status: Live · Open source
+- Technologies: TypeScript, three.js, Rapier, WebGL, Vite, Bun
+- Source: https://github.com/joelhagvall/under-stockholm
+
+**Problem:** A metro you can explore in the browser needs to feel like the real one, stay shared between visitors, and still load fast on a phone.
+
+**Built:** I built it with TypeScript, three.js and Rapier and no game engine. Stations, textures and sounds are generated, and trains follow a shared timetable or SL's live metro data.
+
 ## J.A.R.V.I.S
 
 A private macOS assistant that connects local AI with personal notes, tools, and everyday workflows.

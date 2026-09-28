@@ -12,6 +12,7 @@ import {
   FileText,
   Bot,
   Globe,
+  TrainFront,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -56,6 +57,7 @@ const iconMap = {
   headphones: Headphones,
   shield: Shield,
   bot: Bot,
+  train: TrainFront,
 };
 
 function RedditIcon({ className }: { className?: string }) {
@@ -116,6 +118,16 @@ function ProofSourceIcon({
       return (
         <Image
           src="/media/maskera-logo.svg"
+          alt=""
+          width={12}
+          height={12}
+          className={`${iconClassName} rounded-[3px]`}
+        />
+      );
+    case "under-stockholm":
+      return (
+        <Image
+          src="/media/under-stockholm-logo.svg"
           alt=""
           width={12}
           height={12}
@@ -253,19 +265,13 @@ export function ProjectCard({
     <div className="project-card-item">
       <Card className="h-full p-6 bg-primary/5 hover:bg-primary/10 transition-all duration-300 border border-primary/10">
         <div className="space-y-4">
-          <div className="mb-4 flex items-center gap-2 flex-wrap">
+          <div className="mb-4 space-y-1">
             <h3 className="text-2xl font-semibold flex items-center gap-2">
               <Icon className="text-primary" size={24} aria-hidden="true" />
               {title}
             </h3>
             {status && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
-                <span
-                  className="w-2 h-2 rounded-full bg-primary animate-pulse"
-                  aria-hidden="true"
-                />
-                {status}
-              </span>
+              <p className="pl-8 text-xs text-muted-foreground">{status}</p>
             )}
           </div>
 

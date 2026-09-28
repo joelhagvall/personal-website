@@ -143,6 +143,39 @@ export const PROJECTS: Project[] = [
     image: "/media/data-wipe-mailer-screen.webp",
   },
   {
+    title: projectCopy.underStockholm.title,
+    description: projectCopy.underStockholm.summary,
+    technologies: ["TypeScript", "three.js", "Rapier", "WebGL", "Vite", "Bun"],
+    owner: "joelhagvall",
+    repo: "under-stockholm",
+    iconName: "train",
+    status: projectCopy.underStockholm.status,
+    prominence: "featured",
+    caseStudy: {
+      problem: projectCopy.underStockholm.problem,
+      built: projectCopy.underStockholm.built,
+      proof: [
+        {
+          text: projectCopy.underStockholm.proof,
+          sources: [
+            {
+              label: messages.projects.linkLabels.underStockholm,
+              url: "https://understockholm.com",
+              iconName: "under-stockholm",
+            },
+            {
+              label: messages.projects.linkLabels.github,
+              url: getGitHubUrl("joelhagvall", "under-stockholm"),
+              iconName: "github",
+            },
+          ],
+        },
+      ],
+    },
+    demoUrl: "https://understockholm.com",
+    image: "/media/under-stockholm.webp",
+  },
+  {
     title: projectCopy.jarvis.title,
     description: projectCopy.jarvis.summary,
     technologies: ["SwiftUI", "Ollama", "MCP"],

@@ -30,7 +30,8 @@
       "npm": "npm",
       "huggingFace": "Hugging Face",
       "maskeraDemo": "maskera.dev",
-      "diva": "DiVA"
+      "diva": "DiVA",
+      "underStockholm": "Under Stockholm"
     },
     "items": {
       "resiliaAI": {
@@ -61,7 +62,15 @@
           "linkedin": "The LinkedIn launch post reached 200,000+ views and generated 2,300+ reactions and 168 comments."
         }
       },
-      "jarvis": {
+      "underStockholm": {
+      "title": "Under Stockholm",
+      "summary": "The whole Stockholm metro in the browser: walk the platforms and ride the trains through all 100 stations.",
+      "status": "Live · Open source",
+      "problem": "A metro you can explore in the browser needs to feel like the real one, stay shared between visitors, and still load fast on a phone.",
+      "built": "I built it with TypeScript, three.js and Rapier and no game engine. Stations, textures and sounds are generated, and trains follow a shared timetable or SL's live metro data.",
+      "proof": "Playable at understockholm.com, with the source code public on GitHub."
+    },
+    "jarvis": {
         "title": "J.A.R.V.I.S",
         "summary": "A private macOS assistant that connects local AI with personal notes, tools, and everyday workflows.",
         "problem": "Personal notes and everyday tools live in separate apps. A cloud assistant would also expose private context.",
