@@ -84,6 +84,7 @@ export const PROJECTS: Project[] = [
     npmUrl: "https://www.npmjs.com/package/maskera",
     modelUrl: "https://huggingface.co/joelhagvall/maskera-sv-ner",
     image: "/media/maskera-demo.webp",
+    imagePriority: true,
   },
   {
     title: projectCopy.dataWipeMailer.title,

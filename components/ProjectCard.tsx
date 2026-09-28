@@ -307,19 +307,21 @@ export function ProjectCard({
                     src={image}
                     alt={`${title} screenshot`}
                     fill
-                    priority={imagePriority ?? false}
+                    loading={imagePriority ? "eager" : "lazy"}
                     className="object-cover object-top"
                   />
                 </button>
               </DialogTrigger>
-              <DialogContent className="max-w-5xl p-0 border-none bg-transparent">
+              <DialogContent
+                className="max-w-5xl p-0 border-none bg-transparent"
+                aria-describedby={undefined}
+              >
                 <DialogTitle className="sr-only">{title} screenshot</DialogTitle>
                 <Image
                   src={image}
                   alt={`${title} screenshot`}
                   width={1920}
                   height={1080}
-                  priority={imagePriority ?? false}
                   className="w-full h-auto rounded-lg"
                 />
               </DialogContent>
