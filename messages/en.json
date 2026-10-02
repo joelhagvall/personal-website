@@ -25,6 +25,7 @@
       "dfriReference": "DFRI",
       "redditEarlyFeedback": "Reddit",
       "redditIndependentShare": "Reddit",
+      "redditLaunch": "Reddit",
       "linkedinLaunch": "LinkedIn",
       "github": "GitHub",
       "npm": "npm",
@@ -68,7 +69,11 @@
       "status": "Live · Open source",
       "problem": "A metro you can explore in the browser needs to feel like the real one, stay shared between visitors, and still load fast on a phone.",
       "built": "I built it with TypeScript, three.js and Rapier and no game engine. Stations, textures and sounds are generated, and trains follow a shared timetable or SL's live metro data.",
-      "proof": "Playable at understockholm.com, with the source code public on GitHub."
+      "proof": {
+        "live": "Playable at understockholm.com, with the source code public on GitHub.",
+        "reddit": "The Reddit launch post in r/tunnelbana reached 85,000+ views and generated 440+ upvotes and 60+ comments.",
+        "linkedin": "The LinkedIn launch post reached 15,000+ impressions and generated 280+ reactions and 30+ comments."
+      }
     },
     "jarvis": {
         "title": "J.A.R.V.I.S",

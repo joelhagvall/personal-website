@@ -157,7 +157,7 @@ export const PROJECTS: Project[] = [
       built: projectCopy.underStockholm.built,
       proof: [
         {
-          text: projectCopy.underStockholm.proof,
+          text: projectCopy.underStockholm.proof.live,
           sources: [
             {
               label: messages.projects.linkLabels.underStockholm,
@@ -168,6 +168,26 @@ export const PROJECTS: Project[] = [
               label: messages.projects.linkLabels.github,
               url: getGitHubUrl("joelhagvall", "under-stockholm"),
               iconName: "github",
+            },
+          ],
+        },
+        {
+          text: projectCopy.underStockholm.proof.reddit,
+          sources: [
+            {
+              label: messages.projects.linkLabels.redditLaunch,
+              url: "https://www.reddit.com/r/tunnelbana/comments/1wsdlik/under_stockholm_hela_tunnelbanan_i_webbl%C3%A4saren/",
+              iconName: "reddit",
+            },
+          ],
+        },
+        {
+          text: projectCopy.underStockholm.proof.linkedin,
+          sources: [
+            {
+              label: messages.projects.linkLabels.linkedinLaunch,
+              url: "https://www.linkedin.com/posts/joel-h%C3%A4gvall-810601147_nu-kan-man-%C3%A5ka-hela-stockholms-tunnelbana-ugcPost-7511337127058690048-Tqy8/",
+              iconName: "linkedin",
             },
           ],
         },
