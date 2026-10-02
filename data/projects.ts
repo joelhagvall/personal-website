@@ -172,6 +172,16 @@ export const PROJECTS: Project[] = [
           ],
         },
         {
+          text: projectCopy.underStockholm.proof.feber,
+          sources: [
+            {
+              label: messages.projects.linkLabels.feber,
+              url: "https://feber.se/spel/utforska-stockholms-tunnelbana-i-webbsimulator/496748/",
+              iconName: "feber",
+            },
+          ],
+        },
+        {
           text: projectCopy.underStockholm.proof.reddit,
           sources: [
             {

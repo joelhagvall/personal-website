@@ -2,6 +2,7 @@ export type IconName = 'code' | 'smartphone' | 'headphones' | 'shield' | 'bot' |
 export type ProjectProminence = 'featured' | 'supporting' | 'earlier';
 export type ProjectProofIconName =
   | 'dfri'
+  | 'feber'
   | 'reddit'
   | 'linkedin'
   | 'github'

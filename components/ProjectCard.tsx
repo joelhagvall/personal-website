@@ -104,6 +104,16 @@ function ProofSourceIcon({
           className={`${iconClassName} rounded-[2px]`}
         />
       );
+    case "feber":
+      return (
+        <Image
+          src="/media/feber-logo.png"
+          alt=""
+          width={12}
+          height={12}
+          className={`${iconClassName} rounded-[2px]`}
+        />
+      );
     case "stockholm-university":
       return (
         <Image
