@@ -7,7 +7,7 @@ Use stable releases only in this repo. Do not install `canary`, `preview`, `beta
 ## Check Installed Versions
 
 ```bash
-bun pm ls next react react-dom eslint-config-next @next/swc-wasm-nodejs @types/react @types/react-dom
+bun pm ls next react react-dom @types/react @types/react-dom
 ```
 
 Shows the currently installed React, Next.js, and related package versions.
@@ -23,8 +23,6 @@ Shows outdated dependencies across the repo. Look for:
 - `next`
 - `react`
 - `react-dom`
-- `eslint-config-next`
-- `@next/swc-wasm-nodejs`
 - `@types/react`
 - `@types/react-dom`
 
@@ -34,8 +32,6 @@ Shows outdated dependencies across the repo. Look for:
 bun pm view next version
 bun pm view react version
 bun pm view react-dom version
-bun pm view eslint-config-next version
-bun pm view @next/swc-wasm-nodejs version
 bun pm view @types/react version
 bun pm view @types/react-dom version
 ```
@@ -55,7 +51,7 @@ Use this only to confirm which version is tagged as `latest`. Ignore `canary`, `
 ## Update React and Next.js Packages
 
 ```bash
-bun add next@latest react@latest react-dom@latest eslint-config-next@latest @next/swc-wasm-nodejs@latest
+bun add next@latest react@latest react-dom@latest
 bun add -d @types/react@latest @types/react-dom@latest
 ```
 

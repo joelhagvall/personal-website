@@ -16,7 +16,7 @@ export default function NotFound() {
           Try the <Link href="/" className="text-primary hover:underline">home page</Link>,{" "}
           <Link href="/projects" className="text-primary hover:underline">projects</Link>,{" "}
           <Link href="/blog" className="text-primary hover:underline">blog</Link> or{" "}
-          <Link href="/contact" className="text-primary hover:underline">contact</Link>.
+          <Link href="/contact" className="text-primary underline underline-offset-2 hover:text-primary/80">contact</Link>.
           A full list of pages is in the{" "}
           <a href="/sitemap.xml" className="text-primary hover:underline">sitemap</a>,
           and a machine-readable overview in{" "}
