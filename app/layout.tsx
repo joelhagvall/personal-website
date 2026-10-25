@@ -27,19 +27,7 @@ export default function RootLayout({
       style={{ colorScheme: "dark" }}
     >
       <head>
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://vercel.live https://va.vercel-scripts.com https://github-contributions-api.jogruber.de; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
-        />
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta
-          httpEquiv="Referrer-Policy"
-          content="strict-origin-when-cross-origin"
-        />
-        <meta
-          httpEquiv="Permissions-Policy"
-          content="camera=(), microphone=(), geolocation=(), interest-cohort=()"
-        />
+        {/* Security headers live in vercel.json; scripts/add-csp.ts adds the hashed script CSP. */}
         <link rel="manifest" href="/manifest.json" />
         <link
           rel="alternate"

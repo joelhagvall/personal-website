@@ -80,10 +80,24 @@ describe("vercel.json response headers", () => {
     expect(global.headers).toMatchObject({
       "Strict-Transport-Security": expect.stringContaining("max-age=63072000"),
       "X-Content-Type-Options": "nosniff",
-      "X-Frame-Options": "SAMEORIGIN",
+      "X-Frame-Options": "DENY",
       Vary: "Accept",
       Link: expect.stringContaining("/llms.txt"),
     });
+  });
+
+  it("sends a CSP that blocks framing, plugins and foreign scripts", () => {
+    const csp = config.routes[0]!.headers!["Content-Security-Policy"]!;
+    for (const directive of [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "frame-ancestors 'none'",
+    ]) {
+      expect(csp).toContain(directive);
+    }
+    expect(csp).not.toContain("unsafe-eval");
   });
 
   it("points markdown twins at their HTML page as canonical", () => {
