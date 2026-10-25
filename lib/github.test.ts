@@ -12,11 +12,17 @@ const mockFetch = jest.fn();
 global.fetch = mockFetch;
 const originalGitHubToken = process.env["GITHUB_TOKEN"];
 
+// Assigning undefined to process.env stores the string "undefined", so delete instead.
+function restoreGitHubToken() {
+  if (originalGitHubToken === undefined) delete process.env["GITHUB_TOKEN"];
+  else process.env["GITHUB_TOKEN"] = originalGitHubToken;
+}
+
 // Suppress console.error in tests
 beforeEach(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {});
   mockFetch.mockReset();
-  process.env["GITHUB_TOKEN"] = originalGitHubToken;
+  restoreGitHubToken();
 });
 
 afterEach(() => {
@@ -24,7 +30,7 @@ afterEach(() => {
 });
 
 afterAll(() => {
-  process.env["GITHUB_TOKEN"] = originalGitHubToken;
+  restoreGitHubToken();
 });
 
 describe('getGitHubRepo', () => {
@@ -58,6 +64,7 @@ describe('getGitHubRepo', () => {
   });
 
   it('calls GitHub API with correct URL and headers', async () => {
+    delete process.env["GITHUB_TOKEN"];
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => mockRepoData,
@@ -69,6 +76,23 @@ describe('getGitHubRepo', () => {
       'https://api.github.com/repos/octocat/hello-world',
       expect.objectContaining({
         headers: { Accept: 'application/vnd.github.v3+json' },
+      })
+    );
+  });
+
+  it('sends the GitHub token when one is set', async () => {
+    process.env["GITHUB_TOKEN"] = 'test-token';
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockRepoData,
+    });
+
+    await getGitHubRepo('octocat', 'with-token');
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://api.github.com/repos/octocat/with-token',
+      expect.objectContaining({
+        headers: { Accept: 'application/vnd.github.v3+json', Authorization: 'Bearer test-token' },
       })
     );
   });

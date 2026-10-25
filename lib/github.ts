@@ -29,10 +29,13 @@ export interface GitHubContributionCalendar {
 // Multiple calls to getGitHubRepo with same owner/repo within a single request
 // will only execute the fetch once
 export const getGitHubRepo = cache(async (owner: string, repo: string): Promise<GitHubRepo | null> => {
+  // Authenticated requests avoid the 60/hour anonymous limit shared by build machines.
+  const token = process.env["GITHUB_TOKEN"] ?? process.env["GITHUB_ACCESS_TOKEN"];
   try {
     const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
       headers: {
         'Accept': 'application/vnd.github.v3+json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
       // Revalidate every 2 hours
       next: { revalidate: 7200 }
