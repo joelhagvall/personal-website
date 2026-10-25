@@ -6,7 +6,7 @@ import path from "path";
 
 import { addCspMeta } from "./csp";
 
-const OUTPUT_DIRS = ["out", ".vercel/output/static", "/vercel/output/static"];
+const OUTPUT_DIRS = ["out", ".next/output/static", ".vercel/output/static", "/vercel/output/static"];
 
 function htmlFiles(dir: string): string[] {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
