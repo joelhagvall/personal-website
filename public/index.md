@@ -18,6 +18,7 @@ I build RAG assistants, embeddings/vector search, document ingestion, AI reports
 
 ## Latest from the blog
 
+- [Off My High Horse](https://joelhagvall.com/blog/off-my-high-horse) (2026-10-25): I've stopped trying to compete with AI. It's a relief.
 - [Automate Everything Possible](https://joelhagvall.com/blog/automate-everything) (2026-08-17): You have no excuses anymore. Not with AI. Not with anything.
 - [Stripping Away the Noise](https://joelhagvall.com/blog/noise) (2026-01-05): Cutting through what doesn't hold.
 
