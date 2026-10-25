@@ -6,7 +6,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default [
   {
-    ignores: ['node_modules', '.next', 'dist', 'build', 'out', '**/*.config.*'],
+    ignores: ['node_modules', '.next', '.vercel', 'dist', 'build', 'out', '**/*.config.*'],
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
