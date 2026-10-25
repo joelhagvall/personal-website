@@ -21,7 +21,7 @@ export function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
       aria-label="Main navigation"
     >
       <div className="mx-auto max-w-7xl px-3 sm:px-4">
@@ -41,7 +41,7 @@ export function Navbar() {
                   onFocus={() => handlePrefetch(link.href, link.external)}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "flex items-center rounded-sm py-3 transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                    "flex items-center rounded-sm py-3 transition-colors hover:text-foreground focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                     isActive ? "text-foreground" : "text-foreground/70"
                   )}
                 >

@@ -138,7 +138,7 @@ export function GitHubCalendarLive({
 
   if (!calendar) {
     return (
-      <div className="space-y-3 rounded-lg border border-white/10 bg-white/[0.03] p-4">
+      <div className="space-y-3 rounded-lg border border-white/10 bg-white/3 p-4">
         <p className="text-sm text-muted-foreground">
           {HOME_CONTENT.githubActivity.unavailable}
         </p>
@@ -166,7 +166,7 @@ function GitHubCalendar({
           <p className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {calendar.totalContributions}
           </p>
-          <p className="text-sm leading-tight text-muted-foreground sm:text-base">
+          <p className="text-sm leading-tight text-muted-foreground sm:text-base sm:leading-6">
             {HOME_CONTENT.githubActivity.totalSuffix}
           </p>
         </div>
@@ -216,7 +216,7 @@ function GitHubCalendar({
           </div>
 
           <div className="space-y-1.5">
-            <div className="flex gap-0.5 px-[1px] text-[10px] uppercase text-muted-foreground/80 sm:gap-1">
+            <div className="flex gap-0.5 px-px text-[10px] uppercase text-muted-foreground/80 sm:gap-1">
               {monthLabels.map((label, index) => (
                 <span
                   key={`${weeks[index]?.firstDay}-${label || index}`}

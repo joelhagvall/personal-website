@@ -34,7 +34,7 @@ export function ProfileAvatar() {
         <button
           aria-label="Open larger profile image"
           aria-expanded={isOpen}
-          className="rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50"
+          className="rounded-full focus:outline-hidden focus:ring-2 focus:ring-primary/50"
           onClick={() => setIsOpen(true)}
         >
           <Avatar className="h-20 w-20 cursor-pointer">
@@ -72,7 +72,7 @@ export function ProfileAvatar() {
             </h2>
             <button
               onClick={handleClose}
-              className="absolute -top-12 right-0 text-foreground/70 hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 rounded-sm p-1"
+              className="absolute -top-12 right-0 text-foreground/70 hover:text-foreground transition-colors focus:outline-hidden focus:ring-2 focus:ring-white/50 rounded-sm p-1"
               aria-label="Close image preview"
             >
               <X className="h-8 w-8" aria-hidden="true" />

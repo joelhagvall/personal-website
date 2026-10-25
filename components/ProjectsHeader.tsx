@@ -7,7 +7,7 @@ export function ProjectsHeader() {
   return (
     <header className="mx-auto max-w-4xl space-y-4 py-6 text-center">
       <h1
-        className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+        className="bg-linear-to-r from-foreground to-muted-foreground bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
       >
         {PROJECTS_CONTENT.page.title}
       </h1>

@@ -46,6 +46,7 @@
     // Interop
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "types": ["node", "jest"],
 
     // JSX
     "jsx": "react-jsx",

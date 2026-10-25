@@ -186,7 +186,7 @@ function ProofSourceChip({ source }: { source: ProjectProofSource }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Source: ${source.label} (opens in new tab)`}
-      className="group inline-flex translate-y-[-1px] items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.06] py-0.5 pl-1 pr-2 align-middle text-xs font-medium text-foreground/80 transition-colors hover:border-white/20 hover:bg-white/[0.12] hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group inline-flex -translate-y-px items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-white/6 py-0.5 pl-1 pr-2 align-middle text-xs font-medium text-foreground/80 transition-colors hover:border-white/20 hover:bg-white/12 hover:text-foreground focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white/90">
         <ProofSourceIcon iconName={source.iconName} />
@@ -375,7 +375,7 @@ export function ProjectCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${LABELS.liveDemo} of ${title} (opens in new tab)`}
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
                   <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   {LABELS.liveDemo}
@@ -387,7 +387,7 @@ export function ProjectCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${LABELS.npmPackage} for ${title} (opens in new tab)`}
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
                   <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   {LABELS.npmPackage}
@@ -399,7 +399,7 @@ export function ProjectCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${LABELS.huggingFaceModel} for ${title} (opens in new tab)`}
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
                   <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   {LABELS.huggingFaceModel}
@@ -411,7 +411,7 @@ export function ProjectCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${LABELS.publication} for ${title} (opens in new tab)`}
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
                   <FileText className="w-4 h-4" aria-hidden="true" />
                   {LABELS.publication}
@@ -423,7 +423,7 @@ export function ProjectCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${LABELS.sourceCode} for ${title} (opens in new tab)`}
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
                   <GitHubLogoIcon aria-hidden="true" />
                   {LABELS.sourceCode}
@@ -435,7 +435,7 @@ export function ProjectCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${LABELS.linkedinPost} about ${title} (opens in new tab)`}
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
                   <LinkedInLogoIcon aria-hidden="true" />
                   {LABELS.linkedinPost}

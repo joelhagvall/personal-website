@@ -73,7 +73,7 @@ Don't:
 - Add a light theme or light-mode tokens without designing it properly first.
 - Add scroll-jacking, scroll pinning or animation libraries like GSAP or Lenis.
 - Add emoji as decoration.
-- Add a second Tailwind config. `tailwind.config.ts` is the only one, and its `content` must cover every folder that holds class names (`app`, `components`, `lib`, `data`).
+- Add a Tailwind config file. Tailwind 4 is configured in CSS: the `@theme` block in `app/globals.css` is the only place for tokens, and Tailwind finds class names in every non-ignored file on its own.
 
 ## 9. Responsive
 

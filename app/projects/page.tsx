@@ -104,7 +104,7 @@ export default async function Projects() {
               </div>
             </section>
 
-            <section className="rounded-xl border border-white/10 bg-white/[0.04] p-8 md:flex md:items-center md:justify-between md:gap-8">
+            <section className="rounded-xl border border-white/10 bg-white/4 p-8 md:flex md:items-center md:justify-between md:gap-8">
               <div className="max-w-2xl">
                 <h2 className="text-2xl font-semibold tracking-tight">
                   {PROJECTS_CONTENT.page.ctaTitle}
@@ -115,7 +115,7 @@ export default async function Projects() {
               </div>
               <Link
                 href="/work-with-me"
-                className="mt-6 inline-flex flex-shrink-0 items-center gap-2 rounded-md bg-primary px-5 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90 md:mt-0"
+                className="mt-6 inline-flex shrink-0 items-center gap-2 rounded-md bg-primary px-5 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90 md:mt-0"
               >
                 {PROJECTS_CONTENT.page.ctaLabel}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />

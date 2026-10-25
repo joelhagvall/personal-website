@@ -31,7 +31,7 @@ export function EmailPopover({
   }
 
   const baseBubble =
-    "p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center";
+    "p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-white/50 flex items-center justify-center";
   const baseMuted =
     "text-muted-foreground hover:text-primary transition-colors flex items-center justify-center";
   const buttonClass = variant === "bubble" ? baseBubble : baseMuted;
@@ -111,7 +111,7 @@ export function EmailPopover({
             aria-labelledby="email-dialog-title"
             aria-modal="false"
             className={cn(
-              "absolute z-50 mt-2 rounded-md border shadow-md outline-none animate-in fade-in-0 zoom-in-95 top-full",
+              "absolute z-50 mt-2 rounded-md border shadow-md outline-hidden animate-in fade-in-0 zoom-in-95 top-full",
               mailMode === "open"
                 ? "w-80 bg-black/50 backdrop-blur-xl border-white/10 -left-32"
                 : "w-auto p-3 bg-popover border-border right-0"
@@ -125,7 +125,7 @@ export function EmailPopover({
                   </h4>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="text-muted-foreground hover:text-foreground transition-colors rounded-sm focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="text-muted-foreground hover:text-foreground transition-colors rounded-sm focus:outline-hidden focus:ring-2 focus:ring-white/50"
                     aria-label="Close"
                     type="button"
                   >
@@ -137,7 +137,7 @@ export function EmailPopover({
                 </p>
                 <a
                   href={`mailto:${SOCIAL.email}`}
-                  className="block w-full text-center py-2 px-4 rounded-md bg-white/10 hover:bg-white/20 transition-colors text-foreground font-medium focus:outline-none focus:ring-2 focus:ring-white/50"
+                  className="block w-full text-center py-2 px-4 rounded-md bg-white/10 hover:bg-white/20 transition-colors text-foreground font-medium focus:outline-hidden focus:ring-2 focus:ring-white/50"
                   onClick={() => setIsOpen(false)}
                 >
                   {LABELS.continue}
@@ -151,7 +151,7 @@ export function EmailPopover({
                   </p>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="text-muted-foreground hover:text-foreground transition-colors rounded-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="text-muted-foreground hover:text-foreground transition-colors rounded-sm focus:outline-hidden focus:ring-2 focus:ring-ring"
                     aria-label="Close"
                     type="button"
                   >
@@ -162,7 +162,7 @@ export function EmailPopover({
                 <button
                   onClick={handleCopyEmail}
                   className={cn(
-                    "text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm text-left transition-colors",
+                    "text-sm hover:underline focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm text-left transition-colors",
                     copyState === "copied" && "text-green-500",
                     copyState === "failed" && "text-red-500",
                     copyState === "idle" && "text-primary"

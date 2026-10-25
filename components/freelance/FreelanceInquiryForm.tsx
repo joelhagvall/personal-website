@@ -27,8 +27,8 @@ export function FreelanceInquiryForm() {
   }
 
   return (
-    <Card className="overflow-hidden border-white/10 bg-white/[0.04] text-foreground">
-      <CardHeader className="border-b border-white/10 bg-white/[0.03]">
+    <Card className="overflow-hidden border-white/10 bg-white/4 text-foreground">
+      <CardHeader className="border-b border-white/10 bg-white/3">
         <CardTitle className="text-2xl text-foreground">
           {FREELANCE.contact.bookingHeading}
         </CardTitle>

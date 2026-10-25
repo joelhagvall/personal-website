@@ -17,7 +17,7 @@ export function HeroSection() {
 
         {/* Text Content */}
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground leading-relaxed py-2">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-foreground to-muted-foreground leading-relaxed md:leading-none py-2">
             {PERSON.name}
           </h1>
           <p className="-mt-4 mb-6 text-lg text-muted-foreground">{PERSON.shortBio}</p>
@@ -25,14 +25,14 @@ export function HeroSection() {
             <Link
               href={FREELANCE.primaryCta.href}
               prefetch={false}
-              className="rounded-full border border-white/10 bg-white/10 px-5 py-3 text-sm font-semibold text-foreground transition-colors duration-300 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="rounded-full border border-white/10 bg-white/10 px-5 py-3 text-sm font-semibold text-foreground transition-colors duration-300 hover:bg-white/20 focus:outline-hidden focus:ring-2 focus:ring-white/50"
             >
               {FREELANCE.primaryCta.label}
             </Link>
             <Link
               href={FREELANCE.secondaryCta.href}
               prefetch={false}
-              className="rounded-full bg-white/10 px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="rounded-full bg-white/10 px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-white/20 focus:outline-hidden focus:ring-2 focus:ring-white/50"
             >
               {FREELANCE.secondaryCta.label}
             </Link>

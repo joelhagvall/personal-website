@@ -87,7 +87,7 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
       />
-      <div className="flex-grow">
+      <div className="grow">
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10">
             <BlogPost post={post} />

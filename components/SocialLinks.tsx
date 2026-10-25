@@ -1,7 +1,6 @@
 "use client";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { LinkedinIcon } from "lucide-react";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { SOCIAL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { LABELS } from "@/data/content";
@@ -25,7 +24,7 @@ export function SocialLinks({
   labelVariant = "plain",
 }: SocialLinksProps) {
   const baseBubble =
-    "p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center";
+    "p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-white/50 flex items-center justify-center";
   const baseMuted =
     "text-muted-foreground hover:text-primary transition-colors flex items-center justify-center";
   const linkClass = variant === "bubble" ? baseBubble : baseMuted;
@@ -57,7 +56,7 @@ export function SocialLinks({
         aria-label={`${linkedinLabel} (opens in new tab)`}
         className={cn(linkClass, variant === "muted" && "h-11 w-11")}
       >
-        <LinkedinIcon
+        <LinkedInLogoIcon
           className={variant === "bubble" ? "w-6 h-6" : "w-[18px] h-[18px]"}
           aria-hidden="true"
         />

@@ -18,7 +18,7 @@ function BulletPoint({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3">
       <span
-        className="flex-shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+        className="shrink-0 h-2 w-2 mt-2.5 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"
         aria-hidden="true"
       />
       {children}
@@ -69,7 +69,7 @@ export default function About() {
                               {" "}
                               <a
                                 href={paragraph.link.href}
-                                className={`${LINK_STYLES.underline} relative z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm`}
+                                className={`${LINK_STYLES.underline} relative z-10 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm`}
                               >
                                 {paragraph.link.label}
                               </a>
@@ -128,7 +128,7 @@ export default function About() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={`${ABOUT_CONTENT.interests.githubLink} (opens in new tab)`}
-                                className={`inline-flex items-center gap-1 ${LINK_STYLES.underline} relative z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm`}
+                                className={`inline-flex items-center gap-1 ${LINK_STYLES.underline} relative z-10 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm`}
                               >
                                 {ABOUT_CONTENT.interests.githubLink}
                                 <GitHubLogoIcon className="w-4 h-4" aria-hidden="true" />

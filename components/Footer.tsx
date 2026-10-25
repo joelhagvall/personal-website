@@ -24,21 +24,21 @@ export function Footer() {
           <span className="hidden md:inline" aria-hidden="true">•</span>
           <a
             href="/contact"
-            className="hover:text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+            className="hover:text-primary transition-colors hover:underline focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
           >
             {FOOTER_CONTENT.contact}
           </a>
           <span className="hidden md:inline" aria-hidden="true">•</span>
           <a
             href="/privacy"
-            className="hover:text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+            className="hover:text-primary transition-colors hover:underline focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
           >
             {FOOTER_CONTENT.privacy}
           </a>
           <span className="hidden md:inline" aria-hidden="true">•</span>
           <a
             href="/security-policy"
-            className="hover:text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+            className="hover:text-primary transition-colors hover:underline focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
           >
             {FOOTER_CONTENT.securityPolicy}
           </a>
@@ -47,7 +47,7 @@ export function Footer() {
             href={FOOTER_CONTENT.sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+            className="hover:text-primary transition-colors hover:underline focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
           >
             {FOOTER_CONTENT.viewSource}
           </a>

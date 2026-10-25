@@ -14,7 +14,7 @@ export const LINK_STYLES = {
 } as const;
 
 export const TEXT_STYLES = {
-  gradientHeading: "bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground",
+  gradientHeading: "bg-clip-text text-transparent bg-linear-to-r from-foreground to-muted-foreground",
   sectionTitle: "text-2xl font-semibold mb-4 text-foreground",
   bodyText: "text-lg text-foreground/80",
   mutedText: "text-muted-foreground",

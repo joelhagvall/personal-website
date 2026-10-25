@@ -56,7 +56,7 @@ function TechStackRow() {
               href={existingTech.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 transition-colors hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-3 py-1.5 transition-colors hover:bg-white/8 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <img
                 src={existingTech.icon}
@@ -79,7 +79,7 @@ function TechStackRow() {
           return (
             <span
               key={name}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-3 py-1.5"
             >
               <Icon className="h-4 w-4 text-foreground/90" aria-hidden="true" />
               <span>{name}</span>
@@ -180,7 +180,7 @@ export function WorkWithMeContent({
             <div className="grid gap-4">
               {FREELANCE.services.map((service) => (
                 <div key={service.title}>
-                  <Card className="border-white/10 bg-white/[0.04] text-foreground">
+                  <Card className="border-white/10 bg-white/4 text-foreground">
                     <CardContent className="flex items-start gap-4 p-5">
                       {(() => {
                         const Icon = serviceIconMap[service.icon];
@@ -218,7 +218,7 @@ export function WorkWithMeContent({
                 {FREELANCE.fit.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle2
-                      className="mt-0.5 h-5 w-5 flex-shrink-0 text-foreground"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-foreground"
                       aria-hidden="true"
                     />
                     <p className="leading-relaxed text-foreground/90">{item}</p>

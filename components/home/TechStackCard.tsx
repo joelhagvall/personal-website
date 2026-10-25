@@ -9,7 +9,7 @@ function TechIcon({ tech }: { tech: TechStackItem }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${tech.name} (opens in new tab)`}
-      className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+      className="w-16 h-16 p-3 flex items-center justify-center hover:opacity-80 transition-opacity focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
     >
       <img
         src={tech.icon}

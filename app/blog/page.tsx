@@ -23,10 +23,10 @@ export default function Blog() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd(posts)) }}
       />
-      <div className="flex-grow">
+      <div className="grow">
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10">
-            <h1 className="text-4xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground">
+            <h1 className="text-4xl font-bold mb-4 text-center bg-clip-text text-transparent bg-linear-to-r from-foreground to-muted-foreground">
               Blog
             </h1>
             <div className="flex items-center justify-center gap-3 mb-8">
@@ -36,7 +36,7 @@ export default function Blog() {
               <a
                 href="/feed.xml"
                 target="_blank"
-                className="text-muted-foreground hover:text-orange-500 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                className="text-muted-foreground hover:text-orange-500 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 aria-label="RSS Feed (opens in new tab)"
               >
                 <Rss className="w-5 h-5" aria-hidden="true" />
