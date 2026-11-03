@@ -36,6 +36,17 @@ A privacy-focused web app that helps Swedish citizens send General Data Protecti
 
 **Built:** I built a client-side Next.js app that prepares each request without sending personal data to a server.
 
+## Jarvis Panel
+
+A 7-inch touch screen in my bookshelf with its own voice assistant. Say "Hey Jarvis" and it books the laundry room, adds events to my iCloud calendar and plays music, and at a glance it shows the metro, the weather and what is going on at home.
+
+- Status: Runs at home daily · Code on request
+- Technologies: ESP32-P4, C++, ESPHome, LVGL, Python, Home Assistant, Claude, Raspberry Pi
+
+**Problem:** I wanted a screen at home as fast and responsive as the one in a Tesla, that I can talk to, without a Big Tech speaker or trackers. Neither the laundry booking site nor my gym has an open API, and no product on sale did what I wanted.
+
+**Built:** I built the firmware for an ESP32-P4 board in C++ with ESPHome and LVGL, a Home Assistant integration, and a Python server on a Raspberry Pi 5 where a Claude agent answers with tools for the calendar, the laundry room, SL, the weather and Spotify. The wake word runs locally on the screen, and the server has no ports open to the internet.
+
 ## Under Stockholm
 
 The whole Stockholm metro in the browser: walk the platforms and ride the trains through all 100 stations.
