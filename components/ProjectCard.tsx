@@ -28,6 +28,7 @@ import type {
   ProjectCaseStudy,
   ProjectProofItem,
   ProjectProofSource,
+  ProjectVideo,
 } from "@/types/project";
 import { parseSimpleMarkdown } from "@/lib/markdown";
 import { LABELS, PROJECTS_CONTENT } from "@/data/content";
@@ -49,6 +50,7 @@ interface ProjectCardProps {
   image?: string | undefined;
   imagePriority?: boolean | undefined;
   caseStudy?: ProjectCaseStudy | undefined;
+  video?: ProjectVideo | undefined;
 }
 
 const iconMap = {
@@ -250,6 +252,7 @@ export function ProjectCard({
   image,
   imagePriority,
   caseStudy,
+  video,
 }: ProjectCardProps) {
   const Icon = iconMap[iconName];
   // Links already shown as proof-source chips are dropped from the footer
@@ -309,7 +312,24 @@ export function ProjectCard({
             </dl>
           ) : null}
 
-          {image && (
+          {video ? (
+            <figure className="space-y-2">
+              {/* preload="none": nothing is downloaded until the visitor presses play */}
+              <video
+                controls
+                playsInline
+                preload="none"
+                poster={video.poster}
+                width={video.width}
+                height={video.height}
+                aria-label={video.label}
+                className="w-full max-w-xs h-auto rounded-lg border border-primary/20"
+              >
+                <source src={video.src} type="video/mp4" />
+              </video>
+              <figcaption className="text-sm text-muted-foreground">{video.note}</figcaption>
+            </figure>
+          ) : image && (
             <Dialog>
               <DialogTrigger asChild>
                 <button className="relative w-full max-w-xl aspect-video rounded-lg overflow-hidden border border-primary/20 hover:border-primary/40 transition-all duration-300 cursor-pointer">

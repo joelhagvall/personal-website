@@ -30,6 +30,15 @@ export interface ProjectCaseStudy {
   proof: ProjectProofItem[];
 }
 
+export interface ProjectVideo {
+  src: string;
+  poster: string;
+  width: number;
+  height: number;
+  label: string;
+  note: string;
+}
+
 export interface Project {
   title: string;
   description: string;
@@ -47,6 +56,7 @@ export interface Project {
   publicationUrl?: string;
   image?: string;
   imagePriority?: boolean;
+  video?: ProjectVideo;
 }
 
 export interface ProjectWithStats extends Project {

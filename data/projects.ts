@@ -165,6 +165,14 @@ export const PROJECTS: Project[] = [
       proof: [{ text: projectCopy.jarvisPanel.proof }],
     },
     image: "/media/jarvis-panel.webp",
+    video: {
+      src: "/media/jarvis-panel-demo.mp4",
+      poster: "/media/jarvis-panel-demo-poster.webp",
+      width: 720,
+      height: 1280,
+      label: projectCopy.jarvisPanel.video.label,
+      note: projectCopy.jarvisPanel.video.note,
+    },
   },
   {
     title: projectCopy.underStockholm.title,
