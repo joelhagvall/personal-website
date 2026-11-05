@@ -6,8 +6,9 @@
 
 A 7-inch touch screen in my bookshelf with its own voice assistant. Say "Hey Jarvis" and it books the laundry room, adds events to my iCloud calendar and plays music, and at a glance it shows the metro, the weather and what is going on at home.
 
-- Status: Runs at home daily · Code on request
+- Status: Runs at home daily · Open source
 - Technologies: ESP32-P4, C++, ESPHome, LVGL, Python, Home Assistant, Claude, Raspberry Pi
+- Source: https://github.com/joelhagvall/jarvis-panel
 
 **Problem:** I wanted a screen at home as fast as the one in a Tesla, that I can talk to, without a Big Tech speaker or trackers. My laundry room and gym booking sites have no open API.
 

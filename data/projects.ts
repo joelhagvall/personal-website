@@ -19,6 +19,8 @@ export const PROJECTS: Project[] = [
   {
     title: projectCopy.jarvisPanel.title,
     description: projectCopy.jarvisPanel.summary,
+    owner: "joelhagvall",
+    repo: "jarvis-panel",
     technologies: [
       "ESP32-P4",
       "C++",
