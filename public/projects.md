@@ -2,16 +2,39 @@
 
 > Personal and academic projects: web apps, mobile apps and open-source work.
 
-## ResiliaAI
+## Jarvis Panel
 
-An AI-powered resilience and crisis preparedness platform for housing associations and organizations.
+A 7-inch touch screen in my bookshelf with its own voice assistant. Say "Hey Jarvis" and it books the laundry room, adds events to my iCloud calendar and plays music, and at a glance it shows the metro, the weather and what is going on at home.
 
-- Status: Part-time, pre-launch venture
-- Technologies: React, TypeScript, TanStack, Supabase, PostgreSQL, Vercel AI SDK, OpenRouter, Berget AI, Hugging Face, RAG, AI Agents
+- Status: Runs at home daily · Code on request
+- Technologies: ESP32-P4, C++, ESPHome, LVGL, Python, Home Assistant, Claude, Raspberry Pi
 
-**Problem:** A three-person venture needed one engineer to turn the product concept into a testable pre-launch platform.
+**Problem:** I wanted a screen at home as fast and responsive as the one in a Tesla, that I can talk to, without a Big Tech speaker or trackers. Neither the laundry booking site nor my gym has an open API, and no product on sale did what I wanted.
 
-**Built:** I own the React and TypeScript product, APIs, PostgreSQL data layer, and AI orchestration. I also own workflow automation, tests, continuous integration, delivery, and hosted development environments.
+**Built:** I built the firmware for an ESP32-P4 board in C++ with ESPHome and LVGL, a Home Assistant integration, and a Python server on a Raspberry Pi 5 where a Claude agent answers with tools for the calendar, the laundry room, SL, the weather and Spotify. The wake word runs locally on the screen, and the server has no ports open to the internet.
+
+## Data Wipe Mailer
+
+A privacy-focused web app that helps Swedish citizens send General Data Protection Regulation (GDPR) Article 17 deletion requests.
+
+- Technologies: TypeScript, Next.js, Tailwind CSS, shadcn/ui
+- Source: https://github.com/joelhagvall/data-wipe-mailer
+
+**Problem:** Requesting deletion from several data brokers requires finding each process and writing repetitive requests.
+
+**Built:** I built a client-side Next.js app that prepares each request without sending personal data to a server.
+
+## Under Stockholm
+
+The whole Stockholm metro in the browser: walk the platforms and ride the trains through all 100 stations.
+
+- Status: Live · Open source
+- Technologies: TypeScript, three.js, Rapier, WebGL, Vite, Bun
+- Source: https://github.com/joelhagvall/under-stockholm
+
+**Problem:** A metro you can explore in the browser needs to feel like the real one, stay shared between visitors, and still load fast on a phone.
+
+**Built:** I built it with TypeScript, three.js and Rapier and no game engine. Stations, textures and sounds are generated, and trains follow a shared timetable or SL's live metro data.
 
 ## Maskera
 
@@ -25,39 +48,16 @@ Local redaction of Swedish personally identifiable information for browser, Node
 
 **Built:** I combined deterministic rules with an approximately 43 MB quantized ONNX model that runs locally through Transformers.js with WebGPU or WASM.
 
-## Data Wipe Mailer
+## ResiliaAI
 
-A privacy-focused web app that helps Swedish citizens send General Data Protection Regulation (GDPR) Article 17 deletion requests.
+An AI-powered resilience and crisis preparedness platform for housing associations and organizations.
 
-- Technologies: TypeScript, Next.js, Tailwind CSS, shadcn/ui
-- Source: https://github.com/joelhagvall/data-wipe-mailer
+- Status: Part-time, pre-launch venture
+- Technologies: React, TypeScript, TanStack, Supabase, PostgreSQL, Vercel AI SDK, OpenRouter, Berget AI, Hugging Face, RAG, AI Agents
 
-**Problem:** Requesting deletion from several data brokers requires finding each process and writing repetitive requests.
+**Problem:** A three-person venture needed one engineer to turn the product concept into a testable pre-launch platform.
 
-**Built:** I built a client-side Next.js app that prepares each request without sending personal data to a server.
-
-## Jarvis Panel
-
-A 7-inch touch screen in my bookshelf with its own voice assistant. Say "Hey Jarvis" and it books the laundry room, adds events to my iCloud calendar and plays music, and at a glance it shows the metro, the weather and what is going on at home.
-
-- Status: Runs at home daily · Code on request
-- Technologies: ESP32-P4, C++, ESPHome, LVGL, Python, Home Assistant, Claude, Raspberry Pi
-
-**Problem:** I wanted a screen at home as fast and responsive as the one in a Tesla, that I can talk to, without a Big Tech speaker or trackers. Neither the laundry booking site nor my gym has an open API, and no product on sale did what I wanted.
-
-**Built:** I built the firmware for an ESP32-P4 board in C++ with ESPHome and LVGL, a Home Assistant integration, and a Python server on a Raspberry Pi 5 where a Claude agent answers with tools for the calendar, the laundry room, SL, the weather and Spotify. The wake word runs locally on the screen, and the server has no ports open to the internet.
-
-## Under Stockholm
-
-The whole Stockholm metro in the browser: walk the platforms and ride the trains through all 100 stations.
-
-- Status: Live · Open source
-- Technologies: TypeScript, three.js, Rapier, WebGL, Vite, Bun
-- Source: https://github.com/joelhagvall/under-stockholm
-
-**Problem:** A metro you can explore in the browser needs to feel like the real one, stay shared between visitors, and still load fast on a phone.
-
-**Built:** I built it with TypeScript, three.js and Rapier and no game engine. Stations, textures and sounds are generated, and trains follow a shared timetable or SL's live metro data.
+**Built:** I own the React and TypeScript product, APIs, PostgreSQL data layer, and AI orchestration. I also own workflow automation, tests, continuous integration, delivery, and hosted development environments.
 
 ## J.A.R.V.I.S
 
