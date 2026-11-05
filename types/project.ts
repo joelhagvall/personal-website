@@ -27,6 +27,7 @@ export interface ProjectProofItem {
 export interface ProjectCaseStudy {
   problem: string;
   built: string;
+  builtSources?: ProjectProofSource[];
   proof: ProjectProofItem[];
 }
 

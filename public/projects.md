@@ -11,7 +11,8 @@ A 7-inch touch screen in my bookshelf with its own voice assistant. Say "Hey Jar
 
 **Problem:** I wanted a screen at home as fast and responsive as the one in a Tesla, that I can talk to, without a Big Tech speaker or trackers. Neither the laundry booking site nor my gym has an open API, and no product on sale did what I wanted.
 
-**Built:** I built the firmware for an ESP32-P4 board in C++ with ESPHome and LVGL, a Home Assistant integration, and a Python server on a Raspberry Pi 5 where a Claude agent answers with tools for the calendar, the laundry room, SL, the weather and Spotify. The wake word runs locally on the screen, and the server has no ports open to the internet.
+**Built:** The hardware is an off-the-shelf Waveshare ESP32-P4 7-inch touch board. Everything running on it is mine: the firmware and UI in C++ with ESPHome and LVGL, the voice flow, a Home Assistant integration, and a Python server on a Raspberry Pi 5 where a Claude agent answers with tools for the calendar, the laundry room, SL, the weather and Spotify. The wake word runs locally on the screen, and the server has no ports open to the internet.
+- Waveshare ESP32-P4-WIFI6-Touch-LCD-7B: https://www.waveshare.com/esp32-p4-wifi6-touch-lcd-7b.htm
 
 ## Data Wipe Mailer
 

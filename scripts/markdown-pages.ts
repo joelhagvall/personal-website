@@ -141,6 +141,7 @@ ${otherInterests.map((t) => `- ${t}`).join("\n")}`
         lines.push(`- Source: https://github.com/${p.owner}/${p.repo}`);
       if (p.caseStudy) {
         lines.push("", `**Problem:** ${p.caseStudy.problem}`, "", `**Built:** ${p.caseStudy.built}`);
+        for (const s of p.caseStudy.builtSources ?? []) lines.push(`- ${s.label}: ${s.url}`);
       }
       return lines.join("\n");
     }).join("\n\n")

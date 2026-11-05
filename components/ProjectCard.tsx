@@ -302,7 +302,11 @@ export function ProjectCard({
               />
               <CaseStudyItem
                 label={PROJECTS_CONTENT.caseLabels.built}
-                items={[{ text: caseStudy.built }]}
+                items={[
+                  caseStudy.builtSources
+                    ? { text: caseStudy.built, sources: caseStudy.builtSources }
+                    : { text: caseStudy.built },
+                ]}
               />
               <CaseStudyItem
                 label={PROJECTS_CONTENT.caseLabels.proof}

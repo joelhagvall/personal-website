@@ -32,6 +32,13 @@ export const PROJECTS: Project[] = [
     caseStudy: {
       problem: projectCopy.jarvisPanel.problem,
       built: projectCopy.jarvisPanel.built,
+      builtSources: [
+        {
+          label: messages.projects.linkLabels.waveshareBoard,
+          url: "https://www.waveshare.com/esp32-p4-wifi6-touch-lcd-7b.htm",
+          iconName: "website",
+        },
+      ],
       proof: [{ text: projectCopy.jarvisPanel.proof }],
     },
     image: "/media/jarvis-panel.webp",
