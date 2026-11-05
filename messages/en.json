@@ -42,49 +42,78 @@
         "summary": "An AI-powered resilience and crisis preparedness platform for housing associations and organizations.",
         "status": "Part-time, pre-launch venture",
         "problem": "A three-person venture needed one engineer to turn the product concept into a testable pre-launch platform.",
-        "built": "I own the React and TypeScript product, APIs, PostgreSQL data layer, and AI orchestration. I also own workflow automation, tests, continuous integration, delivery, and hosted development environments.",
-        "proof": "I am the sole engineer and work across product decisions, implementation, and release preparation."
+        "built": [
+          "The React and TypeScript product, APIs and PostgreSQL data layer.",
+          "AI orchestration and workflow automation.",
+          "Tests, continuous integration, delivery and hosted development environments."
+        ],
+        "proof": [
+          "Sole engineer, from product decisions to implementation and release preparation."
+        ]
       },
       "maskera": {
         "title": "Maskera",
         "summary": "Local redaction of Swedish personally identifiable information for browser, Node.js, edge, and AI workflows.",
         "status": "Live · Open source",
-        "problem": "Teams risk sending names, Swedish personal identity numbers, and addresses to LLMs, logs, and analytics.",
-        "built": "I combined deterministic rules with an approximately 43 MB quantized ONNX model that runs locally through Transformers.js with WebGPU or WASM.",
-        "proof": "Launched as open source in August 2026 with a live demo, npm package, and Hugging Face model."
+        "problem": "Teams risk sending names, Swedish personal identity numbers and addresses to LLMs, logs and analytics.",
+        "built": [
+          "Deterministic rules combined with a quantized ONNX model of about 43 MB.",
+          "Runs locally through Transformers.js with WebGPU or WASM."
+        ],
+        "proof": {
+          "launch": "Open source since August 2026.",
+          "links": "Live demo, npm package and Hugging Face model."
+        }
       },
       "dataWipeMailer": {
         "title": "Data Wipe Mailer",
         "summary": "A privacy-focused web app that helps Swedish citizens send General Data Protection Regulation (GDPR) Article 17 deletion requests.",
-        "problem": "Requesting deletion from several data brokers requires finding each process and writing repetitive requests.",
-        "built": "I built a client-side Next.js app that prepares each request without sending personal data to a server.",
+        "problem": "Getting removed from data brokers means finding each site's process and writing the same request over and over.",
+        "built": [
+          "A client-side Next.js app that prepares a GDPR Article 17 request for each data broker.",
+          "Personal data stays in the browser and is never sent to a server."
+        ],
         "proof": {
-          "dfri": "Föreningen för Digitala Fri- och Rättigheter (DFRI), a Swedish nonprofit and nonpartisan digital rights association, links to Data Wipe Mailer in its privacy guide as a way to open deletion-request templates in your email app.",
-          "redditEarlyFeedback": "Reddit users reported trying the tool, thanked me for building it, and described it as useful. One user received several automated responses within three minutes.",
-          "redditIndependentShare": "A Reddit user later shared the tool independently as a reminder to delete personal data from people-search sites.",
-          "linkedin": "The LinkedIn launch post reached 200,000+ views and generated 2,300+ reactions and 168 comments."
+          "dfri": "DFRI, the Swedish digital rights nonprofit, links to it in its privacy guide.",
+          "redditEarlyFeedback": "Reddit users tried it and called it useful. One got several automated replies within three minutes.",
+          "redditIndependentShare": "Another Reddit user shared it on their own as a reminder to clean up people-search sites.",
+          "linkedin": "LinkedIn launch post: 200,000+ views, 2,300+ reactions, 168 comments."
         }
       },
       "underStockholm": {
         "title": "Under Stockholm",
         "summary": "The whole Stockholm metro in the browser: walk the platforms and ride the trains through all 100 stations.",
         "status": "Live · Open source",
-        "problem": "A metro you can explore in the browser needs to feel like the real one, stay shared between visitors, and still load fast on a phone.",
-        "built": "I built it with TypeScript, three.js and Rapier and no game engine. Stations, textures and sounds are generated, and trains follow a shared timetable or SL's live metro data.",
+        "problem": "A metro you can explore in the browser has to feel like the real one, be shared between visitors and still load fast on a phone.",
+        "built": [
+          "TypeScript, three.js and Rapier, no game engine.",
+          "Stations, textures and sounds are generated.",
+          "Trains follow a shared timetable or SL's live metro data."
+        ],
         "proof": {
-          "live": "Playable at understockholm.com, with the source code public on GitHub.",
-          "feber": "Feber, a Swedish tech news site, covered it as a web simulator where you can ride along as a passenger or drive the train yourself.",
-          "reddit": "The Reddit launch post in r/tunnelbana reached 85,000+ views and generated 440+ upvotes and 60+ comments.",
-          "linkedin": "The LinkedIn launch post reached 15,000+ impressions and generated 280+ reactions and 30+ comments."
+          "live": "Playable at understockholm.com, source code public on GitHub.",
+          "feber": "Covered by Feber, a Swedish tech news site, as a simulator where you ride along or drive the train.",
+          "reddit": "Reddit launch post in r/tunnelbana: 85,000+ views, 440+ upvotes, 60+ comments.",
+          "linkedin": "LinkedIn launch post: 15,000+ impressions, 280+ reactions, 30+ comments."
         }
       },
       "jarvisPanel": {
         "title": "Jarvis Panel",
         "summary": "A 7-inch touch screen in my bookshelf with its own voice assistant. Say \"Hey Jarvis\" and it books the laundry room, adds events to my iCloud calendar and plays music, and at a glance it shows the metro, the weather and what is going on at home.",
         "status": "Runs at home daily · Code on request",
-        "problem": "I wanted a screen at home as fast and responsive as the one in a Tesla, that I can talk to, without a Big Tech speaker or trackers. Neither the laundry booking site nor my gym has an open API, and no product on sale did what I wanted.",
-        "built": "The hardware is an off-the-shelf Waveshare ESP32-P4 7-inch touch board. Everything running on it is mine: the firmware and UI in C++ with ESPHome and LVGL, the voice flow, a Home Assistant integration, and a Python server on a Raspberry Pi 5 where a Claude agent answers with tools for the calendar, the laundry room, SL, the weather and Spotify. The wake word runs locally on the screen, and the server has no ports open to the internet.",
-        "proof": "AI agents flash the firmware and test it on the real hardware: they tap the screen over Wi-Fi, take screenshots and measure how fast it responds, and a slower build is stopped before it is installed. Measured on the screen, a new album cover at a track change went from 3 s to under 0.15 s, and boot from 10.2 s to 7.7 s. Over 1,100 automated tests run before every install. The code is private, and I share it on request.",
+        "problem": "I wanted a screen at home as fast as the one in a Tesla, that I can talk to, without a Big Tech speaker or trackers. My laundry room and gym booking sites have no open API.",
+        "built": [
+          "Hardware: an off-the-shelf Waveshare ESP32-P4 7-inch touch board.",
+          "Firmware and UI: C++ with ESPHome and LVGL, with the wake word running locally on the screen.",
+          "Server: a Home Assistant integration and Python on a Raspberry Pi 5, where a Claude agent has tools for the calendar, the laundry room, SL, the weather and Spotify.",
+          "No ports open to the internet."
+        ],
+        "proof": [
+          "Album cover at a track change: 3 s to under 0.15 s, measured on the screen.",
+          "Boot: 10.2 s to 7.7 s.",
+          "AI agents flash every build and test it on the real hardware: they tap the screen over Wi-Fi, take screenshots and stop a build that got slower.",
+          "1,100+ automated tests run before every install."
+        ],
         "video": {
           "label": "Demo of Jarvis Panel: I ask it to book the laundry room and add a reminder, then to play Coldplay on Spotify",
           "note": "One uncut take, spoken in Swedish with English subtitles. Two screenshots show the booking and the calendar event."

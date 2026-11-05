@@ -198,6 +198,24 @@ function ProofSourceChip({ source }: { source: ProjectProofSource }) {
   );
 }
 
+function CaseStudyText({ item }: { item: ProjectProofItem }) {
+  return (
+    <>
+      {item.text}
+      {item.sources && item.sources.length > 0 ? (
+        <>
+          {" "}
+          <span className="inline-flex flex-wrap gap-1.5 align-middle">
+            {item.sources.map((source) => (
+              <ProofSourceChip key={source.url} source={source} />
+            ))}
+          </span>
+        </>
+      ) : null}
+    </>
+  );
+}
+
 function CaseStudyItem({
   label,
   items,
@@ -214,22 +232,23 @@ function CaseStudyItem({
       <dt className="text-sm font-medium tracking-normal text-muted-foreground">
         {label}
       </dt>
-      <dd className="mt-3 space-y-3 leading-relaxed text-foreground/90">
-        {items.map((item) => (
-          <p key={item.text}>
-            {item.text}
-            {item.sources && item.sources.length > 0 ? (
-              <>
-                {" "}
-                <span className="inline-flex flex-wrap gap-1.5 align-middle">
-                  {item.sources.map((source) => (
-                    <ProofSourceChip key={source.url} source={source} />
-                  ))}
-                </span>
-              </>
-            ) : null}
-          </p>
-        ))}
+      <dd className="mt-3 leading-relaxed text-foreground/90">
+        {/* Several points read as a list; a single one stays a sentence */}
+        {items.length > 1 ? (
+          <ul className="list-disc space-y-2 pl-5 marker:text-muted-foreground">
+            {items.map((item) => (
+              <li key={item.text}>
+                <CaseStudyText item={item} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          items.map((item) => (
+            <p key={item.text}>
+              <CaseStudyText item={item} />
+            </p>
+          ))
+        )}
       </dd>
     </div>
   );
@@ -302,11 +321,7 @@ export function ProjectCard({
               />
               <CaseStudyItem
                 label={PROJECTS_CONTENT.caseLabels.built}
-                items={[
-                  caseStudy.builtSources
-                    ? { text: caseStudy.built, sources: caseStudy.builtSources }
-                    : { text: caseStudy.built },
-                ]}
+                items={caseStudy.built}
               />
               <CaseStudyItem
                 label={PROJECTS_CONTENT.caseLabels.proof}

@@ -140,8 +140,11 @@ ${otherInterests.map((t) => `- ${t}`).join("\n")}`
       if (p.owner && p.repo)
         lines.push(`- Source: https://github.com/${p.owner}/${p.repo}`);
       if (p.caseStudy) {
-        lines.push("", `**Problem:** ${p.caseStudy.problem}`, "", `**Built:** ${p.caseStudy.built}`);
-        for (const s of p.caseStudy.builtSources ?? []) lines.push(`- ${s.label}: ${s.url}`);
+        lines.push("", `**Problem:** ${p.caseStudy.problem}`, "", "**Built:**", "");
+        for (const item of p.caseStudy.built) {
+          const links = (item.sources ?? []).map((s) => ` [${s.label}](${s.url})`).join("");
+          lines.push(`- ${item.text}${links}`);
+        }
       }
       return lines.join("\n");
     }).join("\n\n")

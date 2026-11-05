@@ -8,6 +8,9 @@ import messages from "@/messages/en.json";
 
 const projectCopy = messages.projects.items;
 
+/** Short case study points without sources, one per line on the card */
+const points = (texts: readonly string[]) => texts.map((text) => ({ text }));
+
 /** Helper to build GitHub URL from owner and repo */
 export const getGitHubUrl = (owner: string, repo: string) =>
   `https://github.com/${owner}/${repo}`;
@@ -31,15 +34,20 @@ export const PROJECTS: Project[] = [
     prominence: "featured",
     caseStudy: {
       problem: projectCopy.jarvisPanel.problem,
-      built: projectCopy.jarvisPanel.built,
-      builtSources: [
+      built: [
         {
-          label: messages.projects.linkLabels.waveshareBoard,
-          url: "https://www.waveshare.com/esp32-p4-wifi6-touch-lcd-7b.htm",
-          iconName: "website",
+          text: projectCopy.jarvisPanel.built[0]!,
+          sources: [
+            {
+              label: messages.projects.linkLabels.waveshareBoard,
+              url: "https://www.waveshare.com/esp32-p4-wifi6-touch-lcd-7b.htm",
+              iconName: "website",
+            },
+          ],
         },
+        ...points(projectCopy.jarvisPanel.built.slice(1)),
       ],
-      proof: [{ text: projectCopy.jarvisPanel.proof }],
+      proof: points(projectCopy.jarvisPanel.proof),
     },
     image: "/media/jarvis-panel.webp",
     video: {
@@ -61,8 +69,18 @@ export const PROJECTS: Project[] = [
     prominence: "featured",
     caseStudy: {
       problem: projectCopy.dataWipeMailer.problem,
-      built: projectCopy.dataWipeMailer.built,
+      built: points(projectCopy.dataWipeMailer.built),
       proof: [
+        {
+          text: projectCopy.dataWipeMailer.proof.linkedin,
+          sources: [
+            {
+              label: messages.projects.linkLabels.linkedinLaunch,
+              url: "https://www.linkedin.com/posts/joel-h%C3%A4gvall-810601147_sweden-is-one-of-the-few-countries-where-activity-7393215112825892864-88Yf?utm_source=share&utm_medium=member_desktop&rcm=ACoAACOBw0wBEi2wQSiatRzxAKJ2zpXZfInx2iI",
+              iconName: "linkedin",
+            },
+          ],
+        },
         {
           text: projectCopy.dataWipeMailer.proof.dfri,
           sources: [
@@ -93,16 +111,6 @@ export const PROJECTS: Project[] = [
             },
           ],
         },
-        {
-          text: projectCopy.dataWipeMailer.proof.linkedin,
-          sources: [
-            {
-              label: messages.projects.linkLabels.linkedinLaunch,
-              url: "https://www.linkedin.com/posts/joel-h%C3%A4gvall-810601147_sweden-is-one-of-the-few-countries-where-activity-7393215112825892864-88Yf?utm_source=share&utm_medium=member_desktop&rcm=ACoAACOBw0wBEi2wQSiatRzxAKJ2zpXZfInx2iI",
-              iconName: "linkedin",
-            },
-          ],
-        },
       ],
     },
     demoUrl: "https://data-wipe-mailer.vercel.app",
@@ -119,7 +127,7 @@ export const PROJECTS: Project[] = [
     prominence: "featured",
     caseStudy: {
       problem: projectCopy.underStockholm.problem,
-      built: projectCopy.underStockholm.built,
+      built: points(projectCopy.underStockholm.built),
       proof: [
         {
           text: projectCopy.underStockholm.proof.live,
@@ -189,10 +197,11 @@ export const PROJECTS: Project[] = [
     prominence: "featured",
     caseStudy: {
       problem: projectCopy.maskera.problem,
-      built: projectCopy.maskera.built,
+      built: points(projectCopy.maskera.built),
       proof: [
+        { text: projectCopy.maskera.proof.launch },
         {
-          text: projectCopy.maskera.proof,
+          text: projectCopy.maskera.proof.links,
           sources: [
             {
               label: messages.projects.linkLabels.maskeraDemo,
@@ -239,8 +248,8 @@ export const PROJECTS: Project[] = [
     prominence: "featured",
     caseStudy: {
       problem: projectCopy.resiliaAI.problem,
-      built: projectCopy.resiliaAI.built,
-      proof: [{ text: projectCopy.resiliaAI.proof }],
+      built: points(projectCopy.resiliaAI.built),
+      proof: points(projectCopy.resiliaAI.proof),
     },
   },
   {
@@ -253,7 +262,7 @@ export const PROJECTS: Project[] = [
     prominence: "supporting",
     caseStudy: {
       problem: projectCopy.jarvis.problem,
-      built: projectCopy.jarvis.built,
+      built: [{ text: projectCopy.jarvis.built }],
       proof: [
         {
           text: projectCopy.jarvis.proof,
@@ -279,7 +288,7 @@ export const PROJECTS: Project[] = [
     prominence: "supporting",
     caseStudy: {
       problem: projectCopy.torScraper.problem,
-      built: projectCopy.torScraper.built,
+      built: [{ text: projectCopy.torScraper.built }],
       proof: [
         {
           text: projectCopy.torScraper.proof,
