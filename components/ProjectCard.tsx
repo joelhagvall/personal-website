@@ -26,6 +26,7 @@ import {
 import type {
   IconName,
   ProjectCaseStudy,
+  ProjectPhoto,
   ProjectProofItem,
   ProjectProofSource,
   ProjectVideo,
@@ -51,6 +52,7 @@ interface ProjectCardProps {
   imagePriority?: boolean | undefined;
   caseStudy?: ProjectCaseStudy | undefined;
   video?: ProjectVideo | undefined;
+  photo?: ProjectPhoto | undefined;
 }
 
 const iconMap = {
@@ -272,6 +274,7 @@ export function ProjectCard({
   imagePriority,
   caseStudy,
   video,
+  photo,
 }: ProjectCardProps) {
   const Icon = iconMap[iconName];
   // Links already shown as proof-source chips are dropped from the footer
@@ -348,34 +351,70 @@ export function ProjectCard({
               </video>
               <figcaption className="text-sm text-muted-foreground">{video.note}</figcaption>
             </figure>
-          ) : image && (
-            <Dialog>
-              <DialogTrigger asChild>
-                <button className="relative w-full max-w-xl aspect-video rounded-lg overflow-hidden border border-primary/20 hover:border-primary/40 transition-all duration-300 cursor-pointer">
-                  <Image
-                    src={image}
-                    alt={`${title} screenshot`}
-                    fill
-                    loading={imagePriority ? "eager" : "lazy"}
-                    className="object-cover object-top"
-                  />
-                </button>
-              </DialogTrigger>
-              <DialogContent
-                className="max-w-5xl p-0 border-none bg-transparent"
-                aria-describedby={undefined}
-              >
-                <DialogTitle className="sr-only">{title} screenshot</DialogTitle>
-                <Image
-                  src={image}
-                  alt={`${title} screenshot`}
-                  width={1920}
-                  height={1080}
-                  className="w-full h-auto rounded-lg"
-                />
-              </DialogContent>
-            </Dialog>
-          )}
+          ) : image || photo ? (
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+              {image && (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button className="relative w-full max-w-xl aspect-video rounded-lg overflow-hidden border border-primary/20 hover:border-primary/40 transition-all duration-300 cursor-pointer">
+                      <Image
+                        src={image}
+                        alt={`${title} screenshot`}
+                        fill
+                        loading={imagePriority ? "eager" : "lazy"}
+                        className="object-cover object-top"
+                      />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent
+                    className="max-w-5xl p-0 border-none bg-transparent"
+                    aria-describedby={undefined}
+                  >
+                    <DialogTitle className="sr-only">{title} screenshot</DialogTitle>
+                    <Image
+                      src={image}
+                      alt={`${title} screenshot`}
+                      width={1920}
+                      height={1080}
+                      className="w-full h-auto rounded-lg"
+                    />
+                  </DialogContent>
+                </Dialog>
+              )}
+              {photo && (
+                <figure className="w-full max-w-64 shrink-0 space-y-2 sm:w-56 lg:w-64">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="relative block w-full aspect-[4/5] rounded-lg overflow-hidden border border-primary/20 hover:border-primary/40 transition-all duration-300 cursor-pointer">
+                        <Image
+                          src={photo.src}
+                          alt={photo.alt}
+                          fill
+                          sizes="256px"
+                          loading="lazy"
+                          className="object-cover"
+                        />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent
+                      className="max-w-lg p-0 border-none bg-transparent"
+                      aria-describedby={undefined}
+                    >
+                      <DialogTitle className="sr-only">{photo.caption}</DialogTitle>
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        width={photo.width}
+                        height={photo.height}
+                        className="w-full h-auto rounded-lg"
+                      />
+                    </DialogContent>
+                  </Dialog>
+                  <figcaption className="text-sm text-muted-foreground">{photo.caption}</figcaption>
+                </figure>
+              )}
+            </div>
+          ) : null}
 
           <div className="flex flex-wrap gap-2">
             {technologies.map((tag) => (

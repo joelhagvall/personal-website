@@ -254,6 +254,7 @@ export function WorkWithMeContent({
                 image={project.image}
                 caseStudy={project.caseStudy}
                 video={project.video}
+                photo={project.photo}
               />
             ))}
           </div>

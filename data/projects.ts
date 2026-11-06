@@ -147,6 +147,21 @@ export const PROJECTS: Project[] = [
           ],
         },
         {
+          text: projectCopy.underStockholm.proof.founderHouse,
+          sources: [
+            {
+              label: messages.projects.linkLabels.founderHouseEvent,
+              url: "https://www.anthropic.com/events/claude-founder-house-stockholm",
+              iconName: "website",
+            },
+            {
+              label: messages.projects.linkLabels.founderHouseLinkedin,
+              url: "https://www.linkedin.com/posts/chiaramassironi_last-wednesday-we-welcomed-over-350-founders-ugcPost-7518616074645504000-G5nH/",
+              iconName: "linkedin",
+            },
+          ],
+        },
+        {
           text: projectCopy.underStockholm.proof.feber,
           sources: [
             {
@@ -180,6 +195,13 @@ export const PROJECTS: Project[] = [
     },
     demoUrl: "https://understockholm.com",
     image: "/media/under-stockholm.webp",
+    photo: {
+      src: "/media/founder-house-stage.webp",
+      width: 800,
+      height: 1000,
+      alt: projectCopy.underStockholm.photo.alt,
+      caption: projectCopy.underStockholm.photo.caption,
+    },
   },
   {
     title: projectCopy.maskera.title,

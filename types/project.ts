@@ -39,6 +39,14 @@ export interface ProjectVideo {
   note: string;
 }
 
+export interface ProjectPhoto {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  caption: string;
+}
+
 export interface Project {
   title: string;
   description: string;
@@ -57,6 +65,7 @@ export interface Project {
   image?: string;
   imagePriority?: boolean;
   video?: ProjectVideo;
+  photo?: ProjectPhoto;
 }
 
 export interface ProjectWithStats extends Project {
