@@ -72,3 +72,7 @@ Traces module resolution when debugging import or type lookup issues.
 bun x tsc --noEmit
 bun run build
 ```
+
+## After `next dev`
+
+`next dev` writes `.next/dev/types/validator.ts`, which `tsconfig.json` includes, and that file fails `tsc` with unused-symbol errors (TS6133, TS6196). Errors only in `.next/dev/` are not from your change; run `tsc` before starting the dev server, or after deleting `.next/dev`.
