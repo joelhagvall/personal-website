@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 634" width="360" height="634" role="img" aria-labelledby="t d">
+  <title id="t">The release gates for the panel's firmware</title>
+  <desc id="d">Five gates in a row: local tests and config, compile, upload over Wi-Fi, boot and crash check, and the real screen. A failure before the upload stops everything and nothing is uploaded. A failure once the upload has started puts the panel in quarantine with no normal flashing. Passing all five marks the build as verified.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#a3a3a3"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Geist, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .box { fill: #ffffff; fill-opacity: .05; stroke: #ffffff; stroke-opacity: .14; }
+    .h { fill: #fafafa; font-size: 16px; font-weight: 600; }
+    .s { fill: #a3a3a3; font-size: 14px; }
+    .f { fill: #f87171; font-size: 13px; }
+    .arrow { stroke: #a3a3a3; stroke-width: 1.5; marker-end: url(#a); }
+  </style>
+
+  <rect class="box" x="10" y="10" width="340" height="86" rx="14"/>
+  <text class="h" x="28" y="40">1. Local tests and config</text>
+  <text class="s" x="28" y="62">A skipped test counts as a failure</text>
+  <text class="f" x="28" y="84">Fails: stop, nothing is uploaded</text>
+  <line class="arrow" x1="180" y1="97" x2="180" y2="117"/>
+
+  <rect class="box" x="10" y="120" width="340" height="86" rx="14"/>
+  <text class="h" x="28" y="150">2. Compile</text>
+  <text class="s" x="28" y="172">The build ID is a hash of the source</text>
+  <text class="f" x="28" y="194">Fails: stop, nothing is uploaded</text>
+  <line class="arrow" x1="180" y1="207" x2="180" y2="227"/>
+
+  <rect class="box" x="10" y="230" width="340" height="86" rx="14"/>
+  <text class="h" x="28" y="260">3. Upload over Wi-Fi</text>
+  <text class="s" x="28" y="282">The old build is backed up first</text>
+  <text class="f" x="28" y="304">Fails: quarantine, no normal flashing</text>
+  <line class="arrow" x1="180" y1="317" x2="180" y2="337"/>
+
+  <rect class="box" x="10" y="340" width="340" height="86" rx="14"/>
+  <text class="h" x="28" y="370">4. Boot and crash check</text>
+  <text class="s" x="28" y="392">New boot, right build, 65 s uptime</text>
+  <text class="f" x="28" y="414">Fails: quarantine, no normal flashing</text>
+  <line class="arrow" x1="180" y1="427" x2="180" y2="447"/>
+
+  <rect class="box" x="10" y="450" width="340" height="86" rx="14"/>
+  <text class="h" x="28" y="480">5. The real screen</text>
+  <text class="s" x="28" y="502">14 scenes, p95 from touch to redraw</text>
+  <text class="f" x="28" y="524">Fails: quarantine, no normal flashing</text>
+  <line class="arrow" x1="180" y1="537" x2="180" y2="557"/>
+
+  <rect x="10" y="560" width="340" height="64" rx="14" fill="#22d3ee" fill-opacity=".08" stroke="#22d3ee" stroke-opacity=".6"/>
+  <text x="28" y="588" fill="#22d3ee" font-size="16" font-weight="600">Verified</text>
+  <text class="s" x="28" y="610">Evidence saved for this build ID</text>
+</svg>

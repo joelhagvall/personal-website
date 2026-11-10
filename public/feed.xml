@@ -5,8 +5,15 @@
     <link>https://joelhagvall.com/blog</link>
     <description>Blog posts by Joel Hägvall</description>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Nov 2026 10:42:12 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 07:23:51 GMT</lastBuildDate>
     <atom:link href="https://joelhagvall.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Letting Agents Ship Firmware</title>
+      <link>https://joelhagvall.com/blog/agents-ship-firmware</link>
+      <guid isPermaLink="true">https://joelhagvall.com/blog/agents-ship-firmware</guid>
+      <description>How I let AI agents build, flash and test a touch panel in my bookshelf without me watching.</description>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>Off My High Horse</title>
       <link>https://joelhagvall.com/blog/off-my-high-horse</link>

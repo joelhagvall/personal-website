@@ -2,6 +2,13 @@
 
 > Thoughts, ideas and technical writing.
 
+## [Letting Agents Ship Firmware](https://joelhagvall.com/blog/agents-ship-firmware)
+
+- Published: 2026-11-10
+- Tags: ai, automation, hardware
+
+How I let AI agents build, flash and test a touch panel in my bookshelf without me watching.
+
 ## [Off My High Horse](https://joelhagvall.com/blog/off-my-high-horse)
 
 - Published: 2026-10-25

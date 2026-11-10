@@ -18,6 +18,7 @@ I build RAG assistants, embeddings/vector search, document ingestion, AI reports
 
 ## Latest from the blog
 
+- [Letting Agents Ship Firmware](https://joelhagvall.com/blog/agents-ship-firmware) (2026-11-10): How I let AI agents build, flash and test a touch panel in my bookshelf without me watching.
 - [Off My High Horse](https://joelhagvall.com/blog/off-my-high-horse) (2026-10-25): I've stopped trying to compete with AI. It's a relief.
 - [Automate Everything Possible](https://joelhagvall.com/blog/automate-everything) (2026-08-17): You have no excuses anymore. Not with AI. Not with anything.
 - [Stripping Away the Noise](https://joelhagvall.com/blog/noise) (2026-01-05): Cutting through what doesn't hold.

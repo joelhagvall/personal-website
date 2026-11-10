@@ -1,0 +1,94 @@
+---
+title: "Letting Agents Ship Firmware"
+date: "2026-11-10"
+description: "How I let AI agents build, flash and test a touch panel in my bookshelf without me watching."
+tags: ["ai", "automation", "hardware"]
+---
+
+There's a 7 inch touch screen in my bookshelf. It shows the metro, the weather, my calendar and a painting or a space photo behind it all. Say "Hey Jarvis" and it books the laundry room or adds something to my calendar.
+
+<img src="/media/agents-ship-firmware-panel.webp" alt="The panel's dashboard over a spiral galaxy: the clock, the weather, metro departures, and a blurred calendar and Jarvis chat" width="1024" height="600" />
+
+*The real panel this morning, captured pixel for pixel over Wi-Fi by the same tool the agents use. Calendar and chat blurred. Background: NGC 1300 by NASA, ESA and the Hubble Heritage Team (STScI/AURA).*
+
+I didn't write a single line of its code. Agents wrote all of it. And agents flash new firmware to it without asking me first.
+
+That only works because of the gates. This post is about them.
+
+## The panel, in one paragraph
+
+It's an ESP32-P4 board running ESPHome and LVGL. Home Assistant on a Raspberry Pi feeds it data, and a voice agent on the same Pi answers when I talk to it. The first commit was on October 21. Three weeks and more than 170 commits later it has more than 1,600 tests. The open source copy is on [GitHub](https://github.com/joelhagvall/jarvis-panel), and there's an uncut demo on my [projects page](/projects).
+
+## The problem with agents and hardware
+
+A web app that breaks is a bad deploy. You roll back. The board can roll back too, but only an update that doesn't boot. It can't tell that a button crashes when a finger presses it, or that a page got slow. And when it does end up as a dead screen on the shelf, nobody is around to plug in a USB cable.
+
+So the question was never "can an agent write this code". It can. The question was: what has to be true before I let it ship without me?
+
+My answer: the agent never decides that something works. The gates do.
+
+<img src="/media/agents-ship-firmware-gates.svg" alt="The five release gates in a row: local tests and config, compile, upload over Wi-Fi, boot and crash check, and the real screen. A failure before the upload stops everything and nothing is uploaded. A failure once the upload has started puts the panel in quarantine with no normal flashing. Passing all five marks the build as verified." width="440" height="775" loading="lazy" />
+
+## Before the upload
+
+**A skipped test is a failed test.**
+
+Every flash goes through one script. It runs the free local suite and validates the ESPHome config before it compiles or uploads anything.
+
+A failed test stops it. So does a skipped test, a missing dependency or an invalid config. Skips count as failures on purpose. An agent that "temporarily" skips a test to get a green run is exactly what I'm protecting against. There is no flag to skip the tests.
+
+This used to be slow. On October 26 the suite took 85 seconds. Now each test module runs in its own process, slowest first, and the same tests take 12 to 15 seconds. A fast gate is a gate nobody tries to get around.
+
+## After the upload
+
+**If it fails after the upload, normal flashing stops until the cause is found.**
+
+A file on disk isn't proof that the device runs it. After an upload the pipeline checks that the panel reports a new boot, the right build ID, Wi-Fi, and 65 seconds of uptime without another restart. It reads the boot log and stops on any crash or restart loop.
+
+If something fails after the upload has started, the pipeline writes a quarantine file. No more physical tests and no normal flashing. The fix goes in through a separate recovery run, and the quarantine only lifts after two clean runs in a row. It never "just tries again".
+
+This came from a real bug. On October 24 the panel crashed at the very end of an update. The crash log matched a known bug in the chip maker's own SDK, triggered when the board restarts. The fix is a small wrapper around the restart. It only builds against the exact SDK version it was checked against, so an SDK upgrade stops the build until someone has checked the fix again.
+
+## On the real screen
+
+**It's not done until it looks right and feels fast on the actual panel.**
+
+The panel has a small authenticated interface on the local network. Agents can take a screenshot, read the widget tree, and tap, swipe and drag like a finger. If I touch the screen during a test, my finger wins.
+
+On top of that sits visual regression. Fourteen scenes, from the dashboard to night mode and the voice states, are captured as exact pixels and compared to a reference I've approved. Clocks, sliders and live backgrounds are masked out on purpose. A check never updates the reference. Only an explicit "record" does that.
+
+Then performance. The gate taps through the tabs 20 times on the real panel and measures how long it takes from touch to redraw. The number I watch is p95: 95 out of 100 taps are faster than it. It also times how long each page takes to redraw when new data comes in.
+
+My favourite example: redrawing the weather page when new data came in took 66 ms at p95, against a budget of 40. The check failed. The agent fixed something, and it failed again at 57. Then 51. The third attempt went to the real cause, how the layout spread its redraws, and landed at 33 ms. Without the check, the first "fix" would have shipped and the commit message would have called it fast.
+
+## Evals: the voice agent gets tested too
+
+The voice part has its own evals. Fourteen scenarios: adding to the calendar, follow-up questions, empty or slow calendars, the TV, English, date arithmetic. They run against mock tools, so nothing touches my real calendar.
+
+They cost money, so they never run by accident. A paid run needs an explicit `--live` flag and a budget of question turns, checked before any API key is read.
+
+That rule came from a mistake. On October 23 an agent tested the voice agent by sending questions straight to the live server. It created a real event in my iCloud calendar and tried to push a notification to my phone. Now every tool that writes something is a recording stub during tests. The model sees the tool, the call is logged, and nothing runs.
+
+## Every mistake becomes a check
+
+That's the habit that makes all this grow. When something goes wrong, the fix isn't "be more careful next time". It's the smallest durable protection: a test, a check in a script, or a line in the right doc.
+
+A few from the last weeks:
+
+- A music button crashed the panel only when a real finger pressed it. Now a test rejects that config before it's built.
+- A gate once passed on the old firmware after the new one had crashed and rolled back. Now the build ID is checked after every gate.
+- Two agents changed the same file at the same time. Now there's a script that lets each agent commit only its own changes, and a lock around the workspace.
+
+The panel knows more about its own failure modes than I do. That's the point.
+
+## Reusable, and free
+
+None of this runs in paid CI. My Mac compiles, the panel on the shelf is the test bench, and the Pi checks its health around the clock and pings my phone if it crashes. Everything is plain scripts behind one command, so Claude Code and Codex use exactly the same tools. A skill file holds the board's known pitfalls, so no agent has to find them again. The scripts are in the [open source repo](https://github.com/joelhagvall/jarvis-panel) too.
+
+Agents can work on it in parallel. One lock covers the workspace and one covers the device. A device lease runs out after five minutes, so a crashed agent can't leave the panel stuck in a test.
+
+## What I actually do
+
+I decide what the panel should do. I look at the screen when something new lands. And when an agent gets something wrong, I make sure the next one can't.
+
+The typing is done by something else. The trust is built by the gates.

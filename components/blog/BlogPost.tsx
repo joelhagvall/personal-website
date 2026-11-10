@@ -59,7 +59,9 @@ export function BlogPost({ post }: BlogPostProps) {
         )}
       </header>
 
-      <div className="prose prose-invert max-w-none">
+      {/* Posts write images as plain <img> with width and height (no layout shift, and the .md copy stays plain HTML).
+          A paragraph right after an image is its caption. */}
+      <div className="prose prose-invert max-w-none [&_img]:mt-8 [&_img]:mb-3 [&_img]:mx-auto [&_img]:rounded-xl [&_img+p]:text-sm [&_img+p]:mb-8 [&_img+p_em]:text-muted-foreground">
         <MDXRemote
           source={post.content}
           components={mdxComponents}
